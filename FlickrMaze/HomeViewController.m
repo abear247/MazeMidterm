@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *themeTableView;
 @property NSArray *themes;
 @property NSString *selectedTheme;
+@property UIView *backgroundView;
 @end
 
 @implementation HomeViewController
@@ -70,6 +71,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    self.backgroundView = [[UIView alloc] initWithFrame:cell.frame];
+    self.backgroundView.backgroundColor = [UIColor greenColor];
+    cell.selectedBackgroundView = self.backgroundView;
     self.selectedTheme = self.themes[indexPath.row];
 }
 
