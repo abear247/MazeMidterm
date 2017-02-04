@@ -10,6 +10,7 @@
 
 @interface MazeCell : UICollectionViewCell
 
-@property UIImageView *mazeCellImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *mazeCellImageView;
+
 
 @end
