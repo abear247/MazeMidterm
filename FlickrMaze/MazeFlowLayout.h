@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MazeFlowLayout.h
 //  FlickrMaze
 //
 //  Created by Minhung Ling on 2017-02-03.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MazeFlowLayout : UICollectionViewFlowLayout
 
 @end
-
