@@ -15,7 +15,8 @@
 @property GameManager *manager;
 @property (weak, nonatomic) IBOutlet UITextField *tagTextField;
 @property (weak, nonatomic) IBOutlet UITableView *themeTableView;
-
+@property NSArray *themes;
+@property NSString *selectedTheme;
 @end
 
 @implementation HomeViewController
@@ -23,9 +24,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.manager = [GameManager new];
+    self.themes = @[@"summer",@"winter",@"indoor",@"outdoor"];
+    self.themeTableView.scrollEnabled = NO;
 }
 - (IBAction)startButton:(id)sender {
-    NSURL *url = [self.manager generateURL:@"cat"];
+    NSString *tags = self.tagTextField.text;
+    NSURL *url = [self.manager generateURL:tags];
     //self.tagTextField.text];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -55,6 +59,23 @@
 }
 
 
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ThemeCell" forIndexPath:indexPath];
+    cell.textLabel.text = self.themes[indexPath.row];
+    return cell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 4;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.selectedTheme = self.themes[indexPath.row];
+}
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.selectedTheme = nil;
+}
 
 #pragma mark Segue Methods
 
