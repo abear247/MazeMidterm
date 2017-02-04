@@ -156,6 +156,7 @@
                                         <rect key="frame" x="0.0" y="28" width="355" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fGk-Xm-Kyf" id="HoJ-qK-BZs">
+
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
@@ -181,8 +182,10 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
+
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MazeCell" id="xBs-yo-iHU" customClass="MazeCell">
                                         <rect key="frame" x="0.0" y="0.0" width="171" height="150"/>
+
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="171" height="150"/>
@@ -253,7 +256,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EyU-I1-GbN">
                                 <rect key="frame" x="16" y="28" width="343" height="431"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="431" id="8En-7W-rPt"/>
+
+                                    <constraint firstAttribute="height" constant="431" id="rcG-9W-KgY"/>
+
                                 </constraints>
                             </imageView>
                         </subviews>
