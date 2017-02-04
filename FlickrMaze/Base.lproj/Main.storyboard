@@ -35,6 +35,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="20" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CXY-3p-dSG">
                                 <rect key="frame" x="67" y="145" width="240" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="Zdd-Ng-I6R"/>
                                 </constraints>
@@ -64,6 +65,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aNY-ju-zQD"/>
                                     <segue destination="gpO-sg-c12" kind="show" id="jfo-qK-tbK"/>
                                 </connections>
                             </button>
@@ -99,15 +101,19 @@
                             <constraint firstAttribute="trailingMargin" secondItem="CXY-3p-dSG" secondAttribute="trailing" constant="52" id="wUO-wm-Ss4"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tagTextField" destination="Fhl-xu-bMm" id="LGS-mF-TMg"/>
+                        <outlet property="themeTableView" destination="CXY-3p-dSG" id="FKl-xa-Jnj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
         </scene>
-        <!--View Controller-->
+        <!--Maze View Controller-->
         <scene sceneID="OmK-Gc-IRs">
             <objects>
-                <viewController id="gpO-sg-c12" sceneMemberID="viewController">
+                <viewController id="gpO-sg-c12" customClass="MazeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cUx-Gh-rA2"/>
                         <viewControllerLayoutGuide type="bottom" id="9Zo-1g-HnG"/>
@@ -149,6 +155,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bkn-Hc-da5">
                                 <rect key="frame" x="10" y="94" width="355" height="355"/>
                                 <color key="backgroundColor" red="0.95751700129999995" green="0.67501907279999995" blue="0.1041990998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Bkn-Hc-da5" secondAttribute="height" multiplier="1:1" id="Cr4-CV-DhL"/>
                                 </constraints>
@@ -186,6 +193,13 @@
                             <constraint firstItem="2Cy-F2-CAx" firstAttribute="centerX" secondItem="ju7-lN-Y7P" secondAttribute="centerX" id="sue-70-TBx"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Bkn-Hc-da5" id="3OF-al-HQL"/>
+                        <outlet property="movesLabel" destination="9Wp-q2-yxG" id="Vzm-6P-8bc"/>
+                        <outlet property="tableView" destination="2Cy-F2-CAx" id="UXs-ag-oxj"/>
+                        <outlet property="targetMovesLabel" destination="Ef6-J5-YC7" id="Y9P-0v-hQF"/>
+                        <outlet property="timeLabel" destination="aGX-g2-Pwt" id="IAN-d1-7pj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbf-XC-8OX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
