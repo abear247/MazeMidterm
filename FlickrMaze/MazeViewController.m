@@ -38,12 +38,12 @@
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return [self.manager getArray].count;
+    return self.sectionCount;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSArray <NSArray*>*array = [self.manager getArray];
-    return array[section].count;
+ //   NSArray <NSArray*>*array = [self.manager getArray];
+    return self.rowCount;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
