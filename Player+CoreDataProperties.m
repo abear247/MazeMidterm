@@ -17,7 +17,5 @@
 
 @dynamic currentX;
 @dynamic currentY;
-@dynamic previousX;
-@dynamic previousY;
 
 @end

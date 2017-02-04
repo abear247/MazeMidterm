@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "Player+CoreDataClass.h"
 @class MazeTile;
 
 @interface GameManager : NSObject
 
 @property (readonly, strong) NSPersistentContainer *persistentContainer;
+@property (nonatomic) Player *player;
 
 - (void)saveContext;
 - (NSURL*) generateURL: (NSString*) tagEntry;

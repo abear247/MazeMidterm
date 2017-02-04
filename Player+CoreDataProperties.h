@@ -18,8 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) int16_t currentX;
 @property (nonatomic) int16_t currentY;
-@property (nonatomic) int16_t previousX;
-@property (nonatomic) int16_t previousY;
 
 @end
 

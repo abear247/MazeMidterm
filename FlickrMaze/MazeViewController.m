@@ -45,15 +45,20 @@
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
- //   NSArray <NSArray*>*array = [self.manager getArray];
     return self.rowCount;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MazeCell *cell = (MazeCell *)[self.mazeCollectionView dequeueReusableCellWithReuseIdentifier:@"MazeCell" forIndexPath:indexPath];
     NSArray *array = [self.manager getArray];
-    NSArray *tileArray = array[indexPath.section];
-    MazeTile *tile = tileArray[indexPath.row];
+    NSInteger section = self.manager.player.currentY + indexPath.section - 1;
+    NSInteger row = self.manager.player.currentX +indexPath.row -1;
+    if (section < 0 || row < 0 || section > 9 || row > 9) {
+        cell.mazeCellImageView.image = [UIImage imageNamed:@"Lava"];
+        return cell;
+    }
+    NSArray *tileArray = array[section];
+    MazeTile *tile = tileArray[row];
     NSData *data = tile.image;
     
     if (tile.valid){
@@ -66,6 +71,7 @@
 }
 
 - (IBAction)moveLeft:(UIButton *)sender {
+    self.manager.player.currentX -= 1;
     self.rowCount -= 1;
     [self.mazeCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0],
                                                        [NSIndexPath indexPathForRow:2 inSection:1],
@@ -79,6 +85,7 @@
 }
 
 - (IBAction)moveUp:(UIButton *)sender {
+    self.manager.player.currentY -= 1;
     self.sectionCount += 1;
     [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:0]];
     self.sectionCount -= 1;
@@ -86,6 +93,7 @@
 }
 
 - (IBAction)moveRight:(UIButton *)sender {
+    self.manager.player.currentX += 1;
     self.rowCount -= 1;
     [self.mazeCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0],
                                                        [NSIndexPath indexPathForRow:0 inSection:1],
@@ -99,6 +107,7 @@
 }
 
 - (IBAction)moveDown:(UIButton *)sender {
+    self.manager.player.currentY += 1;
     self.sectionCount += 1;
     [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:3]];
     self.sectionCount -= 1;

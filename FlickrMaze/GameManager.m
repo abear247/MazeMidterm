@@ -25,6 +25,7 @@
     if (self) {
         _mazeTileArray = [NSMutableArray new];
         _mazeManager = [MazeManager new];
+        _player = [[Player alloc] initWithContext:[self getContext]];
     }
     return self;
 }
@@ -100,6 +101,8 @@
 
 - (NSURL*) generateURL: (NSString*) tagEntry {
     [self clearTestData];
+    self.player.currentX = 0;
+    self.player.currentY = 9;
     NSMutableString *urlString = [[NSMutableString alloc] initWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=4ecacf0cd6441400e02e57ec12f0bb68&has_geo&tags="];
     NSString *tagWithoutWhiteSpace = [tagEntry stringByReplacingOccurrencesOfString:@" " withString:@""];
     [urlString appendString:tagWithoutWhiteSpace];
@@ -119,6 +122,5 @@
 - (NSArray *) getArray {
     return self.mazeColumnArray;
 }
-
 
 @end
