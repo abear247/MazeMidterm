@@ -20,7 +20,7 @@
     NSMutableArray<UICollectionViewLayoutAttributes *> *newAttrs = [[NSMutableArray alloc] init];
     for (UICollectionViewLayoutAttributes *superAttr in superAttrs) {
         UICollectionViewLayoutAttributes *attr = [superAttr copy];
-        CGFloat newX = attr.size.width * attr.indexPath.row;
+//        CGFloat newX = attr.size.width * attr.indexPath.row;
   //      CGFloat newY = attr.
         //        CGFloat newX = sin(attr.indexPath.item)*100+self.collectionView.frame.size.width/2;
 //        CGFloat newY = sin(attr.indexPath.item*30)*300+self.collectionView.frame.size.height/2;

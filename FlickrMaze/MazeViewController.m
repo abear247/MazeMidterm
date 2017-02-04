@@ -56,7 +56,6 @@
     MazeTile *tile = tileArray[indexPath.row];
     NSData *data = tile.image;
     
-    tile.valid = YES;
     if (tile.valid){
         cell.mazeCellImageView.image = [UIImage imageWithData:data];
     }

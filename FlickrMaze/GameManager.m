@@ -112,6 +112,7 @@
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://farm%@.staticflickr.com/%@/%@_%@.jpg", photo[@"farm"], photo[@"server"], photo[@"id"], photo[@"secret"]]];
     tile.image = [NSData dataWithContentsOfURL:url];
     tile.title = photo[@"title"];
+    tile.valid = YES;
     [self.mazeTileArray addObject:tile];
 }
 
