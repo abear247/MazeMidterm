@@ -15,6 +15,9 @@
 @property GameManager *manager;
 @property (weak, nonatomic) IBOutlet UITextField *tagTextField;
 @property (weak, nonatomic) IBOutlet UITableView *themeTableView;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *progressWheel;
 @property NSArray *themes;
 @property NSString *selectedTheme;
 @property UIView *backgroundView;
@@ -25,8 +28,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.manager = [GameManager new];
-    self.themes = @[@"summer",@"winter",@"indoor",@"outdoor"];
+    self.themes = @[@"normal",@"winter",@"indoor",@"outdoor"];
     self.themeTableView.scrollEnabled = NO;
+    self.progressWheel.hidden = YES;
+    self.startButton.hidden = NO;
+    self.startButton.userInteractionEnabled = YES;
 }
 - (IBAction)startButton:(id)sender {
     NSString *tags = self.tagTextField.text;
@@ -47,15 +53,23 @@
         }
         NSDictionary *photoDictionary = [results objectForKey:@"photos"];
         NSArray *photoArray = [photoDictionary objectForKey:@"photo"];
+        
         for (NSDictionary *photo in photoArray) {
+        
             [self.manager createMazeTileWithDictionary: photo];
         }
         [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
+            
+           
             [self.manager saveContext];
             [self performSegueWithIdentifier:@"MazeViewController" sender:self];
         }];
     }];
     [dataTask resume];
+    self.progressWheel.hidden = NO;
+    [self.progressWheel startAnimating];
+    self.startButton.hidden = YES;
+    self.startButton.userInteractionEnabled = NO;
 }
 
 
