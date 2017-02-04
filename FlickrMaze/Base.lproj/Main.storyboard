@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -80,24 +80,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SGp-bN-NBk">
+                                <rect key="frame" x="16" y="447" width="343" height="200"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.5957260835" green="1" blue="0.6831089105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Fhl-xu-bMm" firstAttribute="top" secondItem="ofA-ex-W3u" secondAttribute="bottom" constant="7" id="23N-DA-SoN"/>
                             <constraint firstItem="VqD-0j-QcE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3Dx-mb-Gyy"/>
-                            <constraint firstItem="VqD-0j-QcE" firstAttribute="top" secondItem="CXY-3p-dSG" secondAttribute="bottom" constant="50" id="54D-gD-nmy"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SGp-bN-NBk" secondAttribute="bottom" constant="20" id="9NZ-fe-Y5o"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fhl-xu-bMm" secondAttribute="trailing" id="CZ5-Ye-qtd"/>
+                            <constraint firstItem="SGp-bN-NBk" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="F4h-2K-ByD"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Fhl-xu-bMm" secondAttribute="leading" id="GcX-QG-SKF"/>
                             <constraint firstItem="ofA-ex-W3u" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Hax-d1-R0K"/>
+                            <constraint firstItem="SGp-bN-NBk" firstAttribute="top" secondItem="VqD-0j-QcE" secondAttribute="bottom" constant="65" id="J8B-2o-Ulo"/>
                             <constraint firstItem="Fhl-xu-bMm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MbX-u9-8aC"/>
                             <constraint firstItem="CXY-3p-dSG" firstAttribute="top" secondItem="HQf-Lz-xxY" secondAttribute="bottom" constant="8" id="UXL-XK-gAg"/>
-                            <constraint firstItem="CXY-3p-dSG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XSQ-Ts-Jvr"/>
+                            <constraint firstItem="VqD-0j-QcE" firstAttribute="top" secondItem="CXY-3p-dSG" secondAttribute="bottom" constant="50" id="XAO-95-lQR"/>
                             <constraint firstItem="HQf-Lz-xxY" firstAttribute="top" secondItem="Fhl-xu-bMm" secondAttribute="bottom" constant="30" id="Zle-YN-fBU"/>
                             <constraint firstItem="HQf-Lz-xxY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eCR-In-bws"/>
-                            <constraint firstItem="CXY-3p-dSG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="51" id="i31-Ik-zrm"/>
                             <constraint firstItem="CXY-3p-dSG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="l4f-9Y-dtQ"/>
                             <constraint firstItem="ofA-ex-W3u" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ufs-C3-gtF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CXY-3p-dSG" secondAttribute="trailing" constant="52" id="wUO-wm-Ss4"/>
+                            <constraint firstItem="SGp-bN-NBk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="yD4-jQ-jMe"/>
                         </constraints>
                     </view>
                     <connections>
