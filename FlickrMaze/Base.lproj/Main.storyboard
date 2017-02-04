@@ -182,7 +182,7 @@
                             </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bkn-Hc-da5">
                                 <rect key="frame" x="10" y="94" width="355" height="355"/>
-                                <color key="backgroundColor" red="0.95751700129999995" green="0.67501907279999995" blue="0.1041990998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Bkn-Hc-da5" secondAttribute="height" multiplier="1:1" id="Cr4-CV-DhL"/>

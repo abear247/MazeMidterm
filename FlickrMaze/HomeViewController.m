@@ -30,7 +30,6 @@
 - (IBAction)startButton:(id)sender {
     NSString *tags = self.tagTextField.text;
     NSURL *url = [self.manager generateURL:tags];
-    //self.tagTextField.text];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
@@ -70,6 +69,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     self.selectedTheme = self.themes[indexPath.row];
 }
 
