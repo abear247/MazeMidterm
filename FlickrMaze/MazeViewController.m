@@ -65,7 +65,7 @@
     return cell;
 }
 
-- (void) moveLeft:(UIButton *)sender {
+- (IBAction)moveLeft:(UIButton *)sender {
     self.rowCount -= 1;
     [self.mazeCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0],
                                                        [NSIndexPath indexPathForRow:2 inSection:1],
@@ -78,7 +78,14 @@
                                                        [NSIndexPath indexPathForRow:0 inSection:2]                                                       ]];
 }
 
-- (void)moveRight:(UIButton *)sender {
+- (IBAction)moveUp:(UIButton *)sender {
+    self.sectionCount += 1;
+    [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:0]];
+    self.sectionCount -= 1;
+    [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:3]];
+}
+
+- (IBAction)moveRight:(UIButton *)sender {
     self.rowCount -= 1;
     [self.mazeCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0],
                                                        [NSIndexPath indexPathForRow:0 inSection:1],
@@ -90,14 +97,8 @@
                                                        [NSIndexPath indexPathForRow:2 inSection:1],
                                                        [NSIndexPath indexPathForRow:2 inSection:2]                                                       ]];
 }
-- (void)moveUp:(UIButton *)sender {
-    self.sectionCount += 1;
-    [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:0]];
-    self.sectionCount -= 1;
-    [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:3]];
-}
 
-- (void)moveDown:(UIButton *)sender {
+- (IBAction)moveDown:(UIButton *)sender {
     self.sectionCount += 1;
     [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:3]];
     self.sectionCount -= 1;
