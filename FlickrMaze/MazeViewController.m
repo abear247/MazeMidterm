@@ -59,6 +59,9 @@
     if (tile.valid){
         cell.mazeCellImageView.image = [UIImage imageWithData:data];
     }
+    else{
+        cell.mazeCellImageView.image = [UIImage imageNamed:@"Lava"];
+    }
     return cell;
 }
 
