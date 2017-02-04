@@ -26,7 +26,7 @@
 
 
 - (void) doneButton {
-    NSURL *url = [self.manager generateURL:@"cats"];
+    NSURL *url = [self.manager generateURL:@"cat"];
                   //self.tagTextField.text];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
