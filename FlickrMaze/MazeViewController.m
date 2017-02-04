@@ -38,20 +38,22 @@
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return [self.manager getArray].count;
+    return self.sectionCount;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSArray <NSArray*>*array = [self.manager getArray];
-    return array[section].count;
+ //   NSArray <NSArray*>*array = [self.manager getArray];
+    return self.rowCount;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    MazeCell *cell = [self.mazeCollectionView dequeueReusableCellWithReuseIdentifier:@"MazeCell" forIndexPath:indexPath];
+    MazeCell *cell = (MazeCell *)[self.mazeCollectionView dequeueReusableCellWithReuseIdentifier:@"MazeCell" forIndexPath:indexPath];
     NSArray *array = [self.manager getArray];
     NSArray *tileArray = array[indexPath.section];
     MazeTile *tile = tileArray[indexPath.row];
     NSData *data = tile.image;
+    
+    tile.valid = YES;
     if (tile.valid){
         cell.mazeCellImageView.image = [UIImage imageWithData:data];
     }

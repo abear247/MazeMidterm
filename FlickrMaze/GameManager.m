@@ -116,7 +116,7 @@
 }
 
 - (NSArray *) getArray {
-    return self.mazeTileArray;
+    return self.mazeColumnArray;
 }
 
 
