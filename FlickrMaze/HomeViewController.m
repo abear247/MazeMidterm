@@ -23,15 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.manager = [GameManager new];
-    [self doneButton];
 }
 - (IBAction)startButton:(id)sender {
-}
-
-
-- (void) doneButton {
     NSURL *url = [self.manager generateURL:@"cat"];
-                  //self.tagTextField.text];
+    //self.tagTextField.text];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
@@ -52,11 +47,14 @@
             [self.manager createMazeTileWithDictionary: photo];
         }
         [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
+            [self.manager saveContext];
             [self performSegueWithIdentifier:@"MazeViewController" sender:self];
         }];
     }];
     [dataTask resume];
 }
+
+
 
 #pragma mark Segue Methods
 
