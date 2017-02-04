@@ -16,7 +16,10 @@
     for (int i = 0; i < 10; i+=1) {
         NSMutableArray *rowArray = [NSMutableArray new];
         for (int j = 0; j <10; j+=1) {
-            [rowArray addObject:mazeTileArray[x]];
+            MazeTile *tile = mazeTileArray[x];
+            tile.xPosition = j;
+            tile.yPosition = i;
+            [rowArray addObject:tile];
             x+=1;
         }
         [columnArray addObject:rowArray];
