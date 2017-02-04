@@ -13,7 +13,9 @@
 
 @interface HomeViewController ()
 @property GameManager *manager;
-@property UITextView *tagTextField;
+@property (weak, nonatomic) IBOutlet UITextField *tagTextField;
+@property (weak, nonatomic) IBOutlet UITableView *themeTableView;
+
 @end
 
 @implementation HomeViewController
@@ -22,6 +24,8 @@
     [super viewDidLoad];
     self.manager = [GameManager new];
     [self doneButton];
+}
+- (IBAction)startButton:(id)sender {
 }
 
 

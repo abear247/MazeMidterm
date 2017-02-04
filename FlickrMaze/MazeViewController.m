@@ -14,9 +14,13 @@
 
 @interface MazeViewController ()
 
-@property UICollectionView *mazeCollectionView;
 @property int rowCount;
 @property int sectionCount;
+@property (weak, nonatomic) IBOutlet UICollectionView *mazeCollectionView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *movesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *targetMovesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end
 
