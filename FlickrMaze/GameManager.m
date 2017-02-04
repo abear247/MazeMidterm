@@ -113,7 +113,6 @@
     tile.image = [NSData dataWithContentsOfURL:url];
     tile.title = photo[@"title"];
     [self.mazeTileArray addObject:tile];
-    [self saveContext];
 }
 
 - (NSArray *) getArray {
