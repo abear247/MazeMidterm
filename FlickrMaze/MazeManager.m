@@ -7,23 +7,18 @@
 //
 
 #import "MazeManager.h"
+#import <UIKit/UIKit.h>
 
 @interface MazeManager ()
 @property NSDictionary <NSNumber *, NSArray<NSNumber*>*>*invalidSquareDictionary;
+@property NSInteger endX;
+@property NSInteger endY;
 @end
 
 @implementation MazeManager
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        _invalidSquareDictionary = [self createBasicInvalidSquares];
-    }
-    return self;
-}
-
 - (NSArray *) makeMazeWith: (NSArray <MazeTile*> *)mazeTileArray {
+    self.invalidSquareDictionary = [self createBasicInvalidSquares];
     NSMutableArray *columnArray = [NSMutableArray new];
     int x = 0;
     for (int section = 0; section < 10; section+=1) {
@@ -35,6 +30,11 @@
             if ([self.invalidSquareDictionary[@(section)] containsObject:@(row)]) {
                 tile.valid = NO;
             }
+            if (section == self.endY && row == self.endX) {
+                UIImage *trophy = [UIImage imageNamed:@"Trophy"];
+                NSData *data = UIImagePNGRepresentation(trophy);
+                tile.image = data;
+            }
                 [rowArray addObject:tile];
             x+=1;
                 
@@ -45,6 +45,8 @@
 }
 
 - (NSDictionary <NSNumber*,NSArray*>*) createBasicInvalidSquares {
+    self.endX = 9;
+    self.endY = 0;
     return @{@0: @[@4, @5, @6, @7, @8],
              @1: @[@1, @2, @6],
              @2: @[@1, @2, @3, @4, @6, @8],
