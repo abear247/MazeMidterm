@@ -31,6 +31,9 @@
     [self.manager generateMaze];
     self.rowCount = 3;
     self.sectionCount = 3;
+}
+
+-(void)viewDidAppear:(BOOL)animated{
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mazeCollectionView.collectionViewLayout;
     CGFloat width = self.mazeCollectionView.frame.size.width/3;
     CGSize size = CGSizeMake(width, width);
