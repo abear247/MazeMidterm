@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *playerImage;
 @property (nonatomic) NSMutableArray *titles;
+@property int moves;
 
 @end
 
@@ -34,6 +35,9 @@
     [self.manager generateMaze];
     self.rowCount = 3;
     self.sectionCount = 3;
+    self.movesLabel.text = @"Moves: ";
+    self.targetMovesLabel.text = @"10";
+    self.moves = 0;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -96,6 +100,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self movePlayerUp];
     [self.tableView reloadData];
+    self.moves++;
+    self.movesLabel.text = [NSString stringWithFormat:@"Moves: %d",self.moves];
     
 }
 
@@ -188,5 +194,7 @@
     self.sectionCount -= 1;
     [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:0]];
 }
+
+
 
 @end

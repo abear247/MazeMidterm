@@ -21,6 +21,7 @@
 		898A5DE01E4574C2006C2A81 /* MazeFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 898A5DDF1E4574C2006C2A81 /* MazeFlowLayout.m */; };
 		C84DD6D81E47A4EB00591C75 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DD6D71E47A4EB00591C75 /* MapViewController.m */; };
 		C84DD6DB1E47A61300591C75 /* TitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DD6DA1E47A61300591C75 /* TitleCell.m */; };
+		C84DD6DE1E47BDD400591C75 /* EndGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DD6DD1E47BDD400591C75 /* EndGameViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,8 @@
 		C84DD6D71E47A4EB00591C75 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		C84DD6D91E47A61300591C75 /* TitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleCell.h; sourceTree = "<group>"; };
 		C84DD6DA1E47A61300591C75 /* TitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleCell.m; sourceTree = "<group>"; };
+		C84DD6DC1E47BDD400591C75 /* EndGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndGameViewController.h; sourceTree = "<group>"; };
+		C84DD6DD1E47BDD400591C75 /* EndGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndGameViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				898A5DD91E457107006C2A81 /* MazeViewController.m */,
 				C84DD6D61E47A4EB00591C75 /* MapViewController.h */,
 				C84DD6D71E47A4EB00591C75 /* MapViewController.m */,
+				C84DD6DC1E47BDD400591C75 /* EndGameViewController.h */,
+				C84DD6DD1E47BDD400591C75 /* EndGameViewController.m */,
 				898A5DDE1E4574C2006C2A81 /* MazeFlowLayout.h */,
 				898A5DDF1E4574C2006C2A81 /* MazeFlowLayout.m */,
 				898A5DDB1E4572C5006C2A81 /* MazeCell.h */,
@@ -214,6 +219,7 @@
 				898A5DD41E4563AC006C2A81 /* HomeViewController.m in Sources */,
 				C84DD6D81E47A4EB00591C75 /* MapViewController.m in Sources */,
 				898A5DD71E456D55006C2A81 /* MazeManager.m in Sources */,
+				C84DD6DE1E47BDD400591C75 /* EndGameViewController.m in Sources */,
 				898A5DB61E455FC1006C2A81 /* FlickrMaze.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
