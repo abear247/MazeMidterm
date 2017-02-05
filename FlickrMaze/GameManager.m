@@ -161,4 +161,8 @@
     return self.mazeSectionArray;
 }
 
+-(NSDictionary <NSNumber *, NSArray<NSNumber*>*>*)getDictionary{
+    return [self.Maze getDictionary];
+}
+
 @end

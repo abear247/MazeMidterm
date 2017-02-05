@@ -301,12 +301,21 @@
                                     <constraint firstAttribute="width" secondItem="Ux5-LK-wqn" secondAttribute="height" multiplier="1:1" id="Vtn-1U-Wxj"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDF-Ld-42r">
+                                <rect key="frame" x="269" y="57" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="nQh-Pu-Vqm" kind="show" identifier="MapViewController" id="xAZ-d8-ep6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.5957260835" green="1" blue="0.6831089105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Ux5-LK-wqn" firstAttribute="width" secondItem="Bkn-Hc-da5" secondAttribute="width" multiplier="1:3" id="0Xr-ao-Zmb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bDF-Ld-42r" secondAttribute="trailing" constant="44" id="7fJ-6e-BKh"/>
                             <constraint firstAttribute="leadingMargin" secondItem="9Wp-q2-yxG" secondAttribute="leading" id="Czg-Q2-BxF"/>
                             <constraint firstItem="2Cy-F2-CAx" firstAttribute="top" secondItem="Bkn-Hc-da5" secondAttribute="bottom" constant="8" id="Lb8-3t-28M"/>
+                            <constraint firstItem="bDF-Ld-42r" firstAttribute="top" secondItem="cUx-Gh-rA2" secondAttribute="bottom" constant="37" id="TKv-SJ-geK"/>
                             <constraint firstItem="2Cy-F2-CAx" firstAttribute="width" secondItem="Bkn-Hc-da5" secondAttribute="width" id="bER-8j-lav"/>
                             <constraint firstItem="9Zo-1g-HnG" firstAttribute="top" secondItem="2Cy-F2-CAx" secondAttribute="bottom" constant="10" id="bGU-5p-GvH"/>
                             <constraint firstItem="Bkn-Hc-da5" firstAttribute="centerX" secondItem="ju7-lN-Y7P" secondAttribute="centerX" id="ejw-Xs-fud"/>
@@ -326,7 +335,6 @@
                         <outlet property="targetMovesLabel" destination="Ef6-J5-YC7" id="Y9P-0v-hQF"/>
                         <outlet property="timeLabel" destination="aGX-g2-Pwt" id="IAN-d1-7pj"/>
                         <segue destination="U0Z-qT-9f0" kind="show" identifier="EndGameViewController" id="wWo-5P-A4D"/>
-                        <segue destination="nQh-Pu-Vqm" kind="presentation" identifier="MapViewController" id="JVc-ve-x92"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbf-XC-8OX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -399,14 +407,47 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nLE-Kq-6re">
+                                <rect key="frame" x="9.5" y="155.5" width="355" height="355"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nLE-Kq-6re" secondAttribute="height" multiplier="1:1" id="upD-Jc-kxf"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="eYB-tE-1el">
+                                    <size key="itemSize" width="148" height="160"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mapCell" id="hJc-tr-qvb">
+                                        <rect key="frame" x="0.0" y="0.0" width="148" height="160"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="148" height="160"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="nQh-Pu-Vqm" id="1zm-6k-E4M"/>
+                                    <outlet property="delegate" destination="nQh-Pu-Vqm" id="XwK-Qy-Ih0"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.5957260835" green="1" blue="0.6831089105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="nLE-Kq-6re" firstAttribute="centerY" secondItem="VNj-eC-89b" secondAttribute="centerY" id="0uC-Zg-hs5"/>
                             <constraint firstItem="SHy-8x-PYK" firstAttribute="leading" secondItem="VNj-eC-89b" secondAttribute="leadingMargin" id="4Fk-gG-pfZ"/>
                             <constraint firstItem="1xa-9U-d0F" firstAttribute="top" secondItem="SHy-8x-PYK" secondAttribute="bottom" constant="20" id="LtM-le-zvx"/>
+                            <constraint firstItem="nLE-Kq-6re" firstAttribute="centerX" secondItem="VNj-eC-89b" secondAttribute="centerX" id="S8J-Ao-OVp"/>
+                            <constraint firstItem="nLE-Kq-6re" firstAttribute="width" secondItem="VNj-eC-89b" secondAttribute="width" constant="-20" id="ToL-ce-vXg"/>
                             <constraint firstItem="SHy-8x-PYK" firstAttribute="trailing" secondItem="VNj-eC-89b" secondAttribute="trailingMargin" id="eE7-ri-na2"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapCollectionView" destination="nLE-Kq-6re" id="ygm-kp-Mnm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mKH-Cm-8gP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

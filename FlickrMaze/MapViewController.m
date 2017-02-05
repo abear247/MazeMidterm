@@ -9,6 +9,7 @@
 #import "MapViewController.h"
 
 @interface MapViewController ()
+@property (weak, nonatomic) IBOutlet UICollectionView *mapCollectionView;
 
 @end
 
@@ -43,11 +44,11 @@
     if ([self.invalidSquareDictionary[@(indexPath.section)] containsObject:@(indexPath.row)]) {
         cell.backgroundColor = [UIColor redColor];
     }
-    
+    return cell;
 }
 
 - (void) setTimer {
-    [NSTimer scheduledTimerWithTimeInterval:5.0
+    [NSTimer scheduledTimerWithTimeInterval:3.0
                                     repeats:NO
                                       block:^(NSTimer *timer){
                                           [self dismissViewControllerAnimated:YES completion:nil];

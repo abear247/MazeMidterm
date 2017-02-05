@@ -85,4 +85,8 @@
     }
  }
 
+-(NSDictionary<NSNumber *,NSArray<NSNumber *> *> *)getDictionary{
+    return self.invalidSquareDictionary;
+}
+
 @end

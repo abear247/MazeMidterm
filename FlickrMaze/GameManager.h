@@ -23,5 +23,6 @@
 - (NSArray *) getArray;
 - (void) generateMaze;
 - (void) startGame;
+-(NSDictionary <NSNumber *, NSArray<NSNumber*>*>*)getDictionary;
 
 @end

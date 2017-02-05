@@ -10,8 +10,8 @@
 #import "GameManager.h"
 #import "MazeCell.h"
 #import "MazeTile+CoreDataClass.h"
-#import "MazeFlowLayout.h"
 #import "TitleCell.h"
+#import "MapViewController.h"
 
 @interface MazeViewController ()
 
@@ -84,7 +84,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TitleCell *cell = (TitleCell *)[tableView dequeueReusableCellWithIdentifier:@"TitleCell" forIndexPath:indexPath];
     NSArray *array = [self.manager getArray];
-    NSArray *tileArray = array[self.manager.player.currentY];
+    NSArray *tileArray = array[indexPath.section];
     MazeTile *tile = tileArray[self.manager.player.currentX];
     cell.title.text = tile.title;
     return cell;
@@ -194,6 +194,13 @@
     [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:3]];
     self.sectionCount -= 1;
     [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:0]];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"MapViewController"]){
+        MapViewController *mvc = (MapViewController*)[segue destinationViewController];
+        mvc.invalidSquareDictionary = [self.manager getDictionary];
+    }
 }
 
 //-(NSString *)timeString:(NSTimeInterval*)time{

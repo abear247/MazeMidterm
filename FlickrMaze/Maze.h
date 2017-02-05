@@ -13,5 +13,5 @@
 
 @property NSArray *invalidSquares;
 - (NSArray *) makeMazeWith: (NSArray <MazeTile*> *)mazeTileArray;
-
+- (NSDictionary <NSNumber *, NSArray<NSNumber*>*>*)getDictionary;
 @end
