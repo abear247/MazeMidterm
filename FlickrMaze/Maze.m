@@ -1,21 +1,21 @@
 //
-//  MazeManager.m
+//  Maze.m
 //  FlickrMaze
 //
 //  Created by Minhung Ling on 2017-02-03.
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //
 
-#import "MazeManager.h"
+#import "Maze.h"
 #import <UIKit/UIKit.h>
 
-@interface MazeManager ()
+@interface Maze ()
 @property NSDictionary <NSNumber *, NSArray<NSNumber*>*>*invalidSquareDictionary;
 @property NSInteger endX;
 @property NSInteger endY;
 @end
 
-@implementation MazeManager
+@implementation Maze
 
 - (NSArray *) makeMazeWith: (NSArray <MazeTile*> *)mazeTileArray {
     self.invalidSquareDictionary = [self createBasicInvalidSquares];
@@ -45,19 +45,44 @@
 }
 
 - (NSDictionary <NSNumber*,NSArray*>*) createBasicInvalidSquares {
-    self.endX = 9;
-    self.endY = 0;
-    return @{@0: @[@4, @5, @6, @7, @8],
-             @1: @[@1, @2, @6],
-             @2: @[@1, @2, @3, @4, @6, @8],
-             @3: @[@4, @8],
-             @4: @[@0, @2, @4, @6],
-             @5: @[@2, @6, @7],
-             @6: @[@1, @2, @4, @6, @7, @8],
-             @7: @[@1, @4, @8],
-             @8: @[@1, @3, @4, @6 ,@8],
-             @9: @[@1, @6]
-             };
-}
+    int selection = arc4random_uniform(2);
+    switch (selection) {
+        case 0:
+        {
+            self.endX = 9;
+            self.endY = 0;
+            return @{@0: @[@4, @5, @6, @7, @8],
+                     @1: @[@1, @2, @6],
+                     @2: @[@1, @2, @3, @4, @6, @8],
+                     @3: @[@4, @8],
+                     @4: @[@0, @2, @4, @6],
+                     @5: @[@2, @6, @7],
+                     @6: @[@1, @2, @4, @6, @7, @8],
+                     @7: @[@1, @4, @8],
+                     @8: @[@1, @3, @4, @6 ,@8],
+                     @9: @[@1, @6]
+                     };
+        }
+            break;
+        case 1:
+        {
+            self.endX = 9;
+            self.endY = 0;
+            return  @{@0: @[@0, @1, @2, @3, @4, @5, @6, @7, @8],
+                                @1: @[@0, @1, @2, @3, @4, @5, @6, @7, @8, @9],
+                                @2: @[@9],
+                                @3: @[@1, @2, @3, @5, @6, @7],
+                                @4: @[@2, @6],
+                                @5: @[@4],
+                                @6: @[@3, @4, @5],
+                                @8:@[@2, @3, @4, @5, @6],
+                                };
+        }
+
+        default:
+            return nil;
+            break;
+    }
+ }
 
 @end

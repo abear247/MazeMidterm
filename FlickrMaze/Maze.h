@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MazeTile+CoreDataClass.h"
 
-@interface MazeManager : NSObject
+@interface Maze : NSObject
 
 @property NSArray *invalidSquares;
 - (NSArray *) makeMazeWith: (NSArray <MazeTile*> *)mazeTileArray;

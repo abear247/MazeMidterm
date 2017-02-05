@@ -7,14 +7,14 @@
 //
 
 #import "GameManager.h"
-#import "MazeManager.h"
+#import "Maze.h"
 #import "MazeTile+CoreDataClass.h"
 
 @interface GameManager ()
 
 @property (nonatomic) NSMutableArray<MazeTile*>* mazeTileArray;
-@property (nonatomic) NSArray <NSArray *> *mazeColumnArray;
-@property (nonatomic) MazeManager *mazeManager;
+@property (nonatomic) NSArray <NSArray *> *mazeSectionArray;
+@property (nonatomic) Maze *Maze;
 @end
 
 @implementation GameManager
@@ -24,7 +24,7 @@
     self = [super init];
     if (self) {
         _mazeTileArray = [NSMutableArray new];
-        _mazeManager = [MazeManager new];
+        _Maze = [Maze new];
         _player = [[Player alloc] initWithContext:[self getContext]];
     }
     return self;
@@ -93,11 +93,13 @@
 
 #pragma mark Maze Making Methods
 - (void) generateMaze {
-    self.mazeColumnArray = [self.mazeManager makeMazeWith:self.mazeTileArray];
+    self.mazeSectionArray = [self.Maze makeMazeWith:self.mazeTileArray];
 }
 
 #pragma mark Game Control Methods
 - (void) startGame {
+    self.player.ghostX = self.player.currentX;
+    self.player.ghostY = self.player.currentY;
     [NSTimer scheduledTimerWithTimeInterval:20.0
                                      target:self
                                    selector:@selector(startGhost)
@@ -106,12 +108,31 @@
 }
 
 - (void) startGhost {
-    NSLog(@"SPOOOOOOOKY");
-    [NSTimer scheduledTimerWithTimeInterval:5.0
-                                     target:self
-                                   selector:@selector(startGhost)
-                                   userInfo:nil
-                                    repeats:NO];
+    int xDifference = self.player.currentX - self.player.ghostX;
+    int yDifference = self.player.currentY - self.player.ghostY;
+    if (xDifference > 0) {
+        self.player.ghostX += 1;
+    }
+    else if (xDifference < 0) {
+        self.player.ghostX -= 1;
+    }
+    if (yDifference > 0) {
+        self.player.ghostY += 1;
+    }
+    else if (yDifference < 0) {
+        self.player.ghostY -= 1;
+    }
+    if (self.player.currentX == self.player.ghostX && self.player.currentY == self.player.ghostY) {
+        NSLog(@"Game over");
+    }
+    else {
+        NSLog(@"\nGhost X: %hd\n Ghost Y: %hd", self.player.ghostX, self.player.ghostY);
+        [NSTimer scheduledTimerWithTimeInterval:5.0
+                                         target:self
+                                       selector:@selector(startGhost)
+                                       userInfo:nil
+                                        repeats:NO];
+    }
 }
 
 #pragma mark Helper Methods
@@ -137,7 +158,7 @@
 }
 
 - (NSArray *) getArray {
-    return self.mazeColumnArray;
+    return self.mazeSectionArray;
 }
 
 @end
