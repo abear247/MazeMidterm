@@ -22,5 +22,6 @@
 - (void) createMazeTileWithDictionary: (NSDictionary*)photo;
 - (NSArray *) getArray;
 - (void) generateMaze;
+- (void) startGame;
 
 @end

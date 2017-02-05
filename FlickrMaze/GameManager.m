@@ -91,11 +91,28 @@
     }
 }
 
-#pragma mark Maze Methods
+#pragma mark Maze Making Methods
 - (void) generateMaze {
     self.mazeColumnArray = [self.mazeManager makeMazeWith:self.mazeTileArray];
 }
 
+#pragma mark Game Control Methods
+- (void) startGame {
+    [NSTimer scheduledTimerWithTimeInterval:20.0
+                                     target:self
+                                   selector:@selector(startGhost)
+                                   userInfo:nil
+                                    repeats:NO];
+}
+
+- (void) startGhost {
+    NSLog(@"SPOOOOOOOKY");
+    [NSTimer scheduledTimerWithTimeInterval:5.0
+                                     target:self
+                                   selector:@selector(startGhost)
+                                   userInfo:nil
+                                    repeats:NO];
+}
 
 #pragma mark Helper Methods
 
