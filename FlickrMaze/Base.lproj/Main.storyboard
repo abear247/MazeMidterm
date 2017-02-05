@@ -155,9 +155,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wp-q2-yxG">
-                                <rect key="frame" x="16" y="28" width="50" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wp-q2-yxG">
+                                <rect key="frame" x="16" y="28" width="100" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="vgv-gr-h0Q"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -303,6 +305,7 @@
                         <color key="backgroundColor" red="0.5957260835" green="1" blue="0.6831089105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Ux5-LK-wqn" firstAttribute="width" secondItem="Bkn-Hc-da5" secondAttribute="width" multiplier="1:3" id="0Xr-ao-Zmb"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="9Wp-q2-yxG" secondAttribute="leading" id="Czg-Q2-BxF"/>
                             <constraint firstItem="2Cy-F2-CAx" firstAttribute="top" secondItem="Bkn-Hc-da5" secondAttribute="bottom" constant="8" id="Lb8-3t-28M"/>
                             <constraint firstItem="2Cy-F2-CAx" firstAttribute="width" secondItem="Bkn-Hc-da5" secondAttribute="width" id="bER-8j-lav"/>
                             <constraint firstItem="9Zo-1g-HnG" firstAttribute="top" secondItem="2Cy-F2-CAx" secondAttribute="bottom" constant="10" id="bGU-5p-GvH"/>
@@ -310,6 +313,7 @@
                             <constraint firstItem="Bkn-Hc-da5" firstAttribute="centerY" secondItem="ju7-lN-Y7P" secondAttribute="centerY" constant="-62" id="gGF-TZ-GE4"/>
                             <constraint firstItem="Ux5-LK-wqn" firstAttribute="centerX" secondItem="Bkn-Hc-da5" secondAttribute="centerX" id="jHh-Vo-0fO"/>
                             <constraint firstItem="Bkn-Hc-da5" firstAttribute="width" secondItem="ju7-lN-Y7P" secondAttribute="width" constant="-20" id="jna-Ma-SFD"/>
+                            <constraint firstItem="9Wp-q2-yxG" firstAttribute="top" secondItem="cUx-Gh-rA2" secondAttribute="bottom" constant="8" id="obh-59-SQh"/>
                             <constraint firstItem="2Cy-F2-CAx" firstAttribute="centerX" secondItem="ju7-lN-Y7P" secondAttribute="centerX" id="sue-70-TBx"/>
                             <constraint firstItem="Ux5-LK-wqn" firstAttribute="centerY" secondItem="Bkn-Hc-da5" secondAttribute="centerY" id="x2s-Xg-25c"/>
                         </constraints>
@@ -321,16 +325,18 @@
                         <outlet property="tableView" destination="2Cy-F2-CAx" id="UXs-ag-oxj"/>
                         <outlet property="targetMovesLabel" destination="Ef6-J5-YC7" id="Y9P-0v-hQF"/>
                         <outlet property="timeLabel" destination="aGX-g2-Pwt" id="IAN-d1-7pj"/>
+                        <segue destination="U0Z-qT-9f0" kind="show" identifier="EndGameViewController" id="wWo-5P-A4D"/>
+                        <segue destination="nQh-Pu-Vqm" kind="presentation" identifier="MapViewController" id="JVc-ve-x92"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbf-XC-8OX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="949.60000000000002" y="136.28185907046478"/>
+            <point key="canvasLocation" x="950" y="136"/>
         </scene>
-        <!--Map View Controller-->
+        <!--End Game View Controller-->
         <scene sceneID="CyU-P5-IcC">
             <objects>
-                <viewController storyboardIdentifier="End" id="U0Z-qT-9f0" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="End" id="U0Z-qT-9f0" customClass="EndGameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Vk-T5-yff"/>
                         <viewControllerLayoutGuide type="bottom" id="J6A-uZ-L1x"/>
@@ -345,6 +351,14 @@
                                     <constraint firstAttribute="height" constant="431" id="rcG-9W-KgY"/>
                                 </constraints>
                             </imageView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dig-AW-7Gh">
+                                <rect key="frame" x="127" y="619" width="121" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.5957260835" green="1" blue="0.6831089105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -353,15 +367,18 @@
                             <constraint firstItem="EyU-I1-GbN" firstAttribute="leading" secondItem="QWZ-ep-Rn4" secondAttribute="leadingMargin" id="K72-Sg-QWs"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="winningImage" destination="EyU-I1-GbN" id="i7v-XF-QIZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KDm-x2-NzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="949.60000000000002" y="883.80809595202402"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="Fmu-ZU-AQu">
             <objects>
-                <viewController storyboardIdentifier="Map" id="nQh-Pu-Vqm" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Map" id="nQh-Pu-Vqm" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KaK-mg-dUb"/>
                         <viewControllerLayoutGuide type="bottom" id="1xa-9U-d0F"/>
