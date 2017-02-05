@@ -19,16 +19,40 @@
     // Do any additional setup after loading the view.
 }
 
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)viewDidAppear:(BOOL)animated {
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mapCollectionView.collectionViewLayout;
+    CGFloat width = self.mapCollectionView.frame.size.width/10;
+    CGSize size = CGSizeMake(width, width);
+    layout.itemSize = size;
+    [self.mapCollectionView reloadData];
+    [self setTimer];
+    
 }
-*/
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 10;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 10;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [self.mapCollectionView dequeueReusableCellWithReuseIdentifier:@"mapCell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor greenColor];
+    if ([self.invalidSquareDictionary[@(indexPath.section)] containsObject:@(indexPath.row)]) {
+        cell.backgroundColor = [UIColor redColor];
+    }
+    
+}
+
+- (void) setTimer {
+    [NSTimer scheduledTimerWithTimeInterval:5.0
+                                    repeats:NO
+                                      block:^(NSTimer *timer){
+                                          [self dismissViewControllerAnimated:YES completion:nil];
+                                      }];
+}
+
 
 @end
