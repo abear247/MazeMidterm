@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.manager = [GameManager new];
-    self.themes = @[@"normal",@"winter",@"indoor",@"outdoor"];
+    self.themes = @[@"Cats",@"Donald_Trump",@"Indoor",@"Outdoor"];
     self.themeTableView.scrollEnabled = NO;
     self.progressWheel.hidden = YES;
     self.startButton.hidden = NO;
@@ -36,6 +36,8 @@
 }
 - (IBAction)startButton:(id)sender {
     NSString *tags = self.tagTextField.text;
+    if (self.selectedTheme)
+        tags = [NSString stringWithFormat:@"%@&sort=relevance",self.selectedTheme];
     NSURL *url = [self.manager generateURL:tags];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
