@@ -17,6 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor blackColor];
+    if(self.won)
+        self.winningImage.image = [UIImage imageNamed:@"Trophy"];
+    else{
+        self.winningImage.image = [UIImage imageNamed:@"Game_over"];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

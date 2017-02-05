@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *playerImage;
 @property (nonatomic) NSMutableArray *titles;
+@property (nonatomic) NSTimer *timer;
 @property int moves;
 
 @end
@@ -195,6 +196,11 @@
     [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:0]];
 }
 
-
+//-(NSString *)timeString:(NSTimeInterval*)time{
+//    int hours = time / 3600;
+//    int minutes = time / 60 % 60;
+//    int seconds = time % 60;
+//    return [NSString stringWithFormat:@"%02i:%02i:%02i", hours, minutes, seconds];
+//}
 
 @end
