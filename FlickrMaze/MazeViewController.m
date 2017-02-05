@@ -79,18 +79,23 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TitleCell *cell = (TitleCell *)[tableView dequeueReusableCellWithIdentifier:@"TitleCell" forIndexPath:indexPath];
     NSArray *array = [self.manager getArray];
-    NSArray *tileArray = array[indexPath.section];
-    MazeTile *tile = tileArray[indexPath.row];
+    NSArray *tileArray = array[self.manager.player.currentY];
+    MazeTile *tile = tileArray[self.manager.player.currentX];
     cell.title.text = tile.title;
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 4;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self movePlayerUp];
+    [self.tableView reloadData];
     
 }
 
