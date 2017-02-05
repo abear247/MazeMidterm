@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		896E5B631E47C0E400C271ED /* Player+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 896E5B5C1E47C0E400C271ED /* Player+CoreDataClass.m */; };
-		896E5B641E47C0E400C271ED /* Player+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 896E5B5E1E47C0E400C271ED /* Player+CoreDataProperties.m */; };
-		896E5B651E47C0E400C271ED /* MazeTile+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 896E5B601E47C0E400C271ED /* MazeTile+CoreDataClass.m */; };
-		896E5B661E47C0E400C271ED /* MazeTile+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 896E5B621E47C0E400C271ED /* MazeTile+CoreDataProperties.m */; };
 		898A5DAA1E455FC1006C2A81 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 898A5DA91E455FC1006C2A81 /* main.m */; };
 		898A5DAD1E455FC1006C2A81 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 898A5DAC1E455FC1006C2A81 /* AppDelegate.m */; };
 		898A5DB31E455FC1006C2A81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 898A5DB11E455FC1006C2A81 /* Main.storyboard */; };
@@ -210,16 +206,12 @@
 			files = (
 				898A5DDA1E457107006C2A81 /* MazeViewController.m in Sources */,
 				898A5DE01E4574C2006C2A81 /* MazeFlowLayout.m in Sources */,
-				896E5B641E47C0E400C271ED /* Player+CoreDataProperties.m in Sources */,
 				898A5DAD1E455FC1006C2A81 /* AppDelegate.m in Sources */,
-				896E5B661E47C0E400C271ED /* MazeTile+CoreDataProperties.m in Sources */,
 				898A5DDD1E4572C5006C2A81 /* MazeCell.m in Sources */,
 				898A5DD11E456152006C2A81 /* GameManager.m in Sources */,
 				898A5DAA1E455FC1006C2A81 /* main.m in Sources */,
-				896E5B631E47C0E400C271ED /* Player+CoreDataClass.m in Sources */,
 				C84DD6DB1E47A61300591C75 /* TitleCell.m in Sources */,
 				898A5DD41E4563AC006C2A81 /* HomeViewController.m in Sources */,
-				896E5B651E47C0E400C271ED /* MazeTile+CoreDataClass.m in Sources */,
 				C84DD6D81E47A4EB00591C75 /* MapViewController.m in Sources */,
 				898A5DD71E456D55006C2A81 /* Maze.m in Sources */,
 				898A5DB61E455FC1006C2A81 /* FlickrMaze.xcdatamodeld in Sources */,
