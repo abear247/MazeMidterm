@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class GameManager;
 
-@interface MazeViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface MazeViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate,UITableViewDataSource>
 
 @property GameManager *manager;
 

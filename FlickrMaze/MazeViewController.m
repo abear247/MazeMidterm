@@ -11,6 +11,7 @@
 #import "MazeCell.h"
 #import "MazeTile+CoreDataClass.h"
 #import "MazeFlowLayout.h"
+#import "TitleCell.h"
 
 @interface MazeViewController ()
 
@@ -22,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *targetMovesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *playerImage;
-
+@property (nonatomic) NSMutableArray *titles;
 
 @end
 
@@ -43,7 +44,6 @@
     [self.manager startGame];
     self.playerImage.image = [UIImage imageNamed:@"Steve"];
     [self.mazeCollectionView addSubview:self.playerImage];
-    [self constrainPlayer];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -75,6 +75,70 @@
     }
     return cell;
 }
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    TitleCell *cell = (TitleCell *)[tableView dequeueReusableCellWithIdentifier:@"TitleCell" forIndexPath:indexPath];
+    NSArray *array = [self.manager getArray];
+    NSArray *tileArray = array[indexPath.section];
+    MazeTile *tile = tileArray[indexPath.row];
+    cell.title.text = tile.title;
+    return cell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 4;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self movePlayerUp];
+    
+}
+
+-(void)movePlayerLeft{
+    self.manager.player.currentX -= 1;
+    self.rowCount -= 1;
+    [self.mazeCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0],
+                                                       [NSIndexPath indexPathForRow:2 inSection:1],
+                                                       [NSIndexPath indexPathForRow:2 inSection:2]
+                                                       ]];
+    self.rowCount += 1;
+    [self.mazeCollectionView insertItemsAtIndexPaths:@[
+                                                       [NSIndexPath indexPathForRow:0 inSection:0],
+                                                       [NSIndexPath indexPathForRow:0 inSection:1],
+                                                       [NSIndexPath indexPathForRow:0 inSection:2]                                                       ]];
+}
+
+-(void)movePlayerRight{
+    self.manager.player.currentX += 1;
+    self.rowCount -= 1;
+    [self.mazeCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0],
+                                                       [NSIndexPath indexPathForRow:0 inSection:1],
+                                                       [NSIndexPath indexPathForRow:0 inSection:2]
+                                                       ]];
+    self.rowCount += 1;
+    [self.mazeCollectionView insertItemsAtIndexPaths:@[
+                                                       [NSIndexPath indexPathForRow:2 inSection:0],
+                                                       [NSIndexPath indexPathForRow:2 inSection:1],
+                                                       [NSIndexPath indexPathForRow:2 inSection:2]                                                       ]];
+}
+
+-(void)movePlayerUp{
+    self.manager.player.currentY -= 1;
+    self.sectionCount += 1;
+    [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:0]];
+    self.sectionCount -= 1;
+    [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:3]];
+}
+
+-(void)movePlayerDown{
+    self.manager.player.currentY += 1;
+    self.sectionCount += 1;
+    [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:3]];
+    self.sectionCount -= 1;
+    [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:0]];
+}
+
+
 
 - (IBAction)moveLeft:(UIButton *)sender {
     self.manager.player.currentX -= 1;
@@ -118,41 +182,6 @@
     [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:3]];
     self.sectionCount -= 1;
     [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:0]];
-}
-
-
-#pragma mark - Player image constraints
-
--(void)constrainPlayer{
-//    self.playerImage.translatesAutoresizingMaskIntoConstraints = NO;
-//    self.playerImage.center = CGPointMake(self.mazeCollectionView.frame.size.width  / 2,
-//                                     self.mazeCollectionView.frame.size.height / 2);
-    
-    
-    
-    
-//    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.playerImage
-//                                                          attribute:NSLayoutAttributeHeight
-//                                                          relatedBy:NSLayoutRelationEqual
-//                                                             toItem:self.mazeCollectionView
-//                                                          attribute:NSLayoutAttributeHeight
-//                                                         multiplier:.5
-//                                                           constant:0]];
-//    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.playerImage
-//                                                          attribute:NSLayoutAttributeWidth
-//                                                          relatedBy:NSLayoutRelationEqual
-//                                                             toItem:self.mazeCollectionView
-//                                                          attribute:NSLayoutAttributeWidth
-//                                                         multiplier:.5
-//                                                           constant:0]];
-////    [self.mazeCollectionView addConstraint:[NSLayoutConstraint constraintWithItem:self.playerImage
-////                                                          attribute:NSLayoutAttributeCenterY
-////                                                          relatedBy:NSLayoutRelationEqual
-////                                                             toItem:self.mazeCollectionView
-////                                                          attribute:NSLayoutAttributeCenterY
-////                                                         multiplier:1
-////                                                           constant:0]];
-    
 }
 
 @end

@@ -95,6 +95,7 @@
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.selectedTheme = nil;
+    self.backgroundView = nil;
 }
 
 #pragma mark Segue Methods
