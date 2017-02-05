@@ -58,7 +58,6 @@
         cell.mazeCellImageView.image = [UIImage imageNamed:@"Lava"];
         return cell;
     }
-    
     NSArray *tileArray = array[section];
     MazeTile *tile = tileArray[row];
     NSData *data = tile.image;
