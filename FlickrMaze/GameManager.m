@@ -122,7 +122,7 @@
     else if (yDifference < 0) {
         self.player.ghostY -= 1;
     }
-    if (self.player.currentX == self.player.ghostX || self.player.currentY == self.player.ghostY) {
+    if (self.player.currentX == self.player.ghostX && self.player.currentY == self.player.ghostY) {
         NSLog(@"Game over");
     }
     else {
