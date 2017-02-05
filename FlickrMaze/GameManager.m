@@ -7,14 +7,14 @@
 //
 
 #import "GameManager.h"
-#import "MazeManager.h"
+#import "Maze.h"
 #import "MazeTile+CoreDataClass.h"
 
 @interface GameManager ()
 
 @property (nonatomic) NSMutableArray<MazeTile*>* mazeTileArray;
 @property (nonatomic) NSArray <NSArray *> *mazeColumnArray;
-@property (nonatomic) MazeManager *mazeManager;
+@property (nonatomic) Maze *Maze;
 @end
 
 @implementation GameManager
@@ -24,7 +24,7 @@
     self = [super init];
     if (self) {
         _mazeTileArray = [NSMutableArray new];
-        _mazeManager = [MazeManager new];
+        _Maze = [Maze new];
         _player = [[Player alloc] initWithContext:[self getContext]];
     }
     return self;
@@ -93,7 +93,7 @@
 
 #pragma mark Maze Making Methods
 - (void) generateMaze {
-    self.mazeColumnArray = [self.mazeManager makeMazeWith:self.mazeTileArray];
+    self.mazeColumnArray = [self.Maze makeMazeWith:self.mazeTileArray];
 }
 
 #pragma mark Game Control Methods

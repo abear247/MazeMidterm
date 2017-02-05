@@ -1,21 +1,21 @@
 //
-//  MazeManager.m
+//  Maze.m
 //  FlickrMaze
 //
 //  Created by Minhung Ling on 2017-02-03.
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //
 
-#import "MazeManager.h"
+#import "Maze.h"
 #import <UIKit/UIKit.h>
 
-@interface MazeManager ()
+@interface Maze ()
 @property NSDictionary <NSNumber *, NSArray<NSNumber*>*>*invalidSquareDictionary;
 @property NSInteger endX;
 @property NSInteger endY;
 @end
 
-@implementation MazeManager
+@implementation Maze
 
 - (NSArray *) makeMazeWith: (NSArray <MazeTile*> *)mazeTileArray {
     self.invalidSquareDictionary = [self createBasicInvalidSquares];
