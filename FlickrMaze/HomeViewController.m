@@ -37,7 +37,7 @@
 - (IBAction)startButton:(id)sender {
     NSString *tags = self.tagTextField.text;
     if (self.selectedTheme)
-        tags = [NSString stringWithFormat:@"%@&sort=relevance",self.selectedTheme];
+        tags = [NSString stringWithFormat:@"%@&sort=interestingness_asc",self.selectedTheme];
     NSURL *url = [self.manager generateURL:tags];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];

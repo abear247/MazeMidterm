@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *movesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *targetMovesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *playerImage;
+
 
 @end
 
@@ -39,6 +41,9 @@
     CGSize size = CGSizeMake(width, width);
     layout.itemSize = size;
     [self.manager startGame];
+    self.playerImage.image = [UIImage imageNamed:@"Steve"];
+    [self.mazeCollectionView addSubview:self.playerImage];
+    [self constrainPlayer];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -113,6 +118,41 @@
     [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:3]];
     self.sectionCount -= 1;
     [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:0]];
+}
+
+
+#pragma mark - Player image constraints
+
+-(void)constrainPlayer{
+//    self.playerImage.translatesAutoresizingMaskIntoConstraints = NO;
+//    self.playerImage.center = CGPointMake(self.mazeCollectionView.frame.size.width  / 2,
+//                                     self.mazeCollectionView.frame.size.height / 2);
+    
+    
+    
+    
+//    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.playerImage
+//                                                          attribute:NSLayoutAttributeHeight
+//                                                          relatedBy:NSLayoutRelationEqual
+//                                                             toItem:self.mazeCollectionView
+//                                                          attribute:NSLayoutAttributeHeight
+//                                                         multiplier:.5
+//                                                           constant:0]];
+//    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.playerImage
+//                                                          attribute:NSLayoutAttributeWidth
+//                                                          relatedBy:NSLayoutRelationEqual
+//                                                             toItem:self.mazeCollectionView
+//                                                          attribute:NSLayoutAttributeWidth
+//                                                         multiplier:.5
+//                                                           constant:0]];
+////    [self.mazeCollectionView addConstraint:[NSLayoutConstraint constraintWithItem:self.playerImage
+////                                                          attribute:NSLayoutAttributeCenterY
+////                                                          relatedBy:NSLayoutRelationEqual
+////                                                             toItem:self.mazeCollectionView
+////                                                          attribute:NSLayoutAttributeCenterY
+////                                                         multiplier:1
+////                                                           constant:0]];
+    
 }
 
 @end
