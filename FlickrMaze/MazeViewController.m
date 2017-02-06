@@ -52,15 +52,17 @@
  
     self.playerImage.image = [UIImage imageNamed:@"Steve"];
     [self.mazeCollectionView addSubview:self.playerImage];
+    [self startGame];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [self startGame];
+    
     self.tableInt = 1;
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mazeCollectionView.collectionViewLayout;
     CGFloat width = self.mazeCollectionView.frame.size.width/3;
     CGSize size = CGSizeMake(width, width);
     layout.itemSize = size;
+    
 }
 
 #pragma mark Collection View Data Source Methods
