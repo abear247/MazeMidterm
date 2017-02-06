@@ -223,14 +223,14 @@
     EndGameViewController *egvc = [self.storyboard instantiateViewControllerWithIdentifier:@"End"];
     egvc.won = NO;
     [self.manager endGame];
-    [self presentViewController:egvc animated:YES completion:nil];
+    [self.navigationController pushViewController:egvc animated:YES];
 }
 
 - (void) playerWins {
     EndGameViewController *egvc = [self.storyboard instantiateViewControllerWithIdentifier:@"End"];
     egvc.won = YES;
     [self.manager endGame];
-    [self presentViewController:egvc animated:YES completion:nil];
+    [self.navigationController pushViewController:egvc animated:YES];
 }
 
 
