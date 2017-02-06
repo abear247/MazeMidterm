@@ -29,9 +29,13 @@
     self.manager = [GameManager sharedManager];
     self.themes = @[@"Cats",@"Donald_Trump",@"Indoor",@"Outdoor"];
     self.themeTableView.scrollEnabled = NO;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
     self.startButton.hidden = NO;
     self.startButton.userInteractionEnabled = YES;
 }
+
 - (IBAction)startButton:(id)sender {
     NSString *tags = self.tagTextField.text;
     if (self.selectedTheme)

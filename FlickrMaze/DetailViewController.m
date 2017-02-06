@@ -29,11 +29,11 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)dismissButton:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (void) dismissSelf{
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 /*

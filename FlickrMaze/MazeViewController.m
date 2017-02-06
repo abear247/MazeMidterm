@@ -46,15 +46,14 @@
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(playerLoses) name:@"playerLoses" object:nil];
     [notificationCenter addObserver:self selector:@selector(playerWins) name:@"playerWins" object:nil];
+    [notificationCenter addObserver:self selector:@selector(startGame) name:@"startGame" object:nil];
  
     self.playerImage.image = [UIImage imageNamed:@"Steve"];
     [self.mazeCollectionView addSubview:self.playerImage];
-  
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [self.manager startGame];
-    [self.mazeCollectionView reloadData];
+    [self startGame];
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mazeCollectionView.collectionViewLayout;
     CGFloat width = self.mazeCollectionView.frame.size.width/3;
     CGSize size = CGSizeMake(width, width);
@@ -122,7 +121,7 @@
     
 }
 
-#pragma mark Debug Movement Buttons
+#pragma mark Movement Methods
 
 - (IBAction)moveLeft:(UIButton *)sender {
     if ([self.manager movePlayerOnX: -1]) {
@@ -218,6 +217,13 @@
         self.sectionCount -= 1;
         [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:0]];
     }
+}
+
+#pragma mark Start Game
+
+- (void) startGame {
+    [self.manager startGame];
+    [self.mazeCollectionView reloadData];
 }
 
 #pragma mark Endgame Conditions

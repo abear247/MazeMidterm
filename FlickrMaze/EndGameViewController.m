@@ -38,13 +38,15 @@
     UISegmentedControl *control = sender;
     switch (control.selectedSegmentIndex) {
         case 0:{
-               [self performSegueWithIdentifier:@"HomeViewController" sender:self];
-               [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+//               [self performSegueWithIdentifier:@"HomeViewController" sender:self];
+//               [self.navigationController popViewControllerAnimated:YES];
             break;
         }
         case 1:{
+            NSNotification *notification = [NSNotification notificationWithName:@"startGame" object:nil];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
                 [self.navigationController popViewControllerAnimated:YES];
-        
             break;
         }
         default:
