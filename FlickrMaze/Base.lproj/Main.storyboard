@@ -312,7 +312,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="nQh-Pu-Vqm" kind="show" identifier="MapViewController" id="xAZ-d8-ep6"/>
+                                    <segue destination="nQh-Pu-Vqm" kind="presentation" identifier="MapViewController" id="xAZ-d8-ep6"/>
                                 </connections>
                             </button>
                         </subviews>
