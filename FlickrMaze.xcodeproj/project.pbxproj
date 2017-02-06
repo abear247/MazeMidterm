@@ -21,6 +21,7 @@
 		C84DD6D81E47A4EB00591C75 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DD6D71E47A4EB00591C75 /* MapViewController.m */; };
 		C84DD6DB1E47A61300591C75 /* TitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DD6DA1E47A61300591C75 /* TitleCell.m */; };
 		C84DD6DE1E47BDD400591C75 /* EndGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DD6DD1E47BDD400591C75 /* EndGameViewController.m */; };
+		C84DD6E11E48E1E500591C75 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DD6E01E48E1E500591C75 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,8 @@
 		C84DD6DA1E47A61300591C75 /* TitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleCell.m; sourceTree = "<group>"; };
 		C84DD6DC1E47BDD400591C75 /* EndGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndGameViewController.h; sourceTree = "<group>"; };
 		C84DD6DD1E47BDD400591C75 /* EndGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndGameViewController.m; sourceTree = "<group>"; };
+		C84DD6DF1E48E1E500591C75 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		C84DD6E01E48E1E500591C75 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				898A5DD91E457107006C2A81 /* MazeViewController.m */,
 				C84DD6D61E47A4EB00591C75 /* MapViewController.h */,
 				C84DD6D71E47A4EB00591C75 /* MapViewController.m */,
+				C84DD6DF1E48E1E500591C75 /* DetailViewController.h */,
+				C84DD6E01E48E1E500591C75 /* DetailViewController.m */,
 				C84DD6DC1E47BDD400591C75 /* EndGameViewController.h */,
 				C84DD6DD1E47BDD400591C75 /* EndGameViewController.m */,
 				898A5DDB1E4572C5006C2A81 /* MazeCell.h */,
@@ -117,10 +122,10 @@
 				898A5DD61E456D55006C2A81 /* Maze.m */,
 				898A5DB11E455FC1006C2A81 /* Main.storyboard */,
 				898A5DB71E455FC1006C2A81 /* Assets.xcassets */,
+				898A5DA81E455FC1006C2A81 /* Supporting Files */,
 				898A5DB91E455FC1006C2A81 /* LaunchScreen.storyboard */,
 				898A5DBC1E455FC1006C2A81 /* Info.plist */,
 				898A5DB41E455FC1006C2A81 /* FlickrMaze.xcdatamodeld */,
-				898A5DA81E455FC1006C2A81 /* Supporting Files */,
 			);
 			path = FlickrMaze;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 				C84DD6DE1E47BDD400591C75 /* EndGameViewController.m in Sources */,
 				898A5DD71E456D55006C2A81 /* Maze.m in Sources */,
 				898A5DB61E455FC1006C2A81 /* FlickrMaze.xcdatamodeld in Sources */,
+				C84DD6E11E48E1E500591C75 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

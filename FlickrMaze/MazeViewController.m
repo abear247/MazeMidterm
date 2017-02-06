@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *playerImage;
 @property (nonatomic) NSMutableArray *titles;
 @property (nonatomic) NSTimer *timer;
+@property GameManager *manager;
 @property int moves;
 
 @end
@@ -33,6 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.manager = [GameManager sharedManager];
     [self.manager generateMaze];
     self.rowCount = 3;
     self.sectionCount = 3;

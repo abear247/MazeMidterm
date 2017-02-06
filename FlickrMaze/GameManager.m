@@ -19,6 +19,15 @@
 
 @implementation GameManager
 
++(id)sharedManager{
+    static GameManager *gameManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        gameManager = [[self alloc] init];
+    });
+    return gameManager;
+}
+
 - (instancetype)init
 {
     self = [super init];
@@ -131,6 +140,7 @@
         self.player.ghostY -= 1;
     }
     if (self.player.currentX == self.player.ghostX && self.player.currentY == self.player.ghostY) {
+        
         NSLog(@"Game over");
     }
     else {
@@ -202,5 +212,7 @@
 -(NSDictionary <NSNumber *, NSArray<NSNumber*>*>*)getDictionary{
     return [self.Maze getDictionary];
 }
+
+
 
 @end

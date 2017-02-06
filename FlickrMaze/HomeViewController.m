@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.manager = [GameManager new];
+    self.manager = [GameManager sharedManager];
     self.themes = @[@"Cats",@"Donald_Trump",@"Indoor",@"Outdoor"];
     self.themeTableView.scrollEnabled = NO;
     self.progressWheel.hidden = YES;
@@ -103,7 +103,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"MazeViewController"]) {
         MazeViewController *mvc = segue.destinationViewController;
-        mvc.manager = self.manager;
     }
 }
 

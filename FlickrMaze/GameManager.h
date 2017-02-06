@@ -26,5 +26,6 @@
 - (BOOL) movePlayerOnX: (NSInteger) amount;
 - (BOOL) movePlayerOnY: (NSInteger) amount;
 -(NSDictionary <NSNumber *, NSArray<NSNumber*>*>*)getDictionary;
++(id)sharedManager;
 
 @end

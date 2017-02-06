@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface EndGameViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *winningImage;
+
 @property bool won;
 
 @end

@@ -11,6 +11,6 @@
 
 @interface MazeViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate,UITableViewDataSource>
 
-@property GameManager *manager;
+
 
 @end

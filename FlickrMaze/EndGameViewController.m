@@ -7,9 +7,12 @@
 //
 
 #import "EndGameViewController.h"
+#import "HomeViewController.h"
+#import "GameManager.h"
 
 @interface EndGameViewController ()
-
+@property (weak, nonatomic) IBOutlet UIImageView *winningImage;
+@property GameManager *manager;
 @end
 
 @implementation EndGameViewController
@@ -17,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+   // GameManager *manager = [GameManager sharedManager];
     self.view.backgroundColor = [UIColor blackColor];
     if(self.won)
         self.winningImage.image = [UIImage imageNamed:@"Trophy"];
@@ -30,14 +34,29 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+- (IBAction)chooseGame:(id)sender {
+    UISegmentedControl *control = sender;
+    switch (control.selectedSegmentIndex) {
+        case 0:
+            [self performSegueWithIdentifier:@"HomeViewController" sender:self];
+            break;
+        case 1:
+             [self performSegueWithIdentifier:@"MazeViewController" sender:self];
+            break;
+        default:
+            break;
+    }
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"HomeViewController"]){
+        
+    }
 }
-*/
+
 
 @end
