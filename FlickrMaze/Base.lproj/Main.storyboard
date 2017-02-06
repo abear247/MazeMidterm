@@ -250,6 +250,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="mazeCellImageView" destination="aWb-Wz-Ffq" id="Fa7-WV-JQo"/>
+                                            <segue destination="BMI-vB-ygf" kind="showDetail" identifier="DetailViewController" id="J3c-4s-SFy"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -343,7 +344,6 @@
                         <outlet property="targetMovesLabel" destination="Ef6-J5-YC7" id="Y9P-0v-hQF"/>
                         <outlet property="timeLabel" destination="aGX-g2-Pwt" id="IAN-d1-7pj"/>
                         <segue destination="U0Z-qT-9f0" kind="show" identifier="EndGameViewController" id="wWo-5P-A4D"/>
-                        <segue destination="BMI-vB-ygf" kind="showDetail" identifier="DetailViewController" id="2IC-GK-KAQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbf-XC-8OX" userLabel="First Responder" sceneMemberID="firstResponder"/>
