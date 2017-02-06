@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @interface Maze ()
+@property NSData *invalidSquareImage;
 @property NSDictionary <NSNumber *, NSArray<NSNumber*>*>*invalidSquareDictionary;
 @end
 
@@ -27,6 +28,7 @@
             tile.yPosition = section;
             if ([self.invalidSquareDictionary[@(section)] containsObject:@(row)]) {
                 tile.valid = NO;
+                tile.image = self.invalidSquareImage;
             }
             if (section == self.endY && row == self.endX) {
                 UIImage *trophy = [UIImage imageNamed:@"Trophy"];
@@ -47,6 +49,10 @@
     switch (selection) {
         case 0:
         {
+            UIImage *image = [UIImage imageNamed:@"lava"];
+            NSData *data = UIImagePNGRepresentation(image);
+            self.outOfBoundsImage = data;
+            self.invalidSquareImage = data;
             self.startX = 0;
             self.startY = 9;
             self.endX = 9;

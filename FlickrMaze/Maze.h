@@ -6,12 +6,12 @@
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "MazeTile+CoreDataClass.h"
 
 @interface Maze : NSObject
 
-@property NSArray *invalidSquares;
+@property NSData *outOfBoundsImage;
 @property NSInteger startX;
 @property NSInteger startY;
 @property NSInteger endX;

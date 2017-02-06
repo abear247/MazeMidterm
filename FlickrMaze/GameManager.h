@@ -27,7 +27,7 @@
 - (BOOL) movePlayerOnY: (NSInteger) amount;
 - (MazeTile *) getMazeTileAtIndexPath: (NSIndexPath*) indexPath;
 -(NSDictionary <NSNumber *, NSArray<NSNumber*>*>*)getDictionary;
+- (NSData *) getOutOfBoundsImage;
 +(id)sharedManager;
-//- (void) endGame;
 
 @end

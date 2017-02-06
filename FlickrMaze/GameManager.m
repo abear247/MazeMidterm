@@ -130,7 +130,6 @@
 }
 
 - (void) startGhost {
-//    [self.ghostTimer invalidate];
     self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
                                      target:self
                                    selector:@selector(moveGhost)
@@ -246,6 +245,10 @@
 - (void) endGame {
     [self.ghostTimer invalidate];
     self.ghostTimer = nil;
+}
+
+- (NSData *)getOutOfBoundsImage {
+    return self.maze.outOfBoundsImage;
 }
 
 @end
