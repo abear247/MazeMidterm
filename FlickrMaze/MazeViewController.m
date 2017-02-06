@@ -231,6 +231,10 @@
         NSIndexPath *indexPath = indexArray[0];
         dvc.mazeTile = [self.manager getMazeTileAtIndexPath:indexPath];
     }
+    if ([segue.identifier isEqualToString:@"MapViewController"]) {
+        MapViewController *mvc = segue.destinationViewController;
+        mvc.invalidSquareDictionary = [self.manager getDictionary];
+    }
 }
 
 //-(NSString *)timeString:(NSTimeInterval*)time{

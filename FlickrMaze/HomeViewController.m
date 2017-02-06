@@ -98,12 +98,4 @@
     self.backgroundView = nil;
 }
 
-#pragma mark Segue Methods
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"MazeViewController"]) {
-        MazeViewController *mvc = segue.destinationViewController;
-    }
-}
-
 @end
