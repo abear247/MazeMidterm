@@ -426,7 +426,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70A-gb-170">
                                 <rect key="frame" x="164" y="111" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Return"/>
                                 <connections>
                                     <action selector="dismissButton:" destination="BMI-vB-ygf" eventType="touchUpInside" id="bG9-Bv-e25"/>
                                 </connections>
@@ -464,10 +464,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k0z-uI-c1V">
-                                <rect key="frame" x="-0.5" y="75.5" width="375" height="515"/>
+                                <rect key="frame" x="-0.5" y="105.5" width="375" height="455"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nLE-Kq-6re">
-                                <rect key="frame" x="9.5" y="155.5" width="355" height="355"/>
+                                <rect key="frame" x="39.5" y="185.5" width="295" height="295"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="nLE-Kq-6re" secondAttribute="height" multiplier="1:1" id="upD-Jc-kxf"/>
@@ -480,7 +480,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mapCell" id="hJc-tr-qvb">
-                                        <rect key="frame" x="0.0" y="0.0" width="148" height="160"/>
+                                        <rect key="frame" x="74" y="0.0" width="148" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="148" height="160"/>
@@ -513,7 +513,7 @@
                             <constraint firstItem="1xa-9U-d0F" firstAttribute="top" secondItem="SHy-8x-PYK" secondAttribute="bottom" constant="0.5" id="LtM-le-zvx"/>
                             <constraint firstItem="k0z-uI-c1V" firstAttribute="centerY" secondItem="nLE-Kq-6re" secondAttribute="centerY" id="M4V-li-sT7"/>
                             <constraint firstItem="nLE-Kq-6re" firstAttribute="centerX" secondItem="VNj-eC-89b" secondAttribute="centerX" id="S8J-Ao-OVp"/>
-                            <constraint firstItem="nLE-Kq-6re" firstAttribute="width" secondItem="VNj-eC-89b" secondAttribute="width" constant="-20" id="ToL-ce-vXg"/>
+                            <constraint firstItem="nLE-Kq-6re" firstAttribute="width" secondItem="VNj-eC-89b" secondAttribute="width" constant="-80" id="ToL-ce-vXg"/>
                             <constraint firstItem="k0z-uI-c1V" firstAttribute="width" secondItem="VNj-eC-89b" secondAttribute="width" id="aJT-Fd-bX5"/>
                             <constraint firstItem="SHy-8x-PYK" firstAttribute="trailing" secondItem="VNj-eC-89b" secondAttribute="trailingMargin" id="eE7-ri-na2"/>
                             <constraint firstItem="k0z-uI-c1V" firstAttribute="centerX" secondItem="nLE-Kq-6re" secondAttribute="centerX" id="gRr-Nl-Djs"/>
@@ -523,6 +523,7 @@
                     <connections>
                         <outlet property="mapCollectionView" destination="nLE-Kq-6re" id="ygm-kp-Mnm"/>
                         <outlet property="scrollImageView" destination="k0z-uI-c1V" id="AfE-YO-dQU"/>
+                        <outlet property="timerLabel" destination="SHy-8x-PYK" id="meV-BR-u7E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mKH-Cm-8gP" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,14 +11,30 @@
 @interface MapViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *mapCollectionView;
 @property (weak, nonatomic) IBOutlet UIImageView *scrollImageView;
-
+@property (weak, nonatomic) IBOutlet UILabel *timerLabel;
+@property int currentTime;
 @end
 
 @implementation MapViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.currentTime = 300;
+    self.timerLabel.text = @"3";
+}
+
+-(void)countDown:(NSTimer *) aTimer {
+    self.currentTime -= 10;
+    [self updateTimerLabel:self.currentTime];
+    if ([self.timerLabel.text isEqualToString:@"0"]) {
+        //do whatever
+        [aTimer invalidate];
+    }
+}
+
+-(void)updateTimerLabel:(int)milliseconds{
+    int seconds = milliseconds/100;
+    self.timerLabel.text = [NSString stringWithFormat:@"%d:%01d",seconds,milliseconds%1000];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -27,6 +43,8 @@
     CGSize size = CGSizeMake(width, width);
     layout.itemSize = size;
     [self.mapCollectionView reloadData];
+    
+    [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(countDown:) userInfo:nil repeats:YES];
     [self setTimer];
     self.scrollImageView.image = [UIImage imageNamed:@"Scroll"];
     
