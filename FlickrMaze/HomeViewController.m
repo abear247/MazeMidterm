@@ -61,8 +61,7 @@
             [self.manager createMazeTileWithDictionary: photo];
         }
         [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
-            
-           
+            self.progressBar.progress = 1.0;
             [self.manager saveContext];
             [self performSegueWithIdentifier:@"MazeViewController" sender:self];
         }];
@@ -72,6 +71,7 @@
     [self.progressWheel startAnimating];
     self.startButton.hidden = YES;
     self.startButton.userInteractionEnabled = NO;
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(advanceProgressBar) userInfo:nil repeats:NO];
 }
 
 
@@ -96,6 +96,11 @@
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.selectedTheme = nil;
     self.backgroundView = nil;
+}
+
+- (void) advanceProgressBar {
+    self.progressBar.progress += 0.2 * (1-self.progressBar.progress);
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(advanceProgressBar) userInfo:nil repeats:NO];
 }
 
 @end
