@@ -15,7 +15,6 @@
 @property (nonatomic) NSMutableArray<MazeTile*>* mazeTileArray;
 @property (nonatomic) NSArray <NSArray <MazeTile*>*> *mazeSectionArray;
 @property (nonatomic) Maze *maze;
-@property (nonatomic) BOOL gameOver;
 @property (nonatomic) NSTimer *ghostTimer;
 
 @end
@@ -120,11 +119,10 @@
 - (void) startGame {
     self.player.currentX = self.maze.startX;
     self.player.currentY = self.maze.startY;
-    self.gameOver = NO;
     self.ghostTimer = [NSTimer new];
     self.player.ghostX = self.player.currentX;
     self.player.ghostY = self.player.currentY;
-    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
+    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:20.0
                                      target:self
                                    selector:@selector(startGhost)
                                    userInfo:nil
@@ -132,13 +130,12 @@
 }
 
 - (void) startGhost {
-    //TODO: check game is still ongoing
- //   [self.ghostTimer invalidate];
-//    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
-//                                     target:self
-//                                   selector:@selector(moveGhost)
-//                                   userInfo:nil
-//                                    repeats:YES];
+//    [self.ghostTimer invalidate];
+    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
+                                     target:self
+                                   selector:@selector(moveGhost)
+                                   userInfo:nil
+                                    repeats:YES];
 }
 
 - (void) moveGhost {
@@ -156,19 +153,14 @@
     else if (yDifference < 0) {
         self.player.ghostY -= 1;
     }
-    //    if (self.gameOver == YES) {
-    //        //do nothing
-    //    }
-    //    else
     if (self.player.currentX == self.player.ghostX && self.player.currentY == self.player.ghostY) {
         NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
         NSNotification *notification = [NSNotification notificationWithName:@"playerLoses" object:self];
         [notificationCenter postNotification:notification];
         [self endGame];
+        return;
     }
-    else {
         NSLog(@"\nGhost X: %hd\n Ghost Y: %hd", self.player.ghostX, self.player.ghostY);
-    }
 }
 
 - (BOOL) movePlayerOnX: (NSInteger) amount {
@@ -254,7 +246,6 @@
 - (void) endGame {
     [self.ghostTimer invalidate];
     self.ghostTimer = nil;
-    //    self.gameOver = YES;
 }
 
 @end
