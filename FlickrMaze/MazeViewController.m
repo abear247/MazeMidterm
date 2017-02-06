@@ -12,6 +12,7 @@
 #import "MazeTile+CoreDataClass.h"
 #import "TitleCell.h"
 #import "MapViewController.h"
+#import "DetailViewController.h"
 
 @interface MazeViewController ()
 
@@ -164,13 +165,6 @@
     }
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:@"MapViewController"]){
-        MapViewController *mvc = (MapViewController*)[segue destinationViewController];
-        mvc.invalidSquareDictionary = [self.manager getDictionary];
-    }
-}
-
 -(void)movePlayerLeft{
     if ([self.manager movePlayerOnX: -1]) {
         self.rowCount -= 1;
@@ -214,6 +208,29 @@
     [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:3]];
     self.sectionCount -= 1;
     [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:0]];
+}
+
+#pragma mark Segue Methods
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if ([identifier isEqualToString: @"DetailViewController"]) {
+        NSArray *indexArray = [self.mazeCollectionView indexPathsForSelectedItems];
+        NSIndexPath *indexPath = indexArray[0];
+        if (![self.manager getMazeTileAtIndexPath:indexPath])
+        {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString: @"DetailViewController"]) {
+        DetailViewController *dvc = segue.destinationViewController;
+        NSArray *indexArray = [self.mazeCollectionView indexPathsForSelectedItems];
+        NSIndexPath *indexPath = indexArray[0];
+        dvc.mazeTile = [self.manager getMazeTileAtIndexPath:indexPath];
+    }
 }
 
 //-(NSString *)timeString:(NSTimeInterval*)time{

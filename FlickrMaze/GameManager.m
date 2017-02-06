@@ -213,6 +213,16 @@
     return [self.Maze getDictionary];
 }
 
-
+- (MazeTile *) getMazeTileAtIndexPath: (NSIndexPath*) indexPath {
+    NSInteger sectionIndex = self.player.currentY + indexPath.section -1;
+    long rowIndex = self.player.currentX + indexPath.row - 1;
+    if (sectionIndex >= 0 && sectionIndex <= 9 && rowIndex >= 0 && rowIndex <= 9) {
+        MazeTile *tile = self.mazeSectionArray[sectionIndex][rowIndex];
+        if (tile.valid == YES) {
+            return tile;
+        }
+    }
+    return nil;
+}
 
 @end

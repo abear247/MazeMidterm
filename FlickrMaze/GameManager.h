@@ -6,7 +6,7 @@
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "Player+CoreDataClass.h"
 @class MazeTile;
@@ -25,6 +25,7 @@
 - (void) startGame;
 - (BOOL) movePlayerOnX: (NSInteger) amount;
 - (BOOL) movePlayerOnY: (NSInteger) amount;
+- (MazeTile *) getMazeTileAtIndexPath: (NSIndexPath*) indexPath;
 -(NSDictionary <NSNumber *, NSArray<NSNumber*>*>*)getDictionary;
 +(id)sharedManager;
 

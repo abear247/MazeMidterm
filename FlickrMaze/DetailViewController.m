@@ -18,7 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.titleLabel.text = self.mazeTile.title;
+    NSData *data = self.mazeTile.image;
+    self.tileImageView.image = [UIImage imageWithData:data];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MazeTile+CoreDataClass.h"
 
 @interface DetailViewController : UIViewController
+
+@property MazeTile *mazeTile;
 
 @end
