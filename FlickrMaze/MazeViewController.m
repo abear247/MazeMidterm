@@ -29,6 +29,7 @@
 @property (nonatomic) NSTimer *timer;
 @property GameManager *manager;
 @property int moves;
+@property int tableInt;
 
 @end
 
@@ -36,6 +37,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self startGame];
     self.manager = [GameManager sharedManager];
     [self.manager generateMaze];
     self.rowCount = 3;
@@ -53,7 +55,8 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [self startGame];
+    
+    self.tableInt = 0;
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mazeCollectionView.collectionViewLayout;
     CGFloat width = self.mazeCollectionView.frame.size.width/3;
     CGSize size = CGSizeMake(width, width);
@@ -96,10 +99,8 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TitleCell *cell = (TitleCell *)[tableView dequeueReusableCellWithIdentifier:@"TitleCell" forIndexPath:indexPath];
-    NSArray *array = [self.manager getArray];
-    NSArray *tileArray = array[indexPath.section];
-    MazeTile *tile = tileArray[self.manager.player.currentX];
-    cell.title.text = tile.title;
+    cell.tag = self.tableInt;
+ //   cell.title.text = [self cellTitle:cell.tag];
     return cell;
 }
 
@@ -111,14 +112,71 @@
     return 4;
 }
 
+-(NSString*)cellTitle:(long)tag{
+    NSArray *array = [self.manager getArray];
+    Player *player = self.manager.player;
+    NSArray *tileArray;
+    switch (tag) {
+        case 1:{
+            tileArray = array[player.currentY-1];
+            return tileArray[player.currentX];
+            break;
+        }
+        case 2:{
+            tileArray = array[player.currentY];
+            return tileArray[player.currentX-1];
+            break;
+        }
+        case 3:{
+            tileArray = array[player.currentY];
+            return tileArray[player.currentX+1];
+            break;
+        }
+        case 4:{
+            tileArray = array[player.currentY+1];
+            return tileArray[player.currentX];
+            break;
+        }
+        default:{
+            tileArray = array[player.currentY];
+            return tileArray[player.currentX];
+            break;
+        }
+    }
+}
+
 #pragma mark Table View Delegate Method
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self movePlayerUp];
+    TitleCell *cell = (TitleCell *)[tableView dequeueReusableCellWithIdentifier:@"TitleCell" forIndexPath:indexPath];
+    [self movePlayer:cell.tag];
     [self.tableView reloadData];
     self.moves++;
     self.movesLabel.text = [NSString stringWithFormat:@"Moves: %d",self.moves];
     
+}
+
+-(void)movePlayer:(long)tag{
+    switch (tag) {
+        case 1:{
+            [self movePlayerUp];
+            break;
+        }
+        case 2:{
+            [self movePlayerDown];
+            break;
+        }
+        case 3:{
+            [self movePlayerLeft];
+            break;
+        }
+        case 4:{
+            [self movePlayerRight];
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 #pragma mark Movement Methods
