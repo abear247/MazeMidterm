@@ -29,7 +29,7 @@
 @property (nonatomic) NSTimer *timer;
 @property GameManager *manager;
 @property int moves;
-@property int tableInt;
+@property long tableInt;
 
 @end
 
@@ -100,7 +100,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TitleCell *cell = (TitleCell *)[tableView dequeueReusableCellWithIdentifier:@"TitleCell" forIndexPath:indexPath];
     cell.tag = self.tableInt;
-//    cell.title.text = [self cellTitle:cell.tag];
+    cell.title.text = [self cellTitle:cell.tag];
     ++self.tableInt;
     return cell;
 }
@@ -117,30 +117,44 @@
     NSArray *array = [self.manager getArray];
     Player *player = self.manager.player;
     NSArray  *tileArray;
+    MazeTile *tile;
     switch (tag) {
         case 1:{
+            if(player.currentY-1 < 0)
+                return @"Lava";
             tileArray = array[player.currentY-1];
-            return tileArray[player.currentX];
+            tile = tileArray[player.currentX];
+            return tile.title;
             break;
         }
         case 2:{
+            if(player.currentX-1 < 0)
+                return @"Lava";
             tileArray = array[player.currentY];
-            return tileArray[player.currentX-1];
+            tile = tileArray[player.currentX-1];
+            return tile.title;
             break;
         }
         case 3:{
+            if(player.currentX+1 > 9)
+                return @"Lava";
             tileArray = array[player.currentY];
-            return tileArray[player.currentX+1];
+            tile = tileArray[player.currentX+1];
+            return tile.title;
             break;
         }
         case 4:{
+            if(player.currentY+1 > 9)
+                return @"Lava";
             tileArray = array[player.currentY+1];
-            return tileArray[player.currentX];
+            tile = tileArray[player.currentX];
+            return tile.title;
             break;
         }
         default:{
             tileArray = array[player.currentY];
-            return tileArray[player.currentX];
+            tile = tileArray[player.currentX];
+            return tile.title;
             break;
         }
     }
@@ -149,7 +163,7 @@
 #pragma mark Table View Delegate Method
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    TitleCell *cell = (TitleCell *)[tableView dequeueReusableCellWithIdentifier:@"TitleCell" forIndexPath:indexPath];
+    TitleCell *cell = (TitleCell *)[tableView cellForRowAtIndexPath:indexPath];
     [self movePlayer:cell.tag];
     [self.tableView reloadData];
     self.moves++;
@@ -162,18 +176,22 @@
     switch (tag) {
         case 1:{
             [self movePlayerUp];
+            self.tableInt = 1;
             break;
         }
         case 2:{
             [self movePlayerDown];
+            self.tableInt = 1;
             break;
         }
         case 3:{
             [self movePlayerLeft];
+            self.tableInt = 1;
             break;
         }
         case 4:{
             [self movePlayerRight];
+            self.tableInt = 1;
             break;
         }
         default:
@@ -300,7 +318,6 @@
 - (void) gameEnds:(BOOL) result {
     EndGameViewController *egvc = [self.storyboard instantiateViewControllerWithIdentifier:@"End"];
     egvc.won = result;
-    [self.manager endGame];
     [self.navigationController pushViewController:egvc animated:YES];
 }
 
