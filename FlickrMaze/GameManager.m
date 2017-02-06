@@ -36,7 +36,6 @@
         _mazeTileArray = [NSMutableArray new];
         _maze = [Maze new];
         _player = [[Player alloc] initWithContext:[self getContext]];
-        _gameOver = NO;
     }
     return self;
 }
@@ -117,9 +116,12 @@
 
 #pragma mark Game Control Methods
 - (void) startGame {
+    self.player.currentX = self.maze.startX;
+    self.player.currentY = self.maze.startY;
+    self.gameOver = NO;
     self.player.ghostX = self.player.currentX;
     self.player.ghostY = self.player.currentY;
-    [NSTimer scheduledTimerWithTimeInterval:20.0
+    [NSTimer scheduledTimerWithTimeInterval:10.0
                                      target:self
                                    selector:@selector(startGhost)
                                    userInfo:nil
@@ -195,8 +197,8 @@
 
 - (NSURL*) generateURL: (NSString*) tagEntry {
     [self clearTestData];
-    self.player.currentX = 0;
-    self.player.currentY = 9;
+//    self.player.currentX = 0;
+//    self.player.currentY = 9;
     NSMutableString *urlString = [[NSMutableString alloc] initWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=4ecacf0cd6441400e02e57ec12f0bb68&has_geo&tags="];
     NSString *tagWithoutWhiteSpace = [tagEntry stringByReplacingOccurrencesOfString:@" " withString:@""];
     [urlString appendString:tagWithoutWhiteSpace];

@@ -47,6 +47,8 @@
     switch (selection) {
         case 0:
         {
+            self.startX = 0;
+            self.startY = 9;
             self.endX = 9;
             self.endY = 0;
             return @{@0: @[@4, @5, @6, @7, @8],
@@ -64,6 +66,8 @@
             break;
         case 1:
         {
+            self.startX = 0;
+            self.startY = 9;
             self.endX = 9;
             self.endY = 0;
             return  @{@0: @[@0, @1, @2, @3, @4, @5, @6, @7, @8],

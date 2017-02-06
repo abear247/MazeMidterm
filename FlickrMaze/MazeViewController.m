@@ -43,6 +43,13 @@
     self.movesLabel.text = @"Moves: ";
     self.targetMovesLabel.text = @"10";
     self.moves = 0;
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(playerLoses) name:@"playerLoses" object:nil];
+    [notificationCenter addObserver:self selector:@selector(playerWins) name:@"playerWins" object:nil];
+    [self.manager startGame];
+    self.playerImage.image = [UIImage imageNamed:@"Steve"];
+    [self.mazeCollectionView addSubview:self.playerImage];
+    [self.mazeCollectionView reloadData];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -50,12 +57,6 @@
     CGFloat width = self.mazeCollectionView.frame.size.width/3;
     CGSize size = CGSizeMake(width, width);
     layout.itemSize = size;
-    [self.manager startGame];
-    self.playerImage.image = [UIImage imageNamed:@"Steve"];
-    [self.mazeCollectionView addSubview:self.playerImage];
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter addObserver:self selector:@selector(playerLoses) name:@"playerLoses" object:nil];
-    [notificationCenter addObserver:self selector:@selector(playerWins) name:@"playerWins" object:nil];
 }
 
 #pragma mark Collection View Data Source Methods

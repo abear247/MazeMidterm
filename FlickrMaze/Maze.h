@@ -12,6 +12,8 @@
 @interface Maze : NSObject
 
 @property NSArray *invalidSquares;
+@property NSInteger startX;
+@property NSInteger startY;
 @property NSInteger endX;
 @property NSInteger endY;
 - (NSArray *) makeMazeWith: (NSArray <MazeTile*> *)mazeTileArray;
