@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *themeTableView;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (nonatomic) NSTimer *progressTimer;
 @property NSArray *themes;
 @property NSString *selectedTheme;
 @property UIView *backgroundView;
@@ -34,6 +35,7 @@
 -(void)viewDidAppear:(BOOL)animated {
     self.startButton.hidden = NO;
     self.startButton.userInteractionEnabled = YES;
+    self.progressBar.progress = 0.0;
 }
 
 - (IBAction)startButton:(id)sender {
@@ -64,6 +66,7 @@
         }
         [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
             self.progressBar.progress = 1.0;
+            [self.progressTimer invalidate];
             [self.manager saveContext];
             [self performSegueWithIdentifier:@"MazeViewController" sender:self];
         }];
@@ -71,9 +74,8 @@
     [dataTask resume];
     self.startButton.hidden = YES;
     self.startButton.userInteractionEnabled = NO;
-    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(advanceProgressBar) userInfo:nil repeats:NO];
+    self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(advanceProgressBar) userInfo:nil repeats:YES];
 }
-
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ThemeCell" forIndexPath:indexPath];
@@ -100,7 +102,6 @@
 
 - (void) advanceProgressBar {
     self.progressBar.progress += 0.2 * (1-self.progressBar.progress);
-    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(advanceProgressBar) userInfo:nil repeats:NO];
 }
 
 @end
