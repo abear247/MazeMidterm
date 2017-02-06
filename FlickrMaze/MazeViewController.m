@@ -45,7 +45,7 @@
     self.movesLabel.text = @"Moves: ";
     self.targetMovesLabel.text = @"10";
     self.moves = 0;
-    self.tableInt = 1;
+    self.tableInt = 0;
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(playerLoses) name:@"playerLoses" object:nil];
     [notificationCenter addObserver:self selector:@selector(playerWins) name:@"playerWins" object:nil];
@@ -54,12 +54,12 @@
     self.playerImage.image = [UIImage imageNamed:@"Steve"];
     [self.mazeCollectionView addSubview:self.playerImage];
     [self startGame];
-    self.randomArray = [self randomize];
+  //  self.randomArray = [self randomize];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [self.tableView reloadData];
-    self.tableInt = 1;
+    self.tableInt = 0;
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mazeCollectionView.collectionViewLayout;
     CGFloat width = self.mazeCollectionView.frame.size.width/3;
     CGSize size = CGSizeMake(width, width);
@@ -67,7 +67,7 @@
     
 }
 
-#pragma mark Collection View Data Source Methods
+#pragma mark Collection View Methods
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return self.sectionCount;
@@ -86,12 +86,12 @@
         cell.mazeCellImageView.image = [UIImage imageWithData:[self.manager getOutOfBoundsImage]];
         return cell;
     }
-//    NSArray *tileArray = array[section];
-//    MazeTile *tile = tileArray[row];
-//    NSData *data = tile.image;
-//    
+    NSArray *tileArray = array[section];
+    MazeTile *tile = tileArray[row];
+    NSData *data = tile.image;
+//
 //    if (tile.valid){
-//        cell.mazeCellImageView.image = [UIImage imageWithData:data];
+        cell.mazeCellImageView.image = [UIImage imageWithData:data];
 //    }
 //    else{
 //        cell.mazeCellImageView.image = [UIImage imageNamed:@"Lava"];
@@ -103,24 +103,24 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TitleCell *cell = (TitleCell *)[tableView dequeueReusableCellWithIdentifier:@"TitleCell" forIndexPath:indexPath];
-    cell.tag = self.tableInt;
-//    cell.title.text = cell.tag;
- //   cell.title.text = [self cellTitle:(long)self.randomArray[indexPath.row]];
+    cell.tag = self.tableInt+1;
+  //  cell.title.text = [self cellTitle:(long)self.randomArray[self.tableInt]];
     ++self.tableInt;
     return cell;
 }
 
--(NSArray*)randomize{
-    NSMutableArray *temp = [NSMutableArray new];
-    for(int i = 0;i<3;++i){
-        int num = arc4random_uniform(3)+1;
-        if(![temp containsObject:@(num)]){
-            temp[i] = @(num);
-            ++i;
-        }
-    }
-    return [temp copy];
-}
+//-(NSArray*)randomize{
+//    NSMutableArray *temp = [NSMutableArray new];
+//    int i = 0;
+//    while(i<3){
+//        int num = arc4random_uniform(3)+1;
+//        if(![temp containsObject:@(num)]){
+//            [temp addObject: @(num)];
+//            ++i;
+//        }
+//    }
+//    return [temp copy];
+//}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
@@ -185,7 +185,7 @@
     [self.tableView reloadData];
     self.randomArray = [self randomArray];
     self.moves++;
-    self.tableInt = 1;
+    self.tableInt = 0;
     self.movesLabel.text = [NSString stringWithFormat:@"Moves: %d",self.moves];
     
 }
@@ -194,22 +194,22 @@
     switch (tag) {
         case 1:{
             [self movePlayerUp];
-            self.tableInt = 1;
+            self.tableInt = 0;
             break;
         }
         case 2:{
             [self movePlayerLeft];
-            self.tableInt = 1;
+            self.tableInt = 0;
             break;
         }
         case 3:{
             [self movePlayerRight];
-            self.tableInt = 1;
+            self.tableInt = 0;
             break;
         }
         case 4:{
             [self movePlayerDown];
-            self.tableInt = 1;
+            self.tableInt = 0;
             break;
         }
         default:
