@@ -21,6 +21,7 @@
     self.titleLabel.text = self.mazeTile.title;
     NSData *data = self.mazeTile.image;
     self.tileImageView.image = [UIImage imageWithData:data];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissSelf) name:@"gameOver" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,6 +30,10 @@
 }
 - (IBAction)dismissButton:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) dismissSelf{
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 /*
