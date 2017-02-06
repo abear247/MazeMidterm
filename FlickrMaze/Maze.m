@@ -49,7 +49,7 @@
     switch (selection) {
         case 0:
         {
-            UIImage *image = [UIImage imageNamed:@"lava"];
+            UIImage *image = [UIImage imageNamed:@"Lava"];
             NSData *data = UIImagePNGRepresentation(image);
             self.outOfBoundsImage = data;
             self.invalidSquareImage = data;
@@ -72,7 +72,7 @@
             break;
         case 1:
         {
-            UIImage *image = [UIImage imageNamed:@"lava"];
+            UIImage *image = [UIImage imageNamed:@"Lava"];
             NSData *data = UIImagePNGRepresentation(image);
             self.outOfBoundsImage = data;
             self.invalidSquareImage = data;

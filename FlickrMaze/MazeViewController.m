@@ -67,7 +67,7 @@
     
 }
 
-#pragma mark Collection View Methods
+#pragma mark Collection View Data Source Methods
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return self.sectionCount;
