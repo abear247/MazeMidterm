@@ -368,18 +368,19 @@
                                     <constraint firstAttribute="height" constant="431" id="rcG-9W-KgY"/>
                                 </constraints>
                             </imageView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="dig-AW-7Gh">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" translatesAutoresizingMaskIntoConstraints="NO" id="dig-AW-7Gh">
                                 <rect key="frame" x="110" y="553" width="155" height="29"/>
                                 <segments>
                                     <segment title="New Maze"/>
                                     <segment title="Retry"/>
                                 </segments>
+                                <color key="tintColor" red="1" green="0.29674151119999997" blue="0.3258928056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="chooseGame:" destination="U0Z-qT-9f0" eventType="valueChanged" id="jgf-6l-l1z"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" red="0.5957260835" green="1" blue="0.6831089105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="EyU-I1-GbN" firstAttribute="top" secondItem="7Vk-T5-yff" secondAttribute="bottom" constant="8" id="3Xv-d7-hFh"/>
                             <constraint firstItem="J6A-uZ-L1x" firstAttribute="top" secondItem="dig-AW-7Gh" secondAttribute="bottom" constant="86" id="A4b-3I-xv0"/>
@@ -453,18 +454,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHy-8x-PYK">
-                                <rect key="frame" x="16" y="578.5" width="343" height="68.5"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="57"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k0z-uI-c1V">
+                                <rect key="frame" x="9.5" y="75.5" width="355" height="515"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nLE-Kq-6re">
                                 <rect key="frame" x="9.5" y="155.5" width="355" height="355"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -492,15 +484,31 @@
                                     <outlet property="delegate" destination="nQh-Pu-Vqm" id="XwK-Qy-Ih0"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHy-8x-PYK">
+                                <rect key="frame" x="16" y="598" width="343" height="68.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="57"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.5957260835" green="1" blue="0.6831089105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="nLE-Kq-6re" firstAttribute="centerY" secondItem="VNj-eC-89b" secondAttribute="centerY" id="0uC-Zg-hs5"/>
                             <constraint firstItem="SHy-8x-PYK" firstAttribute="leading" secondItem="VNj-eC-89b" secondAttribute="leadingMargin" id="4Fk-gG-pfZ"/>
-                            <constraint firstItem="1xa-9U-d0F" firstAttribute="top" secondItem="SHy-8x-PYK" secondAttribute="bottom" constant="20" id="LtM-le-zvx"/>
+                            <constraint firstItem="1xa-9U-d0F" firstAttribute="top" secondItem="SHy-8x-PYK" secondAttribute="bottom" constant="0.5" id="LtM-le-zvx"/>
+                            <constraint firstItem="k0z-uI-c1V" firstAttribute="centerY" secondItem="nLE-Kq-6re" secondAttribute="centerY" id="M4V-li-sT7"/>
                             <constraint firstItem="nLE-Kq-6re" firstAttribute="centerX" secondItem="VNj-eC-89b" secondAttribute="centerX" id="S8J-Ao-OVp"/>
                             <constraint firstItem="nLE-Kq-6re" firstAttribute="width" secondItem="VNj-eC-89b" secondAttribute="width" constant="-20" id="ToL-ce-vXg"/>
+                            <constraint firstItem="k0z-uI-c1V" firstAttribute="width" secondItem="nLE-Kq-6re" secondAttribute="width" id="Veg-pd-32a"/>
                             <constraint firstItem="SHy-8x-PYK" firstAttribute="trailing" secondItem="VNj-eC-89b" secondAttribute="trailingMargin" id="eE7-ri-na2"/>
+                            <constraint firstItem="k0z-uI-c1V" firstAttribute="centerX" secondItem="nLE-Kq-6re" secondAttribute="centerX" id="gRr-Nl-Djs"/>
+                            <constraint firstItem="k0z-uI-c1V" firstAttribute="height" secondItem="nLE-Kq-6re" secondAttribute="height" constant="160" id="nGz-O3-wWj"/>
                         </constraints>
                     </view>
                     <connections>
@@ -513,7 +521,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="i9J-ZR-GxD"/>
+        <segue reference="hyC-jK-jec"/>
         <segue reference="e61-Ch-BP3"/>
     </inferredMetricsTieBreakers>
 </document>
