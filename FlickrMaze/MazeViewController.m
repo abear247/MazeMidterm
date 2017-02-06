@@ -13,6 +13,7 @@
 #import "TitleCell.h"
 #import "MapViewController.h"
 #import "DetailViewController.h"
+#import "EndGameViewController.h"
 
 @interface MazeViewController ()
 
@@ -52,6 +53,9 @@
     [self.manager startGame];
     self.playerImage.image = [UIImage imageNamed:@"Steve"];
     [self.mazeCollectionView addSubview:self.playerImage];
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(playerLoses) name:@"playerLoses" object:nil];
+    [notificationCenter addObserver:self selector:@selector(playerWins) name:@"playerWins" object:nil];
 }
 
 #pragma mark Collection View Data Source Methods
@@ -181,34 +185,53 @@
 }
 
 -(void)movePlayerRight{
-    self.manager.player.currentX += 1;
-    self.rowCount -= 1;
-    [self.mazeCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0],
-                                                       [NSIndexPath indexPathForRow:0 inSection:1],
-                                                       [NSIndexPath indexPathForRow:0 inSection:2]
-                                                       ]];
-    self.rowCount += 1;
-    [self.mazeCollectionView insertItemsAtIndexPaths:@[
-                                                       [NSIndexPath indexPathForRow:2 inSection:0],
-                                                       [NSIndexPath indexPathForRow:2 inSection:1],
-                                                       [NSIndexPath indexPathForRow:2 inSection:2]                                                       ]];
+    if ([self.manager movePlayerOnX: 1]) {
+        self.rowCount -= 1;
+        [self.mazeCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0],
+                                                           [NSIndexPath indexPathForRow:0 inSection:1],
+                                                           [NSIndexPath indexPathForRow:0 inSection:2]
+                                                           ]];
+        self.rowCount += 1;
+        [self.mazeCollectionView insertItemsAtIndexPaths:@[
+                                                           [NSIndexPath indexPathForRow:2 inSection:0],
+                                                           [NSIndexPath indexPathForRow:2 inSection:1],
+                                                           [NSIndexPath indexPathForRow:2 inSection:2]                                                       ]];
+    }
 }
 
 -(void)movePlayerUp{
-    self.manager.player.currentY -= 1;
-    self.sectionCount += 1;
-    [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:0]];
-    self.sectionCount -= 1;
-    [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:3]];
+    if ([self.manager movePlayerOnY: -1]) {
+        self.sectionCount += 1;
+        [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:0]];
+        self.sectionCount -= 1;
+        [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:3]];
+    }
 }
 
 -(void)movePlayerDown{
-    self.manager.player.currentY += 1;
-    self.sectionCount += 1;
-    [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:3]];
-    self.sectionCount -= 1;
-    [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:0]];
+    if ([self.manager movePlayerOnY: 1]) {
+        self.sectionCount += 1;
+        [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:3]];
+        self.sectionCount -= 1;
+        [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:0]];
+    }
 }
+
+#pragma mark Endgame Conditions
+- (void) playerLoses {
+    EndGameViewController *egvc = [self.storyboard instantiateViewControllerWithIdentifier:@"End"];
+    egvc.won = NO;
+    [self.manager endGame];
+    [self presentViewController:egvc animated:YES completion:nil];
+}
+
+- (void) playerWins {
+    EndGameViewController *egvc = [self.storyboard instantiateViewControllerWithIdentifier:@"End"];
+    egvc.won = YES;
+    [self.manager endGame];
+    [self presentViewController:egvc animated:YES completion:nil];
+}
+
 
 #pragma mark Segue Methods
 

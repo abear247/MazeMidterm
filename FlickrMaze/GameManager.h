@@ -28,5 +28,6 @@
 - (MazeTile *) getMazeTileAtIndexPath: (NSIndexPath*) indexPath;
 -(NSDictionary <NSNumber *, NSArray<NSNumber*>*>*)getDictionary;
 +(id)sharedManager;
+- (void) endGame;
 
 @end

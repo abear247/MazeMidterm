@@ -14,7 +14,8 @@
 
 @property (nonatomic) NSMutableArray<MazeTile*>* mazeTileArray;
 @property (nonatomic) NSArray <NSArray <MazeTile*>*> *mazeSectionArray;
-@property (nonatomic) Maze *Maze;
+@property (nonatomic) Maze *maze;
+@property (nonatomic) BOOL gameOver;
 @end
 
 @implementation GameManager
@@ -33,8 +34,9 @@
     self = [super init];
     if (self) {
         _mazeTileArray = [NSMutableArray new];
-        _Maze = [Maze new];
+        _maze = [Maze new];
         _player = [[Player alloc] initWithContext:[self getContext]];
+        _gameOver = NO;
     }
     return self;
 }
@@ -110,7 +112,7 @@
 
 #pragma mark Maze Making Methods
 - (void) generateMaze {
-    self.mazeSectionArray = [self.Maze makeMazeWith:self.mazeTileArray];
+    self.mazeSectionArray = [self.maze makeMazeWith:self.mazeTileArray];
 }
 
 #pragma mark Game Control Methods
@@ -139,9 +141,13 @@
     else if (yDifference < 0) {
         self.player.ghostY -= 1;
     }
-    if (self.player.currentX == self.player.ghostX && self.player.currentY == self.player.ghostY) {
-        
-        NSLog(@"Game over");
+    if (self.gameOver == YES) {
+        //do nothing
+    }
+    else if (self.player.currentX == self.player.ghostX && self.player.currentY == self.player.ghostY) {
+        NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+        NSNotification *notification = [NSNotification notificationWithName:@"playerLoses" object:self];
+        [notificationCenter postNotification:notification];
     }
     else {
         NSLog(@"\nGhost X: %hd\n Ghost Y: %hd", self.player.ghostX, self.player.ghostY);
@@ -159,6 +165,7 @@
         MazeTile *newTile = section[self.player.currentX+amount];
         if (newTile.valid) {
             self.player.currentX += amount;
+            [self checkWin];
             return YES;
         }
         NSLog(@"Lava!");
@@ -174,6 +181,7 @@
         MazeTile *newTile = section[self.player.currentX];
         if (newTile.valid) {
             self.player.currentY += amount;
+            [self checkWin];
             return YES;
         }
         NSLog(@"Lava!");
@@ -210,7 +218,7 @@
 }
 
 -(NSDictionary <NSNumber *, NSArray<NSNumber*>*>*)getDictionary{
-    return [self.Maze getDictionary];
+    return [self.maze getDictionary];
 }
 
 - (MazeTile *) getMazeTileAtIndexPath: (NSIndexPath*) indexPath {
@@ -223,6 +231,17 @@
         }
     }
     return nil;
+}
+
+- (void) endGame {
+    self.gameOver = YES;
+}
+
+- (void) checkWin {
+    if (self.player.currentX == self.maze.endX && self.player.currentY == self.maze.endY) {
+        NSNotification *notification = [NSNotification notificationWithName:@"playerWins" object:self];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+    }
 }
 
 @end

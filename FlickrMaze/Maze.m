@@ -11,8 +11,6 @@
 
 @interface Maze ()
 @property NSDictionary <NSNumber *, NSArray<NSNumber*>*>*invalidSquareDictionary;
-@property NSInteger endX;
-@property NSInteger endY;
 @end
 
 @implementation Maze
