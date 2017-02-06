@@ -21,6 +21,7 @@
     [super viewDidLoad];
     self.currentTime = 300;
     self.timerLabel.text = @"3";
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissSelf) name:@"gameOver" object:nil];
 }
 
 -(void)countDown:(NSTimer *) aTimer {
@@ -75,5 +76,8 @@
                                       }];
 }
 
+- (void) dismissSelf{
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
 
 @end

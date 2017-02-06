@@ -220,19 +220,21 @@
 
 #pragma mark Endgame Conditions
 - (void) playerLoses {
-    EndGameViewController *egvc = [self.storyboard instantiateViewControllerWithIdentifier:@"End"];
-    egvc.won = NO;
-    [self.manager endGame];
-    [self.navigationController pushViewController:egvc animated:YES];
+    NSNotification *notification = [NSNotification notificationWithName:@"gameOver" object:self];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    [self gameEnds:NO];
 }
 
 - (void) playerWins {
+    [self gameEnds:YES];
+}
+
+- (void) gameEnds:(BOOL) result {
     EndGameViewController *egvc = [self.storyboard instantiateViewControllerWithIdentifier:@"End"];
-    egvc.won = YES;
+    egvc.won = result;
     [self.manager endGame];
     [self.navigationController pushViewController:egvc animated:YES];
 }
-
 
 #pragma mark Segue Methods
 
