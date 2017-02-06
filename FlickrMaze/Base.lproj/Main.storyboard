@@ -216,7 +216,7 @@
                                     <outlet property="delegate" destination="gpO-sg-c12" id="CRj-UH-Q53"/>
                                 </connections>
                             </tableView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bkn-Hc-da5">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bkn-Hc-da5">
                                 <rect key="frame" x="10" y="94" width="355" height="355"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
@@ -521,7 +521,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hyC-jK-jec"/>
+        <segue reference="i9J-ZR-GxD"/>
         <segue reference="e61-Ch-BP3"/>
     </inferredMetricsTieBreakers>
 </document>
