@@ -98,7 +98,7 @@
                                 <rect key="frame" x="16" y="414.5" width="343" height="2"/>
                                 <color key="trackTintColor" red="1" green="0.29674151119999997" blue="0.3258928056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Pmx-Yb-hVZ">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Pmx-Yb-hVZ">
                                 <rect key="frame" x="162" y="509" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="6AT-Wq-KU7"/>
@@ -302,29 +302,27 @@
                                     <constraint firstAttribute="width" secondItem="Ux5-LK-wqn" secondAttribute="height" multiplier="1:1" id="Vtn-1U-Wxj"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDF-Ld-42r">
-                                <rect key="frame" x="285" y="57" width="30" height="30"/>
-                                <state key="normal" title="Map"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDF-Ld-42r">
+                                <rect key="frame" x="317" y="49" width="42" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="PT6-Va-byt"/>
+                                    <constraint firstAttribute="width" constant="42" id="j1u-PG-Yyo"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="Scroll">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="nQh-Pu-Vqm" kind="show" identifier="MapViewController" id="xAZ-d8-ep6"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1P-Jn-inU">
-                                <rect key="frame" x="241" y="20" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="End"/>
-                                <connections>
-                                    <segue destination="U0Z-qT-9f0" kind="show" id="e61-Ch-BP3"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.5957260835" green="1" blue="0.6831089105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Ux5-LK-wqn" firstAttribute="width" secondItem="Bkn-Hc-da5" secondAttribute="width" multiplier="1:3" id="0Xr-ao-Zmb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bDF-Ld-42r" secondAttribute="trailing" constant="44" id="7fJ-6e-BKh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bDF-Ld-42r" secondAttribute="trailing" id="7fJ-6e-BKh"/>
                             <constraint firstAttribute="leadingMargin" secondItem="9Wp-q2-yxG" secondAttribute="leading" id="Czg-Q2-BxF"/>
                             <constraint firstItem="2Cy-F2-CAx" firstAttribute="top" secondItem="Bkn-Hc-da5" secondAttribute="bottom" constant="8" id="Lb8-3t-28M"/>
-                            <constraint firstItem="bDF-Ld-42r" firstAttribute="top" secondItem="cUx-Gh-rA2" secondAttribute="bottom" constant="37" id="TKv-SJ-geK"/>
+                            <constraint firstItem="bDF-Ld-42r" firstAttribute="top" secondItem="cUx-Gh-rA2" secondAttribute="bottom" constant="32" id="TKv-SJ-geK"/>
                             <constraint firstItem="2Cy-F2-CAx" firstAttribute="width" secondItem="Bkn-Hc-da5" secondAttribute="width" id="bER-8j-lav"/>
                             <constraint firstItem="9Zo-1g-HnG" firstAttribute="top" secondItem="2Cy-F2-CAx" secondAttribute="bottom" constant="10" id="bGU-5p-GvH"/>
                             <constraint firstItem="Bkn-Hc-da5" firstAttribute="centerX" secondItem="ju7-lN-Y7P" secondAttribute="centerX" id="ejw-Xs-fud"/>
@@ -348,7 +346,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbf-XC-8OX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="950" y="136"/>
+            <point key="canvasLocation" x="949.60000000000002" y="135.38230884557723"/>
         </scene>
         <!--End Game View Controller-->
         <scene sceneID="CyU-P5-IcC">
@@ -426,7 +424,13 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70A-gb-170">
                                 <rect key="frame" x="164" y="111" width="46" height="30"/>
+                                <color key="backgroundColor" white="0.65859374999999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Return"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="dismissButton:" destination="BMI-vB-ygf" eventType="touchUpInside" id="bG9-Bv-e25"/>
                                 </connections>
@@ -531,8 +535,10 @@
             <point key="canvasLocation" x="1784.8" y="136.28185907046478"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Scroll" width="435" height="600"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="i9J-ZR-GxD"/>
-        <segue reference="e61-Ch-BP3"/>
     </inferredMetricsTieBreakers>
 </document>
