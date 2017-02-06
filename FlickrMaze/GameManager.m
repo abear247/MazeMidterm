@@ -124,7 +124,7 @@
     self.ghostTimer = [NSTimer new];
     self.player.ghostX = self.player.currentX;
     self.player.ghostY = self.player.currentY;
-    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:20.0
+    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
                                      target:self
                                    selector:@selector(startGhost)
                                    userInfo:nil
@@ -133,13 +133,12 @@
 
 - (void) startGhost {
     //TODO: check game is still ongoing
-    [self.ghostTimer invalidate];
-    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
-                                     target:self
-                                   selector:@selector(moveGhost)
-                                   userInfo:nil
-                                    repeats:YES];
-    
+ //   [self.ghostTimer invalidate];
+//    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+//                                     target:self
+//                                   selector:@selector(moveGhost)
+//                                   userInfo:nil
+//                                    repeats:YES];
 }
 
 - (void) moveGhost {
