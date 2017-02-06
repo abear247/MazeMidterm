@@ -136,7 +136,7 @@
                         <outlet property="startButton" destination="VqD-0j-QcE" id="xhC-rD-bvn"/>
                         <outlet property="tagTextField" destination="Fhl-xu-bMm" id="LGS-mF-TMg"/>
                         <outlet property="themeTableView" destination="CXY-3p-dSG" id="FKl-xa-Jnj"/>
-                        <segue destination="gpO-sg-c12" kind="show" identifier="MazeViewController" id="i9J-ZR-GxD"/>
+                        <segue destination="gpO-sg-c12" kind="showDetail" identifier="MazeViewController" action="showViewController:sender:" id="i9J-ZR-GxD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
