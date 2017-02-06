@@ -34,7 +34,7 @@
 
 -(void)updateTimerLabel:(int)milliseconds{
     int seconds = milliseconds/100;
-    self.timerLabel.text = [NSString stringWithFormat:@"%d:%01d",seconds,milliseconds%1000];
+    self.timerLabel.text = [NSString stringWithFormat:@"%d:%d",seconds,milliseconds%1000];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
