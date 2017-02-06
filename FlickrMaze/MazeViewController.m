@@ -123,7 +123,7 @@
     switch (tag) {
         case 1:{
             if(player.currentY-1 < 0)
-                return @"Lava";
+                return @"Out Of Bounds";
             tileArray = array[player.currentY-1];
             tile = tileArray[player.currentX];
             return tile.title;
@@ -131,7 +131,7 @@
         }
         case 2:{
             if(player.currentX-1 < 0)
-                return @"Lava";
+                return @"Out Of Bounds";
             tileArray = array[player.currentY];
             tile = tileArray[player.currentX-1];
             return tile.title;
@@ -139,7 +139,7 @@
         }
         case 3:{
             if(player.currentX+1 > 9)
-                return @"Lava";
+                return @"Out Of Bounds";
             tileArray = array[player.currentY];
             tile = tileArray[player.currentX+1];
             return tile.title;
@@ -147,7 +147,7 @@
         }
         case 4:{
             if(player.currentY+1 > 9)
-                return @"Lava";
+                return @"Out Of Bounds";
             tileArray = array[player.currentY+1];
             tile = tileArray[player.currentX];
             return tile.title;
@@ -182,17 +182,17 @@
             break;
         }
         case 2:{
-            [self movePlayerDown];
-            self.tableInt = 1;
-            break;
-        }
-        case 3:{
             [self movePlayerLeft];
             self.tableInt = 1;
             break;
         }
-        case 4:{
+        case 3:{
             [self movePlayerRight];
+            self.tableInt = 1;
+            break;
+        }
+        case 4:{
+            [self movePlayerDown];
             self.tableInt = 1;
             break;
         }
