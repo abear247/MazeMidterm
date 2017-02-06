@@ -37,7 +37,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self startGame];
     self.manager = [GameManager sharedManager];
     [self.manager generateMaze];
     self.rowCount = 3;
@@ -56,7 +55,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [self.mazeCollectionView reloadData];
+    [self startGame];
     self.tableInt = 1;
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mazeCollectionView.collectionViewLayout;
     CGFloat width = self.mazeCollectionView.frame.size.width/3;
