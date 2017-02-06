@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *themeTableView;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *progressWheel;
 @property NSArray *themes;
 @property NSString *selectedTheme;
 @property UIView *backgroundView;
@@ -30,7 +29,6 @@
     self.manager = [GameManager sharedManager];
     self.themes = @[@"Cats",@"Donald_Trump",@"Indoor",@"Outdoor"];
     self.themeTableView.scrollEnabled = NO;
-    self.progressWheel.hidden = YES;
     self.startButton.hidden = NO;
     self.startButton.userInteractionEnabled = YES;
 }
@@ -67,8 +65,6 @@
         }];
     }];
     [dataTask resume];
-    self.progressWheel.hidden = NO;
-    [self.progressWheel startAnimating];
     self.startButton.hidden = YES;
     self.startButton.userInteractionEnabled = NO;
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(advanceProgressBar) userInfo:nil repeats:NO];

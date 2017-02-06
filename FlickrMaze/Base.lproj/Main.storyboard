@@ -98,14 +98,6 @@
                                 <rect key="frame" x="16" y="414.5" width="343" height="2"/>
                                 <color key="trackTintColor" red="1" green="0.29674151119999997" blue="0.3258928056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Pmx-Yb-hVZ">
-                                <rect key="frame" x="162" y="509" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="6AT-Wq-KU7"/>
-                                    <constraint firstAttribute="height" constant="50" id="Dld-qb-uUo"/>
-                                </constraints>
-                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.5957260835" green="1" blue="0.6831089105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -124,15 +116,12 @@
                             <constraint firstItem="CXY-3p-dSG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="l4f-9Y-dtQ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="qoV-zt-1po" secondAttribute="leading" id="nQY-TJ-gkt"/>
                             <constraint firstItem="qoV-zt-1po" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sUC-2Y-LHx"/>
-                            <constraint firstItem="Pmx-Yb-hVZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tYz-PM-UDs"/>
                             <constraint firstItem="ofA-ex-W3u" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ufs-C3-gtF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CXY-3p-dSG" secondAttribute="trailing" constant="52" id="wUO-wm-Ss4"/>
-                            <constraint firstItem="Pmx-Yb-hVZ" firstAttribute="top" secondItem="VqD-0j-QcE" secondAttribute="bottom" constant="127" id="wiM-cP-uok"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="progressBar" destination="qoV-zt-1po" id="5CU-mc-mhn"/>
-                        <outlet property="progressWheel" destination="Pmx-Yb-hVZ" id="PVI-6Y-Qqn"/>
                         <outlet property="startButton" destination="VqD-0j-QcE" id="xhC-rD-bvn"/>
                         <outlet property="tagTextField" destination="Fhl-xu-bMm" id="LGS-mF-TMg"/>
                         <outlet property="themeTableView" destination="CXY-3p-dSG" id="FKl-xa-Jnj"/>
