@@ -46,13 +46,15 @@
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(playerLoses) name:@"playerLoses" object:nil];
     [notificationCenter addObserver:self selector:@selector(playerWins) name:@"playerWins" object:nil];
-    [self.manager startGame];
+ 
     self.playerImage.image = [UIImage imageNamed:@"Steve"];
     [self.mazeCollectionView addSubview:self.playerImage];
-    [self.mazeCollectionView reloadData];
+  
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    [self.manager startGame];
+    [self.mazeCollectionView reloadData];
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mazeCollectionView.collectionViewLayout;
     CGFloat width = self.mazeCollectionView.frame.size.width/3;
     CGSize size = CGSizeMake(width, width);

@@ -77,7 +77,7 @@
 }
 
 - (void) dismissSelf{
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

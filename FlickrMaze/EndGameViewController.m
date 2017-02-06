@@ -37,12 +37,16 @@
 - (IBAction)chooseGame:(id)sender {
     UISegmentedControl *control = sender;
     switch (control.selectedSegmentIndex) {
-        case 0:
-            [self performSegueWithIdentifier:@"HomeViewController" sender:self];
+        case 0:{
+               [self performSegueWithIdentifier:@"HomeViewController" sender:self];
+               [self.navigationController popViewControllerAnimated:YES];
             break;
-        case 1:
-             [self performSegueWithIdentifier:@"MazeViewController" sender:self];
+        }
+        case 1:{
+                [self.navigationController popViewControllerAnimated:YES];
+        
             break;
+        }
         default:
             break;
     }
