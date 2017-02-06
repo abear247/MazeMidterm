@@ -72,6 +72,10 @@
             break;
         case 1:
         {
+            UIImage *image = [UIImage imageNamed:@"lava"];
+            NSData *data = UIImagePNGRepresentation(image);
+            self.outOfBoundsImage = data;
+            self.invalidSquareImage = data;
             self.startX = 0;
             self.startY = 9;
             self.endX = 9;
