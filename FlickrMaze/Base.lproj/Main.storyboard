@@ -296,7 +296,7 @@
                                     <action selector="moveDown:" destination="gpO-sg-c12" eventType="touchUpInside" id="eTE-lI-RpK"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ux5-LK-wqn">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ux5-LK-wqn">
                                 <rect key="frame" x="128.5" y="212" width="118" height="118"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ux5-LK-wqn" secondAttribute="height" multiplier="1:1" id="Vtn-1U-Wxj"/>
@@ -464,7 +464,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k0z-uI-c1V">
-                                <rect key="frame" x="9.5" y="75.5" width="355" height="515"/>
+                                <rect key="frame" x="-0.5" y="75.5" width="375" height="515"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nLE-Kq-6re">
                                 <rect key="frame" x="9.5" y="155.5" width="355" height="355"/>
@@ -514,7 +514,7 @@
                             <constraint firstItem="k0z-uI-c1V" firstAttribute="centerY" secondItem="nLE-Kq-6re" secondAttribute="centerY" id="M4V-li-sT7"/>
                             <constraint firstItem="nLE-Kq-6re" firstAttribute="centerX" secondItem="VNj-eC-89b" secondAttribute="centerX" id="S8J-Ao-OVp"/>
                             <constraint firstItem="nLE-Kq-6re" firstAttribute="width" secondItem="VNj-eC-89b" secondAttribute="width" constant="-20" id="ToL-ce-vXg"/>
-                            <constraint firstItem="k0z-uI-c1V" firstAttribute="width" secondItem="nLE-Kq-6re" secondAttribute="width" id="Veg-pd-32a"/>
+                            <constraint firstItem="k0z-uI-c1V" firstAttribute="width" secondItem="VNj-eC-89b" secondAttribute="width" id="aJT-Fd-bX5"/>
                             <constraint firstItem="SHy-8x-PYK" firstAttribute="trailing" secondItem="VNj-eC-89b" secondAttribute="trailingMargin" id="eE7-ri-na2"/>
                             <constraint firstItem="k0z-uI-c1V" firstAttribute="centerX" secondItem="nLE-Kq-6re" secondAttribute="centerX" id="gRr-Nl-Djs"/>
                             <constraint firstItem="k0z-uI-c1V" firstAttribute="height" secondItem="nLE-Kq-6re" secondAttribute="height" constant="160" id="nGz-O3-wWj"/>
@@ -522,6 +522,7 @@
                     </view>
                     <connections>
                         <outlet property="mapCollectionView" destination="nLE-Kq-6re" id="ygm-kp-Mnm"/>
+                        <outlet property="scrollImageView" destination="k0z-uI-c1V" id="AfE-YO-dQU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mKH-Cm-8gP" userLabel="First Responder" sceneMemberID="firstResponder"/>

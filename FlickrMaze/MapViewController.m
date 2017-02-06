@@ -10,6 +10,7 @@
 
 @interface MapViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *mapCollectionView;
+@property (weak, nonatomic) IBOutlet UIImageView *scrollImageView;
 
 @end
 
@@ -27,6 +28,7 @@
     layout.itemSize = size;
     [self.mapCollectionView reloadData];
     [self setTimer];
+    self.scrollImageView.image = [UIImage imageNamed:@"Scroll"];
     
 }
 
