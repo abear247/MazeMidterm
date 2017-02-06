@@ -45,6 +45,7 @@
     self.movesLabel.text = @"Moves: ";
     self.targetMovesLabel.text = @"10";
     self.moves = 0;
+    self.tableInt = 1;
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(playerLoses) name:@"playerLoses" object:nil];
     [notificationCenter addObserver:self selector:@selector(playerWins) name:@"playerWins" object:nil];
@@ -55,8 +56,8 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    
-    self.tableInt = 0;
+    [self.mazeCollectionView reloadData];
+    self.tableInt = 1;
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mazeCollectionView.collectionViewLayout;
     CGFloat width = self.mazeCollectionView.frame.size.width/3;
     CGSize size = CGSizeMake(width, width);
@@ -100,7 +101,8 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TitleCell *cell = (TitleCell *)[tableView dequeueReusableCellWithIdentifier:@"TitleCell" forIndexPath:indexPath];
     cell.tag = self.tableInt;
- //   cell.title.text = [self cellTitle:cell.tag];
+//    cell.title.text = [self cellTitle:cell.tag];
+    ++self.tableInt;
     return cell;
 }
 
@@ -115,7 +117,7 @@
 -(NSString*)cellTitle:(long)tag{
     NSArray *array = [self.manager getArray];
     Player *player = self.manager.player;
-    NSArray *tileArray;
+    NSArray  *tileArray;
     switch (tag) {
         case 1:{
             tileArray = array[player.currentY-1];
@@ -152,6 +154,7 @@
     [self movePlayer:cell.tag];
     [self.tableView reloadData];
     self.moves++;
+    self.tableInt = 1;
     self.movesLabel.text = [NSString stringWithFormat:@"Moves: %d",self.moves];
     
 }
