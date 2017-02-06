@@ -30,6 +30,7 @@
 @property GameManager *manager;
 @property int moves;
 @property long tableInt;
+@property NSArray *randomArray;
 
 @end
 
@@ -53,10 +54,11 @@
     self.playerImage.image = [UIImage imageNamed:@"Steve"];
     [self.mazeCollectionView addSubview:self.playerImage];
     [self startGame];
+    self.randomArray = [self randomize];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    
+    [self.tableView reloadData];
     self.tableInt = 1;
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mazeCollectionView.collectionViewLayout;
     CGFloat width = self.mazeCollectionView.frame.size.width/3;
@@ -81,19 +83,19 @@
     NSInteger section = self.manager.player.currentY + indexPath.section - 1;
     NSInteger row = self.manager.player.currentX +indexPath.row -1;
     if (section < 0 || row < 0 || section > 9 || row > 9) {
-        cell.mazeCellImageView.image = [UIImage imageNamed:@"Lava"];
+        cell.mazeCellImageView.image = [UIImage imageWithData:[self.manager getOutOfBoundsImage]];
         return cell;
     }
-    NSArray *tileArray = array[section];
-    MazeTile *tile = tileArray[row];
-    NSData *data = tile.image;
-    
-    if (tile.valid){
-        cell.mazeCellImageView.image = [UIImage imageWithData:data];
-    }
-    else{
-        cell.mazeCellImageView.image = [UIImage imageNamed:@"Lava"];
-    }
+//    NSArray *tileArray = array[section];
+//    MazeTile *tile = tileArray[row];
+//    NSData *data = tile.image;
+//    
+//    if (tile.valid){
+//        cell.mazeCellImageView.image = [UIImage imageWithData:data];
+//    }
+//    else{
+//        cell.mazeCellImageView.image = [UIImage imageNamed:@"Lava"];
+//    }
     return cell;
 }
 
@@ -102,9 +104,22 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TitleCell *cell = (TitleCell *)[tableView dequeueReusableCellWithIdentifier:@"TitleCell" forIndexPath:indexPath];
     cell.tag = self.tableInt;
-    cell.title.text = [self cellTitle:cell.tag];
+//    cell.title.text = cell.tag;
+ //   cell.title.text = [self cellTitle:(long)self.randomArray[indexPath.row]];
     ++self.tableInt;
     return cell;
+}
+
+-(NSArray*)randomize{
+    NSMutableArray *temp = [NSMutableArray new];
+    for(int i = 0;i<3;++i){
+        int num = arc4random_uniform(3)+1;
+        if(![temp containsObject:@(num)]){
+            temp[i] = @(num);
+            ++i;
+        }
+    }
+    return [temp copy];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -168,6 +183,7 @@
     TitleCell *cell = (TitleCell *)[tableView cellForRowAtIndexPath:indexPath];
     [self movePlayer:cell.tag];
     [self.tableView reloadData];
+    self.randomArray = [self randomArray];
     self.moves++;
     self.tableInt = 1;
     self.movesLabel.text = [NSString stringWithFormat:@"Moves: %d",self.moves];
