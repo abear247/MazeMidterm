@@ -23,6 +23,8 @@
 - (NSArray *) getArray;
 - (void) generateMaze;
 - (void) startGame;
+- (BOOL) movePlayerOnX: (NSInteger) amount;
+- (BOOL) movePlayerOnY: (NSInteger) amount;
 -(NSDictionary <NSNumber *, NSArray<NSNumber*>*>*)getDictionary;
 
 @end

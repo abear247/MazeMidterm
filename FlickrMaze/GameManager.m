@@ -13,7 +13,7 @@
 @interface GameManager ()
 
 @property (nonatomic) NSMutableArray<MazeTile*>* mazeTileArray;
-@property (nonatomic) NSArray <NSArray *> *mazeSectionArray;
+@property (nonatomic) NSArray <NSArray <MazeTile*>*> *mazeSectionArray;
 @property (nonatomic) Maze *Maze;
 @end
 
@@ -76,6 +76,14 @@
     for (MazeTile *mazeTile in mazeArray) {
         [context deleteObject:mazeTile];
     }
+    NSFetchRequest *request2 = [Player fetchRequest];
+    NSError *error2 = nil;
+    NSArray *playerArray = [context executeFetchRequest:request2 error:&error2];
+    NSLog(@"%lu", (unsigned long)playerArray.count);
+    for (Player *player in playerArray) {
+        [context deleteObject:player];
+    }
+    self.player = [NSEntityDescription insertNewObjectForEntityForName:@"Player" inManagedObjectContext:context];
 }
 
 #pragma mark - Core Data Saving support
@@ -133,6 +141,36 @@
                                        userInfo:nil
                                         repeats:NO];
     }
+}
+
+- (BOOL) movePlayerOnX: (NSInteger) amount {
+    if (self.player.currentX + amount >= 0 && self.player.currentX + amount <= 9) {
+        NSArray *section = self.mazeSectionArray[self.player.currentY];
+        MazeTile *newTile = section[self.player.currentX+amount];
+        if (newTile.valid) {
+            self.player.currentX += amount;
+            return YES;
+        }
+        NSLog(@"Lava!");
+        return NO;
+    }
+    NSLog(@"Out of bounds!");
+    return NO;
+}
+
+- (BOOL) movePlayerOnY: (NSInteger) amount {
+    if (self.player.currentY + amount >= 0 && self.player.currentY + amount <= 9) {
+        NSArray *section = self.mazeSectionArray[self.player.currentY+amount];
+        MazeTile *newTile = section[self.player.currentX];
+        if (newTile.valid) {
+            self.player.currentY += amount;
+            return YES;
+        }
+        NSLog(@"Lava!");
+        return NO;
+    }
+    NSLog(@"Out of bounds!");
+    return NO;
 }
 
 #pragma mark Helper Methods

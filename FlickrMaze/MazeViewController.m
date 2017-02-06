@@ -51,6 +51,8 @@
     [self.mazeCollectionView addSubview:self.playerImage];
 }
 
+#pragma mark Collection View Data Source Methods
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return self.sectionCount;
 }
@@ -81,6 +83,8 @@
     return cell;
 }
 
+#pragma Table View Data Source Methods
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TitleCell *cell = (TitleCell *)[tableView dequeueReusableCellWithIdentifier:@"TitleCell" forIndexPath:indexPath];
     NSArray *array = [self.manager getArray];
@@ -98,6 +102,8 @@
     return 4;
 }
 
+#pragma mark Table View Delegate Method
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self movePlayerUp];
     [self.tableView reloadData];
@@ -106,18 +112,76 @@
     
 }
 
+#pragma mark Debug Movement Buttons
+
+- (IBAction)moveLeft:(UIButton *)sender {
+    if ([self.manager movePlayerOnX: -1]) {
+        self.rowCount -= 1;
+        [self.mazeCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0],
+                                                           [NSIndexPath indexPathForRow:2 inSection:1],
+                                                           [NSIndexPath indexPathForRow:2 inSection:2]
+                                                           ]];
+        self.rowCount += 1;
+        [self.mazeCollectionView insertItemsAtIndexPaths:@[
+                                                           [NSIndexPath indexPathForRow:0 inSection:0],
+                                                           [NSIndexPath indexPathForRow:0 inSection:1],
+                                                           [NSIndexPath indexPathForRow:0 inSection:2]                                                       ]];
+    }
+}
+
+- (IBAction)moveRight:(UIButton *)sender {
+    if ([self.manager movePlayerOnX: 1]) {
+        self.rowCount -= 1;
+        [self.mazeCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0],
+                                                           [NSIndexPath indexPathForRow:0 inSection:1],
+                                                           [NSIndexPath indexPathForRow:0 inSection:2]
+                                                           ]];
+        self.rowCount += 1;
+        [self.mazeCollectionView insertItemsAtIndexPaths:@[
+                                                           [NSIndexPath indexPathForRow:2 inSection:0],
+                                                           [NSIndexPath indexPathForRow:2 inSection:1],
+                                                           [NSIndexPath indexPathForRow:2 inSection:2]                                                       ]];
+    }
+}
+
+- (IBAction)moveUp:(UIButton *)sender {
+    if ([self.manager movePlayerOnY: -1]) {
+        self.sectionCount += 1;
+        [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:0]];
+        self.sectionCount -= 1;
+        [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:3]];
+    }
+}
+
+- (IBAction)moveDown:(UIButton *)sender {
+    if ([self.manager movePlayerOnY: 1]) {
+        self.sectionCount += 1;
+        [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:3]];
+        self.sectionCount -= 1;
+        [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:0]];
+    }
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"MapViewController"]){
+        MapViewController *mvc = (MapViewController*)[segue destinationViewController];
+        mvc.invalidSquareDictionary = [self.manager getDictionary];
+    }
+}
+
 -(void)movePlayerLeft{
-    self.manager.player.currentX -= 1;
-    self.rowCount -= 1;
-    [self.mazeCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0],
-                                                       [NSIndexPath indexPathForRow:2 inSection:1],
-                                                       [NSIndexPath indexPathForRow:2 inSection:2]
-                                                       ]];
-    self.rowCount += 1;
-    [self.mazeCollectionView insertItemsAtIndexPaths:@[
-                                                       [NSIndexPath indexPathForRow:0 inSection:0],
-                                                       [NSIndexPath indexPathForRow:0 inSection:1],
-                                                       [NSIndexPath indexPathForRow:0 inSection:2]                                                       ]];
+    if ([self.manager movePlayerOnX: -1]) {
+        self.rowCount -= 1;
+        [self.mazeCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0],
+                                                           [NSIndexPath indexPathForRow:2 inSection:1],
+                                                           [NSIndexPath indexPathForRow:2 inSection:2]
+                                                           ]];
+        self.rowCount += 1;
+        [self.mazeCollectionView insertItemsAtIndexPaths:@[
+                                                           [NSIndexPath indexPathForRow:0 inSection:0],
+                                                           [NSIndexPath indexPathForRow:0 inSection:1],
+                                                           [NSIndexPath indexPathForRow:0 inSection:2]                                                       ]];
+    }
 }
 
 -(void)movePlayerRight{
@@ -148,59 +212,6 @@
     [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:3]];
     self.sectionCount -= 1;
     [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:0]];
-}
-
-
-
-- (IBAction)moveLeft:(UIButton *)sender {
-    self.manager.player.currentX -= 1;
-    self.rowCount -= 1;
-    [self.mazeCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0],
-                                                       [NSIndexPath indexPathForRow:2 inSection:1],
-                                                       [NSIndexPath indexPathForRow:2 inSection:2]
-                                                       ]];
-    self.rowCount += 1;
-    [self.mazeCollectionView insertItemsAtIndexPaths:@[
-                                                       [NSIndexPath indexPathForRow:0 inSection:0],
-                                                       [NSIndexPath indexPathForRow:0 inSection:1],
-                                                       [NSIndexPath indexPathForRow:0 inSection:2]                                                       ]];
-}
-
-- (IBAction)moveUp:(UIButton *)sender {
-    self.manager.player.currentY -= 1;
-    self.sectionCount += 1;
-    [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:0]];
-    self.sectionCount -= 1;
-    [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:3]];
-}
-
-- (IBAction)moveRight:(UIButton *)sender {
-    self.manager.player.currentX += 1;
-    self.rowCount -= 1;
-    [self.mazeCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0],
-                                                       [NSIndexPath indexPathForRow:0 inSection:1],
-                                                       [NSIndexPath indexPathForRow:0 inSection:2]
-                                                       ]];
-    self.rowCount += 1;
-    [self.mazeCollectionView insertItemsAtIndexPaths:@[
-                                                       [NSIndexPath indexPathForRow:2 inSection:0],
-                                                       [NSIndexPath indexPathForRow:2 inSection:1],
-                                                       [NSIndexPath indexPathForRow:2 inSection:2]                                                       ]];
-}
-
-- (IBAction)moveDown:(UIButton *)sender {
-    self.manager.player.currentY += 1;
-    self.sectionCount += 1;
-    [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:3]];
-    self.sectionCount -= 1;
-    [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:0]];
-}
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:@"MapViewController"]){
-        MapViewController *mvc = (MapViewController*)[segue destinationViewController];
-        mvc.invalidSquareDictionary = [self.manager getDictionary];
-    }
 }
 
 //-(NSString *)timeString:(NSTimeInterval*)time{
