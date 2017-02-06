@@ -250,7 +250,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="mazeCellImageView" destination="aWb-Wz-Ffq" id="Fa7-WV-JQo"/>
-                                            <segue destination="BMI-vB-ygf" kind="showDetail" identifier="DetailViewController" id="J3c-4s-SFy"/>
+                                            <segue destination="BMI-vB-ygf" kind="presentation" identifier="DetailViewController" id="zR2-wh-7i9"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -424,13 +424,22 @@
                                     <constraint firstAttribute="height" constant="250" id="uWV-YB-1Bl"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70A-gb-170">
+                                <rect key="frame" x="164" y="111" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="dismissButton:" destination="BMI-vB-ygf" eventType="touchUpInside" id="bG9-Bv-e25"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="70A-gb-170" firstAttribute="centerY" secondItem="YlQ-2F-9fj" secondAttribute="centerY" constant="-207.5" id="EXe-rG-bNH"/>
                             <constraint firstItem="Jrz-aS-ab7" firstAttribute="centerX" secondItem="YlQ-2F-9fj" secondAttribute="centerX" id="HUi-ON-Xfm"/>
                             <constraint firstItem="6GU-PC-yDj" firstAttribute="centerY" secondItem="YlQ-2F-9fj" secondAttribute="centerY" constant="-284" id="YFZ-o8-iBb"/>
                             <constraint firstItem="Jrz-aS-ab7" firstAttribute="centerY" secondItem="YlQ-2F-9fj" secondAttribute="centerY" id="bZg-UN-sc9"/>
                             <constraint firstItem="6GU-PC-yDj" firstAttribute="centerX" secondItem="YlQ-2F-9fj" secondAttribute="centerX" id="cIf-5J-Xob"/>
+                            <constraint firstItem="70A-gb-170" firstAttribute="centerX" secondItem="YlQ-2F-9fj" secondAttribute="centerX" id="quV-sQ-gle"/>
                         </constraints>
                     </view>
                     <connections>
