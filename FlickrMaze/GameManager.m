@@ -16,6 +16,8 @@
 @property (nonatomic) NSArray <NSArray <MazeTile*>*> *mazeSectionArray;
 @property (nonatomic) Maze *maze;
 @property (nonatomic) BOOL gameOver;
+@property (nonatomic) NSTimer *ghostTimer;
+
 @end
 
 @implementation GameManager
@@ -119,9 +121,10 @@
     self.player.currentX = self.maze.startX;
     self.player.currentY = self.maze.startY;
     self.gameOver = NO;
+    self.ghostTimer = [NSTimer new];
     self.player.ghostX = self.player.currentX;
     self.player.ghostY = self.player.currentY;
-    [NSTimer scheduledTimerWithTimeInterval:10.0
+    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:20.0
                                      target:self
                                    selector:@selector(startGhost)
                                    userInfo:nil
@@ -129,6 +132,17 @@
 }
 
 - (void) startGhost {
+    //TODO: check game is still ongoing
+    [self.ghostTimer invalidate];
+    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
+                                     target:self
+                                   selector:@selector(moveGhost)
+                                   userInfo:nil
+                                    repeats:YES];
+    
+}
+
+- (void) moveGhost {
     int xDifference = self.player.currentX - self.player.ghostX;
     int yDifference = self.player.currentY - self.player.ghostY;
     if (xDifference > 0) {
@@ -143,21 +157,18 @@
     else if (yDifference < 0) {
         self.player.ghostY -= 1;
     }
-    if (self.gameOver == YES) {
-        //do nothing
-    }
-    else if (self.player.currentX == self.player.ghostX && self.player.currentY == self.player.ghostY) {
+    //    if (self.gameOver == YES) {
+    //        //do nothing
+    //    }
+    //    else
+    if (self.player.currentX == self.player.ghostX && self.player.currentY == self.player.ghostY) {
         NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
         NSNotification *notification = [NSNotification notificationWithName:@"playerLoses" object:self];
         [notificationCenter postNotification:notification];
+        [self endGame];
     }
     else {
         NSLog(@"\nGhost X: %hd\n Ghost Y: %hd", self.player.ghostX, self.player.ghostY);
-        [NSTimer scheduledTimerWithTimeInterval:5.0
-                                         target:self
-                                       selector:@selector(startGhost)
-                                       userInfo:nil
-                                        repeats:NO];
     }
 }
 
@@ -197,8 +208,6 @@
 
 - (NSURL*) generateURL: (NSString*) tagEntry {
     [self clearTestData];
-//    self.player.currentX = 0;
-//    self.player.currentY = 9;
     NSMutableString *urlString = [[NSMutableString alloc] initWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=4ecacf0cd6441400e02e57ec12f0bb68&has_geo&tags="];
     NSString *tagWithoutWhiteSpace = [tagEntry stringByReplacingOccurrencesOfString:@" " withString:@""];
     [urlString appendString:tagWithoutWhiteSpace];
@@ -235,15 +244,18 @@
     return nil;
 }
 
-- (void) endGame {
-    self.gameOver = YES;
-}
-
 - (void) checkWin {
     if (self.player.currentX == self.maze.endX && self.player.currentY == self.maze.endY) {
         NSNotification *notification = [NSNotification notificationWithName:@"playerWins" object:self];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
+        [self endGame];
     }
+}
+
+- (void) endGame {
+    [self.ghostTimer invalidate];
+    self.ghostTimer = nil;
+    //    self.gameOver = YES;
 }
 
 @end
