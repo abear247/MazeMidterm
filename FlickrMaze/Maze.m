@@ -86,7 +86,7 @@
             self.outOfBoundsImage = data;
             self.invalidSquareImage = data;
             self.manager.player.mazeID = 0;
-            self.sounds =  @[@"Wrong",@"China",@"Congratulations",@"Suffer"];
+            self.sounds =  @[@"Wrong",@"China",@"Suffer",@"Congratulations"];
             return;
         }
         case 1:
