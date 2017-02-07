@@ -43,8 +43,11 @@
 - (IBAction)startButton:(id)sender {
     NSString *tags = self.tagTextField.text;
     if (self.selectedTheme)
+    {
         tags = [NSString stringWithFormat:@"%@&sort=interestingness_asc",
                 self.selectedTheme];
+        self.manager.gameTheme = self.selectedTheme;
+    }
     NSURL *url = [self.manager generateURL:tags];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -62,7 +65,6 @@
         }
         NSDictionary *photoDictionary = [results objectForKey:@"photos"];
         NSArray *photoArray = [photoDictionary objectForKey:@"photo"];
-        
         for (NSDictionary *photo in photoArray) {
             
             [self.manager createMazeTileWithDictionary: photo];
@@ -77,7 +79,6 @@
         }];
     }];
     [dataTask resume];
-    self.manager.gameTheme = self.selectedTheme;
     self.startButton.hidden = YES;
     self.startButton.userInteractionEnabled = NO;
     self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(advanceProgressBar) userInfo:nil repeats:YES];

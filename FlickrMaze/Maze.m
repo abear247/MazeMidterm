@@ -57,20 +57,21 @@
 
 - (void) createBasicInvalidSquares {
     NSString *theme = self.manager.gameTheme;
-    int selection = 0;
-    if ([theme isEqualToString:@"Cats"]) {
+    int selection;
+    if ([theme isEqualToString:@"Donald_Trump"]) {
         selection = 0;
     }
-    else if ([theme isEqualToString:@"Donald_Trump"]) {
+    else if ([theme isEqualToString:@"Cats"]) {
         selection = 1;
     }
     else {
-        selection = 0;
+        selection = 1;
     }
     int mazeID = arc4random_uniform(3)+1;
     self.manager.player.mazeID = mazeID;
     self.manager.player.themeID = selection;
     [self selectThemeWithID:selection];
+    [self selectMazeWithID:self.manager.player.mazeID];
  }
 
 - (void) selectThemeWithID:(NSInteger) themeID {

@@ -30,17 +30,6 @@
     return gameManager;
 }
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        _mazeTileArray = [NSMutableArray new];
-        _maze = [Maze new];
-        _player = [[Player alloc] initWithContext:[self getContext]];
-    }
-    return self;
-}
-
 #pragma mark - Core Data stack
 
 @synthesize persistentContainer = _persistentContainer;
@@ -120,8 +109,11 @@
         return;
     }
     self.player = playerResult[0];
+    self.maze = [Maze new];
+    [self.maze selectThemeWithID:self.player.themeID];
+    [self.maze selectMazeWithID:self.player.mazeID];
     NSFetchRequest *request = [MazeTile fetchRequest];
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"xposition" ascending:YES];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"xPosition" ascending:YES];
     [request setSortDescriptors:@[sort]];
     NSError *error = nil;
     NSArray *results = [context executeFetchRequest:request error:&error];
@@ -144,14 +136,14 @@
             [sectionArray[tile.yPosition] addObject:tile];
         }
     }
-    self.maze = [Maze new];
-    [self.maze selectThemeWithID:self.player.themeID];
-    [self.maze selectMazeWithID:self.player.mazeID];
 }
 
 
 #pragma mark Maze Making Methods
 - (void) generateMaze {
+    NSManagedObjectContext *context = [self getContext];
+    self.player = [[Player alloc] initWithContext:context];
+    self.maze = [Maze new];
     self.mazeSectionArray = [self.maze makeMazeWith:self.mazeTileArray];
 }
 
@@ -163,18 +155,18 @@
     self.player.ghostX = self.player.currentX;
     self.player.ghostY = self.player.currentY;
     self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:20.0
-                                     target:self
-                                   selector:@selector(startGhost)
-                                   userInfo:nil
-                                    repeats:NO];
+                                                       target:self
+                                                     selector:@selector(startGhost)
+                                                     userInfo:nil
+                                                      repeats:NO];
 }
 
 - (void) startGhost {
     self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
-                                     target:self
-                                   selector:@selector(moveGhost)
-                                   userInfo:nil
-                                    repeats:YES];
+                                                       target:self
+                                                     selector:@selector(moveGhost)
+                                                     userInfo:nil
+                                                      repeats:YES];
 }
 
 - (void) moveGhost {
@@ -199,7 +191,7 @@
         [self endGame];
         return;
     }
-        NSLog(@"\nGhost X: %hd\n Ghost Y: %hd", self.player.ghostX, self.player.ghostY);
+    NSLog(@"\nGhost X: %hd\n Ghost Y: %hd", self.player.ghostX, self.player.ghostY);
 }
 
 - (BOOL) movePlayerOnX: (NSInteger) amount {
@@ -245,6 +237,9 @@
 }
 
 - (void) createMazeTileWithDictionary: (NSDictionary*)photo {
+    if (!self.mazeTileArray) {
+        self.mazeTileArray = [NSMutableArray new];
+    }
     NSManagedObjectContext *context = [self getContext];
     MazeTile *tile = [[MazeTile alloc] initWithContext:context];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://farm%@.staticflickr.com/%@/%@_%@.jpg", photo[@"farm"], photo[@"server"], photo[@"id"], photo[@"secret"]]];
