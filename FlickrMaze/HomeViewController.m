@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *themePicker;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
+
 @property (nonatomic) NSTimer *progressTimer;
 @property NSArray *themes;
 @property NSString *selectedTheme;
@@ -47,7 +49,8 @@
     self.startButton.userInteractionEnabled = YES;
     self.progressBar.progress = 0.0;
     self.loadingImageView.hidden = YES;
-    
+    self.backgroundImage.image = [UIImage imageNamed:@"Maze"];
+
 }
 
 - (IBAction)startButton:(id)sender {
@@ -136,6 +139,22 @@
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     self.selectedTheme = self.themes[row];
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
+{
+    UILabel* tView = (UILabel*)view;
+    if (!tView)
+    {
+        tView = [[UILabel alloc] init];
+        [tView setFont:[UIFont fontWithName:@"Helvetica" size:14]];
+        tView.numberOfLines=3;
+    }
+    // Fill the label text here
+    tView.textColor = [UIColor whiteColor];
+    tView.shadowColor = [UIColor blackColor];
+    tView.shadowOffset = CGSizeMake(-1, -1);
+    return tView;
 }
 
 @end
