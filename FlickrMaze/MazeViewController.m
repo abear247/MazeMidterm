@@ -73,6 +73,9 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.rowCount;
 }
+- (IBAction)saveButton:(UIButton *)sender {
+    [self.manager saveContext];
+}
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MazeCell *cell = (MazeCell *)[self.mazeCollectionView dequeueReusableCellWithReuseIdentifier:@"MazeCell" forIndexPath:indexPath];
@@ -86,13 +89,7 @@
     NSArray *tileArray = array[section];
     MazeTile *tile = tileArray[row];
     NSData *data = tile.image;
-//
-//    if (tile.valid){
         cell.mazeCellImageView.image = [UIImage imageWithData:data];
-//    }
-//    else{
-//        cell.mazeCellImageView.image = [UIImage imageNamed:@"Lava"];
-//    }
     return cell;
 }
 

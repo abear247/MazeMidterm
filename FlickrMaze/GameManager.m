@@ -133,10 +133,12 @@
                                [NSMutableArray new]];
     for (MazeTile *tile in results) {
         if (tile.yPosition) {
+            NSLog(@"%hd", tile.yPosition);
             [sectionArray[tile.yPosition] addObject:tile];
         }
     }
-    [self makeSoundDictionary];
+    self.mazeSectionArray = sectionArray;
+//    [self makeSoundDictionary];
 }
 
 

@@ -51,6 +51,7 @@
                 
         }
         [columnArray addObject:rowArray];
+        [self.manager saveContext];
     }
     return columnArray;
 }
