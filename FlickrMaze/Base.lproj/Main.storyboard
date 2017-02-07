@@ -123,6 +123,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="3ZH-ea-LTN"/>
                     <connections>
+                        <outlet property="loadingImageView" destination="Fmg-E5-UKW" id="3JI-os-3Rm"/>
                         <outlet property="progressBar" destination="qoV-zt-1po" id="5CU-mc-mhn"/>
                         <outlet property="startButton" destination="VqD-0j-QcE" id="xhC-rD-bvn"/>
                         <outlet property="tagTextField" destination="Fhl-xu-bMm" id="LGS-mF-TMg"/>

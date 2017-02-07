@@ -16,7 +16,7 @@
 @property (nonatomic) NSArray <NSArray <MazeTile*>*> *mazeSectionArray;
 @property (nonatomic) Maze *maze;
 @property (nonatomic) NSTimer *ghostTimer;
-
+@property (nonatomic) NSDictionary *sounds;
 @end
 
 @implementation GameManager
@@ -136,6 +136,7 @@
             [sectionArray[tile.yPosition] addObject:tile];
         }
     }
+    [self makeSoundDictionary];
 }
 
 
@@ -288,6 +289,17 @@
 
 - (NSData *) getGameOverImage {
     return self.maze.gameOverImage;
+}
+
+-(void)makeSoundDictionary{
+    NSArray *sounds = @[@"China",@"Congratulations",@"Maga",@"Suffer",@"Wrong"];
+    NSMutableDictionary *dictonary = [NSMutableDictionary new];
+    
+    for(NSString *soundName in sounds){
+        NSDataAsset *sound = [[NSDataAsset alloc] initWithName:soundName];
+        [dictonary setObject:sound forKey:soundName];
+    }
+    self.sounds =  [dictonary copy];
 }
 
 

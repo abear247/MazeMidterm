@@ -13,6 +13,7 @@
 
 @interface HomeViewController ()
 @property GameManager *manager;
+@property (weak, nonatomic) IBOutlet UIImageView *loadingImageView;
 @property (weak, nonatomic) IBOutlet UITextField *tagTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *themePicker;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
@@ -28,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.manager = [GameManager sharedManager];
-    self.themes = @[@"Cats",@"Donald_Trump",@"Indoor",@"Outdoor"];
+    self.themes = @[@"Default",@"Jaws",@"Donald_Trump"];
     self.themePicker.delegate = self;
     self.themePicker.dataSource = self;
 }
@@ -81,6 +82,8 @@
     [dataTask resume];
     self.startButton.hidden = YES;
     self.startButton.userInteractionEnabled = NO;
+    NSString *theme = self.selectedTheme;
+    self.loadingImageView.image = [UIImage imageNamed:self.selectedTheme];
     self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(advanceProgressBar) userInfo:nil repeats:YES];
 }
 
@@ -93,6 +96,7 @@
 
 - (void) advanceProgressBar {
     self.progressBar.progress += 0.2 * (1-self.progressBar.progress);
+    self.loadingImageView.alpha = self.progressBar.progress;
 }
 
 
