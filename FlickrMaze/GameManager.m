@@ -108,7 +108,6 @@
         return;
     }
     self.player = playerResult[0];
-    NSLog (@"xPosition: %hd  yPosition :%hd  themeID: %hd  mazeID: %hd", self.player.currentX, self.player.currentY, self.player.themeID, self.player.mazeID);
     self.maze = [Maze new];
     [self.maze selectThemeWithID:self.player.themeID];
     [self.maze selectMazeWithID:self.player.mazeID];
@@ -148,13 +147,13 @@
 - (void) generateMaze {
     NSManagedObjectContext *context = [self getContext];
     self.player = [[Player alloc] initWithContext:context];
-    self.player.moveCount = 0;
     self.maze = [Maze new];
     self.mazeSectionArray = [self.maze makeMazeWith:self.mazeTileArray];
 }
 
 #pragma mark Game Control Methods
 - (void) startGame {
+    self.player.moveCount = 0;
     self.player.currentX = self.maze.startX;
     self.player.currentY = self.maze.startY;
     self.ghostTimer = [NSTimer new];
