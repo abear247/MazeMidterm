@@ -8,6 +8,7 @@
 
 #import "Maze.h"
 #import <UIKit/UIKit.h>
+#import "GameManager.h"
 
 @interface Maze ()
 @property NSData *invalidSquareImage;
@@ -45,7 +46,20 @@
 }
 
 - (NSDictionary <NSNumber*,NSArray*>*) createBasicInvalidSquares {
-    int selection = arc4random_uniform(2);
+    GameManager *manager = [GameManager sharedManager];
+    NSString *theme = manager.gameTheme;
+//    self.themes = @[@"Cats",@"Donald_Trump",@"Indoor",@"Outdoor"];
+    int selection = 0;
+    if ([theme isEqualToString:@"Cats"]) {
+        selection = 0;
+    }
+    else if ([theme isEqualToString:@"Donald_Trump"]) {
+        selection = 1;
+    }
+    else {
+        selection = 0;
+    }
+    
     switch (selection) {
         case 0:
         {   UIImage *goImage = [UIImage imageNamed:@"Game_over"];

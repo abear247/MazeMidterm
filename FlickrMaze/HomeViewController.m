@@ -75,6 +75,7 @@
         }];
     }];
     [dataTask resume];
+    self.manager.gameTheme = self.selectedTheme;
     self.startButton.hidden = YES;
     self.startButton.userInteractionEnabled = NO;
     self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(advanceProgressBar) userInfo:nil repeats:YES];
