@@ -42,7 +42,7 @@
     [self.manager generateMaze];
     self.rowCount = 3;
     self.sectionCount = 3;
-    self.movesLabel.text = @"Moves: ";
+    self.movesLabel.text = @"Moves: 0";
     self.targetMovesLabel.text = @"10";
     self.moves = 0;
     self.tableInt = 0;
