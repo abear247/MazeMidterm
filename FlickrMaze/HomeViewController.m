@@ -12,7 +12,12 @@
 #import "MazeViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
-
+//if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+//    // Simulator doesn't have a camera, so we need to check this - if we didn't this would crash in the simulator
+//    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//} else {
+//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//}
 @interface HomeViewController ()
 @property GameManager *manager;
 @property (weak, nonatomic) IBOutlet UIImageView *loadingImageView;
