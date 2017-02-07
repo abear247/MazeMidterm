@@ -64,7 +64,7 @@
         NSArray *photoArray = [photoDictionary objectForKey:@"photo"];
         
         for (NSDictionary *photo in photoArray) {
-        
+            
             [self.manager createMazeTileWithDictionary: photo];
         }
         [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
@@ -85,6 +85,9 @@
 
 - (IBAction)loadButton:(id)sender {
     [self.manager loadGame];
+    if (self.manager.player) {
+        [self performSegueWithIdentifier:@"MazeViewController" sender:self];
+    }
 }
 
 - (void) advanceProgressBar {

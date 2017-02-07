@@ -113,10 +113,14 @@
 #pragma mark Load Game methods
 - (void) loadGame {
     NSManagedObjectContext *context = [self getContext];
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"MazeTile"];
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"yPosition" ascending:YES];
-    NSSortDescriptor *sort2 = [NSSortDescriptor sortDescriptorWithKey:@"xPosition" ascending:YES];
-                               [request setSortDescriptors:@[sort, sort2]];
+    NSError *playerError;
+    NSFetchRequest *playerRequest = [Player fetchRequest];
+    NSArray *playerResult = [context executeFetchRequest:playerRequest error:&playerError];
+    if (playerResult.count < 1) {
+        return;
+    }
+    self.player = playerResult[0];
+    NSFetchRequest *request = [MazeTile fetchRequest];
     NSError *error = nil;
     NSArray *results = [context executeFetchRequest:request error:&error];
     if (error) {

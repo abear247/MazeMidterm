@@ -2,7 +2,7 @@
 //  Player+CoreDataProperties.h
 //  FlickrMaze
 //
-//  Created by Minhung Ling on 2017-02-05.
+//  Created by Minhung Ling on 2017-02-07.
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //  This file was automatically generated and should not be edited.
 //
@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int16_t currentY;
 @property (nonatomic) int16_t ghostX;
 @property (nonatomic) int16_t ghostY;
+@property (nonatomic) int16_t tileSet;
 
 @end
 
