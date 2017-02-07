@@ -71,6 +71,8 @@
             self.progressBar.progress = 1.0;
             [self.progressTimer invalidate];
             [self.manager saveContext];
+            [self.manager generateMaze];
+            [self.manager startGame];
             [self performSegueWithIdentifier:@"MazeViewController" sender:self];
         }];
     }];
@@ -81,6 +83,9 @@
     self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(advanceProgressBar) userInfo:nil repeats:YES];
 }
 
+- (IBAction)loadButton:(id)sender {
+    [self.manager loadGame];
+}
 
 - (void) advanceProgressBar {
     self.progressBar.progress += 0.2 * (1-self.progressBar.progress);

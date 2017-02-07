@@ -30,6 +30,7 @@
 -(NSDictionary <NSNumber *, NSArray<NSNumber*>*>*)getDictionary;
 - (NSData *) getOutOfBoundsImage;
 - (NSData *) getGameOverImage;
+- (void) loadGame;
 +(id)sharedManager;
 
 @end
