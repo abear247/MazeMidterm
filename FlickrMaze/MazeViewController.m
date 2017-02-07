@@ -54,7 +54,7 @@
     self.playerImage.image = [UIImage imageNamed:@"Steve"];
     [self.mazeCollectionView addSubview:self.playerImage];
     [self startGame];
-  //  self.randomArray = [self randomize];
+    self.randomArray = [self randomize];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -103,24 +103,25 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TitleCell *cell = (TitleCell *)[tableView dequeueReusableCellWithIdentifier:@"TitleCell" forIndexPath:indexPath];
-    cell.tag = self.tableInt+1;
-  //  cell.title.text = [self cellTitle:(long)self.randomArray[self.tableInt]];
+    NSNumber *num = self.randomArray[self.tableInt];
+    cell.tag = num.longValue;
+    cell.title.text = [self cellTitle:cell.tag];//(long)self.randomArray[self.tableInt]];
     ++self.tableInt;
     return cell;
 }
 
-//-(NSArray*)randomize{
-//    NSMutableArray *temp = [NSMutableArray new];
-//    int i = 0;
-//    while(i<3){
-//        int num = arc4random_uniform(3)+1;
-//        if(![temp containsObject:@(num)]){
-//            [temp addObject: @(num)];
-//            ++i;
-//        }
-//    }
-//    return [temp copy];
-//}
+-(NSArray*)randomize{
+    NSMutableArray *temp = [NSMutableArray new];
+    int i = 0;
+    while(i<=3){
+        int num = arc4random_uniform(4)+1;
+        if(![temp containsObject:@(num)]){
+            [temp addObject: @(num)];
+            ++i;
+        }
+    }
+    return [temp copy];
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
@@ -130,7 +131,7 @@
     return 4;
 }
 
--(NSString*)cellTitle:(long)tag{
+-(NSString*)cellTitle:(NSInteger)tag{
     NSArray *array = [self.manager getArray];
     Player *player = self.manager.player;
     NSArray  *tileArray;
@@ -183,7 +184,6 @@
     TitleCell *cell = (TitleCell *)[tableView cellForRowAtIndexPath:indexPath];
     [self movePlayer:cell.tag];
     [self.tableView reloadData];
-    self.randomArray = [self randomArray];
     self.moves++;
     self.tableInt = 0;
     self.movesLabel.text = [NSString stringWithFormat:@"Moves: %d",self.moves];
@@ -213,58 +213,27 @@
             break;
         }
         default:
-            break;
+            return;
     }
+    
 }
 
 #pragma mark Movement Methods
 
 - (IBAction)moveLeft:(UIButton *)sender {
-    if ([self.manager movePlayerOnX: -1]) {
-        self.rowCount -= 1;
-        [self.mazeCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0],
-                                                           [NSIndexPath indexPathForRow:2 inSection:1],
-                                                           [NSIndexPath indexPathForRow:2 inSection:2]
-                                                           ]];
-        self.rowCount += 1;
-        [self.mazeCollectionView insertItemsAtIndexPaths:@[
-                                                           [NSIndexPath indexPathForRow:0 inSection:0],
-                                                           [NSIndexPath indexPathForRow:0 inSection:1],
-                                                           [NSIndexPath indexPathForRow:0 inSection:2]                                                       ]];
-    }
+    [self movePlayerLeft];
 }
 
 - (IBAction)moveRight:(UIButton *)sender {
-    if ([self.manager movePlayerOnX: 1]) {
-        self.rowCount -= 1;
-        [self.mazeCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0],
-                                                           [NSIndexPath indexPathForRow:0 inSection:1],
-                                                           [NSIndexPath indexPathForRow:0 inSection:2]
-                                                           ]];
-        self.rowCount += 1;
-        [self.mazeCollectionView insertItemsAtIndexPaths:@[
-                                                           [NSIndexPath indexPathForRow:2 inSection:0],
-                                                           [NSIndexPath indexPathForRow:2 inSection:1],
-                                                           [NSIndexPath indexPathForRow:2 inSection:2]                                                       ]];
-    }
+    [self movePlayerRight];
 }
 
 - (IBAction)moveUp:(UIButton *)sender {
-    if ([self.manager movePlayerOnY: -1]) {
-        self.sectionCount += 1;
-        [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:0]];
-        self.sectionCount -= 1;
-        [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:3]];
-    }
+    [self movePlayerUp];
 }
 
 - (IBAction)moveDown:(UIButton *)sender {
-    if ([self.manager movePlayerOnY: 1]) {
-        self.sectionCount += 1;
-        [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:3]];
-        self.sectionCount -= 1;
-        [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:0]];
-    }
+    [self movePlayerDown];
 }
 
 -(void)movePlayerLeft{
@@ -279,6 +248,7 @@
                                                            [NSIndexPath indexPathForRow:0 inSection:0],
                                                            [NSIndexPath indexPathForRow:0 inSection:1],
                                                            [NSIndexPath indexPathForRow:0 inSection:2]                                                       ]];
+        self.randomArray = [self randomize];
     }
 }
 
@@ -294,6 +264,7 @@
                                                            [NSIndexPath indexPathForRow:2 inSection:0],
                                                            [NSIndexPath indexPathForRow:2 inSection:1],
                                                            [NSIndexPath indexPathForRow:2 inSection:2]                                                       ]];
+        self.randomArray = [self randomize];
     }
 }
 
@@ -303,6 +274,7 @@
         [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:0]];
         self.sectionCount -= 1;
         [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:3]];
+        self.randomArray = [self randomize];
     }
 }
 
@@ -312,6 +284,7 @@
         [self.mazeCollectionView insertSections:[NSIndexSet indexSetWithIndex:3]];
         self.sectionCount -= 1;
         [self.mazeCollectionView deleteSections:[NSIndexSet indexSetWithIndex:0]];
+        self.randomArray = [self randomize];
     }
 }
 
