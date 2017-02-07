@@ -22,6 +22,7 @@
 		C84DD6DB1E47A61300591C75 /* TitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DD6DA1E47A61300591C75 /* TitleCell.m */; };
 		C84DD6DE1E47BDD400591C75 /* EndGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DD6DD1E47BDD400591C75 /* EndGameViewController.m */; };
 		C84DD6E11E48E1E500591C75 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DD6E01E48E1E500591C75 /* DetailViewController.m */; };
+		C84DD7111E4A616E00591C75 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C84DD7101E4A616E00591C75 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		C84DD6DD1E47BDD400591C75 /* EndGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndGameViewController.m; sourceTree = "<group>"; };
 		C84DD6DF1E48E1E500591C75 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		C84DD6E01E48E1E500591C75 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		C84DD7101E4A616E00591C75 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C84DD7111E4A616E00591C75 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +89,7 @@
 				896E5B6A1E4A354900C271ED /* MazeTile+CoreDataProperties.m */,
 				898A5DA71E455FC1006C2A81 /* FlickrMaze */,
 				898A5DA61E455FC1006C2A81 /* Products */,
+				C84DD70F1E4A616E00591C75 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,6 +140,14 @@
 				898A5DA91E455FC1006C2A81 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C84DD70F1E4A616E00591C75 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C84DD7101E4A616E00591C75 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

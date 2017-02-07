@@ -10,6 +10,8 @@
 #import "GameManager.h"
 #import "MazeTile+CoreDataClass.h"
 #import "MazeViewController.h"
+#import <AVFoundation/AVFoundation.h>
+
 
 @interface HomeViewController ()
 @property GameManager *manager;
@@ -22,6 +24,7 @@
 @property NSArray *themes;
 @property NSString *selectedTheme;
 @property UIView *backgroundView;
+@property AVAudioPlayer *audioPlayer;
 @end
 
 @implementation HomeViewController
@@ -93,6 +96,10 @@
         self.loadingImageView.alpha = 1;
     }];
     self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(advanceProgressBar) userInfo:nil repeats:YES];
+    NSDataAsset *sound = [[NSDataAsset alloc] initWithName:[NSString stringWithFormat:@"%@_sound",self.selectedTheme]];
+    NSError *error;
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
+    [self.audioPlayer play];
 }
 
 - (IBAction)loadButton:(id)sender {
