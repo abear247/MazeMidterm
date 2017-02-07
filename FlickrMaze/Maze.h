@@ -19,4 +19,6 @@
 @property NSInteger endY;
 - (NSArray *) makeMazeWith: (NSArray <MazeTile*> *)mazeTileArray;
 - (NSDictionary <NSNumber *, NSArray<NSNumber*>*>*)getDictionary;
+- (void) selectMazeWithID:(NSInteger) mazeID;
+- (void) selectThemeWithID:(NSInteger) themeID;
 @end

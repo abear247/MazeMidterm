@@ -11,14 +11,24 @@
 #import "GameManager.h"
 
 @interface Maze ()
-@property NSData *invalidSquareImage;
-@property NSDictionary <NSNumber *, NSArray<NSNumber*>*>*invalidSquareDictionary;
+@property (nonatomic) NSData *invalidSquareImage;
+@property (nonatomic) NSDictionary <NSNumber *, NSArray<NSNumber*>*>*invalidSquareDictionary;
+@property (nonatomic) GameManager *manager;
 @end
 
 @implementation Maze
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _manager = [GameManager sharedManager];
+    }
+    return self;
+}
+
 - (NSArray *) makeMazeWith: (NSArray <MazeTile*> *)mazeTileArray {
-    self.invalidSquareDictionary = [self createBasicInvalidSquares];
+    [self createBasicInvalidSquares];
     NSMutableArray *columnArray = [NSMutableArray new];
     int x = 0;
     for (int section = 0; section < 10; section+=1) {
@@ -45,34 +55,79 @@
     return columnArray;
 }
 
-- (NSDictionary <NSNumber*,NSArray*>*) createBasicInvalidSquares {
-    GameManager *manager = [GameManager sharedManager];
-    NSString *theme = manager.gameTheme;
-//    self.themes = @[@"Cats",@"Donald_Trump",@"Indoor",@"Outdoor"];
-    int selection = 0;
-    if ([theme isEqualToString:@"Cats"]) {
+- (void) createBasicInvalidSquares {
+    NSString *theme = self.manager.gameTheme;
+    int selection;
+    if ([theme isEqualToString:@"Donald_Trump"]) {
         selection = 0;
     }
-    else if ([theme isEqualToString:@"Donald_Trump"]) {
+    else if ([theme isEqualToString:@"Cats"]) {
         selection = 1;
     }
     else {
-        selection = 0;
+        selection = 1;
     }
-    
-    switch (selection) {
+    int mazeID = arc4random_uniform(3)+1;
+    self.manager.player.mazeID = mazeID;
+    self.manager.player.themeID = selection;
+    [self selectThemeWithID:selection];
+    [self selectMazeWithID:self.manager.player.mazeID];
+ }
+
+- (void) selectThemeWithID:(NSInteger) themeID {
+    switch (themeID) {
         case 0:
+        {
+            UIImage *goImage = [UIImage imageNamed:@"Trump_game_over"];
+            self.gameOverImage = UIImagePNGRepresentation(goImage);
+            UIImage *image = [UIImage imageNamed:@"Trump_wall"];
+            NSData *data = UIImagePNGRepresentation(image);
+            self.outOfBoundsImage = data;
+            self.invalidSquareImage = data;
+            self.manager.player.mazeID = 0;
+            return;
+        }
+        case 1:
         {   UIImage *goImage = [UIImage imageNamed:@"Game_over"];
             self.gameOverImage = UIImagePNGRepresentation(goImage);
             UIImage *image = [UIImage imageNamed:@"Lava"];
             NSData *data = UIImagePNGRepresentation(image);
             self.outOfBoundsImage = data;
             self.invalidSquareImage = data;
+            return;
+            break;
+        }
+            
+        default:
+            return;
+            break;
+    }
+}
+
+- (void) selectMazeWithID:(NSInteger)mazeID {
+    switch (mazeID) {
+        case 0: {
             self.startX = 0;
             self.startY = 9;
             self.endX = 9;
             self.endY = 0;
-            return @{@0: @[@4, @5, @6, @7, @8],
+            self.invalidSquareDictionary = @{@0: @[@0, @1, @2, @3, @4, @5, @6, @7, @8],
+                                             @1: @[@0, @1, @2, @3, @4, @5, @6, @7, @8, @9],
+                                             @2: @[@9],
+                                             @3: @[@1, @2, @3, @5, @6, @7],
+                                             @4: @[@2, @6],
+                                             @5: @[@4],
+                                             @6: @[@3, @4, @5],
+                                             @8:@[@2, @3, @4, @5, @6],
+                                             };
+            break;
+        }
+        case 1: {
+            self.startX = 0;
+            self.startY = 9;
+            self.endX = 9;
+            self.endY = 0;
+            self.invalidSquareDictionary =  @{@0: @[@4, @5, @6, @7, @8],
                      @1: @[@1, @2, @6],
                      @2: @[@1, @2, @3, @4, @6, @8],
                      @3: @[@4, @8],
@@ -83,36 +138,28 @@
                      @8: @[@1, @3, @4, @6 ,@8],
                      @9: @[@1, @6]
                      };
-        }
             break;
-        case 1:
-        {
-            UIImage *goImage = [UIImage imageNamed:@"Trump_game_over"];
-            self.gameOverImage = UIImagePNGRepresentation(goImage);
-            UIImage *image = [UIImage imageNamed:@"Trump_wall"];
-            NSData *data = UIImagePNGRepresentation(image);
-            self.outOfBoundsImage = data;
-            self.invalidSquareImage = data;
+        }
+        default: {
             self.startX = 0;
             self.startY = 9;
             self.endX = 9;
             self.endY = 0;
-            return  @{@0: @[@0, @1, @2, @3, @4, @5, @6, @7, @8],
-                                @1: @[@0, @1, @2, @3, @4, @5, @6, @7, @8, @9],
-                                @2: @[@9],
-                                @3: @[@1, @2, @3, @5, @6, @7],
-                                @4: @[@2, @6],
-                                @5: @[@4],
-                                @6: @[@3, @4, @5],
-                                @8:@[@2, @3, @4, @5, @6],
-                                };
-        }
-
-        default:
-            return nil;
+            self.invalidSquareDictionary = @{@0: @[@4, @5, @6, @7, @8],
+                     @1: @[@1, @2, @6],
+                     @2: @[@1, @2, @3, @4, @6, @8],
+                     @3: @[@4, @8],
+                     @4: @[@0, @2, @4, @6],
+                     @5: @[@2, @6, @7],
+                     @6: @[@1, @2, @4, @6, @7, @8],
+                     @7: @[@1, @4, @8],
+                     @8: @[@1, @3, @4, @6 ,@8],
+                     @9: @[@1, @6]
+                     };
             break;
+        }
     }
- }
+}
 
 -(NSDictionary<NSNumber *,NSArray<NSNumber *> *> *)getDictionary{
     return self.invalidSquareDictionary;
