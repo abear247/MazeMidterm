@@ -179,9 +179,9 @@
                                                      userInfo:nil
                                                       repeats:YES];
     
-//        NSDataAsset *sound = [[NSDataAsset alloc] initWithName:@"Jaws_ghost_move"];
-//        NSError *error;
-//        self.ghostPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
+        NSDataAsset *sound = [[NSDataAsset alloc] initWithName:@"Donald_Trump_ghost_start"];
+        NSError *error;
+        self.ghostPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
     
 }
 

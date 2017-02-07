@@ -64,8 +64,10 @@
     layout.itemSize = size;
     NSDataAsset *sound = [[NSDataAsset alloc] initWithName:@"Background_music"];
     NSError *error;
-//        self.backgroundPlayer.numberOfLoops = 0;
+       self.backgroundPlayer.numberOfLoops = 0;
     self.backgroundPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
+    if(error)
+        NSLog(@"error");
     [self.backgroundPlayer play];
 }
 
