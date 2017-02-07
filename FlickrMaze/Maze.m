@@ -46,9 +46,9 @@
                 NSData *data = UIImagePNGRepresentation(trophy);
                 tile.image = data;
             }
-                [rowArray addObject:tile];
+            [rowArray addObject:tile];
             x+=1;
-                
+            
         }
         [columnArray addObject:rowArray];
         [self.manager saveContext];
@@ -68,12 +68,12 @@
     else {
         selection = 1;
     }
-    int mazeID = arc4random_uniform(3)+1;
+    int mazeID = arc4random_uniform(5)+1;
     self.manager.player.mazeID = mazeID;
     self.manager.player.themeID = selection;
     [self selectThemeWithID:selection];
     [self selectMazeWithID:self.manager.player.mazeID];
- }
+}
 
 - (void) selectThemeWithID:(NSInteger) themeID {
     switch (themeID) {
@@ -129,17 +129,91 @@
             self.startY = 9;
             self.endX = 9;
             self.endY = 0;
-            self.invalidSquareDictionary =  @{@0: @[@4, @5, @6, @7, @8],
-                     @1: @[@1, @2, @6],
-                     @2: @[@1, @2, @3, @4, @6, @8],
-                     @3: @[@4, @8],
-                     @4: @[@0, @2, @4, @6],
-                     @5: @[@2, @6, @7],
-                     @6: @[@1, @2, @4, @6, @7, @8],
-                     @7: @[@1, @4, @8],
-                     @8: @[@1, @3, @4, @6 ,@8],
-                     @9: @[@1, @6]
-                     };
+            self.invalidSquareDictionary = @{@0: @[@4, @5, @6, @7, @8],
+                                             @1: @[@1, @2, @6],
+                                             @2: @[@1, @2, @3, @4, @6, @8],
+                                             @3: @[@4, @8],
+                                             @4: @[@0, @2, @4, @6],
+                                             @5: @[@2, @6, @7],
+                                             @6: @[@1, @2, @4, @6, @7, @8],
+                                             @7: @[@1, @4, @8],
+                                             @8: @[@1, @3, @4, @6 ,@8],
+                                             @9: @[@1, @6]
+                                             };
+            break;
+        }
+        case 2: {
+            self.startX = 4;
+            self.startY = 9;
+            self.endX = 0;
+            self.endY = 0;
+            self.invalidSquareDictionary = @{//@0: @[],
+                                             @1: @[@0, @1, @2, @4, @5, @6, @7, @8],
+                                             @2: @[@2, @4, @8],
+                                             @3: @[@1, @2, @4, @5, @6, @8],
+                                             @4: @[@8],
+                                             @5: @[@0, @1, @2, @3, @4, @5, @7, @8],
+                                             @6: @[@0, @5],
+                                             @7: @[@0, @2, @3, @4, @5, @7, @8],
+                                             @8: @[@0, @7],
+                                             @9: @[@0, @1, @2, @3, @5, @6, @7, @8, @9]
+                                             };
+            
+            break;
+        }
+        case 3: {
+            self.startX = 0;
+            self.startY = 9;
+            self.endX = 9;
+            self.endY = 0;
+            self.invalidSquareDictionary = @{@0: @[@3, @7],
+                                             @1: @[@1, @3, @5, @7, @9],
+                                             //@2: @[],
+                                             @3: @[@0, @1, @3, @5, @6, @7, @8, @9],
+                                             @4: @[@3],
+                                             @5: @[@1, @3, @5, @7, @9],
+                                             //@6: @[],
+                                             @7: @[@0, @1, @3, @4, @5, @7, @9],
+                                             @8: @[@7],
+                                             @9: @[@1, @2, @3, @4, @5, @6, @7, @8, @9]
+                                             };
+            break;
+        }
+        case 4: {
+            self.startX = 1;
+            self.startY = 8;
+            self.endX = 0;
+            self.endY = 0;
+            self.invalidSquareDictionary = @{@0: @[@3, @4, @5, @6, @7],
+                                             @1: @[@1, @3, @9],
+                                             @2: @[@1, @3, @6, @8, @9],
+                                             @3: @[@1, @3, @4, @6],
+                                             @4: @[@6],
+                                             @5: @[@1],
+                                             @6: @[@1, @2, @3, @4, @5, @6, @7, @9],
+                                             @7: @[@3, @7],
+                                             //@8: @[],
+                                             @9: @[@3, @7]
+                                             };
+            break;
+        }
+        case 5: {
+            self.startX = 9;
+            self.startY = 9;
+            self.endX = 4;
+            self.endY = 4;
+            self.invalidSquareDictionary = @{@0: @[@9],
+                                             @1: @[@1, @2, @4, @6, @7, @9],
+                                             @2: @[@1, @7, @9],
+                                             @3: @[@3, @5, @9],
+                                             @4: @[@1 ,@5, @7 ,@9],
+                                             @5: @[@3, @4, @5, @7, @9],
+                                             @6: @[@1, @9],
+                                             @7: @[@1, @2, @4, @5, @7, @9],
+                                             // @8: @[],
+                                             @9: @[@0, @1, @2 , @3, @4, @5, @6, @7]
+                                             };
+            
             break;
         }
         default: {
@@ -148,16 +222,16 @@
             self.endX = 9;
             self.endY = 0;
             self.invalidSquareDictionary = @{@0: @[@4, @5, @6, @7, @8],
-                     @1: @[@1, @2, @6],
-                     @2: @[@1, @2, @3, @4, @6, @8],
-                     @3: @[@4, @8],
-                     @4: @[@0, @2, @4, @6],
-                     @5: @[@2, @6, @7],
-                     @6: @[@1, @2, @4, @6, @7, @8],
-                     @7: @[@1, @4, @8],
-                     @8: @[@1, @3, @4, @6 ,@8],
-                     @9: @[@1, @6]
-                     };
+                                             @1: @[@1, @2, @6],
+                                             @2: @[@1, @2, @3, @4, @6, @8],
+                                             @3: @[@4, @8],
+                                             @4: @[@0, @2, @4, @6],
+                                             @5: @[@2, @6, @7],
+                                             @6: @[@1, @2, @4, @6, @7, @8],
+                                             @7: @[@1, @4, @8],
+                                             @8: @[@1, @3, @4, @6 ,@8],
+                                             @9: @[@1, @6]
+                                             };
             break;
         }
     }
