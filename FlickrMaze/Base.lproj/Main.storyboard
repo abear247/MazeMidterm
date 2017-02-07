@@ -160,26 +160,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Cy-F2-CAx">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Cy-F2-CAx">
                                 <rect key="frame" x="10" y="457" width="355" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleCell" id="fGk-Xm-Kyf" customClass="TitleCell">
-                                        <rect key="frame" x="0.0" y="28" width="355" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleCell" rowHeight="52" id="fGk-Xm-Kyf" customClass="TitleCell">
+                                        <rect key="frame" x="0.0" y="28" width="355" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fGk-Xm-Kyf" id="HoJ-qK-BZs">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="51"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iu5-0K-CFX">
-                                                    <rect key="frame" x="156" y="11" width="42" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iu5-0K-CFX">
+                                                    <rect key="frame" x="8" y="16" width="339" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="339" id="YPz-cb-0eg"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="iu5-0K-CFX" firstAttribute="centerY" secondItem="HoJ-qK-BZs" secondAttribute="centerY" id="5sz-Xu-DKR"/>
+                                                <constraint firstItem="iu5-0K-CFX" firstAttribute="centerY" secondItem="HoJ-qK-BZs" secondAttribute="centerY" constant="1" id="5sz-Xu-DKR"/>
                                                 <constraint firstItem="iu5-0K-CFX" firstAttribute="centerX" secondItem="HoJ-qK-BZs" secondAttribute="centerX" id="7tB-6E-X2e"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -377,7 +380,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KDm-x2-NzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="949.60000000000002" y="883.80809595202402"/>
+            <point key="canvasLocation" x="1076" y="884"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Bvo-Lm-Ym0">
@@ -435,7 +438,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I64-M4-kKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1784.8" y="883.80809595202402"/>
+            <point key="canvasLocation" x="1889" y="884"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="Fmu-ZU-AQu">
@@ -514,7 +517,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mKH-Cm-8gP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3188" y="123.68815592203899"/>
+            <point key="canvasLocation" x="2863" y="137"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jl2-T7-rGG">
@@ -539,6 +542,6 @@
         <image name="Scroll" width="435" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="i9J-ZR-GxD"/>
+        <segue reference="hyC-jK-jec"/>
     </inferredMetricsTieBreakers>
 </document>
