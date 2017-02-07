@@ -14,8 +14,6 @@
 @property (nonatomic) NSData *invalidSquareImage;
 @property (nonatomic) NSDictionary <NSNumber *, NSArray<NSNumber*>*>*invalidSquareDictionary;
 @property (nonatomic) GameManager *manager;
-@property NSDictionary *sounds;
-@property NSArray *themeSounds;
 @end
 
 @implementation Maze
@@ -88,7 +86,7 @@
             self.outOfBoundsImage = data;
             self.invalidSquareImage = data;
             self.manager.player.mazeID = 0;
-            [self makeSoundDictionary:@[@"China",@"Congratulations",@"Suffer",@"Wrong"]];
+            self.sounds =  @[@"Wrong",@"China",@"Congratulations",@"Suffer"];
             return;
         }
         case 1:

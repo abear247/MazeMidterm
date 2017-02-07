@@ -9,6 +9,7 @@
 #import "GameManager.h"
 #import "Maze.h"
 #import "MazeTile+CoreDataClass.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface GameManager ()
 
@@ -16,7 +17,8 @@
 @property (nonatomic) NSArray <NSArray <MazeTile*>*> *mazeSectionArray;
 @property (nonatomic) Maze *maze;
 @property (nonatomic) NSTimer *ghostTimer;
-@property (nonatomic) NSDictionary *sounds;
+@property (nonatomic) NSArray *sounds;
+@property (nonatomic) AVAudioPlayer *audioPlayer;
 @end
 
 @implementation GameManager
@@ -100,6 +102,7 @@
 
 #pragma mark Load Game methods
 - (void) loadGame {
+   
     NSManagedObjectContext *context = [self getContext];
     NSError *playerError;
     NSFetchRequest *playerRequest = [Player fetchRequest];
@@ -141,6 +144,7 @@
                                                      selector:@selector(moveGhost)
                                                      userInfo:nil
                                                       repeats:YES];
+    self.sounds = self.maze.sounds;
 }
 
 #pragma mark Maze Making Methods
@@ -153,6 +157,7 @@
 
 #pragma mark Game Control Methods
 - (void) startGame {
+    self.sounds = self.maze.sounds;
     self.player.moveCount = 0;
     self.player.currentX = self.maze.startX;
     self.player.currentY = self.maze.startY;
@@ -201,6 +206,9 @@
 }
 
 - (BOOL) movePlayerOnX: (NSInteger) amount {
+    NSDataAsset *sound = [[NSDataAsset alloc] initWithName:self.sounds.firstObject];
+    NSError *error;
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
     if (self.player.currentX + amount >= 0 && self.player.currentX + amount <= 9) {
         NSArray *section = self.mazeSectionArray[self.player.currentY];
         MazeTile *newTile = section[self.player.currentX+amount];
@@ -212,11 +220,15 @@
         NSLog(@"Lava!");
         return NO;
     }
+    [self.audioPlayer play];
     NSLog(@"Out of bounds!");
     return NO;
 }
 
 - (BOOL) movePlayerOnY: (NSInteger) amount {
+    NSDataAsset *sound = [[NSDataAsset alloc] initWithName:self.sounds.firstObject];
+    NSError *error;
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
     if (self.player.currentY + amount >= 0 && self.player.currentY + amount <= 9) {
         NSArray *section = self.mazeSectionArray[self.player.currentY+amount];
         MazeTile *newTile = section[self.player.currentX];
@@ -228,6 +240,7 @@
         NSLog(@"Lava!");
         return NO;
     }
+    [self.audioPlayer play];
     NSLog(@"Out of bounds!");
     return NO;
 }
@@ -296,16 +309,9 @@
     return self.maze.gameOverImage;
 }
 
--(void)makeSoundDictionary{
-    NSArray *sounds = @[@"China",@"Congratulations",@"Maga",@"Suffer",@"Wrong"];
-    NSMutableDictionary *dictonary = [NSMutableDictionary new];
-    
-    for(NSString *soundName in sounds){
-        NSDataAsset *sound = [[NSDataAsset alloc] initWithName:soundName];
-        [dictonary setObject:sound forKey:soundName];
-    }
-    self.sounds =  [dictonary copy];
-}
+
+
+
 
 
 @end
