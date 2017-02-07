@@ -21,14 +21,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.manager = [GameManager sharedManager];
     // Do any additional setup after loading the view.
    // GameManager *manager = [GameManager sharedManager];
     self.view.backgroundColor = [UIColor blackColor];
-    if(self.won)
+    if(self.won){
+        NSDataAsset *sound = [[NSDataAsset alloc] initWithName:[NSString stringWithFormat:@"%@_game_over_victory",self.manager.gameTheme]];
+        NSError *error;
+        self.audioPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
+        [self.audioPlayer play];
         self.winningImage.image = [UIImage imageNamed:@"Trophy"];
+    }
     else{
-        GameManager *manager = [GameManager sharedManager];
-        NSData *data = [manager getGameOverImage];
+        NSDataAsset *sound = [[NSDataAsset alloc] initWithName:[NSString stringWithFormat:@"%@_game_over_defeat",self.manager.gameTheme]];
+        NSError *error;
+        self.audioPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
+        [self.audioPlayer play];
+        NSData *data = [self.manager getGameOverImage];
         self.winningImage.image = [UIImage imageWithData:data];
         
     }

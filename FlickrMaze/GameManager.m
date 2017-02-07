@@ -19,6 +19,7 @@
 @property (nonatomic) NSTimer *ghostTimer;
 @property (nonatomic) NSArray *sounds;
 @property (nonatomic) AVAudioPlayer *audioPlayer;
+@property (nonatomic) AVAudioPlayer *ghostPlayer;
 @end
 
 @implementation GameManager
@@ -177,9 +178,15 @@
                                                      selector:@selector(moveGhost)
                                                      userInfo:nil
                                                       repeats:YES];
+    
+    NSDataAsset *sound = [[NSDataAsset alloc] initWithName:@"Jaws_ghost_move"];
+    NSError *error;
+    self.ghostPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
+    
 }
 
 - (void) moveGhost {
+    [self.ghostPlayer play];
     int xDifference = self.player.currentX - self.player.ghostX;
     int yDifference = self.player.currentY - self.player.ghostY;
     if (xDifference > 0) {

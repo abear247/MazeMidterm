@@ -14,6 +14,7 @@
 #import "MapViewController.h"
 #import "DetailViewController.h"
 #import "EndGameViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface MazeViewController ()
 
