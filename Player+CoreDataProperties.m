@@ -19,6 +19,7 @@
 @dynamic currentY;
 @dynamic ghostX;
 @dynamic ghostY;
-@dynamic tileSet;
+@dynamic themeID;
+@dynamic mazeID;
 
 @end

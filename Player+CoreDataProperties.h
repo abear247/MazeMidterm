@@ -20,7 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int16_t currentY;
 @property (nonatomic) int16_t ghostX;
 @property (nonatomic) int16_t ghostY;
-@property (nonatomic) int16_t tileSet;
+@property (nonatomic) int16_t themeID;
+@property (nonatomic) int16_t mazeID;
 
 @end
 

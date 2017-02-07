@@ -121,23 +121,32 @@
     }
     self.player = playerResult[0];
     NSFetchRequest *request = [MazeTile fetchRequest];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"xposition" ascending:YES];
+    [request setSortDescriptors:@[sort]];
     NSError *error = nil;
     NSArray *results = [context executeFetchRequest:request error:&error];
     if (error) {
         NSLog(@"error: %@", error.localizedDescription);
         abort();
     }
-    NSMutableArray *sectionArray = [NSMutableArray new];
-    int x = 0;
-    for (int i = 0; i < 10; i+=1) {
-        NSMutableArray *rowArray = [NSMutableArray new];
-        for (int j = 0; j < 10; j+=1) {
-            [rowArray addObject:results[x]];
-            x+=1;
+    NSArray *sectionArray = @[ [NSMutableArray new],
+                               [NSMutableArray new],
+                               [NSMutableArray new],
+                               [NSMutableArray new],
+                               [NSMutableArray new],
+                               [NSMutableArray new],
+                               [NSMutableArray new],
+                               [NSMutableArray new],
+                               [NSMutableArray new],
+                               [NSMutableArray new]];
+    for (MazeTile *tile in results) {
+        if (tile.yPosition) {
+            [sectionArray[tile.yPosition] addObject:tile];
         }
-        [sectionArray addObject:rowArray];
     }
-
+    self.maze = [Maze new];
+    [self.maze selectThemeWithID:self.player.themeID];
+    [self.maze selectMazeWithID:self.player.mazeID];
 }
 
 
