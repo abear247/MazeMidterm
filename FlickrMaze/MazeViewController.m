@@ -105,6 +105,7 @@
 }
 
 -(NSArray*)randomize{
+    [self.manager saveContext];
     NSMutableArray *temp = [NSMutableArray new];
     int i = 0;
     while(i<=3){
@@ -185,7 +186,6 @@
 }
 
 -(void)movePlayer:(long)tag{
-    [self.manager saveContext];
     switch (tag) {
         case 1:{
             [self movePlayerUp];
