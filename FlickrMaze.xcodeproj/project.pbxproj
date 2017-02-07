@@ -29,10 +29,10 @@
 		896E5B681E4A354900C271ED /* MazeTile+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MazeTile+CoreDataClass.m"; sourceTree = "<group>"; };
 		896E5B691E4A354900C271ED /* MazeTile+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MazeTile+CoreDataProperties.h"; sourceTree = "<group>"; };
 		896E5B6A1E4A354900C271ED /* MazeTile+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MazeTile+CoreDataProperties.m"; sourceTree = "<group>"; };
-		896E5B791E4A3CA600C271ED /* Player+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Player+CoreDataClass.h"; sourceTree = "<group>"; };
-		896E5B7A1E4A3CA600C271ED /* Player+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Player+CoreDataClass.m"; sourceTree = "<group>"; };
-		896E5B7B1E4A3CA600C271ED /* Player+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Player+CoreDataProperties.h"; sourceTree = "<group>"; };
-		896E5B7C1E4A3CA600C271ED /* Player+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Player+CoreDataProperties.m"; sourceTree = "<group>"; };
+		896E5B7F1E4A607F00C271ED /* Player+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Player+CoreDataClass.h"; sourceTree = "<group>"; };
+		896E5B801E4A607F00C271ED /* Player+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Player+CoreDataClass.m"; sourceTree = "<group>"; };
+		896E5B811E4A607F00C271ED /* Player+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Player+CoreDataProperties.h"; sourceTree = "<group>"; };
+		896E5B821E4A607F00C271ED /* Player+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Player+CoreDataProperties.m"; sourceTree = "<group>"; };
 		898A5DA51E455FC1006C2A81 /* FlickrMaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrMaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		898A5DA91E455FC1006C2A81 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		898A5DAB1E455FC1006C2A81 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -76,10 +76,10 @@
 		898A5D9C1E455FC1006C2A81 = {
 			isa = PBXGroup;
 			children = (
-				896E5B791E4A3CA600C271ED /* Player+CoreDataClass.h */,
-				896E5B7A1E4A3CA600C271ED /* Player+CoreDataClass.m */,
-				896E5B7B1E4A3CA600C271ED /* Player+CoreDataProperties.h */,
-				896E5B7C1E4A3CA600C271ED /* Player+CoreDataProperties.m */,
+				896E5B7F1E4A607F00C271ED /* Player+CoreDataClass.h */,
+				896E5B801E4A607F00C271ED /* Player+CoreDataClass.m */,
+				896E5B811E4A607F00C271ED /* Player+CoreDataProperties.h */,
+				896E5B821E4A607F00C271ED /* Player+CoreDataProperties.m */,
 				896E5B671E4A354900C271ED /* MazeTile+CoreDataClass.h */,
 				896E5B681E4A354900C271ED /* MazeTile+CoreDataClass.m */,
 				896E5B691E4A354900C271ED /* MazeTile+CoreDataProperties.h */,

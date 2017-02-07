@@ -148,6 +148,7 @@
 - (void) generateMaze {
     NSManagedObjectContext *context = [self getContext];
     self.player = [[Player alloc] initWithContext:context];
+    self.player.moveCount = 0;
     self.maze = [Maze new];
     self.mazeSectionArray = [self.maze makeMazeWith:self.mazeTileArray];
 }
