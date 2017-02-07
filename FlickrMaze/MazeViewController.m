@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *targetMovesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *playerImage;
+@property (nonatomic) AVAudioPlayer *backgroundPlayer;
 @property (nonatomic) NSMutableArray *titles;
 @property (nonatomic) NSTimer *timer;
 @property GameManager *manager;
@@ -61,6 +62,15 @@
     CGFloat width = self.mazeCollectionView.frame.size.width/3;
     CGSize size = CGSizeMake(width, width);
     layout.itemSize = size;
+    NSDataAsset *sound = [[NSDataAsset alloc] initWithName:@"Background_music"];
+    NSError *error;
+//        self.backgroundPlayer.numberOfLoops = 0;
+    self.backgroundPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
+    [self.backgroundPlayer play];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [self.backgroundPlayer stop];
 }
 
 #pragma mark Collection View Data Source Methods
