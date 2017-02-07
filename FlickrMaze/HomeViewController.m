@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.manager = [GameManager sharedManager];
-    self.themes = @[@"Default",@"Jaws",@"Donald_Trump"];
+    self.themes = @[@"Default",@"Cats",@"Jaws",@"Donald_Trump"];
     self.themePicker.delegate = self;
     self.themePicker.dataSource = self;
 }
@@ -38,6 +38,7 @@
     self.startButton.hidden = NO;
     self.startButton.userInteractionEnabled = YES;
     self.progressBar.progress = 0.0;
+    self.loadingImageView.hidden = YES;
     
 }
 
@@ -82,8 +83,15 @@
     [dataTask resume];
     self.startButton.hidden = YES;
     self.startButton.userInteractionEnabled = NO;
-    NSString *theme = self.selectedTheme;
-    self.loadingImageView.image = [UIImage imageNamed:self.selectedTheme];
+    self.loadingImageView.hidden = NO;
+    if(!self.selectedTheme)
+        self.loadingImageView.image = [UIImage imageNamed:@"Default"];
+    else
+        self.loadingImageView.image = [UIImage imageNamed:self.selectedTheme];
+    [UIImageView animateWithDuration:10.0 animations:^(void) {
+        self.loadingImageView.alpha = 0;
+        self.loadingImageView.alpha = 1;
+    }];
     self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(advanceProgressBar) userInfo:nil repeats:YES];
 }
 
@@ -96,7 +104,6 @@
 
 - (void) advanceProgressBar {
     self.progressBar.progress += 0.2 * (1-self.progressBar.progress);
-    self.loadingImageView.alpha = self.progressBar.progress;
 }
 
 
