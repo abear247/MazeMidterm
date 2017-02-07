@@ -206,9 +206,9 @@
 }
 
 - (BOOL) movePlayerOnX: (NSInteger) amount {
-    NSDataAsset *sound = [[NSDataAsset alloc] initWithName:self.sounds.firstObject];
-    NSError *error;
-    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
+//    NSDataAsset *sound = [[NSDataAsset alloc] initWithName:self.sounds.firstObject];
+//    NSError *error;
+//    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
     if (self.player.currentX + amount >= 0 && self.player.currentX + amount <= 9) {
         NSArray *section = self.mazeSectionArray[self.player.currentY];
         MazeTile *newTile = section[self.player.currentX+amount];
@@ -226,9 +226,9 @@
 }
 
 - (BOOL) movePlayerOnY: (NSInteger) amount {
-    NSDataAsset *sound = [[NSDataAsset alloc] initWithName:self.sounds.firstObject];
-    NSError *error;
-    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
+//    NSDataAsset *sound = [[NSDataAsset alloc] initWithName:self.sounds.firstObject];
+//    NSError *error;
+//    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
     if (self.player.currentY + amount >= 0 && self.player.currentY + amount <= 9) {
         NSArray *section = self.mazeSectionArray[self.player.currentY+amount];
         MazeTile *newTile = section[self.player.currentX];

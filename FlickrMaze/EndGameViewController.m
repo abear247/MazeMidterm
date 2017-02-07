@@ -9,10 +9,12 @@
 #import "EndGameViewController.h"
 #import "HomeViewController.h"
 #import "GameManager.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface EndGameViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *winningImage;
 @property GameManager *manager;
+@property AVAudioPlayer *audioPlayer;
 @end
 
 @implementation EndGameViewController
@@ -28,6 +30,7 @@
         GameManager *manager = [GameManager sharedManager];
         NSData *data = [manager getGameOverImage];
         self.winningImage.image = [UIImage imageWithData:data];
+        
     }
 }
 
