@@ -185,6 +185,7 @@
 }
 
 -(void)movePlayer:(long)tag{
+    [self.manager saveContext];
     switch (tag) {
         case 1:{
             [self movePlayerUp];

@@ -45,7 +45,6 @@
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    [[GameManager sharedManager] saveContext];
 }
 
 

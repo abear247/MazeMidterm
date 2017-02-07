@@ -83,7 +83,6 @@
     for (Player *player in playerArray) {
         [context deleteObject:player];
     }
-    self.player = [NSEntityDescription insertNewObjectForEntityForName:@"Player" inManagedObjectContext:context];
 }
 
 #pragma mark - Core Data Saving support
@@ -109,6 +108,7 @@
         return;
     }
     self.player = playerResult[0];
+    NSLog (@"xPosition: %hd  yPosition :%hd  themeID: %hd  mazeID: %hd", self.player.currentX, self.player.currentY, self.player.themeID, self.player.mazeID);
     self.maze = [Maze new];
     [self.maze selectThemeWithID:self.player.themeID];
     [self.maze selectMazeWithID:self.player.mazeID];
@@ -132,15 +132,17 @@
                                [NSMutableArray new],
                                [NSMutableArray new]];
     for (MazeTile *tile in results) {
-        if (tile.yPosition) {
-            NSLog(@"%hd", tile.yPosition);
+        if (tile.yPosition || tile.yPosition == 0) {
             [sectionArray[tile.yPosition] addObject:tile];
         }
     }
     self.mazeSectionArray = sectionArray;
-//    [self makeSoundDictionary];
+    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
+                                                       target:self
+                                                     selector:@selector(moveGhost)
+                                                     userInfo:nil
+                                                      repeats:YES];
 }
-
 
 #pragma mark Maze Making Methods
 - (void) generateMaze {
@@ -194,6 +196,7 @@
         [self endGame];
         return;
     }
+    [self saveContext];
     NSLog(@"\nGhost X: %hd\n Ghost Y: %hd", self.player.ghostX, self.player.ghostY);
 }
 
