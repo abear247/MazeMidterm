@@ -39,7 +39,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.manager = [GameManager sharedManager];
-    [self.manager generateMaze];
     self.rowCount = 3;
     self.sectionCount = 3;
     self.movesLabel.text = @"Moves: ";
@@ -50,10 +49,9 @@
     [notificationCenter addObserver:self selector:@selector(playerLoses) name:@"playerLoses" object:nil];
     [notificationCenter addObserver:self selector:@selector(playerWins) name:@"playerWins" object:nil];
     [notificationCenter addObserver:self selector:@selector(startGame) name:@"startGame" object:nil];
- 
     self.playerImage.image = [UIImage imageNamed:@"Steve"];
     [self.mazeCollectionView addSubview:self.playerImage];
-    [self startGame];
+    [self.mazeCollectionView reloadData];
     self.randomArray = [self randomize];
 }
 

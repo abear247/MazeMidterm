@@ -110,6 +110,33 @@
     }
 }
 
+#pragma mark Load Game methods
+- (void) loadGame {
+    NSManagedObjectContext *context = [self getContext];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"MazeTile"];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"yPosition" ascending:YES];
+    NSSortDescriptor *sort2 = [NSSortDescriptor sortDescriptorWithKey:@"xPosition" ascending:YES];
+                               [request setSortDescriptors:@[sort, sort2]];
+    NSError *error = nil;
+    NSArray *results = [context executeFetchRequest:request error:&error];
+    if (error) {
+        NSLog(@"error: %@", error.localizedDescription);
+        abort();
+    }
+    NSMutableArray *sectionArray = [NSMutableArray new];
+    int x = 0;
+    for (int i = 0; i < 10; i+=1) {
+        NSMutableArray *rowArray = [NSMutableArray new];
+        for (int j = 0; j < 10; j+=1) {
+            [rowArray addObject:results[x]];
+            x+=1;
+        }
+        [sectionArray addObject:rowArray];
+    }
+
+}
+
+
 #pragma mark Maze Making Methods
 - (void) generateMaze {
     self.mazeSectionArray = [self.maze makeMazeWith:self.mazeTileArray];
