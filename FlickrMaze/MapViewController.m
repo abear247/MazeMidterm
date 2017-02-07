@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import "Maze.h"
 
 @interface MapViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *mapCollectionView;
@@ -61,9 +62,15 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [self.mapCollectionView dequeueReusableCellWithReuseIdentifier:@"mapCell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor greenColor];
+    cell.backgroundColor = [UIColor brownColor];
     if ([self.invalidSquareDictionary[@(indexPath.section)] containsObject:@(indexPath.row)]) {
-        cell.backgroundColor = [UIColor redColor];
+        cell.backgroundColor = [UIColor blueColor];
+    }
+    if (self.currentX == indexPath.row && self.currentY == indexPath.section) {
+        cell.backgroundColor = [UIColor greenColor];
+    }
+    if (self.endX == indexPath.row && self.endY == indexPath.section) {
+        cell.backgroundColor = [UIColor yellowColor];
     }
     return cell;
 }

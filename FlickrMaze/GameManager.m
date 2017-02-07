@@ -316,9 +316,12 @@
     return self.maze.gameOverImage;
 }
 
+- (NSInteger) getEndX {
+    return self.maze.endX;
+}
 
-
-
-
+- (NSInteger) getEndY {
+    return self.maze.endY;
+}
 
 @end

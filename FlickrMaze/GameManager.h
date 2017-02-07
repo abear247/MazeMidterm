@@ -32,5 +32,7 @@
 - (NSData *) getGameOverImage;
 - (void) loadGame;
 +(id)sharedManager;
+- (NSInteger) getEndX;
+- (NSInteger) getEndY;
 
 @end

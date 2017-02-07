@@ -325,6 +325,10 @@
     }
     if ([segue.identifier isEqualToString:@"MapViewController"]) {
         MapViewController *mvc = segue.destinationViewController;
+        mvc.currentX = self.manager.player.currentX;
+        mvc.currentY = self.manager.player.currentY;
+        mvc.endX = [self.manager getEndX];
+        mvc.endY = [self.manager getEndY];
         mvc.invalidSquareDictionary = [self.manager getDictionary];
     }
 }
