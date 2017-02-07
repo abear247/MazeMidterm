@@ -19,7 +19,8 @@
 @dynamic currentY;
 @dynamic ghostX;
 @dynamic ghostY;
-@dynamic themeID;
 @dynamic mazeID;
+@dynamic themeID;
+@dynamic moveCount;
 
 @end

@@ -28,7 +28,6 @@
 @property (nonatomic) NSMutableArray *titles;
 @property (nonatomic) NSTimer *timer;
 @property GameManager *manager;
-@property int moves;
 @property long tableInt;
 @property NSArray *randomArray;
 
@@ -41,9 +40,6 @@
     self.manager = [GameManager sharedManager];
     self.rowCount = 3;
     self.sectionCount = 3;
-    self.movesLabel.text = @"Moves: 0";
-    self.targetMovesLabel.text = @"10";
-    self.moves = 0;
     self.tableInt = 0;
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(playerLoses) name:@"playerLoses" object:nil];
@@ -58,6 +54,8 @@
 -(void)viewDidAppear:(BOOL)animated{
     [self.tableView reloadData];
     self.tableInt = 0;
+    self.movesLabel.text = [NSString stringWithFormat:@"Moves: %hd", self.manager.player.moveCount];
+    self.targetMovesLabel.text = @"10";
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mazeCollectionView.collectionViewLayout;
     CGFloat width = self.mazeCollectionView.frame.size.width/3;
     CGSize size = CGSizeMake(width, width);
@@ -72,9 +70,6 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.rowCount;
-}
-- (IBAction)saveButton:(UIButton *)sender {
-    [self.manager saveContext];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -178,14 +173,13 @@
     TitleCell *cell = (TitleCell *)[tableView cellForRowAtIndexPath:indexPath];
     [self movePlayer:cell.tag];
     [self.tableView reloadData];
-    self.moves++;
+    self.manager.player.moveCount += 1;
     self.tableInt = 0;
-    self.movesLabel.text = [NSString stringWithFormat:@"Moves: %d",self.moves];
-    
+    self.movesLabel.text = [NSString stringWithFormat:@"Moves: %d",self.manager.player.moveCount];
+    [self.manager saveContext];
 }
 
 -(void)movePlayer:(long)tag{
-    [self.manager saveContext];
     switch (tag) {
         case 1:{
             [self movePlayerUp];
