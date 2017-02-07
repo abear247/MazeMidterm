@@ -12,6 +12,7 @@
 @interface Maze : NSObject
 
 @property NSData *outOfBoundsImage;
+@property NSData *gameOverImage;
 @property NSInteger startX;
 @property NSInteger startY;
 @property NSInteger endX;

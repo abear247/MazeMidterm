@@ -28,6 +28,7 @@
 - (MazeTile *) getMazeTileAtIndexPath: (NSIndexPath*) indexPath;
 -(NSDictionary <NSNumber *, NSArray<NSNumber*>*>*)getDictionary;
 - (NSData *) getOutOfBoundsImage;
+- (NSData *) getGameOverImage;
 +(id)sharedManager;
 
 @end

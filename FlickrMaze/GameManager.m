@@ -251,4 +251,9 @@
     return self.maze.outOfBoundsImage;
 }
 
+- (NSData *) getGameOverImage {
+    return self.maze.gameOverImage;
+}
+
+
 @end

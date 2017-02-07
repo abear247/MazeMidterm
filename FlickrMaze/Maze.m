@@ -48,7 +48,8 @@
     int selection = arc4random_uniform(2);
     switch (selection) {
         case 0:
-        {
+        {   UIImage *goImage = [UIImage imageNamed:@"Game_over"];
+            self.gameOverImage = UIImagePNGRepresentation(goImage);
             UIImage *image = [UIImage imageNamed:@"Lava"];
             NSData *data = UIImagePNGRepresentation(image);
             self.outOfBoundsImage = data;
@@ -72,7 +73,9 @@
             break;
         case 1:
         {
-            UIImage *image = [UIImage imageNamed:@"Lava"];
+            UIImage *goImage = [UIImage imageNamed:@"Trump_game_over"];
+            self.gameOverImage = UIImagePNGRepresentation(goImage);
+            UIImage *image = [UIImage imageNamed:@"Trump_wall"];
             NSData *data = UIImagePNGRepresentation(image);
             self.outOfBoundsImage = data;
             self.invalidSquareImage = data;

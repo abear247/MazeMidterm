@@ -25,7 +25,9 @@
     if(self.won)
         self.winningImage.image = [UIImage imageNamed:@"Trophy"];
     else{
-        self.winningImage.image = [UIImage imageNamed:@"Game_over"];
+        GameManager *manager = [GameManager sharedManager];
+        NSData *data = [manager getGameOverImage];
+        self.winningImage.image = [UIImage imageWithData:data];
     }
 }
 
