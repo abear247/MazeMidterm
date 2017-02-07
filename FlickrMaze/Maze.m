@@ -96,13 +96,16 @@
             NSData *data = UIImagePNGRepresentation(image);
             self.outOfBoundsImage = data;
             self.invalidSquareImage = data;
+             self.sounds =  @[@"Wrong",@"China",@"Suffer",@"Congratulations"];
             return;
             break;
         }
             
-        default:
+        default:{
+            self.sounds =  @[@"Wrong",@"China",@"Suffer",@"Congratulations"];
             return;
             break;
+        }
     }
 }
 
