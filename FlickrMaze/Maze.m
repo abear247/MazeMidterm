@@ -161,7 +161,6 @@
                                              @8: @[@0, @7],
                                              @9: @[@0, @1, @2, @3, @5, @6, @7, @8, @9]
                                              };
-            
             break;
         }
         case 3: {
@@ -183,9 +182,9 @@
             break;
         }
         case 4: {
-            self.startX = 1;
+            self.startX = 5;
             self.startY = 8;
-            self.endX = 0;
+            self.endX = 9;
             self.endY = 0;
             self.invalidSquareDictionary = @{@0: @[@3, @4, @5, @6, @7],
                                              @1: @[@1, @3, @9],
