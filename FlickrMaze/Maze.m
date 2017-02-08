@@ -70,7 +70,7 @@
     else {
         selection = 5;
     }
-    int mazeID = arc4random_uniform(5)+1;
+    int mazeID = 1;//arc4random_uniform(5)+1;
     self.manager.player.mazeID = mazeID;
     self.manager.player.themeID = selection;
     [self selectThemeWithID:selection];

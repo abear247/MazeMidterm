@@ -26,7 +26,7 @@
     self.manager = [GameManager sharedManager];
     self.view.backgroundColor = [UIColor blackColor];
     self.scoreLabel.text = [NSString stringWithFormat:@"Final score: %hd", self.manager.playerScore.score];
-    if(self.manager.player.gameWon){
+    if(self.manager.playerScore.playerWon){
         NSDataAsset *sound = [[NSDataAsset alloc] initWithName:[NSString stringWithFormat:@"%@_game_over_victory",self.manager.gameTheme]];
         NSError *error;
         self.audioPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
