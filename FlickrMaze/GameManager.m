@@ -194,11 +194,12 @@
         NSDataAsset *sound = [[NSDataAsset alloc] initWithName:@"Donald_Trump_ghost_start"];
         NSError *error;
         self.ghostPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
+    [self.ghostPlayer play];
     
 }
 
 - (void) moveGhost {
-    [self.ghostPlayer play];
+    
     int xDifference = self.player.currentX - self.player.ghostX;
     int yDifference = self.player.currentY - self.player.ghostY;
     if (xDifference > 0) {
@@ -268,9 +269,10 @@
 
 - (NSURL*) generateURL: (NSString*) tagEntry {
     [self clearTestData];
-    NSMutableString *urlString = [[NSMutableString alloc] initWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=4ecacf0cd6441400e02e57ec12f0bb68&has_geo&tags="];
-    NSString *tagWithoutWhiteSpace = [tagEntry stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [urlString appendString:tagWithoutWhiteSpace];
+//    NSMutableString *urlString = [[NSMutableString alloc] initWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=4ecacf0cd6441400e02e57ec12f0bb68&has_geo&tags="];
+    NSMutableString *urlString = [[NSMutableString alloc] initWithString:@"https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&format=json&nojsoncallback=1&api_key=4ecacf0cd6441400e02e57ec12f0bb68"];
+//    NSString *tagWithoutWhiteSpace = [tagEntry stringByReplacingOccurrencesOfString:@" " withString:@""];
+//    [urlString appendString:tagWithoutWhiteSpace];
     return [NSURL URLWithString:urlString];
 }
 
@@ -281,7 +283,8 @@
     NSManagedObjectContext *context = [self getContext];
     MazeTile *tile = [[MazeTile alloc] initWithContext:context];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://farm%@.staticflickr.com/%@/%@_%@.jpg", photo[@"farm"], photo[@"server"], photo[@"id"], photo[@"secret"]]];
-    tile.image = [NSData dataWithContentsOfURL:url];
+    if([NSData dataWithContentsOfURL:url])
+        tile.image = [NSData dataWithContentsOfURL:url];
     tile.title = photo[@"title"];
     tile.valid = YES;
     [self.mazeTileArray addObject:tile];

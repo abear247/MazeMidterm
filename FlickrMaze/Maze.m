@@ -34,6 +34,8 @@
     for (int section = 0; section < 10; section+=1) {
         NSMutableArray *rowArray = [NSMutableArray new];
         for (int row = 0; row <10; row+=1) {
+            if(x>98)
+                x = 0;
             MazeTile *tile = mazeTileArray[x];
             tile.xPosition = row;
             tile.yPosition = section;

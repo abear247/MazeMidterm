@@ -159,20 +159,20 @@
     self.selectedTheme = self.themes[row];
 }
 
-- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
-{
-    UILabel* tView = (UILabel*)view;
-    if (!tView)
-    {
-        tView = [[UILabel alloc] init];
-        [tView setFont:[UIFont fontWithName:@"Helvetica" size:14]];
-        tView.numberOfLines=3;
-    }
-    // Fill the label text here
-    tView.textColor = [UIColor whiteColor];
-    tView.shadowColor = [UIColor blackColor];
-    tView.shadowOffset = CGSizeMake(-1, -1);
-    return tView;
-}
+//- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
+//{
+//    UILabel* tView = (UILabel*)view;
+//    if (!tView)
+//    {
+//        tView = [[UILabel alloc] init];
+//        [tView setFont:[UIFont fontWithName:@"Helvetica" size:14]];
+//        tView.numberOfLines=3;
+//    }
+//    // Fill the label text here
+//    tView.textColor = [UIColor whiteColor];
+//    tView.shadowColor = [UIColor blackColor];
+//    tView.shadowOffset = CGSizeMake(-1, -1);
+//    return tView;
+//}
 
 @end
