@@ -130,6 +130,20 @@
                                     <action selector="pickCharacterFromImages:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uK0-ci-Xn2"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easy Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzW-ud-GDI">
+                                <rect key="frame" x="145" y="638.5" width="84" height="20.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDh-Za-JQg">
+                                <rect key="frame" x="237" y="638" width="18" height="20.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0137739023193717" green="0.92608398199081421" blue="0.98676246404647827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -143,8 +157,11 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EkU-k6-nhd" secondAttribute="bottom" id="79K-sW-ioZ"/>
                             <constraint firstItem="Fmg-E5-UKW" firstAttribute="centerX" secondItem="VqD-0j-QcE" secondAttribute="centerX" id="C8y-pm-nSF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fhl-xu-bMm" secondAttribute="trailing" id="CZ5-Ye-qtd"/>
+                            <constraint firstItem="dzW-ud-GDI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DmB-Dj-KAQ"/>
+                            <constraint firstItem="sDh-Za-JQg" firstAttribute="leading" secondItem="dzW-ud-GDI" secondAttribute="trailing" constant="8" id="Ef4-Es-STO"/>
                             <constraint firstItem="EkU-k6-nhd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GHK-Bq-XEH"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Fhl-xu-bMm" secondAttribute="leading" id="GcX-QG-SKF"/>
+                            <constraint firstItem="sDh-Za-JQg" firstAttribute="top" secondItem="EkU-k6-nhd" secondAttribute="bottom" constant="-29" id="Gdh-Kd-PtV"/>
                             <constraint firstItem="Fhl-xu-bMm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MbX-u9-8aC"/>
                             <constraint firstItem="Fmg-E5-UKW" firstAttribute="centerY" secondItem="VqD-0j-QcE" secondAttribute="centerY" id="RjJ-vg-mJu"/>
                             <constraint firstItem="CGV-B4-awg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="TAd-2r-Gha"/>
@@ -164,11 +181,13 @@
                             <constraint firstItem="ofA-ex-W3u" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-2" id="ufs-C3-gtF"/>
                             <constraint firstItem="VqD-0j-QcE" firstAttribute="top" secondItem="Sq8-b0-SVg" secondAttribute="bottom" constant="20" id="w6M-22-Aab"/>
                             <constraint firstItem="yxf-la-Ufs" firstAttribute="top" secondItem="Fhl-xu-bMm" secondAttribute="bottom" constant="29.5" id="wK4-fB-ppk"/>
+                            <constraint firstItem="sDh-Za-JQg" firstAttribute="centerY" secondItem="dzW-ud-GDI" secondAttribute="centerY" id="zTP-Yq-BSR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3ZH-ea-LTN"/>
                     <connections>
                         <outlet property="backgroundImage" destination="EkU-k6-nhd" id="FF4-Mb-06n"/>
+                        <outlet property="checkBox" destination="sDh-Za-JQg" id="L9C-9v-edQ"/>
                         <outlet property="loadingImageView" destination="Fmg-E5-UKW" id="3JI-os-3Rm"/>
                         <outlet property="progressBar" destination="qoV-zt-1po" id="5CU-mc-mhn"/>
                         <outlet property="startButton" destination="VqD-0j-QcE" id="xhC-rD-bvn"/>
@@ -407,7 +426,7 @@
                                     <constraint firstAttribute="height" constant="431" id="rcG-9W-KgY"/>
                                 </constraints>
                             </imageView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" translatesAutoresizingMaskIntoConstraints="NO" id="dig-AW-7Gh">
+                            <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" translatesAutoresizingMaskIntoConstraints="NO" id="dig-AW-7Gh">
                                 <rect key="frame" x="110" y="553" width="155" height="29"/>
                                 <segments>
                                     <segment title="New Maze"/>

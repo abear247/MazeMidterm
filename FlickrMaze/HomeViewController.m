@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
+@property (weak, nonatomic) IBOutlet UILabel *checkBox;
 
 @property (nonatomic) NSTimer *progressTimer;
 @property NSArray *themes;
@@ -157,6 +158,31 @@
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     self.selectedTheme = self.themes[row];
+}
+
+#pragma mark - checkBox methods
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    if (CGRectContainsPoint([self.checkBox frame], [touch locationInView:self.view]))
+    {
+        [self togglePaidStatus];
+    }
+}
+-(void) togglePaidStatus
+{
+    NSString *untickedBoxStr = @"\u2610";//[[NSString alloc] initWithString:@"\u2610"];
+    NSString *tickedBoxStr = @"\u2611";//[[NSString alloc] initWithString:@"\u2611"];
+    
+    if ([self.checkBox.text isEqualToString:tickedBoxStr])
+    {
+        self.checkBox.text = untickedBoxStr;
+    }
+    else
+    {
+        self.checkBox.text = tickedBoxStr;
+    }
 }
 
 //- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
