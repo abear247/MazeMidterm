@@ -47,9 +47,9 @@
     [notificationCenter addObserver:self selector:@selector(playerLoses) name:@"playerLoses" object:nil];
     [notificationCenter addObserver:self selector:@selector(playerWins) name:@"playerWins" object:nil];
     [notificationCenter addObserver:self selector:@selector(startGame) name:@"startGame" object:nil];
+    [notificationCenter addObserver:self selector:@selector(ghostClose) name:@"ghostClose" object:nil];
     self.playerImage.image = [UIImage imageWithData:self.manager.player.image];
     [self.mazeCollectionView addSubview:self.playerImage];
-    [self.mazeCollectionView reloadData];
     self.randomArray = [self randomize];
 }
 
@@ -65,7 +65,7 @@
     layout.itemSize = size;
     NSDataAsset *sound = [[NSDataAsset alloc] initWithName:@"Background_music"];
     NSError *error;
-       self.backgroundPlayer.numberOfLoops = 0;
+    self.backgroundPlayer.numberOfLoops = 0;
     self.backgroundPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
     if(error)
         NSLog(@"error");
@@ -296,6 +296,24 @@
 - (void) startGame {
     [self.manager startGame];
     [self.mazeCollectionView reloadData];
+}
+
+#pragma mark ghostClose
+- (void) ghostClose {
+    NSArray *tileArray = [self.manager getArray];
+    MazeTile *tile = tileArray[self.manager.player.ghostY][self.manager.player.ghostX];
+    NSData *tempStore = tile.image;
+    NSData *data = UIImagePNGRepresentation([UIImage imageNamed:@"Steve"]);
+    tile.image = data;
+    int ghostXDif = self.manager.player.ghostX - self.manager.player.currentX;
+    int ghostYDif = self.manager.player.ghostY - self.manager.player.currentY;
+    int XIndex = ghostXDif + 1;
+    int YIndex = ghostYDif +1;
+    if (XIndex >= 0 && XIndex <=3 && YIndex >=0 && YIndex <= 3) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:XIndex inSection:YIndex];
+        [self.mazeCollectionView reloadItemsAtIndexPaths:@[indexPath]];
+    }
+    tile.image = tempStore;
 }
 
 #pragma mark Endgame Conditions

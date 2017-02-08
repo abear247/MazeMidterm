@@ -83,7 +83,7 @@
 }
 
 - (IBAction)resetHighScores:(id)sender {
-        NSManagedObjectContext *context = [self.manager getContext];
+    NSManagedObjectContext *context = [self.manager getContext];
     NSFetchRequest *request = [ScoreKeeper fetchRequest];
     NSError *error = nil;
     NSArray *results = [context executeFetchRequest:request error:&error];
@@ -91,6 +91,13 @@
         [context deleteObject:score];
     }
     [self.manager saveContext];
+    self.mapScores = @[ [NSMutableArray new],
+                        [NSMutableArray new],
+                        [NSMutableArray new],
+                        [NSMutableArray new],
+                        [NSMutableArray new],
+                        [NSMutableArray new]
+                        ];
     [self.highScoreTableView reloadData];
 }
 

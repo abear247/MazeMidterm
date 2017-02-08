@@ -226,6 +226,13 @@
         return;
     }
     [self saveContext];
+    int XDif = self.player.currentX - self.player.ghostX;
+    int YDif = self.player.currentY - self.player.ghostY;
+    if (XDif <= 1 && XDif >= -1 && YDif <= 1 && YDif >= -1) {
+        NSNotification *notification = [NSNotification notificationWithName:@"ghostClose" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+        NSLog(@"HE'S COMING");
+    }
     NSLog(@"\nGhost X: %hd\n Ghost Y: %hd", self.player.ghostX, self.player.ghostY);
 }
 
