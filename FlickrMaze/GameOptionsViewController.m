@@ -55,6 +55,7 @@
     NSData *data = UIImagePNGRepresentation(image);
     self.manager.playerImage = data;
     self.playerImageView.image = image;
+    self.manager.tags = self.tagTextField.text;
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 

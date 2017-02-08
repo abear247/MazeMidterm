@@ -91,6 +91,7 @@
         [context deleteObject:score];
     }
     [self.manager saveContext];
+    [self.highScoreTableView reloadData];
 }
 
 @end

@@ -45,7 +45,9 @@
 }
 
 - (IBAction)startButton:(id)sender {
-    NSString *tags = self.tagTextField.text;
+    if(!self.manager.tags)
+        self.manager.tags = @"";
+    NSString *tags = self.manager.tags;
     self.highScoreButton.hidden = YES;
     if (self.manager.gameTheme)
     {
