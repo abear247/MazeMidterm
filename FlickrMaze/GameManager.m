@@ -17,6 +17,7 @@
 @property (nonatomic) NSMutableArray<MazeTile*>* mazeTileArray;
 @property (nonatomic) NSArray <NSArray <MazeTile*>*> *mazeSectionArray;
 @property (nonatomic) NSTimer *ghostTimer;
+@property (nonatomic) NSTimer *playerTimer;
 @property (nonatomic) NSArray *sounds;
 @property (nonatomic) AVAudioPlayer *audioPlayer;
 @property (nonatomic) AVAudioPlayer *ghostPlayer;
@@ -69,7 +70,7 @@
     return self.persistentContainer.viewContext;
 }
 
--(void) clearTestData {
+-(void) clearData {
     self.mazeTileArray = [NSMutableArray new];
     NSManagedObjectContext *context = [self getContext];
     NSFetchRequest *request = [MazeTile fetchRequest];
@@ -102,15 +103,19 @@
 }
 
 #pragma mark Load Game methods
-- (void) loadGame {
+- (BOOL) checkLoad {
     NSManagedObjectContext *context = [self getContext];
     NSError *playerError;
     NSFetchRequest *playerRequest = [Player fetchRequest];
     NSArray *playerResult = [context executeFetchRequest:playerRequest error:&playerError];
     if (playerResult.count < 1) {
-        return;
+        return NO;
     }
     self.player = playerResult[0];
+    return YES;
+}
+
+- (void) loadGame {
     self.playerImage = self.player.image;
     self.maze = [Maze new];
     [self.maze selectThemeWithID:self.player.themeID];
@@ -119,7 +124,7 @@
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"xPosition" ascending:YES];
     [request setSortDescriptors:@[sort]];
     NSError *error = nil;
-    NSArray *results = [context executeFetchRequest:request error:&error];
+    NSArray *results = [[self getContext] executeFetchRequest:request error:&error];
     if (error) {
         NSLog(@"error: %@", error.localizedDescription);
         abort();
@@ -144,6 +149,12 @@
         self.player.ghostX = self.maze.startX;
         self.player.ghostY = self.maze.startY;
     }
+    self.playerTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                        target:self
+                                                      selector:@selector(incrementPlayerTime)
+                                                      userInfo:nil
+                                                       repeats:YES];
+
     self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
                                                        target:self
                                                      selector:@selector(moveGhost)
@@ -175,6 +186,12 @@
 - (void) startGame {
     [self resetPlayer];
     self.sounds = self.maze.sounds;
+    self.playerTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                        target:self
+                                                      selector:@selector(incrementPlayerTime)
+                                                      userInfo:nil
+                                                       repeats:YES];
+    
     self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
                                                        target:self
                                                      selector:@selector(startGhost)
@@ -205,6 +222,7 @@
     self.player.ghostY = 100;
     self.player.moveCount = 0;
     self.player.gameWon = NO;
+    self.player.time = 0;
     [self saveContext];
 }
 
@@ -297,7 +315,7 @@
 #pragma mark Helper Methods
 
 - (NSURL*) generateURL: (NSString*) tagEntry {
-    [self clearTestData];
+    [self clearData];
 //    NSMutableString *urlString = [[NSMutableString alloc] initWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=4ecacf0cd6441400e02e57ec12f0bb68&has_geo&tags="];
     NSMutableString *urlString = [[NSMutableString alloc] initWithString:@"https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&per_page=200&format=json&nojsoncallback=1&api_key=4ecacf0cd6441400e02e57ec12f0bb68&has_geo&tags="];
     NSString *tagWithoutWhiteSpace = [tagEntry stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -349,6 +367,8 @@
 }
 
 - (void) endGame {
+    [self.playerTimer invalidate];
+    self.playerTimer = nil;
     [self.ghostTimer invalidate];
     self.ghostTimer = nil;
     [self calculateScore];
@@ -377,6 +397,10 @@
 
 - (NSData *) getGameOverImage {
     return self.maze.gameOverImage;
+}
+
+- (void) incrementPlayerTime {
+    self.player.time += 1;
 }
 
 @end

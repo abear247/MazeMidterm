@@ -39,5 +39,6 @@
 - (void) loadGame;
 +(id)sharedManager;
 - (void) resetPlayer;
+- (BOOL) checkLoad;
 
 @end
