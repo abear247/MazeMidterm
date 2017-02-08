@@ -140,6 +140,10 @@
         }
     }
     self.mazeSectionArray = sectionArray;
+    if (self.player.ghostX == 100) {
+        self.player.ghostX = self.maze.startX;
+        self.player.ghostY = self.maze.startY;
+    }
     self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
                                                        target:self
                                                      selector:@selector(moveGhost)
@@ -179,6 +183,8 @@
 }
 
 - (void) startGhost {
+    self.player.ghostX = self.maze.startX;
+    self.player.ghostY = self.maze.startY;
     self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
                                                        target:self
                                                      selector:@selector(moveGhost)
@@ -195,15 +201,14 @@
 - (void) resetPlayer {
     self.player.currentX = self.maze.startX;
     self.player.currentY = self.maze.startY;
-    self.player.ghostX = self.player.currentX;
-    self.player.ghostY = self.player.currentY;
+    self.player.ghostX = 100;
+    self.player.ghostY = 100;
     self.player.moveCount = 0;
     self.player.gameWon = NO;
     [self saveContext];
 }
 
 - (void) moveGhost {
-    
     int xDifference = self.player.currentX - self.player.ghostX;
     int yDifference = self.player.currentY - self.player.ghostY;
     if (xDifference > 0) {
@@ -226,9 +231,7 @@
         return;
     }
     [self saveContext];
-    int XDif = self.player.currentX - self.player.ghostX;
-    int YDif = self.player.currentY - self.player.ghostY;
-    if (XDif <= 1 && XDif >= -1 && YDif <= 1 && YDif >= -1) {
+    if ([self checkGhost]) {
         NSNotification *notification = [NSNotification notificationWithName:@"ghostClose" object:nil];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
         NSLog(@"HE'S COMING");
@@ -246,6 +249,9 @@
         if (newTile.valid) {
             self.player.currentX += amount;
             [self checkWin];
+            if ([self checkGhost]) {
+                NSLog(@"He's close shhhhhh");
+            }
             return YES;
         }
         NSLog(@"Lava!");
@@ -266,6 +272,9 @@
         if (newTile.valid) {
             self.player.currentY += amount;
             [self checkWin];
+            if ([self checkGhost]) {
+                NSLog(@"He's close shhhhhh");
+            }
             return YES;
         }
         NSLog(@"Lava!");
@@ -273,6 +282,15 @@
     }
     [self.audioPlayer play];
     NSLog(@"Out of bounds!");
+    return NO;
+}
+
+- (BOOL) checkGhost {
+    int XDif = self.player.currentX - self.player.ghostX;
+    int YDif = self.player.currentY - self.player.ghostY;
+    if (XDif <= 1 && XDif >= -1 && YDif <= 1 && YDif >= -1) {
+        return YES;
+    }
     return NO;
 }
 
