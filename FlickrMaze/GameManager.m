@@ -112,6 +112,7 @@
         return;
     }
     self.player = playerResult[0];
+    self.playerImage = self.player.playerImage;
     self.maze = [Maze new];
     [self.maze selectThemeWithID:self.player.themeID];
     [self.maze selectMazeWithID:self.player.mazeID];
@@ -151,9 +152,20 @@
 #pragma mark Maze Making Methods
 - (void) generateMaze {
     NSManagedObjectContext *context = [self getContext];
+    UIImage *image = [self getPlayerImage];
+    NSData *data = UIImagePNGRepresentation(image);
     self.player = [[Player alloc] initWithContext:context];
+    self.player.playerImage = data;
     self.maze = [Maze new];
     self.mazeSectionArray = [self.maze makeMazeWith:self.mazeTileArray];
+}
+
+- (UIImage *) getPlayerImage {
+    if (self.playerImage) {
+        UIImage *image = [UIImage imageWithData:self.playerImage];
+        return image;
+    }
+    return [UIImage imageNamed:@"Steve"];
 }
 
 #pragma mark Game Control Methods

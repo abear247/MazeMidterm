@@ -47,7 +47,7 @@
     [notificationCenter addObserver:self selector:@selector(playerLoses) name:@"playerLoses" object:nil];
     [notificationCenter addObserver:self selector:@selector(playerWins) name:@"playerWins" object:nil];
     [notificationCenter addObserver:self selector:@selector(startGame) name:@"startGame" object:nil];
-    self.playerImage.image = [UIImage imageNamed:@"Steve"];
+    self.playerImage.image = [UIImage imageWithData:self.manager.player.playerImage];
     [self.mazeCollectionView addSubview:self.playerImage];
     [self.mazeCollectionView reloadData];
     self.randomArray = [self randomize];
