@@ -27,6 +27,20 @@
     self.timerLabel.text = @"3";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissSelf) name:@"gameOver" object:nil];
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.mapCollectionView reloadData];
+    
+    [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(countDown:) userInfo:nil repeats:YES];
+    [self setTimer];
+    self.scrollImageView.image = [UIImage imageNamed:@"Scroll"];
+}
+-(void)viewDidLayoutSubviews{
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mapCollectionView.collectionViewLayout;
+    CGFloat width = self.mapCollectionView.frame.size.width/10;
+    CGSize size = CGSizeMake(width, width);
+    layout.itemSize = size;
+}
 
 -(void)countDown:(NSTimer *) aTimer {
     self.currentTime -= 10;
@@ -42,19 +56,7 @@
     self.timerLabel.text = [NSString stringWithFormat:@"%d:%d",seconds,milliseconds%1000];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mapCollectionView.collectionViewLayout;
-    CGFloat width = self.mapCollectionView.frame.size.width/10;
-    CGSize size = CGSizeMake(width, width);
-    layout.itemSize = size;
-    [self.mapCollectionView reloadData];
-    
-    [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(countDown:) userInfo:nil repeats:YES];
-    [self setTimer];
-    self.scrollImageView.image = [UIImage imageNamed:@"Scroll"];
-    
-}
+
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 10;
