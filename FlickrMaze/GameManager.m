@@ -337,9 +337,11 @@
     score.score = 100* 10 / (self.player.moveCount+1);
     if (self.player.gameWon) {
         score.score *= 10;
+        score.playerWon = self.player.gameWon;
     }
     score.moves = self.player.moveCount;
     score.map = self.player.mazeID;
+    score.playerTime = self.player.time;
     self.playerScore = score;
     [self saveContext];
 }

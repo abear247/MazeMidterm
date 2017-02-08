@@ -56,7 +56,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ScoreTableViewCell *cell = [self.highScoreTableView dequeueReusableCellWithIdentifier:@"cell"];
+    ScoreTableViewCell *cell = [self.highScoreTableView dequeueReusableCellWithIdentifier:@"Cell"];
     ScoreKeeper *score = self.activeArray[indexPath.row];
     cell.scoreLabel.text = [NSString stringWithFormat:@"Score: %hd", score.score];
     cell.playerNameLabel.text = [NSString stringWithFormat:@"Name: %@", score.playerName];
@@ -70,6 +70,7 @@
     return cell;
 }
 - (IBAction)returnButton:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)mapSelectValueChange:(id)sender {
