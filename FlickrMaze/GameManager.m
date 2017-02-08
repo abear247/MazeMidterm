@@ -335,7 +335,7 @@
     ScoreKeeper *score = [[ScoreKeeper alloc] initWithContext:context];
     score.playerName = self.player.name;
     score.playerImage = self.player.image;
-    score.score = 100* 10 / (self.player.moveCount+1);
+    score.score = 100* self.maze.minMoves / (self.player.moveCount+1) + self.player.time*50;
     if (self.player.gameWon) {
         score.score *= 10;
         score.playerWon = self.player.gameWon;

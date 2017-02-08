@@ -19,6 +19,7 @@
 @property NSInteger startY;
 @property NSInteger endX;
 @property NSInteger endY;
+@property NSInteger minMoves;
 @property NSArray *sounds;
 - (NSArray *) makeMazeWith: (NSArray <MazeTile*> *)mazeTileArray;
 - (NSDictionary <NSNumber *, NSArray<NSNumber*>*>*)getDictionary;

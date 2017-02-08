@@ -21,6 +21,7 @@
 @property (nonatomic) Maze *maze;
 @property NSData *playerImage;
 @property ScoreKeeper *playerScore;
+@property NSString *tags;
 
 - (void)saveContext;
 - (NSURL*) generateURL: (NSString*) tagEntry;

@@ -144,6 +144,7 @@
 - (void) selectMazeWithID:(NSInteger)mazeID {
     switch (mazeID) {
         case 0: {
+            self.minMoves = 100;
             self.startX = 0;
             self.startY = 9;
             self.endX = 9;
@@ -160,6 +161,7 @@
             break;
         }
         case 1: {
+            self.minMoves = 22;
             self.startX = 0;
             self.startY = 9;
             self.endX = 9;
@@ -178,6 +180,7 @@
             break;
         }
         case 2: {
+            self.minMoves = 17;
             self.startX = 4;
             self.startY = 9;
             self.endX = 0;
@@ -196,6 +199,7 @@
             break;
         }
         case 3: {
+            self.minMoves = 18;
             self.startX = 0;
             self.startY = 9;
             self.endX = 9;
@@ -214,6 +218,7 @@
             break;
         }
         case 4: {
+            self.minMoves = 14;
             self.startX = 5;
             self.startY = 8;
             self.endX = 9;
@@ -232,6 +237,7 @@
             break;
         }
         case 5: {
+            self.minMoves = 14;
             self.startX = 9;
             self.startY = 9;
             self.endX = 4;
@@ -247,10 +253,10 @@
                                              // @8: @[],
                                              @9: @[@0, @1, @2 , @3, @4, @5, @6, @7]
                                              };
-            
             break;
         }
         default: {
+            self.minMoves = 22;
             self.startX = 0;
             self.startY = 9;
             self.endX = 9;
