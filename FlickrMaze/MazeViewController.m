@@ -309,9 +309,7 @@
 }
 
 - (void) gameEnds:(BOOL) result {
-    EndGameViewController *egvc = [self.storyboard instantiateViewControllerWithIdentifier:@"End"];
-    egvc.won = result;
-    [self.navigationController pushViewController:egvc animated:YES];
+    [self performSegueWithIdentifier:@"EndGame" sender:self];
 }
 
 #pragma mark Segue Methods

@@ -10,11 +10,10 @@
 
 @interface ScoreTableViewCell : UITableViewCell
 
-@property UIImageView *playerImageView;
-@property UILabel *playerNameLabel;
-@property UILabel *scoreLabel;
-@property UILabel *playerTimeLabel;
-@property UILabel *playerMovesLabel;
-@property UILabel *playerWonLabel;
-
+@property (weak, nonatomic) IBOutlet UIImageView *playerImageView;
+@property (weak, nonatomic) IBOutlet UILabel *playerNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *playerTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *playerMovesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *playerWonLabel;
 @end

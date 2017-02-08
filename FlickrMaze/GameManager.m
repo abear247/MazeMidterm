@@ -171,7 +171,7 @@
 - (void) startGame {
     [self resetPlayer];
     self.sounds = self.maze.sounds;
-    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:20.0
+    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
                                                        target:self
                                                      selector:@selector(startGhost)
                                                      userInfo:nil
@@ -334,7 +334,7 @@
     ScoreKeeper *score = [[ScoreKeeper alloc] initWithContext:context];
     score.playerName = self.player.name;
     score.playerImage = self.player.image;
-    score.score = 100* 10 / self.player.moveCount+1;
+    score.score = 100* 10 / (self.player.moveCount+1);
     if (self.player.gameWon) {
         score.score *= 10;
     }

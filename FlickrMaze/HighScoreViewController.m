@@ -13,7 +13,8 @@
 
 @interface HighScoreViewController ()
 
-@property UITableView *highScoreTableView;
+
+@property (weak, nonatomic) IBOutlet UITableView *highScoreTableView;
 @property NSInteger mapIndex;
 @property GameManager *manager;
 @property NSArray <ScoreKeeper*> *activeArray;
@@ -68,8 +69,10 @@
     }
     return cell;
 }
+- (IBAction)returnButton:(id)sender {
+}
 
-- (void) mapselectValueChange{
+- (IBAction)mapSelectValueChange:(id)sender {
     self.activeArray = self.mapScores[self.mapSelect.tag];
     self.mapIndex = self.mapSelect.tag;
     self.title = [NSString stringWithFormat:@"Map:%ld", (long)self.mapSelect.tag];

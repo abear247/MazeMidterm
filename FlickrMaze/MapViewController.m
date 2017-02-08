@@ -68,12 +68,12 @@
     Player *player = manager.player;
     Maze *maze = manager.maze;
     MapCell *cell = (MapCell*)[self.mapCollectionView dequeueReusableCellWithReuseIdentifier:@"mapCell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor brownColor];
+    cell.mapImage.image = [UIImage imageNamed:@"Path"];
     if ([self.invalidSquareDictionary[@(indexPath.section)] containsObject:@(indexPath.row)]) {
-        cell.backgroundColor = [UIColor blueColor];
+        cell.mapImage.image = [UIImage imageNamed:@"Hedge"];
     }
     if (player.currentX == indexPath.row && player.currentY == indexPath.section) {
-        cell.backgroundColor = [UIColor greenColor];
+        cell.mapImage.image = [UIImage imageWithData:manager.player.image];
     }
     if (player.ghostX == indexPath.row && player.ghostY == indexPath.section) {
         cell.backgroundColor = [UIColor blackColor];
@@ -93,7 +93,7 @@
 }
 
 - (void) dismissSelf{
-    [self.navigationController popViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 @end
