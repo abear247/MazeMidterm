@@ -16,7 +16,7 @@
 @property GameManager *manager;
 @property (weak, nonatomic) IBOutlet UIButton *highScoreButton;
 @property (weak, nonatomic) IBOutlet UIImageView *loadingImageView;
-//@property (weak, nonatomic) IBOutlet UITextField *tagTextField;
+@property (nonatomic) AVAudioPlayer *backgroundPlayer;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
@@ -33,6 +33,11 @@
     [super viewDidLoad];
     self.manager = [GameManager sharedManager];
     self.backgroundImage.image = [UIImage imageNamed:@"Maze"];
+    NSDataAsset *sound = [[NSDataAsset alloc] initWithName:@"Home_sound"];
+    NSError *error;
+    self.backgroundPlayer.numberOfLoops = -1;
+    self.backgroundPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
+    [self.backgroundPlayer play];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
