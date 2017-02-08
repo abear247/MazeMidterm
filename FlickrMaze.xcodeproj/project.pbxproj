@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		896E5B8D1E4AC0AE00C271ED /* HighScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 896E5B8C1E4AC0AE00C271ED /* HighScoreViewController.m */; };
 		898A5DAA1E455FC1006C2A81 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 898A5DA91E455FC1006C2A81 /* main.m */; };
 		898A5DAD1E455FC1006C2A81 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 898A5DAC1E455FC1006C2A81 /* AppDelegate.m */; };
 		898A5DB31E455FC1006C2A81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 898A5DB11E455FC1006C2A81 /* Main.storyboard */; };
@@ -35,6 +36,8 @@
 		896E5B861E4A99F600C271ED /* Player+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Player+CoreDataClass.m"; sourceTree = "<group>"; };
 		896E5B871E4A99F600C271ED /* Player+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Player+CoreDataProperties.h"; sourceTree = "<group>"; };
 		896E5B881E4A99F600C271ED /* Player+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Player+CoreDataProperties.m"; sourceTree = "<group>"; };
+		896E5B8B1E4AC0AE00C271ED /* HighScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScoreViewController.h; sourceTree = "<group>"; };
+		896E5B8C1E4AC0AE00C271ED /* HighScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScoreViewController.m; sourceTree = "<group>"; };
 		898A5DA51E455FC1006C2A81 /* FlickrMaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrMaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		898A5DA91E455FC1006C2A81 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		898A5DAB1E455FC1006C2A81 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -54,6 +57,10 @@
 		898A5DD91E457107006C2A81 /* MazeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeViewController.m; sourceTree = "<group>"; };
 		898A5DDB1E4572C5006C2A81 /* MazeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCell.h; sourceTree = "<group>"; };
 		898A5DDC1E4572C5006C2A81 /* MazeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeCell.m; sourceTree = "<group>"; };
+		8991D6EC1E4AD14D00D7C69E /* ScoreKeeper+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ScoreKeeper+CoreDataClass.h"; sourceTree = "<group>"; };
+		8991D6ED1E4AD14D00D7C69E /* ScoreKeeper+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ScoreKeeper+CoreDataClass.m"; sourceTree = "<group>"; };
+		8991D6EE1E4AD14D00D7C69E /* ScoreKeeper+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ScoreKeeper+CoreDataProperties.h"; sourceTree = "<group>"; };
+		8991D6EF1E4AD14D00D7C69E /* ScoreKeeper+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ScoreKeeper+CoreDataProperties.m"; sourceTree = "<group>"; };
 		C84DD6D61E47A4EB00591C75 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		C84DD6D71E47A4EB00591C75 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		C84DD6D91E47A61300591C75 /* TitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleCell.h; sourceTree = "<group>"; };
@@ -82,6 +89,10 @@
 		898A5D9C1E455FC1006C2A81 = {
 			isa = PBXGroup;
 			children = (
+				8991D6EC1E4AD14D00D7C69E /* ScoreKeeper+CoreDataClass.h */,
+				8991D6ED1E4AD14D00D7C69E /* ScoreKeeper+CoreDataClass.m */,
+				8991D6EE1E4AD14D00D7C69E /* ScoreKeeper+CoreDataProperties.h */,
+				8991D6EF1E4AD14D00D7C69E /* ScoreKeeper+CoreDataProperties.m */,
 				896E5B851E4A99F600C271ED /* Player+CoreDataClass.h */,
 				896E5B861E4A99F600C271ED /* Player+CoreDataClass.m */,
 				896E5B871E4A99F600C271ED /* Player+CoreDataProperties.h */,
@@ -119,6 +130,8 @@
 				C84DD6E01E48E1E500591C75 /* DetailViewController.m */,
 				C84DD6DC1E47BDD400591C75 /* EndGameViewController.h */,
 				C84DD6DD1E47BDD400591C75 /* EndGameViewController.m */,
+				896E5B8B1E4AC0AE00C271ED /* HighScoreViewController.h */,
+				896E5B8C1E4AC0AE00C271ED /* HighScoreViewController.m */,
 				898A5DDB1E4572C5006C2A81 /* MazeCell.h */,
 				898A5DDC1E4572C5006C2A81 /* MazeCell.m */,
 				C84DD6D91E47A61300591C75 /* TitleCell.h */,
@@ -227,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				898A5DDA1E457107006C2A81 /* MazeViewController.m in Sources */,
+				896E5B8D1E4AC0AE00C271ED /* HighScoreViewController.m in Sources */,
 				C84DD7141E4A9DF000591C75 /* MapCell.m in Sources */,
 				898A5DAD1E455FC1006C2A81 /* AppDelegate.m in Sources */,
 				898A5DDD1E4572C5006C2A81 /* MazeCell.m in Sources */,
