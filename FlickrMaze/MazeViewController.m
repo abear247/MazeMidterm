@@ -59,17 +59,20 @@
     self.tableInt = 0;
     self.movesLabel.text = [NSString stringWithFormat:@"Moves: %hd", self.manager.player.moveCount];
     self.targetMovesLabel.text = @"10";
-    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mazeCollectionView.collectionViewLayout;
-    CGFloat width = self.mazeCollectionView.frame.size.width/3;
-    CGSize size = CGSizeMake(width, width);
-    layout.itemSize = size;
-    NSDataAsset *sound = [[NSDataAsset alloc] initWithName:@"Background_music"];
+        NSDataAsset *sound = [[NSDataAsset alloc] initWithName:@"Background_music"];
     NSError *error;
     self.backgroundPlayer.numberOfLoops = 0;
     self.backgroundPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
     if(error)
         NSLog(@"error");
     [self.backgroundPlayer play];
+}
+
+-(void)viewDidLayoutSubviews{
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mazeCollectionView.collectionViewLayout;
+    CGFloat width = self.mazeCollectionView.frame.size.width/3;
+    CGSize size = CGSizeMake(width, width);
+    layout.itemSize = size;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
