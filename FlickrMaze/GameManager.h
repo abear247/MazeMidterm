@@ -16,6 +16,7 @@
 @property (readonly, strong) NSPersistentContainer *persistentContainer;
 @property (nonatomic) Player *player;
 @property  (nonatomic, strong) NSString *gameTheme;
+@property NSData *playerImage;
 
 - (void)saveContext;
 - (NSURL*) generateURL: (NSString*) tagEntry;

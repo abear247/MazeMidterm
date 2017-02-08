@@ -12,12 +12,6 @@
 #import "MazeViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
-//if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-//    // Simulator doesn't have a camera, so we need to check this - if we didn't this would crash in the simulator
-//    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//} else {
-//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//}
 @interface HomeViewController ()
 @property GameManager *manager;
 @property (weak, nonatomic) IBOutlet UIImageView *loadingImageView;
@@ -42,6 +36,7 @@
     self.themes = @[@"Default",@"Cats",@"Jaws",@"Donald_Trump"];
     self.themePicker.delegate = self;
     self.themePicker.dataSource = self;
+    self.backgroundImage.image = [UIImage imageNamed:@"Maze"];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -49,7 +44,6 @@
     self.startButton.userInteractionEnabled = YES;
     self.progressBar.progress = 0.0;
     self.loadingImageView.hidden = YES;
-    self.backgroundImage.image = [UIImage imageNamed:@"Maze"];
 
 }
 
@@ -115,6 +109,30 @@
     if (self.manager.player) {
         [self performSegueWithIdentifier:@"MazeViewController" sender:self];
     }
+}
+
+- (IBAction)pickCharacterFromImages:(id)sender {
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+    imagePicker.delegate = self;
+    imagePicker.allowsEditing = YES;
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *image = info[UIImagePickerControllerEditedImage];
+    NSData *data = UIImagePNGRepresentation(image);
+    self.manager.playerImage = data;
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) advanceProgressBar {

@@ -39,5 +39,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSCameraUsageDescription</key>
+    <string>We can use your camera for your player character</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>We can use one of your photos as a player character</string>
 </dict>
 </plist>

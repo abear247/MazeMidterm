@@ -20,7 +20,8 @@
 @dynamic ghostX;
 @dynamic ghostY;
 @dynamic mazeID;
-@dynamic themeID;
 @dynamic moveCount;
+@dynamic themeID;
+@dynamic playerImage;
 
 @end
