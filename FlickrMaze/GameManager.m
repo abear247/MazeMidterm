@@ -165,7 +165,7 @@
         UIImage *image = [UIImage imageWithData:self.playerImage];
         return image;
     }
-    return [UIImage imageNamed:@"Steve"];
+    return [UIImage imageNamed:@"Player"];
 }
 
 #pragma mark Game Control Methods
