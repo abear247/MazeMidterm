@@ -199,6 +199,7 @@
     self.player.ghostY = self.player.currentY;
     self.player.moveCount = 0;
     self.player.gameWon = NO;
+    [self saveContext];
 }
 
 - (void) moveGhost {
@@ -343,7 +344,6 @@
     score.map = self.player.mazeID;
     score.playerTime = self.player.time;
     self.playerScore = score;
-    [self saveContext];
 }
 
 - (NSData *)getOutOfBoundsImage {
