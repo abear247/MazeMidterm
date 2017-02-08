@@ -69,6 +69,22 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <size key="shadowOffset" width="-2" height="-2"/>
                             </label>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqj-rX-qwD">
+                                <rect key="frame" x="27" y="377" width="320" height="40"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="UgH-hT-QBf">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="igO-ot-RPb"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </visualEffectView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofA-ex-W3u">
                                 <rect key="frame" x="165" y="173.5" width="41" height="23.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -91,6 +107,7 @@
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sq8-b0-SVg">
                                 <rect key="frame" x="27" y="289.5" width="320" height="216"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="5Gj-O9-eWX"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="gvc-mC-F0a"/>
@@ -111,6 +128,7 @@
                             <constraint firstItem="Sq8-b0-SVg" firstAttribute="top" secondItem="HQf-Lz-xxY" secondAttribute="bottom" id="2pu-Ty-kN1"/>
                             <constraint firstItem="VqD-0j-QcE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3Dx-mb-Gyy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qoV-zt-1po" secondAttribute="trailing" id="4az-8J-Yhx"/>
+                            <constraint firstItem="qqj-rX-qwD" firstAttribute="centerY" secondItem="Sq8-b0-SVg" secondAttribute="centerY" id="5BC-sb-tZh"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EkU-k6-nhd" secondAttribute="bottom" id="79K-sW-ioZ"/>
                             <constraint firstItem="Fmg-E5-UKW" firstAttribute="centerX" secondItem="VqD-0j-QcE" secondAttribute="centerX" id="C8y-pm-nSF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fhl-xu-bMm" secondAttribute="trailing" id="CZ5-Ye-qtd"/>
@@ -121,9 +139,11 @@
                             <constraint firstItem="CGV-B4-awg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="TAd-2r-Gha"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qoV-zt-1po" secondAttribute="bottom" constant="35" id="Tk3-nm-dD1"/>
                             <constraint firstAttribute="trailing" secondItem="EkU-k6-nhd" secondAttribute="trailing" id="UlI-WM-3cn"/>
+                            <constraint firstItem="qqj-rX-qwD" firstAttribute="centerX" secondItem="Sq8-b0-SVg" secondAttribute="centerX" id="W2Y-TD-xkT"/>
                             <constraint firstItem="Sq8-b0-SVg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wx1-CO-5Op"/>
                             <constraint firstItem="ofA-ex-W3u" firstAttribute="top" secondItem="CGV-B4-awg" secondAttribute="bottom" constant="10" id="ZS0-jv-Ius"/>
                             <constraint firstItem="HQf-Lz-xxY" firstAttribute="top" secondItem="Fhl-xu-bMm" secondAttribute="bottom" constant="30" id="Zle-YN-fBU"/>
+                            <constraint firstItem="qqj-rX-qwD" firstAttribute="width" secondItem="Sq8-b0-SVg" secondAttribute="width" id="dX7-BG-kfO"/>
                             <constraint firstItem="HQf-Lz-xxY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-1.5" id="eCR-In-bws"/>
                             <constraint firstItem="EkU-k6-nhd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="eHQ-nV-Gfc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yxf-la-Ufs" secondAttribute="trailing" constant="17" id="fl3-rg-osP"/>
@@ -492,13 +512,27 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mapCell" id="hJc-tr-qvb">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mapCell" id="hJc-tr-qvb" customClass="MapCell">
                                         <rect key="frame" x="74" y="0.0" width="148" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="148" height="160"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xlE-Kb-STx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="148" height="160"/>
+                                                </imageView>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="xlE-Kb-STx" firstAttribute="top" secondItem="hJc-tr-qvb" secondAttribute="top" id="9LM-Yt-Bmt"/>
+                                            <constraint firstItem="xlE-Kb-STx" firstAttribute="leading" secondItem="hJc-tr-qvb" secondAttribute="leading" id="eDG-DI-TkD"/>
+                                            <constraint firstAttribute="trailing" secondItem="xlE-Kb-STx" secondAttribute="trailing" id="jpk-bw-UW2"/>
+                                            <constraint firstAttribute="bottom" secondItem="xlE-Kb-STx" secondAttribute="bottom" id="rdS-4z-9m6"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="mapImage" destination="xlE-Kb-STx" id="tPr-PQ-uaI"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
