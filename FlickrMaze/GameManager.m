@@ -334,7 +334,7 @@
     ScoreKeeper *score = [[ScoreKeeper alloc] initWithContext:context];
     score.playerName = self.player.name;
     score.playerImage = self.player.image;
-    score.score = 100* 10 / self.player.moveCount;
+    score.score = 100* 10 / self.player.moveCount+1;
     if (self.player.gameWon) {
         score.score *= 10;
     }
