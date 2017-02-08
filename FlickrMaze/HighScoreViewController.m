@@ -70,12 +70,12 @@
     return cell;
 }
 - (IBAction)returnButton:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)mapSelectValueChange:(id)sender {
-    self.activeArray = self.mapScores[self.mapSelect.tag];
-    self.mapIndex = self.mapSelect.tag;
+    self.activeArray = self.mapScores[self.mapSelect.selectedSegmentIndex];
+    self.mapIndex = self.mapSelect.selectedSegmentIndex;
     self.title = [NSString stringWithFormat:@"Map:%ld", (long)self.mapSelect.tag];
     [self.highScoreTableView reloadData];
 }
