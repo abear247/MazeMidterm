@@ -92,7 +92,7 @@
         case 1:
         {   UIImage *goImage = [UIImage imageNamed:@"Game_over"];
             self.gameOverImage = UIImagePNGRepresentation(goImage);
-            UIImage *image = [UIImage imageNamed:@"Lava"];
+            UIImage *image = [UIImage imageNamed:@"Hedge"];
             NSData *data = UIImagePNGRepresentation(image);
             self.outOfBoundsImage = data;
             self.invalidSquareImage = data;

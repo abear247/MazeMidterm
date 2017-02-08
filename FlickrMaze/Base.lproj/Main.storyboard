@@ -437,7 +437,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="nQh-Pu-Vqm" kind="show" identifier="MapViewController" id="xAZ-d8-ep6"/>
+                                    <segue destination="nQh-Pu-Vqm" kind="presentation" identifier="MapViewController" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="xAZ-d8-ep6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -466,7 +466,7 @@
                         <outlet property="tableView" destination="2Cy-F2-CAx" id="UXs-ag-oxj"/>
                         <outlet property="targetMovesLabel" destination="Ef6-J5-YC7" id="Y9P-0v-hQF"/>
                         <outlet property="timeLabel" destination="aGX-g2-Pwt" id="IAN-d1-7pj"/>
-                        <segue destination="U0Z-qT-9f0" kind="showDetail" identifier="EndGameViewController" id="wWo-5P-A4D"/>
+                        <segue destination="U0Z-qT-9f0" kind="presentation" identifier="EndGameViewController" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="wWo-5P-A4D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbf-XC-8OX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -485,6 +485,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="93R-H9-HdP">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="piy-Yh-rTq">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EyU-I1-GbN">
                                 <rect key="frame" x="16" y="28" width="343" height="431"/>
                                 <constraints>
@@ -503,13 +511,17 @@
                                 </connections>
                             </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="EyU-I1-GbN" firstAttribute="top" secondItem="7Vk-T5-yff" secondAttribute="bottom" constant="8" id="3Xv-d7-hFh"/>
                             <constraint firstItem="J6A-uZ-L1x" firstAttribute="top" secondItem="dig-AW-7Gh" secondAttribute="bottom" constant="86" id="A4b-3I-xv0"/>
                             <constraint firstItem="EyU-I1-GbN" firstAttribute="trailing" secondItem="QWZ-ep-Rn4" secondAttribute="trailingMargin" id="FHg-SO-RKz"/>
+                            <constraint firstItem="93R-H9-HdP" firstAttribute="top" secondItem="7Vk-T5-yff" secondAttribute="bottom" id="GCC-VW-hdW"/>
+                            <constraint firstAttribute="trailing" secondItem="93R-H9-HdP" secondAttribute="trailing" id="HOD-N0-lOR"/>
                             <constraint firstItem="EyU-I1-GbN" firstAttribute="leading" secondItem="QWZ-ep-Rn4" secondAttribute="leadingMargin" id="K72-Sg-QWs"/>
                             <constraint firstItem="dig-AW-7Gh" firstAttribute="centerX" secondItem="QWZ-ep-Rn4" secondAttribute="centerX" id="MaC-V4-a4f"/>
+                            <constraint firstItem="93R-H9-HdP" firstAttribute="leading" secondItem="QWZ-ep-Rn4" secondAttribute="leading" id="VpE-72-DTX"/>
+                            <constraint firstItem="J6A-uZ-L1x" firstAttribute="top" secondItem="93R-H9-HdP" secondAttribute="bottom" id="lCp-ZL-30y"/>
                         </constraints>
                     </view>
                     <connections>
@@ -520,7 +532,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KDm-x2-NzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1889" y="884"/>
+            <point key="canvasLocation" x="1888.8" y="883.80809595202402"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Bvo-Lm-Ym0">
@@ -592,6 +604,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lkD-f3-aFs">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Cma-Y7-G2X">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k0z-uI-c1V">
                                 <rect key="frame" x="-0.5" y="106" width="375" height="455"/>
                             </imageView>
@@ -649,16 +669,20 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0137739023193717" green="0.92608398199081421" blue="0.98676246404647827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nLE-Kq-6re" firstAttribute="centerY" secondItem="VNj-eC-89b" secondAttribute="centerY" id="0uC-Zg-hs5"/>
                             <constraint firstItem="SHy-8x-PYK" firstAttribute="leading" secondItem="VNj-eC-89b" secondAttribute="leadingMargin" id="4Fk-gG-pfZ"/>
                             <constraint firstItem="1xa-9U-d0F" firstAttribute="top" secondItem="SHy-8x-PYK" secondAttribute="bottom" constant="0.5" id="LtM-le-zvx"/>
                             <constraint firstItem="k0z-uI-c1V" firstAttribute="centerY" secondItem="nLE-Kq-6re" secondAttribute="centerY" id="M4V-li-sT7"/>
+                            <constraint firstAttribute="trailing" secondItem="lkD-f3-aFs" secondAttribute="trailing" id="Qua-Co-Hgr"/>
                             <constraint firstItem="nLE-Kq-6re" firstAttribute="centerX" secondItem="VNj-eC-89b" secondAttribute="centerX" id="S8J-Ao-OVp"/>
                             <constraint firstItem="nLE-Kq-6re" firstAttribute="width" secondItem="VNj-eC-89b" secondAttribute="width" constant="-80" id="ToL-ce-vXg"/>
                             <constraint firstItem="k0z-uI-c1V" firstAttribute="width" secondItem="VNj-eC-89b" secondAttribute="width" id="aJT-Fd-bX5"/>
+                            <constraint firstItem="lkD-f3-aFs" firstAttribute="top" secondItem="VNj-eC-89b" secondAttribute="top" id="b5c-6T-Cdb"/>
+                            <constraint firstItem="1xa-9U-d0F" firstAttribute="top" secondItem="lkD-f3-aFs" secondAttribute="bottom" id="buN-jN-ghY"/>
                             <constraint firstItem="SHy-8x-PYK" firstAttribute="trailing" secondItem="VNj-eC-89b" secondAttribute="trailingMargin" id="eE7-ri-na2"/>
+                            <constraint firstItem="lkD-f3-aFs" firstAttribute="leading" secondItem="VNj-eC-89b" secondAttribute="leading" id="fdZ-nu-FSc"/>
                             <constraint firstItem="k0z-uI-c1V" firstAttribute="centerX" secondItem="nLE-Kq-6re" secondAttribute="centerX" id="gRr-Nl-Djs"/>
                             <constraint firstItem="k0z-uI-c1V" firstAttribute="height" secondItem="nLE-Kq-6re" secondAttribute="height" constant="160" id="nGz-O3-wWj"/>
                         </constraints>
@@ -671,7 +695,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mKH-Cm-8gP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2863" y="137"/>
+            <point key="canvasLocation" x="2861.5999999999999" y="136.28185907046478"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jl2-T7-rGG">
@@ -698,6 +722,6 @@
         <image name="Scroll" width="435" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="i9J-ZR-GxD"/>
+        <segue reference="hyC-jK-jec"/>
     </inferredMetricsTieBreakers>
 </document>

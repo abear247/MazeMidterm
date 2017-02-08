@@ -88,7 +88,7 @@
     [NSTimer scheduledTimerWithTimeInterval:3.0
                                     repeats:NO
                                       block:^(NSTimer *timer){
-                                          [self.navigationController popViewControllerAnimated:YES];
+                                          [self dismissViewControllerAnimated:YES completion:nil];
                                       }];
 }
 
