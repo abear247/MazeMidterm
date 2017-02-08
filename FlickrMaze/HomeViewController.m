@@ -46,7 +46,7 @@
     self.progressBar.progress = 0.0;
     self.loadingImageView.hidden = YES;
     self.highScoreButton.hidden = NO;
-
+    
 }
 
 - (IBAction)startButton:(id)sender {
@@ -111,9 +111,9 @@
 }
 
 - (IBAction)loadButton:(id)sender {
-    [self.manager loadGame];
-    if (self.manager.player) {
-        [self performSegueWithIdentifier:@"MazeViewController" sender:self];
+    if ([self.manager checkLoad]) {
+        [self.manager loadGame];
+            [self performSegueWithIdentifier:@"MazeViewController" sender:self];
     }
 }
 
