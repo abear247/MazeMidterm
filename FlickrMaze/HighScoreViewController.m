@@ -18,7 +18,7 @@
 @property NSInteger mapIndex;
 @property GameManager *manager;
 @property NSArray <ScoreKeeper*> *activeArray;
-@property UISegmentedControl *mapSelect;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *mapSelect;
 @property NSArray <NSMutableArray*>*mapScores;
 @end
 
@@ -58,8 +58,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ScoreTableViewCell *cell = [self.highScoreTableView dequeueReusableCellWithIdentifier:@"Cell"];
     ScoreKeeper *score = self.activeArray[indexPath.row];
+    if(!score.playerName)
+        score.playerName = @"A man has no name";
     cell.scoreLabel.text = [NSString stringWithFormat:@"Score: %hd", score.score];
-    cell.playerNameLabel.text = [NSString stringWithFormat:@"Name: %@", score.playerName];
+    cell.playerNameLabel.text = [NSString stringWithFormat:@"%@", score.playerName];
     cell.playerImageView.image = [UIImage imageWithData:score.playerImage];
     cell.playerTimeLabel.text = [NSString stringWithFormat:@"Time: %hd", score.playerTime];
     cell.playerMovesLabel.text = [NSString stringWithFormat:@"Moves: %hd", score.moves];

@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *themePicker;
 @property (weak, nonatomic) IBOutlet UIImageView *playerImageView;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextView;
+@property (weak, nonatomic) IBOutlet UITextField *tagTextField;
 @property NSString *selectedTheme;
 @property GameManager *manager;
 @end
@@ -83,21 +84,6 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     self.manager.gameTheme = self.themes[row];
 }
-//- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
-//{
-//    UILabel* tView = (UILabel*)view;
-//    if (!tView)
-//    {
-//        tView = [[UILabel alloc] init];
-//        [tView setFont:[UIFont fontWithName:@"Helvetica" size:14]];
-//        tView.numberOfLines=3;
-//    }
-//    // Fill the label text here
-//    tView.textColor = [UIColor whiteColor];
-//    tView.shadowColor = [UIColor blackColor];
-//    tView.shadowOffset = CGSizeMake(-1, -1);
-//    return tView;
-//}
 
 /*
 #pragma mark - Navigation

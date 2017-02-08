@@ -14,8 +14,9 @@
 
 @interface HomeViewController ()
 @property GameManager *manager;
+@property (weak, nonatomic) IBOutlet UIButton *highScoreButton;
 @property (weak, nonatomic) IBOutlet UIImageView *loadingImageView;
-@property (weak, nonatomic) IBOutlet UITextField *tagTextField;
+//@property (weak, nonatomic) IBOutlet UITextField *tagTextField;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
@@ -39,11 +40,13 @@
     self.startButton.userInteractionEnabled = YES;
     self.progressBar.progress = 0.0;
     self.loadingImageView.hidden = YES;
+    self.highScoreButton.hidden = NO;
 
 }
 
 - (IBAction)startButton:(id)sender {
     NSString *tags = self.tagTextField.text;
+    self.highScoreButton.hidden = YES;
     if (self.manager.gameTheme)
     {
         tags = [NSString stringWithFormat:@"%@&sort=interestingness_asc",
