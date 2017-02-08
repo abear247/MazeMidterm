@@ -10,10 +10,12 @@
 #import "HomeViewController.h"
 #import "GameManager.h"
 #import <AVFoundation/AVFoundation.h>
+#import "ScoreKeeper+CoreDataClass.h"
 
 @interface EndGameViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *winningImage;
 @property GameManager *manager;
+@property (nonatomic) UILabel *scoreLabel;
 @property AVAudioPlayer *audioPlayer;
 @end
 
@@ -22,10 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.manager = [GameManager sharedManager];
-    // Do any additional setup after loading the view.
-   // GameManager *manager = [GameManager sharedManager];
     self.view.backgroundColor = [UIColor blackColor];
-    if(self.won){
+    self.scoreLabel.text = [NSString stringWithFormat:@"Final score: %@", self.manager.playerScore];
+    if(self.manager.player.gameWon){
         NSDataAsset *sound = [[NSDataAsset alloc] initWithName:[NSString stringWithFormat:@"%@_game_over_victory",self.manager.gameTheme]];
         NSError *error;
         self.audioPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
@@ -53,14 +54,12 @@
     switch (control.selectedSegmentIndex) {
         case 0:{
             [self.navigationController popToRootViewControllerAnimated:YES];
-//               [self performSegueWithIdentifier:@"HomeViewController" sender:self];
-//               [self.navigationController popViewControllerAnimated:YES];
             break;
         }
         case 1:{
             NSNotification *notification = [NSNotification notificationWithName:@"startGame" object:nil];
             [[NSNotificationCenter defaultCenter] postNotification:notification];
-                [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
             break;
         }
         default:
@@ -68,10 +67,8 @@
     }
 }
 
-
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"HomeViewController"]){
         

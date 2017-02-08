@@ -10,13 +10,17 @@
 #import <CoreData/CoreData.h>
 #import "Player+CoreDataClass.h"
 @class MazeTile;
+@class Maze;
+@class ScoreKeeper;
 
 @interface GameManager : NSObject
 
 @property (readonly, strong) NSPersistentContainer *persistentContainer;
 @property (nonatomic) Player *player;
 @property  (nonatomic, strong) NSString *gameTheme;
+@property (nonatomic) Maze *maze;
 @property NSData *playerImage;
+@property ScoreKeeper *playerScore;
 
 - (void)saveContext;
 - (NSURL*) generateURL: (NSString*) tagEntry;
@@ -33,7 +37,6 @@
 - (NSData *) getGameOverImage;
 - (void) loadGame;
 +(id)sharedManager;
-- (NSInteger) getEndX;
-- (NSInteger) getEndY;
+- (void) resetPlayer;
 
 @end

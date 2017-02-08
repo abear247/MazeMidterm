@@ -19,6 +19,7 @@
 		898A5DD71E456D55006C2A81 /* Maze.m in Sources */ = {isa = PBXBuildFile; fileRef = 898A5DD61E456D55006C2A81 /* Maze.m */; };
 		898A5DDA1E457107006C2A81 /* MazeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898A5DD91E457107006C2A81 /* MazeViewController.m */; };
 		898A5DDD1E4572C5006C2A81 /* MazeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898A5DDC1E4572C5006C2A81 /* MazeCell.m */; };
+		8991D70C1E4B8DD800D7C69E /* ScoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8991D70B1E4B8DD800D7C69E /* ScoreTableViewCell.m */; };
 		C84DD6D81E47A4EB00591C75 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DD6D71E47A4EB00591C75 /* MapViewController.m */; };
 		C84DD6DB1E47A61300591C75 /* TitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DD6DA1E47A61300591C75 /* TitleCell.m */; };
 		C84DD6DE1E47BDD400591C75 /* EndGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DD6DD1E47BDD400591C75 /* EndGameViewController.m */; };
@@ -32,10 +33,6 @@
 		896E5B681E4A354900C271ED /* MazeTile+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MazeTile+CoreDataClass.m"; sourceTree = "<group>"; };
 		896E5B691E4A354900C271ED /* MazeTile+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MazeTile+CoreDataProperties.h"; sourceTree = "<group>"; };
 		896E5B6A1E4A354900C271ED /* MazeTile+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MazeTile+CoreDataProperties.m"; sourceTree = "<group>"; };
-		896E5B851E4A99F600C271ED /* Player+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Player+CoreDataClass.h"; sourceTree = "<group>"; };
-		896E5B861E4A99F600C271ED /* Player+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Player+CoreDataClass.m"; sourceTree = "<group>"; };
-		896E5B871E4A99F600C271ED /* Player+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Player+CoreDataProperties.h"; sourceTree = "<group>"; };
-		896E5B881E4A99F600C271ED /* Player+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Player+CoreDataProperties.m"; sourceTree = "<group>"; };
 		896E5B8B1E4AC0AE00C271ED /* HighScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScoreViewController.h; sourceTree = "<group>"; };
 		896E5B8C1E4AC0AE00C271ED /* HighScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScoreViewController.m; sourceTree = "<group>"; };
 		898A5DA51E455FC1006C2A81 /* FlickrMaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrMaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,10 +54,16 @@
 		898A5DD91E457107006C2A81 /* MazeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeViewController.m; sourceTree = "<group>"; };
 		898A5DDB1E4572C5006C2A81 /* MazeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCell.h; sourceTree = "<group>"; };
 		898A5DDC1E4572C5006C2A81 /* MazeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeCell.m; sourceTree = "<group>"; };
-		8991D6EC1E4AD14D00D7C69E /* ScoreKeeper+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ScoreKeeper+CoreDataClass.h"; sourceTree = "<group>"; };
-		8991D6ED1E4AD14D00D7C69E /* ScoreKeeper+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ScoreKeeper+CoreDataClass.m"; sourceTree = "<group>"; };
-		8991D6EE1E4AD14D00D7C69E /* ScoreKeeper+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ScoreKeeper+CoreDataProperties.h"; sourceTree = "<group>"; };
-		8991D6EF1E4AD14D00D7C69E /* ScoreKeeper+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ScoreKeeper+CoreDataProperties.m"; sourceTree = "<group>"; };
+		8991D7041E4B8C5900D7C69E /* Player+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Player+CoreDataClass.h"; sourceTree = "<group>"; };
+		8991D7051E4B8C5900D7C69E /* Player+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Player+CoreDataClass.m"; sourceTree = "<group>"; };
+		8991D7061E4B8C5900D7C69E /* Player+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Player+CoreDataProperties.h"; sourceTree = "<group>"; };
+		8991D7071E4B8C5900D7C69E /* Player+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Player+CoreDataProperties.m"; sourceTree = "<group>"; };
+		8991D70A1E4B8DD800D7C69E /* ScoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreTableViewCell.h; sourceTree = "<group>"; };
+		8991D70B1E4B8DD800D7C69E /* ScoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreTableViewCell.m; sourceTree = "<group>"; };
+		8991D70D1E4B8EBA00D7C69E /* ScoreKeeper+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ScoreKeeper+CoreDataClass.h"; sourceTree = "<group>"; };
+		8991D70E1E4B8EBA00D7C69E /* ScoreKeeper+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ScoreKeeper+CoreDataClass.m"; sourceTree = "<group>"; };
+		8991D70F1E4B8EBA00D7C69E /* ScoreKeeper+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ScoreKeeper+CoreDataProperties.h"; sourceTree = "<group>"; };
+		8991D7101E4B8EBA00D7C69E /* ScoreKeeper+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ScoreKeeper+CoreDataProperties.m"; sourceTree = "<group>"; };
 		C84DD6D61E47A4EB00591C75 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		C84DD6D71E47A4EB00591C75 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		C84DD6D91E47A61300591C75 /* TitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleCell.h; sourceTree = "<group>"; };
@@ -89,14 +92,14 @@
 		898A5D9C1E455FC1006C2A81 = {
 			isa = PBXGroup;
 			children = (
-				8991D6EC1E4AD14D00D7C69E /* ScoreKeeper+CoreDataClass.h */,
-				8991D6ED1E4AD14D00D7C69E /* ScoreKeeper+CoreDataClass.m */,
-				8991D6EE1E4AD14D00D7C69E /* ScoreKeeper+CoreDataProperties.h */,
-				8991D6EF1E4AD14D00D7C69E /* ScoreKeeper+CoreDataProperties.m */,
-				896E5B851E4A99F600C271ED /* Player+CoreDataClass.h */,
-				896E5B861E4A99F600C271ED /* Player+CoreDataClass.m */,
-				896E5B871E4A99F600C271ED /* Player+CoreDataProperties.h */,
-				896E5B881E4A99F600C271ED /* Player+CoreDataProperties.m */,
+				8991D70D1E4B8EBA00D7C69E /* ScoreKeeper+CoreDataClass.h */,
+				8991D70E1E4B8EBA00D7C69E /* ScoreKeeper+CoreDataClass.m */,
+				8991D70F1E4B8EBA00D7C69E /* ScoreKeeper+CoreDataProperties.h */,
+				8991D7101E4B8EBA00D7C69E /* ScoreKeeper+CoreDataProperties.m */,
+				8991D7041E4B8C5900D7C69E /* Player+CoreDataClass.h */,
+				8991D7051E4B8C5900D7C69E /* Player+CoreDataClass.m */,
+				8991D7061E4B8C5900D7C69E /* Player+CoreDataProperties.h */,
+				8991D7071E4B8C5900D7C69E /* Player+CoreDataProperties.m */,
 				896E5B671E4A354900C271ED /* MazeTile+CoreDataClass.h */,
 				896E5B681E4A354900C271ED /* MazeTile+CoreDataClass.m */,
 				896E5B691E4A354900C271ED /* MazeTile+CoreDataProperties.h */,
@@ -132,6 +135,8 @@
 				C84DD6DD1E47BDD400591C75 /* EndGameViewController.m */,
 				896E5B8B1E4AC0AE00C271ED /* HighScoreViewController.h */,
 				896E5B8C1E4AC0AE00C271ED /* HighScoreViewController.m */,
+				8991D70A1E4B8DD800D7C69E /* ScoreTableViewCell.h */,
+				8991D70B1E4B8DD800D7C69E /* ScoreTableViewCell.m */,
 				898A5DDB1E4572C5006C2A81 /* MazeCell.h */,
 				898A5DDC1E4572C5006C2A81 /* MazeCell.m */,
 				C84DD6D91E47A61300591C75 /* TitleCell.h */,
@@ -146,8 +151,6 @@
 				898A5DB91E455FC1006C2A81 /* LaunchScreen.storyboard */,
 				898A5DBC1E455FC1006C2A81 /* Info.plist */,
 				898A5DB41E455FC1006C2A81 /* FlickrMaze.xcdatamodeld */,
-				C84DD7121E4A9DF000591C75 /* MapCell.h */,
-				C84DD7131E4A9DF000591C75 /* MapCell.m */,
 			);
 			path = FlickrMaze;
 			sourceTree = "<group>";
@@ -156,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				898A5DA91E455FC1006C2A81 /* main.m */,
+				C84DD7121E4A9DF000591C75 /* MapCell.h */,
+				C84DD7131E4A9DF000591C75 /* MapCell.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				C84DD6D81E47A4EB00591C75 /* MapViewController.m in Sources */,
 				C84DD6DE1E47BDD400591C75 /* EndGameViewController.m in Sources */,
 				898A5DD71E456D55006C2A81 /* Maze.m in Sources */,
+				8991D70C1E4B8DD800D7C69E /* ScoreTableViewCell.m in Sources */,
 				898A5DB61E455FC1006C2A81 /* FlickrMaze.xcdatamodeld in Sources */,
 				C84DD6E11E48E1E500591C75 /* DetailViewController.m in Sources */,
 			);

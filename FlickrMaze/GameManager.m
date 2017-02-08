@@ -10,12 +10,12 @@
 #import "Maze.h"
 #import "MazeTile+CoreDataClass.h"
 #import <AVFoundation/AVFoundation.h>
+#import "ScoreKeeper+CoreDataClass.h"
 
 @interface GameManager ()
 
 @property (nonatomic) NSMutableArray<MazeTile*>* mazeTileArray;
 @property (nonatomic) NSArray <NSArray <MazeTile*>*> *mazeSectionArray;
-@property (nonatomic) Maze *maze;
 @property (nonatomic) NSTimer *ghostTimer;
 @property (nonatomic) NSArray *sounds;
 @property (nonatomic) AVAudioPlayer *audioPlayer;
@@ -103,7 +103,6 @@
 
 #pragma mark Load Game methods
 - (void) loadGame {
-   
     NSManagedObjectContext *context = [self getContext];
     NSError *playerError;
     NSFetchRequest *playerRequest = [Player fetchRequest];
@@ -112,7 +111,7 @@
         return;
     }
     self.player = playerResult[0];
-    self.playerImage = self.player.playerImage;
+    self.playerImage = self.player.image;
     self.maze = [Maze new];
     [self.maze selectThemeWithID:self.player.themeID];
     [self.maze selectMazeWithID:self.player.mazeID];
@@ -155,7 +154,7 @@
     UIImage *image = [self getPlayerImage];
     NSData *data = UIImagePNGRepresentation(image);
     self.player = [[Player alloc] initWithContext:context];
-    self.player.playerImage = data;
+    self.player.image = data;
     self.maze = [Maze new];
     self.mazeSectionArray = [self.maze makeMazeWith:self.mazeTileArray];
 }
@@ -170,13 +169,8 @@
 
 #pragma mark Game Control Methods
 - (void) startGame {
+    [self resetPlayer];
     self.sounds = self.maze.sounds;
-    self.player.moveCount = 0;
-    self.player.currentX = self.maze.startX;
-    self.player.currentY = self.maze.startY;
-    self.ghostTimer = [NSTimer new];
-    self.player.ghostX = self.player.currentX;
-    self.player.ghostY = self.player.currentY;
     self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:20.0
                                                        target:self
                                                      selector:@selector(startGhost)
@@ -196,6 +190,15 @@
         self.ghostPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
     [self.ghostPlayer play];
     
+}
+
+- (void) resetPlayer {
+    self.player.currentX = self.maze.startX;
+    self.player.currentY = self.maze.startY;
+    self.player.ghostX = self.player.currentX;
+    self.player.ghostY = self.player.currentY;
+    self.player.moveCount = 0;
+    self.player.gameWon = NO;
 }
 
 - (void) moveGhost {
@@ -314,6 +317,7 @@
     if (self.player.currentX == self.maze.endX && self.player.currentY == self.maze.endY) {
         NSNotification *notification = [NSNotification notificationWithName:@"playerWins" object:self];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
+        self.player.gameWon = YES;
         [self endGame];
     }
 }
@@ -321,6 +325,23 @@
 - (void) endGame {
     [self.ghostTimer invalidate];
     self.ghostTimer = nil;
+    [self calculateScore];
+    [self resetPlayer];
+}
+
+- (void) calculateScore {
+    NSManagedObjectContext *context = [self getContext];
+    ScoreKeeper *score = [[ScoreKeeper alloc] initWithContext:context];
+    score.playerName = self.player.name;
+    score.playerImage = self.player.image;
+    score.score = 100* 10 / self.player.moveCount;
+    if (self.player.gameWon) {
+        score.score *= 10;
+    }
+    score.moves = self.player.moveCount;
+    score.map = self.player.mazeID;
+    self.playerScore = score;
+    [self saveContext];
 }
 
 - (NSData *)getOutOfBoundsImage {
@@ -329,14 +350,6 @@
 
 - (NSData *) getGameOverImage {
     return self.maze.gameOverImage;
-}
-
-- (NSInteger) getEndX {
-    return self.maze.endX;
-}
-
-- (NSInteger) getEndY {
-    return self.maze.endY;
 }
 
 @end
