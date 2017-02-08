@@ -172,6 +172,7 @@
     NSData *data = UIImagePNGRepresentation(image);
     self.player = [[Player alloc] initWithContext:context];
     self.player.image = data;
+    self.player.name = self.playerName;
     self.maze = [Maze new];
     self.mazeSectionArray = [self.maze makeMazeWith:self.mazeTileArray];
 }
