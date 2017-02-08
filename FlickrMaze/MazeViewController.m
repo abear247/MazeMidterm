@@ -97,7 +97,7 @@
     NSArray *tileArray = array[section];
     MazeTile *tile = tileArray[row];
     NSData *data = tile.image;
-        cell.mazeCellImageView.image = [UIImage imageWithData:data];
+    cell.mazeCellImageView.image = [UIImage imageWithData:data];
     return cell;
 }
 

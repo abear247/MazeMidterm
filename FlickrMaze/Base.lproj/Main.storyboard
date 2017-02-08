@@ -165,14 +165,6 @@
                                     <constraint firstAttribute="height" constant="136" id="Wd6-Av-9Ki"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQf-Lz-xxY">
-                                <rect key="frame" x="158.5" y="201" width="55.5" height="22.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.95585334089999996" green="1" blue="0.95750329860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="shadowOffset" width="-2" height="-2"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofA-ex-W3u">
                                 <rect key="frame" x="164" y="140" width="41" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -249,8 +241,6 @@
                             <constraint firstAttribute="trailing" secondItem="EkU-k6-nhd" secondAttribute="trailing" id="UlI-WM-3cn"/>
                             <constraint firstItem="LC3-Tc-Ewe" firstAttribute="top" secondItem="Fhl-xu-bMm" secondAttribute="bottom" constant="162" id="YzY-TB-MCD"/>
                             <constraint firstItem="ofA-ex-W3u" firstAttribute="top" secondItem="CGV-B4-awg" secondAttribute="bottom" constant="-23.5" id="ZS0-jv-Ius"/>
-                            <constraint firstItem="HQf-Lz-xxY" firstAttribute="top" secondItem="Fhl-xu-bMm" secondAttribute="bottom" id="Zle-YN-fBU"/>
-                            <constraint firstItem="HQf-Lz-xxY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-1.5" id="eCR-In-bws"/>
                             <constraint firstItem="EkU-k6-nhd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="eHQ-nV-Gfc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yxf-la-Ufs" secondAttribute="trailing" constant="17" id="fl3-rg-osP"/>
                             <constraint firstItem="VqD-0j-QcE" firstAttribute="top" secondItem="LC3-Tc-Ewe" secondAttribute="bottom" constant="66.5" id="gMy-2t-VoP"/>
@@ -876,7 +866,7 @@
         <image name="Scroll" width="435" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hyC-jK-jec"/>
-        <segue reference="AqI-hC-qlM"/>
+        <segue reference="i9J-ZR-GxD"/>
+        <segue reference="Gff-NV-CS7"/>
     </inferredMetricsTieBreakers>
 </document>

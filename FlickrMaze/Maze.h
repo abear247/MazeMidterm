@@ -13,6 +13,8 @@
 
 @property NSData *outOfBoundsImage;
 @property NSData *gameOverImage;
+@property NSData *pathImage;
+@property (nonatomic) NSData *invalidSquareImage;
 @property NSInteger startX;
 @property NSInteger startY;
 @property NSInteger endX;

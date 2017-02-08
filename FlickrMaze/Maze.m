@@ -11,7 +11,6 @@
 #import "GameManager.h"
 
 @interface Maze ()
-@property (nonatomic) NSData *invalidSquareImage;
 @property (nonatomic) NSDictionary <NSNumber *, NSArray<NSNumber*>*>*invalidSquareDictionary;
 @property (nonatomic) GameManager *manager;
 @end
@@ -65,8 +64,11 @@
     else if ([theme isEqualToString:@"Cats"]) {
         selection = 1;
     }
+    else if ([theme isEqualToString:@"Jaws"]) {
+        selection = 2;
+    }
     else {
-        selection = 1;
+        selection = 5;
     }
     int mazeID = arc4random_uniform(5)+1;
     self.manager.player.mazeID = mazeID;
@@ -81,10 +83,13 @@
         {
             UIImage *goImage = [UIImage imageNamed:@"Trump_game_over"];
             self.gameOverImage = UIImagePNGRepresentation(goImage);
-            UIImage *image = [UIImage imageNamed:@"Trump_wall"];
+            UIImage *image = [UIImage imageNamed:@"Trump_invalid"];
             NSData *data = UIImagePNGRepresentation(image);
             self.outOfBoundsImage = data;
             self.invalidSquareImage = data;
+            UIImage *pathImage = [UIImage imageNamed:@"Trump_path"];
+            NSData *pathData = UIImagePNGRepresentation(pathImage);
+            self.pathImage = pathData;
             self.manager.player.mazeID = 0;
             self.sounds =  @[@"Wrong",@"China",@"Suffer",@"Congratulations"];
             return;
@@ -92,16 +97,43 @@
         case 1:
         {   UIImage *goImage = [UIImage imageNamed:@"Game_over"];
             self.gameOverImage = UIImagePNGRepresentation(goImage);
-            UIImage *image = [UIImage imageNamed:@"Hedge"];
+            UIImage *image = [UIImage imageNamed:@"Cats_invalid"];
             NSData *data = UIImagePNGRepresentation(image);
             self.outOfBoundsImage = data;
             self.invalidSquareImage = data;
+            UIImage *pathImage = [UIImage imageNamed:@"Cats_path"];
+            NSData *pathData = UIImagePNGRepresentation(pathImage);
+            self.pathImage = pathData;
              self.sounds =  @[@"Wrong",@"China",@"Suffer",@"Congratulations"];
             return;
             break;
         }
             
+        case 2:
+        {   UIImage *goImage = [UIImage imageNamed:@"Game_over"];
+            self.gameOverImage = UIImagePNGRepresentation(goImage);
+            UIImage *image = [UIImage imageNamed:@"Jaws_invalid"];
+            NSData *data = UIImagePNGRepresentation(image);
+            self.outOfBoundsImage = data;
+            self.invalidSquareImage = data;
+            UIImage *pathImage = [UIImage imageNamed:@"Jaws_path"];
+            NSData *pathData = UIImagePNGRepresentation(pathImage);
+            self.pathImage = pathData;
+            self.sounds =  @[@"Wrong",@"China",@"Suffer",@"Congratulations"];
+            return;
+            break;
+        }
+            
         default:{
+            UIImage *goImage = [UIImage imageNamed:@"Game_over"];
+            self.gameOverImage = UIImagePNGRepresentation(goImage);
+            UIImage *image = [UIImage imageNamed:@"Default_invalid"];
+            NSData *data = UIImagePNGRepresentation(image);
+            self.outOfBoundsImage = data;
+            self.invalidSquareImage = data;
+            UIImage *pathImage = [UIImage imageNamed:@"Default_path"];
+            NSData *pathData = UIImagePNGRepresentation(pathImage);
+            self.pathImage = pathData;
             self.sounds =  @[@"Wrong",@"China",@"Suffer",@"Congratulations"];
             return;
             break;

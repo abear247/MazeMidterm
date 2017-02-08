@@ -68,9 +68,11 @@
     Player *player = manager.player;
     Maze *maze = manager.maze;
     MapCell *cell = (MapCell*)[self.mapCollectionView dequeueReusableCellWithReuseIdentifier:@"mapCell" forIndexPath:indexPath];
-    cell.mapImage.image = [UIImage imageNamed:@"Path"];
+    cell.mapImage.image = [UIImage imageWithData:manager.maze.pathImage];
+//    cell.mapImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_path",manager.gameTheme]];
     if ([self.invalidSquareDictionary[@(indexPath.section)] containsObject:@(indexPath.row)]) {
-        cell.mapImage.image = [UIImage imageNamed:@"Hedge"];
+//        cell.mapImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_invalid",manager.gameTheme]];
+        cell.mapImage.image = [UIImage imageWithData:manager.maze.invalidSquareImage];
     }
     if (player.currentX == indexPath.row && player.currentY == indexPath.section) {
         cell.mapImage.image = [UIImage imageWithData:manager.player.image];
