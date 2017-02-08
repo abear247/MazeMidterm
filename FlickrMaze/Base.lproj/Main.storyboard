@@ -152,15 +152,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EkU-k6-nhd">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VqD-0j-QcE">
-                                <rect key="frame" x="129" y="459.5" width="116" height="67"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VqD-0j-QcE">
+                                <rect key="frame" x="129" y="481.5" width="116" height="67"/>
                                 <color key="backgroundColor" white="0.65859374999999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="116" id="Bhv-kt-v9H"/>
                                     <constraint firstAttribute="height" constant="67" id="Vho-5s-DjL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                                <state key="normal" title="Start"/>
+                                <state key="normal" title="Start" image="Play"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="8"/>
@@ -171,7 +170,7 @@
                                 </connections>
                             </button>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fmg-E5-UKW">
-                                <rect key="frame" x="70" y="425" width="233" height="136"/>
+                                <rect key="frame" x="70" y="447" width="233" height="136"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="233" id="F2Y-FH-qPO"/>
                                     <constraint firstAttribute="height" constant="136" id="Wd6-Av-9Ki"/>
@@ -189,31 +188,52 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxf-la-Ufs">
-                                <rect key="frame" x="308" y="230.5" width="34" height="30"/>
-                                <color key="backgroundColor" white="0.65859374999999998" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Load">
-                                    <color key="titleShadowColor" white="0.65859374999999998" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loadButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xKx-m6-w5i"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKE-96-KnL">
-                                <rect key="frame" x="148.5" y="592" width="76" height="30"/>
+                                <rect key="frame" x="148.5" y="614" width="76" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="High Score"/>
                                 <connections>
                                     <segue destination="x8L-Sp-Xvd" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="Gff-NV-CS7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LC3-Tc-Ewe">
-                                <rect key="frame" x="164" y="363" width="46" height="30"/>
-                                <state key="normal" title="Button">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LC3-Tc-Ewe">
+                                <rect key="frame" x="91.5" y="352" width="195" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="195" id="FP4-Ys-drp"/>
+                                    <constraint firstAttribute="height" constant="75" id="hju-Yl-wUO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="22"/>
+                                <state key="normal" title="Setup Game" backgroundImage="Background">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="uGc-bp-rOD" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="d6V-kq-udK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxf-la-Ufs">
+                                <rect key="frame" x="129" y="263" width="116" height="43"/>
+                                <color key="backgroundColor" white="0.65859374999999998" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="116" id="KzF-XM-cDD"/>
+                                    <constraint firstAttribute="height" constant="43" id="qps-hV-6Vf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="19"/>
+                                <state key="normal" title="Continue" backgroundImage="Background">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.65859374999999998" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loadButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xKx-m6-w5i"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -225,21 +245,21 @@
                             <constraint firstAttribute="trailingMargin" secondItem="qoV-zt-1po" secondAttribute="trailing" id="4az-8J-Yhx"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EkU-k6-nhd" secondAttribute="bottom" id="79K-sW-ioZ"/>
                             <constraint firstItem="Fmg-E5-UKW" firstAttribute="centerX" secondItem="VqD-0j-QcE" secondAttribute="centerX" id="C8y-pm-nSF"/>
-                            <constraint firstItem="Fmg-E5-UKW" firstAttribute="top" secondItem="LC3-Tc-Ewe" secondAttribute="bottom" constant="32" id="DCN-yt-Was"/>
+                            <constraint firstItem="Fmg-E5-UKW" firstAttribute="top" secondItem="LC3-Tc-Ewe" secondAttribute="bottom" constant="20" id="DCN-yt-Was"/>
                             <constraint firstItem="cKE-96-KnL" firstAttribute="top" secondItem="VqD-0j-QcE" secondAttribute="bottom" constant="65.5" id="Dgb-ev-h2I"/>
                             <constraint firstItem="EkU-k6-nhd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GHK-Bq-XEH"/>
-                            <constraint firstItem="LC3-Tc-Ewe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HVc-yh-yAE"/>
+                            <constraint firstItem="LC3-Tc-Ewe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="1" id="HVc-yh-yAE"/>
                             <constraint firstItem="cKE-96-KnL" firstAttribute="top" secondItem="Fmg-E5-UKW" secondAttribute="bottom" constant="31" id="LBR-VD-0sg"/>
                             <constraint firstItem="Fmg-E5-UKW" firstAttribute="centerY" secondItem="VqD-0j-QcE" secondAttribute="centerY" id="RjJ-vg-mJu"/>
                             <constraint firstItem="CGV-B4-awg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="TAd-2r-Gha"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qoV-zt-1po" secondAttribute="bottom" constant="35" id="Tk3-nm-dD1"/>
                             <constraint firstAttribute="trailing" secondItem="EkU-k6-nhd" secondAttribute="trailing" id="UlI-WM-3cn"/>
+                            <constraint firstItem="yxf-la-Ufs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Vcq-fF-0au"/>
                             <constraint firstItem="EkU-k6-nhd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="eHQ-nV-Gfc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="yxf-la-Ufs" secondAttribute="trailing" constant="17" id="fl3-rg-osP"/>
-                            <constraint firstItem="LC3-Tc-Ewe" firstAttribute="top" secondItem="CGV-B4-awg" secondAttribute="bottom" constant="199.5" id="kmb-Ao-9py"/>
+                            <constraint firstItem="LC3-Tc-Ewe" firstAttribute="top" secondItem="CGV-B4-awg" secondAttribute="bottom" constant="188.5" id="kmb-Ao-9py"/>
                             <constraint firstAttribute="leadingMargin" secondItem="qoV-zt-1po" secondAttribute="leading" id="nQY-TJ-gkt"/>
                             <constraint firstItem="qoV-zt-1po" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sUC-2Y-LHx"/>
-                            <constraint firstItem="yxf-la-Ufs" firstAttribute="top" secondItem="CGV-B4-awg" secondAttribute="bottom" constant="67" id="v6K-lN-xRr"/>
+                            <constraint firstItem="yxf-la-Ufs" firstAttribute="top" secondItem="CGV-B4-awg" secondAttribute="bottom" constant="91.5" id="v6K-lN-xRr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3ZH-ea-LTN"/>
@@ -860,6 +880,7 @@
     <resources>
         <image name="Background" width="4500" height="3000"/>
         <image name="Camera" width="87" height="72"/>
+        <image name="Play" width="350" height="125"/>
         <image name="Player" width="626" height="626"/>
         <image name="Scroll" width="435" height="600"/>
     </resources>
