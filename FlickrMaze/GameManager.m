@@ -161,6 +161,8 @@
                                                      userInfo:nil
                                                       repeats:YES];
     self.sounds = self.maze.sounds;
+    NSNotification *notification = [NSNotification notificationWithName:@"playerTimeIncrement" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
 #pragma mark Maze Making Methods
@@ -401,6 +403,8 @@
 
 - (void) incrementPlayerTime {
     self.player.time += 1;
+    NSNotification *notification = [NSNotification notificationWithName:@"playerTimeIncrement" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
 @end

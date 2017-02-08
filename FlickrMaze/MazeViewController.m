@@ -48,6 +48,7 @@
     [notificationCenter addObserver:self selector:@selector(playerWins) name:@"playerWins" object:nil];
     [notificationCenter addObserver:self selector:@selector(startGame) name:@"startGame" object:nil];
     [notificationCenter addObserver:self selector:@selector(ghostClose) name:@"ghostClose" object:nil];
+    [notificationCenter addObserver:self selector:@selector(updateTimeLabel) name:@"playerTimeIncrement" object:nil];
     self.playerImage.image = [UIImage imageWithData:self.manager.player.image];
     [self.mazeCollectionView addSubview:self.playerImage];
     self.randomArray = [self randomize];
@@ -222,6 +223,12 @@
             return;
     }
     
+}
+
+#pragma mark Player Timer Update
+
+- (void) updateTimeLabel {
+    self.timeLabel.text = @(self.manager.player.time).stringValue;
 }
 
 #pragma mark Movement Methods
