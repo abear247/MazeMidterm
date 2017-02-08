@@ -22,6 +22,7 @@
 @property NSData *playerImage;
 @property ScoreKeeper *playerScore;
 @property NSString *tags;
+@property NSString *playerName;
 
 - (void)saveContext;
 - (NSURL*) generateURL: (NSString*) tagEntry;

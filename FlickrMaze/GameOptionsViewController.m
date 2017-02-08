@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *playerImageView;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextView;
 @property (weak, nonatomic) IBOutlet UITextField *tagTextField;
+@property UIImage *player;
 @property NSString *selectedTheme;
 @property GameManager *manager;
 @end
@@ -27,6 +28,11 @@
     self.themes = @[@"Default",@"Cats",@"Jaws",@"Donald_Trump"];
     self.themePicker.delegate = self;
     self.themePicker.dataSource = self;
+    
+    if(self.manager.playerImage)
+        self.playerImageView.image = [UIImage imageWithData:self.manager.playerImage];
+    if(self.manager.playerName)
+        self.nameTextView.text = self.manager.playerName;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,6 +53,7 @@
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
 - (IBAction)saveButton:(id)sender {
+    self.manager.playerName = self.nameTextView.text;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -70,7 +70,7 @@
     else {
         selection = 5;
     }
-    int mazeID = 1;//arc4random_uniform(5)+1;
+    int mazeID = arc4random_uniform(5)+1;
     self.manager.player.mazeID = mazeID;
     self.manager.player.themeID = selection;
     [self selectThemeWithID:selection];
@@ -85,8 +85,10 @@
             self.gameOverImage = UIImagePNGRepresentation(goImage);
             UIImage *image = [UIImage imageNamed:@"Trump_invalid"];
             NSData *data = UIImagePNGRepresentation(image);
-            self.outOfBoundsImage = data;
             self.invalidSquareImage = data;
+            UIImage *cliffImage = [UIImage imageNamed:@"Cliff"];
+            NSData *cliffData = UIImagePNGRepresentation(cliffImage);
+            self.outOfBoundsImage = cliffData;
             UIImage *pathImage = [UIImage imageNamed:@"Trump_path"];
             NSData *pathData = UIImagePNGRepresentation(pathImage);
             self.pathImage = pathData;
@@ -99,8 +101,10 @@
             self.gameOverImage = UIImagePNGRepresentation(goImage);
             UIImage *image = [UIImage imageNamed:@"Cats_invalid"];
             NSData *data = UIImagePNGRepresentation(image);
-            self.outOfBoundsImage = data;
             self.invalidSquareImage = data;
+            UIImage *cliffImage = [UIImage imageNamed:@"Cliff"];
+            NSData *cliffData = UIImagePNGRepresentation(cliffImage);
+            self.outOfBoundsImage = cliffData;
             UIImage *pathImage = [UIImage imageNamed:@"Cats_path"];
             NSData *pathData = UIImagePNGRepresentation(pathImage);
             self.pathImage = pathData;
@@ -114,8 +118,10 @@
             self.gameOverImage = UIImagePNGRepresentation(goImage);
             UIImage *image = [UIImage imageNamed:@"Jaws_invalid"];
             NSData *data = UIImagePNGRepresentation(image);
-            self.outOfBoundsImage = data;
             self.invalidSquareImage = data;
+            UIImage *cliffImage = [UIImage imageNamed:@"Cliff"];
+            NSData *cliffData = UIImagePNGRepresentation(cliffImage);
+            self.outOfBoundsImage = cliffData;
             UIImage *pathImage = [UIImage imageNamed:@"Jaws_path"];
             NSData *pathData = UIImagePNGRepresentation(pathImage);
             self.pathImage = pathData;
@@ -129,8 +135,10 @@
             self.gameOverImage = UIImagePNGRepresentation(goImage);
             UIImage *image = [UIImage imageNamed:@"Default_invalid"];
             NSData *data = UIImagePNGRepresentation(image);
-            self.outOfBoundsImage = data;
             self.invalidSquareImage = data;
+            UIImage *cliffImage = [UIImage imageNamed:@"Cliff"];
+            NSData *cliffData = UIImagePNGRepresentation(cliffImage);
+            self.outOfBoundsImage = cliffData;
             UIImage *pathImage = [UIImage imageNamed:@"Default_path"];
             NSData *pathData = UIImagePNGRepresentation(pathImage);
             self.pathImage = pathData;
