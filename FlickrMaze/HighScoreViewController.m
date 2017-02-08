@@ -9,6 +9,7 @@
 #import "HighScoreViewController.h"
 #import "GameManager.h"
 #import "ScoreKeeper+CoreDataClass.h"
+#import "ScoreTableViewCell.h"
 
 @interface HighScoreViewController ()
 
@@ -54,11 +55,17 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [self.highScoreTableView dequeueReusableCellWithIdentifier:@"cell"];
+    ScoreTableViewCell *cell = [self.highScoreTableView dequeueReusableCellWithIdentifier:@"cell"];
     ScoreKeeper *score = self.activeArray[indexPath.row];
-    cell.textLabel.text = @(score.score).stringValue;
-    cell.textLabel.text = score.playerName;
-    cell.imageView.image = [UIImage imageWithData:score.playerImage];
+    cell.scoreLabel.text = [NSString stringWithFormat:@"Score: %hd", score.score];
+    cell.playerNameLabel.text = [NSString stringWithFormat:@"Name: %@", score.playerName];
+    cell.playerImageView.image = [UIImage imageWithData:score.playerImage];
+    cell.playerTimeLabel.text = [NSString stringWithFormat:@"Time: %hd", score.playerTime];
+    cell.playerMovesLabel.text = [NSString stringWithFormat:@"Moves: %hd", score.moves];
+    cell.playerWonLabel.text = @"Loss";
+    if (score.playerWon) {
+        cell.playerWonLabel.text = @"Win";
+    }
     return cell;
 }
 
@@ -69,26 +76,4 @@
     [self.highScoreTableView reloadData];
 }
 
-/*  MapViewController
-    if (self.manager.player.ghostX == indexPath.row && self.manager.player.ghostY == indexPath.section) {
-            cell.mapImage.image = [UIImage imageNamed:@"Ghost"];
-        }
-*/
-
- /*EndGameViewController
- - (void) calculateScore {
- NSManagedObjectContext *context = [self.manager getContext];
- ScoreKeeper *score = [[ScoreKeeper alloc] initWithContext:context];
- //score.playerName = self.manager.player.name;
- score.playerImage = self.manager.player.playerImage;
- score.score = 100* map target movecount / self.manager.player.moveCount;
- if (self.won) {
- score.score *= 10;
- }
- score.moves = self.manager.player.moveCount;
- //score.map = mapindex
- //self.manager set player to start of map and reset movecount
- [self.manager saveContext];
- }
- */
 @end

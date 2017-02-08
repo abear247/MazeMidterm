@@ -11,8 +11,4 @@
 @interface MapViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property NSDictionary *invalidSquareDictionary;
-@property NSInteger currentX;
-@property NSInteger currentY;
-@property NSInteger endX;
-@property NSInteger endY;
 @end

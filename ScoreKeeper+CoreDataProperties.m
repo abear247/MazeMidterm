@@ -2,7 +2,7 @@
 //  ScoreKeeper+CoreDataProperties.m
 //  FlickrMaze
 //
-//  Created by Minhung Ling on 2017-02-07.
+//  Created by Minhung Ling on 2017-02-08.
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //  This file was automatically generated and should not be edited.
 //
@@ -17,8 +17,10 @@
 
 @dynamic map;
 @dynamic moves;
-@dynamic score;
-@dynamic playerName;
 @dynamic playerImage;
+@dynamic playerName;
+@dynamic score;
+@dynamic playerWon;
+@dynamic playerTime;
 
 @end

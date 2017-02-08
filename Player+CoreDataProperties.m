@@ -2,7 +2,7 @@
 //  Player+CoreDataProperties.m
 //  FlickrMaze
 //
-//  Created by Minhung Ling on 2017-02-07.
+//  Created by Minhung Ling on 2017-02-08.
 //  Copyright © 2017 Minhung Ling. All rights reserved.
 //  This file was automatically generated and should not be edited.
 //
@@ -21,7 +21,10 @@
 @dynamic ghostY;
 @dynamic mazeID;
 @dynamic moveCount;
+@dynamic image;
 @dynamic themeID;
-@dynamic playerImage;
+@dynamic name;
+@dynamic time;
+@dynamic gameWon;
 
 @end

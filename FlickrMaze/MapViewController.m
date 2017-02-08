@@ -8,7 +8,9 @@
 
 #import "MapViewController.h"
 #import "Maze.h"
+#import "Player+CoreDataClass.h"
 #import "MapCell.h"
+#import "GameManager.h"
 
 @interface MapViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *mapCollectionView;
@@ -62,19 +64,23 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    GameManager *manager = [GameManager sharedManager];
+    Player *player = manager.player;
+    Maze *maze = manager.maze;
     MapCell *cell = (MapCell*)[self.mapCollectionView dequeueReusableCellWithReuseIdentifier:@"mapCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor brownColor];
     if ([self.invalidSquareDictionary[@(indexPath.section)] containsObject:@(indexPath.row)]) {
         cell.backgroundColor = [UIColor blueColor];
     }
-    if (self.currentX == indexPath.row && self.currentY == indexPath.section) {
+    if (player.currentX == indexPath.row && player.currentY == indexPath.section) {
         cell.backgroundColor = [UIColor greenColor];
     }
-    if (self.endX == indexPath.row && self.endY == indexPath.section) {
-        cell.mapImage.image = [UIImage imageNamed:@"Trophy"];
-        
+    if (player.ghostX == indexPath.row && player.ghostY == indexPath.section) {
+        cell.backgroundColor = [UIColor blackColor];
     }
-    
+    if (maze.endX == indexPath.row && maze.endY == indexPath.section) {
+        cell.mapImage.image = [UIImage imageNamed:@"Trophy"];
+    }    
     return cell;
 }
 
@@ -87,7 +93,7 @@
 }
 
 - (void) dismissSelf{
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 @end

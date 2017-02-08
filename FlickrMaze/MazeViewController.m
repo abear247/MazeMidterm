@@ -47,7 +47,7 @@
     [notificationCenter addObserver:self selector:@selector(playerLoses) name:@"playerLoses" object:nil];
     [notificationCenter addObserver:self selector:@selector(playerWins) name:@"playerWins" object:nil];
     [notificationCenter addObserver:self selector:@selector(startGame) name:@"startGame" object:nil];
-    self.playerImage.image = [UIImage imageWithData:self.manager.player.playerImage];
+    self.playerImage.image = [UIImage imageWithData:self.manager.player.image];
     [self.mazeCollectionView addSubview:self.playerImage];
     [self.mazeCollectionView reloadData];
     self.randomArray = [self randomize];
@@ -337,10 +337,6 @@
     }
     if ([segue.identifier isEqualToString:@"MapViewController"]) {
         MapViewController *mvc = segue.destinationViewController;
-        mvc.currentX = self.manager.player.currentX;
-        mvc.currentY = self.manager.player.currentY;
-        mvc.endX = [self.manager getEndX];
-        mvc.endY = [self.manager getEndY];
         mvc.invalidSquareDictionary = [self.manager getDictionary];
     }
 }
