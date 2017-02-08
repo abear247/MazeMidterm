@@ -53,7 +53,8 @@
     self.randomArray = [self randomize];
 }
 
--(void)viewDidAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self.tableView reloadData];
     self.tableInt = 0;
     self.movesLabel.text = [NSString stringWithFormat:@"Moves: %hd", self.manager.player.moveCount];

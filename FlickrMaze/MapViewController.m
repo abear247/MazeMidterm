@@ -42,7 +42,8 @@
     self.timerLabel.text = [NSString stringWithFormat:@"%d:%d",seconds,milliseconds%1000];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mapCollectionView.collectionViewLayout;
     CGFloat width = self.mapCollectionView.frame.size.width/10;
     CGSize size = CGSizeMake(width, width);
