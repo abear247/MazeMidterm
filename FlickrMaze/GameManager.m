@@ -448,6 +448,10 @@
     return self.maze.gameOverImage;
 }
 
+- (NSData *) getGhostImage {
+    return self.maze.ghostImage;
+}
+
 - (void) incrementPlayerTime {
     self.player.time += 1;
     NSNotification *notification = [NSNotification notificationWithName:@"playerTimeIncrement" object:nil];

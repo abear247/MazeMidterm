@@ -14,6 +14,7 @@
 @property NSData *outOfBoundsImage;
 @property NSData *gameOverImage;
 @property NSData *pathImage;
+@property NSData *ghostImage;
 @property (nonatomic) NSData *invalidSquareImage;
 @property NSInteger startX;
 @property NSInteger startY;

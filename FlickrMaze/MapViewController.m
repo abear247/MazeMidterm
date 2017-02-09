@@ -62,7 +62,7 @@
             cell.mapImage.image = [UIImage imageWithData:manager.player.image];
         }
         if (manager.player.ghostX == indexPath.row && manager.player.ghostY == indexPath.section) {
-            cell.backgroundColor = [UIColor blackColor];
+            cell.mapImage.image = [UIImage imageWithData:manager.maze.ghostImage];
         }
     }
     else {
