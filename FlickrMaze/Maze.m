@@ -113,10 +113,10 @@
             UIImage *pathImage = [UIImage imageNamed:@"Cats_path"];
             NSData *pathData = UIImagePNGRepresentation(pathImage);
             self.pathImage = pathData;
-            UIImage *ghostImage = [UIImage imageNamed:@"Cat_ghost"];
+            UIImage *ghostImage = [UIImage imageNamed:@"Cats_ghost"];
             NSData *ghostData = UIImagePNGRepresentation(ghostImage);
             self.ghostImage = ghostData;
-            NSDataAsset *musicData = [[NSDataAsset alloc] initWithName:@"Default_music"];
+            NSDataAsset *musicData = [[NSDataAsset alloc] initWithName:@"Cats_music"];
             self.music = musicData;
              self.sounds =  @[@"Cats_out_of_bounds",@"Cats_invalid_sound",@"Cats_ghost_start",@"Cats_ghost_start",@"Congratulations"];
             return;
