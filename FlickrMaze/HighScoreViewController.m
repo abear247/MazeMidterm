@@ -91,6 +91,7 @@
         [context deleteObject:score];
     }
     [self.manager saveContext];
+    self.activeArray = nil;
     self.mapScores = @[ [NSMutableArray new],
                         [NSMutableArray new],
                         [NSMutableArray new],
