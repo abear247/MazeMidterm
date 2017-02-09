@@ -55,12 +55,34 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9d5-hF-YzG">
+                                            <rect key="frame" x="137.5" y="350" width="100" height="30"/>
+                                            <state key="normal" title="Practice Mode">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="practiceMode:" destination="uGc-bp-rOD" eventType="touchUpInside" id="vdI-ML-CPM"/>
+                                            </connections>
+                                        </button>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="AkM-3F-BM0">
+                                            <rect key="frame" x="245" y="351" width="69" height="29"/>
+                                            <segments>
+                                                <segment title="On"/>
+                                                <segment title="Off"/>
+                                            </segments>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="practiceMode:" destination="uGc-bp-rOD" eventType="valueChanged" id="6N6-TH-YIP"/>
+                                            </connections>
+                                        </segmentedControl>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="X4b-LQ-wjv" firstAttribute="leading" secondItem="WZf-E8-JTu" secondAttribute="leading" constant="8" id="1WI-MR-EvT"/>
                                         <constraint firstAttribute="trailing" secondItem="mXq-2V-SNz" secondAttribute="trailing" id="5W5-dd-OMU"/>
                                         <constraint firstItem="mXq-2V-SNz" firstAttribute="centerX" secondItem="WZf-E8-JTu" secondAttribute="centerX" id="8XX-Ke-ScJ"/>
                                         <constraint firstItem="UzT-52-Or7" firstAttribute="top" secondItem="mXq-2V-SNz" secondAttribute="bottom" constant="8" id="Axt-8h-ofJ"/>
+                                        <constraint firstItem="AkM-3F-BM0" firstAttribute="leading" secondItem="9d5-hF-YzG" secondAttribute="trailing" constant="7.5" id="D1v-fp-0CG"/>
+                                        <constraint firstItem="9d5-hF-YzG" firstAttribute="centerX" secondItem="WZf-E8-JTu" secondAttribute="centerX" id="Djg-LP-fb5"/>
                                         <constraint firstItem="mXq-2V-SNz" firstAttribute="leading" secondItem="WZf-E8-JTu" secondAttribute="leading" id="G92-ic-6za"/>
                                         <constraint firstItem="X4b-LQ-wjv" firstAttribute="top" secondItem="fRP-Zv-EfL" secondAttribute="bottom" constant="8" id="N2P-Gc-gPh"/>
                                         <constraint firstItem="X4b-LQ-wjv" firstAttribute="centerX" secondItem="WZf-E8-JTu" secondAttribute="centerX" id="RsV-4Y-o3y"/>
@@ -113,11 +135,13 @@
                             <constraint firstItem="0yq-Oa-Mz8" firstAttribute="centerX" secondItem="uNc-Jc-FqX" secondAttribute="centerX" id="2Hf-FA-sI6"/>
                             <constraint firstItem="drw-u2-dVl" firstAttribute="centerX" secondItem="uNc-Jc-FqX" secondAttribute="centerX" id="6U3-wR-rTN"/>
                             <constraint firstAttribute="trailing" secondItem="isN-Pg-Bej" secondAttribute="trailing" id="73h-O6-XQ0"/>
+                            <constraint firstItem="9d5-hF-YzG" firstAttribute="top" secondItem="drw-u2-dVl" secondAttribute="bottom" constant="5" id="7L2-iT-U9E"/>
                             <constraint firstItem="O8E-Nh-nB8" firstAttribute="top" secondItem="isN-Pg-Bej" secondAttribute="bottom" id="9eg-cw-EoP"/>
                             <constraint firstAttribute="leadingMargin" secondItem="654-FZ-1rX" secondAttribute="leading" id="A8u-Lg-6NP"/>
                             <constraint firstItem="654-FZ-1rX" firstAttribute="centerX" secondItem="uNc-Jc-FqX" secondAttribute="centerX" id="Fkg-oz-MqQ"/>
                             <constraint firstItem="isN-Pg-Bej" firstAttribute="top" secondItem="uNc-Jc-FqX" secondAttribute="top" id="OJb-4j-SKM"/>
                             <constraint firstItem="3GW-Xb-iEI" firstAttribute="top" secondItem="GMc-2K-NC4" secondAttribute="bottom" constant="8" id="Qlf-kX-Oq1"/>
+                            <constraint firstItem="AkM-3F-BM0" firstAttribute="top" secondItem="drw-u2-dVl" secondAttribute="bottom" constant="6" id="b0U-nz-ugx"/>
                             <constraint firstItem="drw-u2-dVl" firstAttribute="top" secondItem="0yq-Oa-Mz8" secondAttribute="bottom" constant="22" id="bZA-5p-jnx"/>
                             <constraint firstItem="3GW-Xb-iEI" firstAttribute="centerX" secondItem="uNc-Jc-FqX" secondAttribute="centerX" id="it1-DC-0AO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="654-FZ-1rX" secondAttribute="trailing" id="jkR-uT-aPV"/>
@@ -131,7 +155,9 @@
                         <outlet property="nameTextView" destination="654-FZ-1rX" id="YOd-RC-MOy"/>
                         <outlet property="playerImageView" destination="drw-u2-dVl" id="Fnx-69-WfE"/>
                         <outlet property="tagTextField" destination="X4b-LQ-wjv" id="LHD-gU-zSU"/>
+                        <outlet property="tagsLabel" destination="fRP-Zv-EfL" id="FEN-g6-oRA"/>
                         <outlet property="themePicker" destination="mXq-2V-SNz" id="wfo-KG-nGr"/>
+                        <outlet property="toggle" destination="AkM-3F-BM0" id="Z1X-cW-U3p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VPW-bP-Rfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -260,14 +286,6 @@
                                 <connections>
                                     <segue destination="65G-tn-mzf" kind="presentation" identifier="Tutorial" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="R52-ot-vp4"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBa-hy-VXm">
-                                <rect key="frame" x="232" y="148" width="127" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="11"/>
-                                <state key="normal" title="Easy Mode">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0137739023193717" green="0.92608398199081421" blue="0.98676246404647827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -671,7 +689,7 @@
                                                     <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="28g-U9-B2a" id="VYY-jW-a3J">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dFX-kD-AgZ">
@@ -731,6 +749,16 @@
                                                 <outlet property="delegate" destination="x8L-Sp-Xvd" id="fhZ-65-YtM"/>
                                             </connections>
                                         </tableView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXu-FU-mo1">
+                                            <rect key="frame" x="154" y="548" width="67" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="View Map">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <segue destination="nQh-Pu-Vqm" kind="presentation" identifier="MapViewController" id="qub-61-3Vi"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="tXA-uY-GBh" firstAttribute="centerY" secondItem="ds1-Xx-wgf" secondAttribute="centerY" constant="6" id="O0Z-qM-frP"/>
@@ -1025,5 +1053,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="i9J-ZR-GxD"/>
+        <segue reference="qub-61-3Vi"/>
     </inferredMetricsTieBreakers>
 </document>

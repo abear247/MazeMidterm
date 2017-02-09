@@ -20,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
-
 @property (nonatomic) NSTimer *progressTimer;
 @property NSArray *themes;
 @property UIView *backgroundView;
@@ -38,6 +37,9 @@
     self.backgroundPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
     self.backgroundPlayer.numberOfLoops = -1;
     [self.backgroundPlayer play];
+    if(self.manager.practiceMode){
+        
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -51,6 +53,7 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [self.audioPlayer stop];
 }
+
 
 - (IBAction)startButton:(id)sender {
     if(!self.manager.tags)

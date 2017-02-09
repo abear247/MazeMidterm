@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *playerImageView;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextView;
 @property (weak, nonatomic) IBOutlet UITextField *tagTextField;
+@property (weak, nonatomic) IBOutlet UILabel *tagsLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *toggle;
 @property UIImage *player;
 @property NSString *selectedTheme;
 @property GameManager *manager;
@@ -34,11 +36,31 @@
         self.playerImageView.image = [UIImage imageWithData:self.manager.playerImage];
     if(self.manager.playerName)
         self.nameTextView.text = self.manager.playerName;
+    NSUInteger selected = [self.themes indexOfObject:self.manager.gameTheme];
+    [self.themePicker selectRow:selected inComponent:0 animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)practiceMode:(id)sender {
+    if(self.manager.practiceMode){
+        self.manager.practiceMode = NO;
+        self.tagTextField.userInteractionEnabled = YES;
+        self.tagTextField.backgroundColor = [UIColor whiteColor];
+        self.tagsLabel.hidden = NO;
+        self.toggle.selectedSegmentIndex = 1;
+    }
+    else{
+        self.tagTextField.userInteractionEnabled = NO;
+        self.tagTextField.text = nil;
+        self.tagTextField.backgroundColor = [UIColor clearColor];
+        self.manager.practiceMode = YES;
+        self.tagsLabel.hidden = YES;
+        self.toggle.selectedSegmentIndex = 0;
+    }
+        
 }
 
 #pragma mark - Image Picker methods
