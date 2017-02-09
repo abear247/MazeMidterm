@@ -319,7 +319,7 @@
             }
             return YES;
         }
-        
+        [self.invalidPlayer play];
         NSLog(@"Lava!");
         return NO;
     }
