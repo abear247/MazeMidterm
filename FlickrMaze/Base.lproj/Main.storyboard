@@ -153,6 +153,24 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Maze" translatesAutoresizingMaskIntoConstraints="NO" id="EkU-k6-nhd">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VqD-0j-QcE">
+                                <rect key="frame" x="129" y="129" width="116" height="67"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="116" id="Bhv-kt-v9H"/>
+                                    <constraint firstAttribute="height" constant="67" id="Vho-5s-DjL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="20"/>
+                                <state key="normal" title="Start"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aNY-ju-zQD"/>
+                                </connections>
+                            </button>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fmg-E5-UKW">
                                 <rect key="frame" x="71" y="447" width="233" height="136"/>
                                 <constraints>
@@ -173,13 +191,13 @@
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxf-la-Ufs">
-                                <rect key="frame" x="129" y="216" width="116" height="43"/>
+                                <rect key="frame" x="129" y="191" width="116" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="116" id="KzF-XM-cDD"/>
                                     <constraint firstAttribute="height" constant="43" id="qps-hV-6Vf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="20"/>
                                 <state key="normal" title="Continue">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.65859374999999998" alpha="1" colorSpace="calibratedWhite"/>
@@ -194,7 +212,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LC3-Tc-Ewe">
-                                <rect key="frame" x="91" y="267" width="195" height="75"/>
+                                <rect key="frame" x="91" y="278" width="195" height="75"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="195" id="FP4-Ys-drp"/>
@@ -213,8 +231,18 @@
                                     <segue destination="uGc-bp-rOD" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="d6V-kq-udK"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbx-OQ-Hyb">
+                                <rect key="frame" x="138" y="226" width="99" height="80"/>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="20"/>
+                                <state key="normal" title="Tutorial">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="65G-tn-mzf" kind="presentation" identifier="Tutorial" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="R52-ot-vp4"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umL-sK-YI2">
-                                <rect key="frame" x="121" y="367" width="132" height="30"/>
+                                <rect key="frame" x="121" y="361" width="132" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="TCG-id-dag"/>
@@ -233,46 +261,31 @@
                                     <segue destination="x8L-Sp-Xvd" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="xWe-9c-Z3n"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VqD-0j-QcE">
-                                <rect key="frame" x="129" y="141" width="116" height="67"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="116" id="Bhv-kt-v9H"/>
-                                    <constraint firstAttribute="height" constant="67" id="Vho-5s-DjL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="28"/>
-                                <state key="normal" title="Start"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aNY-ju-zQD"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0137739023193717" green="0.92608398199081421" blue="0.98676246404647827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="CGV-B4-awg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1sS-of-rfZ"/>
-                            <constraint firstItem="VqD-0j-QcE" firstAttribute="top" secondItem="umL-sK-YI2" secondAttribute="bottom" constant="-256" id="3Ac-Kw-s2j"/>
+                            <constraint firstItem="VqD-0j-QcE" firstAttribute="top" secondItem="umL-sK-YI2" secondAttribute="bottom" constant="-262" id="3Ac-Kw-s2j"/>
                             <constraint firstItem="VqD-0j-QcE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3Dx-mb-Gyy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qoV-zt-1po" secondAttribute="trailing" id="4az-8J-Yhx"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EkU-k6-nhd" secondAttribute="bottom" id="79K-sW-ioZ"/>
                             <constraint firstItem="EkU-k6-nhd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GHK-Bq-XEH"/>
+                            <constraint firstItem="Lbx-OQ-Hyb" firstAttribute="top" secondItem="yxf-la-Ufs" secondAttribute="bottom" constant="-8" id="GpP-s0-3pW"/>
                             <constraint firstItem="LC3-Tc-Ewe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="1" id="HVc-yh-yAE"/>
                             <constraint firstItem="CGV-B4-awg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="TAd-2r-Gha"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qoV-zt-1po" secondAttribute="bottom" constant="35" id="Tk3-nm-dD1"/>
                             <constraint firstAttribute="trailing" secondItem="EkU-k6-nhd" secondAttribute="trailing" id="UlI-WM-3cn"/>
                             <constraint firstItem="yxf-la-Ufs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-0.5" id="Vcq-fF-0au"/>
+                            <constraint firstItem="Lbx-OQ-Hyb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WZE-fy-n14"/>
+                            <constraint firstItem="LC3-Tc-Ewe" firstAttribute="top" secondItem="Lbx-OQ-Hyb" secondAttribute="bottom" constant="-28" id="ZHG-wa-dLZ"/>
                             <constraint firstItem="EkU-k6-nhd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="eHQ-nV-Gfc"/>
-                            <constraint firstItem="LC3-Tc-Ewe" firstAttribute="top" secondItem="CGV-B4-awg" secondAttribute="bottom" constant="103.5" id="kmb-Ao-9py"/>
+                            <constraint firstItem="LC3-Tc-Ewe" firstAttribute="top" secondItem="CGV-B4-awg" secondAttribute="bottom" constant="114.5" id="kmb-Ao-9py"/>
                             <constraint firstAttribute="leadingMargin" secondItem="qoV-zt-1po" secondAttribute="leading" id="nQY-TJ-gkt"/>
                             <constraint firstItem="qoV-zt-1po" firstAttribute="top" secondItem="Fmg-E5-UKW" secondAttribute="bottom" constant="47" id="rGh-Tl-Xhu"/>
-                            <constraint firstItem="VqD-0j-QcE" firstAttribute="top" secondItem="CGV-B4-awg" secondAttribute="bottom" constant="-22.5" id="rLK-2X-jiV"/>
+                            <constraint firstItem="VqD-0j-QcE" firstAttribute="top" secondItem="CGV-B4-awg" secondAttribute="bottom" constant="-34.5" id="rLK-2X-jiV"/>
                             <constraint firstItem="qoV-zt-1po" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sUC-2Y-LHx"/>
                             <constraint firstItem="umL-sK-YI2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-0.5" id="uT4-NO-6G6"/>
-                            <constraint firstItem="yxf-la-Ufs" firstAttribute="top" secondItem="CGV-B4-awg" secondAttribute="bottom" constant="52.5" id="v6K-lN-xRr"/>
+                            <constraint firstItem="yxf-la-Ufs" firstAttribute="top" secondItem="CGV-B4-awg" secondAttribute="bottom" constant="27.5" id="v6K-lN-xRr"/>
                             <constraint firstItem="Fmg-E5-UKW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wC0-TP-jdC"/>
                         </constraints>
                     </view>
@@ -546,6 +559,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbf-XC-8OX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1888.8" y="135.38230884557723"/>
+        </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="2Hu-gx-Ik6">
+            <objects>
+                <viewController id="65G-tn-mzf" customClass="TutorialViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dHi-2I-Lrq"/>
+                        <viewControllerLayoutGuide type="bottom" id="wB5-y8-Mkf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aXv-30-Ovt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWc-sV-d3w">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Zua-ks-SiX">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oXS-f0-5LT">
+                                            <rect key="frame" x="144" y="576" width="86" height="83"/>
+                                            <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="21"/>
+                                            <state key="normal" title="Return">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="returnButton:" destination="65G-tn-mzf" eventType="touchUpInside" id="3Cr-Lq-L1J"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="oXS-f0-5LT" secondAttribute="bottom" constant="8" id="Upd-7n-mas"/>
+                                        <constraint firstItem="oXS-f0-5LT" firstAttribute="centerX" secondItem="Zua-ks-SiX" secondAttribute="centerX" id="z9G-tp-dwg"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PWc-sV-d3w" firstAttribute="top" secondItem="aXv-30-Ovt" secondAttribute="top" id="1na-PL-0jO"/>
+                            <constraint firstItem="wB5-y8-Mkf" firstAttribute="top" secondItem="PWc-sV-d3w" secondAttribute="bottom" id="Ar6-Q3-ahH"/>
+                            <constraint firstAttribute="trailing" secondItem="PWc-sV-d3w" secondAttribute="trailing" id="Hz0-SQ-QXA"/>
+                            <constraint firstItem="PWc-sV-d3w" firstAttribute="leading" secondItem="aXv-30-Ovt" secondAttribute="leading" id="JIf-hW-epM"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WkO-ka-W9p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="883.80809595202402"/>
         </scene>
         <!--High Score View Controller-->
         <scene sceneID="RRK-ag-gfU">
@@ -953,6 +1016,6 @@
         <image name="Scroll" width="435" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hyC-jK-jec"/>
+        <segue reference="i9J-ZR-GxD"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -27,6 +27,7 @@
 		C84DD7111E4A616E00591C75 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C84DD7101E4A616E00591C75 /* AVFoundation.framework */; };
 		C84DD7141E4A9DF000591C75 /* MapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DD7131E4A9DF000591C75 /* MapCell.m */; };
 		C84DD7171E4B83F100591C75 /* GameOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C84DD7161E4B83F100591C75 /* GameOptionsViewController.m */; };
+		C8C9690E1E4CB8AA009FF982 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C9690D1E4CB8AA009FF982 /* TutorialViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,8 @@
 		C84DD7131E4A9DF000591C75 /* MapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapCell.m; sourceTree = "<group>"; };
 		C84DD7151E4B83F100591C75 /* GameOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOptionsViewController.h; sourceTree = "<group>"; };
 		C84DD7161E4B83F100591C75 /* GameOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOptionsViewController.m; sourceTree = "<group>"; };
+		C8C9690C1E4CB8AA009FF982 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
+		C8C9690D1E4CB8AA009FF982 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,8 @@
 				C84DD6DD1E47BDD400591C75 /* EndGameViewController.m */,
 				896E5B8B1E4AC0AE00C271ED /* HighScoreViewController.h */,
 				896E5B8C1E4AC0AE00C271ED /* HighScoreViewController.m */,
+				C8C9690C1E4CB8AA009FF982 /* TutorialViewController.h */,
+				C8C9690D1E4CB8AA009FF982 /* TutorialViewController.m */,
 				8991D70A1E4B8DD800D7C69E /* ScoreTableViewCell.h */,
 				8991D70B1E4B8DD800D7C69E /* ScoreTableViewCell.m */,
 				898A5DDB1E4572C5006C2A81 /* MazeCell.h */,
@@ -251,6 +256,7 @@
 			files = (
 				898A5DDA1E457107006C2A81 /* MazeViewController.m in Sources */,
 				896E5B8D1E4AC0AE00C271ED /* HighScoreViewController.m in Sources */,
+				C8C9690E1E4CB8AA009FF982 /* TutorialViewController.m in Sources */,
 				C84DD7171E4B83F100591C75 /* GameOptionsViewController.m in Sources */,
 				C84DD7141E4A9DF000591C75 /* MapCell.m in Sources */,
 				898A5DAD1E455FC1006C2A81 /* AppDelegate.m in Sources */,
