@@ -20,6 +20,7 @@
 @property (nonatomic) NSTimer *playerTimer;
 @property (nonatomic) NSArray *sounds;
 @property (nonatomic) AVAudioPlayer *audioPlayer;
+@property (nonatomic) AVAudioPlayer *invalidPlayer;
 @property (nonatomic) AVAudioPlayer *ghostPlayer;
 @property (nonatomic) AVAudioPlayer *ghostMovePlayer;
 @property (nonatomic) AVAudioPlayer *ghostClosePlayer;
@@ -287,6 +288,7 @@
             }
             return YES;
         }
+        [self.invalidPlayer play];
         NSLog(@"Lava!");
         return NO;
     }
@@ -454,9 +456,11 @@
 
 #pragma mark - Setup sounds
 -(void)setupSounds{
-    NSDataAsset *outOfBounds = [[NSDataAsset alloc] initWithName:self.sounds[0]];
     NSError *error;
+    NSDataAsset *outOfBounds = [[NSDataAsset alloc] initWithName:self.sounds[0]];
     self.audioPlayer = [[AVAudioPlayer alloc] initWithData:outOfBounds.data error:&error];
+    NSDataAsset *invalid = [[NSDataAsset alloc] initWithName:self.sounds[1]];
+    self.invalidPlayer = [[AVAudioPlayer alloc] initWithData:invalid.data error:&error];
     NSDataAsset *sound = [[NSDataAsset alloc] initWithName:self.sounds[2]];
     self.ghostPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
     NSDataAsset *moveSound = [[NSDataAsset alloc] initWithName:self.sounds[3]];
