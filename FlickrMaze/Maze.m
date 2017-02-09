@@ -93,7 +93,7 @@
             NSData *pathData = UIImagePNGRepresentation(pathImage);
             self.pathImage = pathData;
             self.manager.player.mazeID = 0;
-            self.sounds =  @[@"Trump_out_of_bounds",@"Trump_invalid_sound",@"Donald_Trump_ghost_start",@"Donald_Trump_ghost_start",@"Donald_Trump_game_over_victory"];
+            self.sounds =  @[@"Donald_Trump_out_of_bounds",@"Donald_Trump_invalid_sound",@"Donald_Trump_ghost_start",@"Donald_Trump_ghost_start",@"Donald_Trump_game_over_victory"];
             return;
         }
         case 1:

@@ -9,7 +9,6 @@
 #import "DetailViewController.h"
 
 @interface DetailViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *tileImageView;
 
 @end
@@ -18,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titleLabel.text = self.mazeTile.title;
     NSData *data = self.mazeTile.image;
     self.tileImageView.image = [UIImage imageWithData:data];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissSelf) name:@"gameOver" object:nil];
@@ -29,11 +27,11 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)dismissButton:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) dismissSelf{
-    [self.navigationController popViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 /*
