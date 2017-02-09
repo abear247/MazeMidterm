@@ -65,7 +65,7 @@
     self.backgroundPlayer = [[AVAudioPlayer alloc] initWithData:music.data error:&error];
     if(error)
         NSLog(@"error");
-    self.backgroundPlayer.numberOfLoops = 0;
+    self.backgroundPlayer.numberOfLoops = -1;
     self.backgroundPlayer.volume = 0.5;
     [self.backgroundPlayer play];
 }
