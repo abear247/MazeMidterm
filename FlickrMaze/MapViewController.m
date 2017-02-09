@@ -71,24 +71,28 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     GameManager *manager = [GameManager sharedManager];
-    Player *player = manager.player;
     Maze *maze = manager.maze;
     MapCell *cell = (MapCell*)[self.mapCollectionView dequeueReusableCellWithReuseIdentifier:@"mapCell" forIndexPath:indexPath];
     cell.mapImage.image = [UIImage imageWithData:manager.maze.pathImage];
-//    cell.mapImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_path",manager.gameTheme]];
     if ([self.invalidSquareDictionary[@(indexPath.section)] containsObject:@(indexPath.row)]) {
-//        cell.mapImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_invalid",manager.gameTheme]];
         cell.mapImage.image = [UIImage imageWithData:manager.maze.invalidSquareImage];
     }
-    if (player.currentX == indexPath.row && player.currentY == indexPath.section) {
-        cell.mapImage.image = [UIImage imageWithData:manager.player.image];
+    if (manager.player) {
+        if (manager.player.currentX == indexPath.row && manager.player.currentY == indexPath.section) {
+            cell.mapImage.image = [UIImage imageWithData:manager.player.image];
+        }
+        if (manager.player.ghostX == indexPath.row && manager.player.ghostY == indexPath.section) {
+            cell.backgroundColor = [UIColor blackColor];
+        }
     }
-    if (player.ghostX == indexPath.row && player.ghostY == indexPath.section) {
-        cell.backgroundColor = [UIColor blackColor];
+    else {
+        if (maze.startX == indexPath.row && maze.startY == indexPath.section) {
+            cell.mapImage.image = [UIImage imageWithData:manager.player.image];
+        }
     }
-    if (maze.endX == indexPath.row && maze.endY == indexPath.section) {
-        cell.mapImage.image = [UIImage imageNamed:@"Trophy"];
-    }    
+        if (maze.endX == indexPath.row && maze.endY == indexPath.section) {
+            cell.mapImage.image = [UIImage imageNamed:@"Trophy"];
+        }
     return cell;
 }
 

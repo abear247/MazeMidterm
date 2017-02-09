@@ -10,6 +10,9 @@
 #import "GameManager.h"
 #import "ScoreKeeper+CoreDataClass.h"
 #import "ScoreTableViewCell.h"
+#import "MapViewController.h"
+#import "Maze.h"
+#import "GameManager.h"
 
 @interface HighScoreViewController ()
 
@@ -100,6 +103,17 @@
                         [NSMutableArray new]
                         ];
     [self.highScoreTableView reloadData];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString: @"MapViewController"]) {
+        MapViewController *mvc = segue.destinationViewController;
+        Maze *maze = [Maze new];
+        [maze selectMazeWithID:self.mapIndex];
+        GameManager *manager = [GameManager sharedManager];
+        manager.maze = maze;
+        mvc.invalidSquareDictionary = [maze getDictionary];
+    }
 }
 
 @end
