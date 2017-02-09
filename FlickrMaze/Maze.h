@@ -25,4 +25,5 @@
 - (NSDictionary <NSNumber *, NSArray<NSNumber*>*>*)getDictionary;
 - (void) selectMazeWithID:(NSInteger) mazeID;
 - (void) selectThemeWithID:(NSInteger) themeID;
+- (int) getTheme;
 @end
