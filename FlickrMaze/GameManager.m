@@ -285,6 +285,8 @@
                 return YES;
             }
             if ([self checkGhost]) {
+//                [self.ghostMovePlayer stop];
+//                [self.ghostClosePlayer play];
                 NSLog(@"He's close shhhhhh");
             }
             return YES;
@@ -311,8 +313,8 @@
                 return YES;
             }
             if ([self checkGhost]) {
-                [self.ghostMovePlayer pause];
-                [self.ghostClosePlayer play];
+//                [self.ghostMovePlayer stop];
+//                [self.ghostClosePlayer play];
                 NSLog(@"He's close shhhhhh");
             }
             return YES;
