@@ -81,18 +81,18 @@
     switch (themeID) {
         case 0:
         {
-            UIImage *goImage = [UIImage imageNamed:@"Trump_game_over"];
+            UIImage *goImage = [UIImage imageNamed:@"Donald_Trump_game_over"];
             self.gameOverImage = UIImagePNGRepresentation(goImage);
-            UIImage *image = [UIImage imageNamed:@"Trump_invalid"];
+            UIImage *image = [UIImage imageNamed:@"Donald_Trump_invalid"];
             NSData *data = UIImagePNGRepresentation(image);
             self.invalidSquareImage = data;
             UIImage *cliffImage = [UIImage imageNamed:@"Cliff"];
             NSData *cliffData = UIImagePNGRepresentation(cliffImage);
             self.outOfBoundsImage = cliffData;
-            UIImage *pathImage = [UIImage imageNamed:@"Trump_path"];
+            UIImage *pathImage = [UIImage imageNamed:@"Donald_Trump_path"];
             NSData *pathData = UIImagePNGRepresentation(pathImage);
             self.pathImage = pathData;
-            UIImage *ghostImage = [UIImage imageNamed:@"Trump_ghost"];
+            UIImage *ghostImage = [UIImage imageNamed:@"Donald_Trump_ghost"];
             NSData *ghostData = UIImagePNGRepresentation(ghostImage);
             self.ghostImage = ghostData;
             NSDataAsset *musicData = [[NSDataAsset alloc] initWithName:@"Default_music"];

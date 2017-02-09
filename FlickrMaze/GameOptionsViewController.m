@@ -29,7 +29,7 @@
     self.manager = [GameManager sharedManager];
     self.tagTextField.delegate = self;
     self.nameTextView.delegate = self;
-    self.themes = @[@"Default",@"Cats",@"Jaws",@"Donald_Trump"];
+    self.themes = @[@"Default",@"Cats",@"Jaws",@"Donald Trump"];
     self.themePicker.delegate = self;
     self.themePicker.dataSource = self;
     self.view.tintColor = [UIColor whiteColor];
@@ -125,6 +125,10 @@
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    if(row == 3){
+        self.manager.gameTheme = @"Donald_Trump";
+        return;
+    }
     self.manager.gameTheme = self.themes[row];
 }
 

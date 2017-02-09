@@ -9,6 +9,7 @@
 #import "TutorialViewController.h"
 
 @interface TutorialViewController ()
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *blurView;
 @property (weak, nonatomic) IBOutlet UILabel *gameExplanationLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *mapImageArrow;
 @property (weak, nonatomic) IBOutlet UILabel *mapLabel;
@@ -37,6 +38,7 @@
     // Do any additional setup after loading the view.
     self.tapNumber = 0;
     self.gameExplanationLabel.hidden = NO;
+    self.blurView.hidden = NO;
     self.arrows = @[self.mapImageArrow,self.validImageArrow,self.validTableArrow,self.playerImageArrow,self.invalidImageArrow,self.invalidTableArrow,self.outOfBoundsImageArrow,self.outOfBoundsTableArrow,self.titleTableArrow];
     self.labels = @[self.mapLabel,self.validLabel,self.validTableLabel,self.playerLabel,self.invalidTableLabel,self.outOfBoundsLabel];
     for(UIImageView *view in self.arrows){
@@ -55,6 +57,7 @@
     switch (self.tapNumber) {
         case 0:{ //show game description
             self.gameExplanationLabel.hidden = YES;
+            self.blurView.hidden = YES;
         }
         case 1:{ //show map
             self.mapImageArrow.hidden = NO;

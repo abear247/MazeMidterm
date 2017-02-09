@@ -610,6 +610,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The goal is to reach the end of the maze, by matching Flickr images with their titles to move around" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WB1-8m-EeV">
+                                <rect key="frame" x="12" y="327" width="347" height="118"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="347" id="IeW-Wm-HBh"/>
+                                    <constraint firstAttribute="height" constant="118" id="pBI-mg-REb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWc-sV-d3w">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Zua-ks-SiX">
@@ -637,12 +647,6 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ntx-lS-xk7">
                                             <rect key="frame" x="18" y="532" width="49" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The goal is to reach the end of the maze, by matching Flickr images with their titles to move around" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WB1-8m-EeV">
-                                            <rect key="frame" x="17" y="369" width="350" height="61"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -726,7 +730,6 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="JdQ-kV-j85" firstAttribute="top" secondItem="WB1-8m-EeV" secondAttribute="bottom" constant="34" id="2tO-MU-UiC"/>
                                         <constraint firstItem="gzR-R0-TzQ" firstAttribute="top" secondItem="Ntx-lS-xk7" secondAttribute="bottom" constant="-2" id="5JQ-M2-XA5"/>
                                         <constraint firstItem="wqz-Jw-tuj" firstAttribute="top" secondItem="f2K-zf-Q7X" secondAttribute="bottom" constant="-3" id="5hh-cY-M1V"/>
                                         <constraint firstAttribute="bottom" secondItem="vmV-lD-6Od" secondAttribute="bottom" id="79m-5G-KUf"/>
@@ -748,13 +751,11 @@
                                         <constraint firstItem="wqz-Jw-tuj" firstAttribute="top" secondItem="f2K-zf-Q7X" secondAttribute="bottom" constant="-3" id="Yhi-OW-0Bx"/>
                                         <constraint firstItem="vmV-lD-6Od" firstAttribute="leading" secondItem="q2Z-Zk-Oge" secondAttribute="trailing" constant="-102" id="bJH-Ay-u6D"/>
                                         <constraint firstItem="vmV-lD-6Od" firstAttribute="leading" secondItem="JdQ-kV-j85" secondAttribute="trailing" constant="-102" id="cNl-ga-DyJ"/>
-                                        <constraint firstItem="vmV-lD-6Od" firstAttribute="leading" secondItem="WB1-8m-EeV" secondAttribute="trailing" constant="-367" id="hzD-2g-0Oa"/>
                                         <constraint firstItem="FeN-Re-RdP" firstAttribute="leading" secondItem="chF-EA-3vZ" secondAttribute="trailing" constant="-12" id="iDc-C0-zca"/>
                                         <constraint firstItem="FeN-Re-RdP" firstAttribute="top" secondItem="chF-EA-3vZ" secondAttribute="bottom" constant="-4" id="nbw-bc-Ej2"/>
                                         <constraint firstItem="q2Z-Zk-Oge" firstAttribute="top" secondItem="3Mv-mI-iax" secondAttribute="bottom" constant="-3" id="nin-Vl-cqo"/>
                                         <constraint firstItem="JdQ-kV-j85" firstAttribute="top" secondItem="vmV-lD-6Od" secondAttribute="bottom" constant="-203" id="ntm-sl-W6L"/>
                                         <constraint firstItem="PVG-5d-sAi" firstAttribute="top" secondItem="eW4-cx-cXQ" secondAttribute="bottom" constant="-6" id="p0f-tK-ETQ"/>
-                                        <constraint firstItem="WB1-8m-EeV" firstAttribute="leading" secondItem="vmV-lD-6Od" secondAttribute="trailing" constant="-358" id="pFE-Aj-lZV"/>
                                         <constraint firstItem="vmV-lD-6Od" firstAttribute="leading" secondItem="PVG-5d-sAi" secondAttribute="trailing" constant="-166" id="psJ-3E-P2u"/>
                                         <constraint firstItem="FeN-Re-RdP" firstAttribute="leading" secondItem="vmV-lD-6Od" secondAttribute="trailing" constant="-107" id="qO6-Hq-ZmB"/>
                                         <constraint firstItem="uu4-TT-Mzk" firstAttribute="top" secondItem="BcI-kt-D5b" secondAttribute="bottom" constant="-50" id="qlo-si-mLY"/>
@@ -765,7 +766,9 @@
                                     </constraints>
                                 </view>
                                 <gestureRecognizers/>
-                                <blurEffect style="dark"/>
+                                <vibrancyEffect>
+                                    <blurEffect style="dark"/>
+                                </vibrancyEffect>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="xAB-cL-uVS" appends="YES" id="bzr-TC-w2n"/>
                                 </connections>
@@ -774,12 +777,15 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PWc-sV-d3w" firstAttribute="top" secondItem="aXv-30-Ovt" secondAttribute="top" id="1na-PL-0jO"/>
+                            <constraint firstItem="WB1-8m-EeV" firstAttribute="top" secondItem="PWc-sV-d3w" secondAttribute="bottom" constant="-340" id="5S0-JI-aeI"/>
                             <constraint firstItem="wB5-y8-Mkf" firstAttribute="top" secondItem="PWc-sV-d3w" secondAttribute="bottom" id="Ar6-Q3-ahH"/>
                             <constraint firstAttribute="trailing" secondItem="PWc-sV-d3w" secondAttribute="trailing" id="Hz0-SQ-QXA"/>
                             <constraint firstItem="PWc-sV-d3w" firstAttribute="leading" secondItem="aXv-30-Ovt" secondAttribute="leading" id="JIf-hW-epM"/>
+                            <constraint firstItem="vmV-lD-6Od" firstAttribute="leading" secondItem="WB1-8m-EeV" secondAttribute="trailing" constant="-359" id="pf3-A8-uKt"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="blurView" destination="PWc-sV-d3w" id="oJp-kD-7f8"/>
                         <outlet property="gameExplanationLabel" destination="WB1-8m-EeV" id="SXs-EX-joh"/>
                         <outlet property="invalidImageArrow" destination="HL5-Te-mn3" id="1d6-fC-LCn"/>
                         <outlet property="invalidTableArrow" destination="gzR-R0-TzQ" id="V31-U5-23v"/>
