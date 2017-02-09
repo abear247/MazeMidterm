@@ -15,29 +15,21 @@
 @interface MapViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *mapCollectionView;
 @property (weak, nonatomic) IBOutlet UIImageView *scrollImageView;
-@property (weak, nonatomic) IBOutlet UILabel *timerLabel;
-@property int currentTime;
 @end
 
 @implementation MapViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.currentTime = 300;
-    self.timerLabel.text = @"3";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissSelf) name:@"gameOver" object:nil];
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.mapCollectionView reloadData];
-    
-    
     self.scrollImageView.image = [UIImage imageNamed:@"Scroll"];
 }
--(void)viewDidAppear:(BOOL)animated{
-    [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(countDown:) userInfo:nil repeats:YES];
-    [self setTimer];
-}
+
 -(void)viewDidLayoutSubviews{
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mapCollectionView.collectionViewLayout;
     CGFloat width = self.mapCollectionView.frame.size.width/10;
@@ -45,21 +37,9 @@
     layout.itemSize = size;
 }
 
--(void)countDown:(NSTimer *) aTimer {
-    self.currentTime -= 10;
-    [self updateTimerLabel:self.currentTime];
-    if ([self.timerLabel.text isEqualToString:@"0"]) {
-        //do whatever
-        [aTimer invalidate];
-    }
+- (IBAction)Return:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
-
--(void)updateTimerLabel:(int)milliseconds{
-    int seconds = milliseconds/100;
-    self.timerLabel.text = [NSString stringWithFormat:@"%d:%d",seconds,milliseconds%1000];
-}
-
-
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 10;
@@ -94,14 +74,6 @@
             cell.mapImage.image = [UIImage imageNamed:@"Trophy"];
         }
     return cell;
-}
-
-- (void) setTimer {
-    [NSTimer scheduledTimerWithTimeInterval:3.0
-                                    repeats:NO
-                                      block:^(NSTimer *timer){
-                                          [self dismissViewControllerAnimated:YES completion:nil];
-                                      }];
 }
 
 - (void) dismissSelf{

@@ -938,8 +938,24 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Cma-Y7-G2X">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcF-2E-uAv">
+                                            <rect key="frame" x="143.5" y="586" width="88" height="48"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                            <state key="normal" title="Return">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="Return:" destination="nQh-Pu-Vqm" eventType="touchUpInside" id="6hr-wl-g9X"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="TcF-2E-uAv" firstAttribute="centerX" secondItem="Cma-Y7-G2X" secondAttribute="centerX" id="14A-If-GqJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="TcF-2E-uAv" secondAttribute="bottom" constant="33" id="P4U-rG-PlR"/>
+                                    </constraints>
                                 </view>
-                                <blurEffect style="light"/>
+                                <blurEffect style="dark"/>
                             </visualEffectView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k0z-uI-c1V">
                                 <rect key="frame" x="-0.5" y="106" width="375" height="455"/>
@@ -985,24 +1001,10 @@
                                     <outlet property="delegate" destination="nQh-Pu-Vqm" id="XwK-Qy-Ih0"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHy-8x-PYK">
-                                <rect key="frame" x="16" y="598" width="343" height="69"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="57"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nLE-Kq-6re" firstAttribute="centerY" secondItem="VNj-eC-89b" secondAttribute="centerY" id="0uC-Zg-hs5"/>
-                            <constraint firstItem="SHy-8x-PYK" firstAttribute="leading" secondItem="VNj-eC-89b" secondAttribute="leadingMargin" id="4Fk-gG-pfZ"/>
-                            <constraint firstItem="1xa-9U-d0F" firstAttribute="top" secondItem="SHy-8x-PYK" secondAttribute="bottom" constant="0.5" id="LtM-le-zvx"/>
                             <constraint firstItem="k0z-uI-c1V" firstAttribute="centerY" secondItem="nLE-Kq-6re" secondAttribute="centerY" id="M4V-li-sT7"/>
                             <constraint firstAttribute="trailing" secondItem="lkD-f3-aFs" secondAttribute="trailing" id="Qua-Co-Hgr"/>
                             <constraint firstItem="nLE-Kq-6re" firstAttribute="centerX" secondItem="VNj-eC-89b" secondAttribute="centerX" id="S8J-Ao-OVp"/>
@@ -1010,7 +1012,6 @@
                             <constraint firstItem="k0z-uI-c1V" firstAttribute="width" secondItem="VNj-eC-89b" secondAttribute="width" id="aJT-Fd-bX5"/>
                             <constraint firstItem="lkD-f3-aFs" firstAttribute="top" secondItem="VNj-eC-89b" secondAttribute="top" id="b5c-6T-Cdb"/>
                             <constraint firstItem="1xa-9U-d0F" firstAttribute="top" secondItem="lkD-f3-aFs" secondAttribute="bottom" id="buN-jN-ghY"/>
-                            <constraint firstItem="SHy-8x-PYK" firstAttribute="trailing" secondItem="VNj-eC-89b" secondAttribute="trailingMargin" id="eE7-ri-na2"/>
                             <constraint firstItem="lkD-f3-aFs" firstAttribute="leading" secondItem="VNj-eC-89b" secondAttribute="leading" id="fdZ-nu-FSc"/>
                             <constraint firstItem="k0z-uI-c1V" firstAttribute="centerX" secondItem="nLE-Kq-6re" secondAttribute="centerX" id="gRr-Nl-Djs"/>
                             <constraint firstItem="k0z-uI-c1V" firstAttribute="height" secondItem="nLE-Kq-6re" secondAttribute="height" constant="160" id="nGz-O3-wWj"/>
@@ -1019,12 +1020,11 @@
                     <connections>
                         <outlet property="mapCollectionView" destination="nLE-Kq-6re" id="ygm-kp-Mnm"/>
                         <outlet property="scrollImageView" destination="k0z-uI-c1V" id="AfE-YO-dQU"/>
-                        <outlet property="timerLabel" destination="SHy-8x-PYK" id="meV-BR-u7E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mKH-Cm-8gP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2861.5999999999999" y="136.28185907046478"/>
+            <point key="canvasLocation" x="2862" y="137"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jl2-T7-rGG">
@@ -1053,6 +1053,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="i9J-ZR-GxD"/>
-        <segue reference="qub-61-3Vi"/>
+        <segue reference="xAZ-d8-ep6"/>
     </inferredMetricsTieBreakers>
 </document>
