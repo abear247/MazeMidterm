@@ -41,7 +41,6 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-    self.startButton.hidden = NO;
     self.startButton.userInteractionEnabled = YES;
     self.progressBar.progress = 0.0;
     self.loadingImageView.hidden = YES;
@@ -86,13 +85,13 @@
             self.progressBar.progress = 1.0;
             [self.progressTimer invalidate];
             [self.manager saveContext];
+            [self.manager createPlayer];
             [self.manager generateMaze];
             [self.manager startGame];
             [self performSegueWithIdentifier:@"MazeViewController" sender:self];
         }];
     }];
     [dataTask resume];
-    self.startButton.hidden = YES;
     self.startButton.userInteractionEnabled = NO;
     self.loadingImageView.hidden = NO;
     if(!self.manager.gameTheme)
