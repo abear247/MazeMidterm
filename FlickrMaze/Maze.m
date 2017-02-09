@@ -93,7 +93,7 @@
             NSData *pathData = UIImagePNGRepresentation(pathImage);
             self.pathImage = pathData;
             self.manager.player.mazeID = 0;
-            self.sounds =  @[@"Wrong",@"China",@"Donald_Trump_ghost_start",@"Donald_Trump_ghost_start",@"Donald_Trump_game_over_victory"];
+            self.sounds =  @[@"Trump_out_of_bounds",@"Trump_invalid_sound",@"Donald_Trump_ghost_start",@"Donald_Trump_ghost_start",@"Donald_Trump_game_over_victory"];
             return;
         }
         case 1:
@@ -108,7 +108,7 @@
             UIImage *pathImage = [UIImage imageNamed:@"Cats_path"];
             NSData *pathData = UIImagePNGRepresentation(pathImage);
             self.pathImage = pathData;
-             self.sounds =  @[@"Wrong",@"China",@"Cats_ghost_start",@"Cats_ghost_start",@"Congratulations"];
+             self.sounds =  @[@"Cats_out_of_bounds",@"Cats_invalid_sound",@"Cats_ghost_start",@"Cats_ghost_start",@"Congratulations"];
             return;
             break;
         }
@@ -123,7 +123,7 @@
             UIImage *pathImage = [UIImage imageNamed:@"Jaws_path"];
             NSData *pathData = UIImagePNGRepresentation(pathImage);
             self.pathImage = pathData;
-            self.sounds =  @[@"Wrong",@"China",@"Jaws_ghost_start",@"Jaws_ghost_move",@"Jaws_ghost_close",@"Congratulations"];
+            self.sounds =  @[@"Jaws_out_of_bounds",@"Jaws_out_of_bounds",@"Jaws_ghost_start",@"Jaws_ghost_move",@"Jaws_ghost_close",@"Congratulations"];
             return;
             break;
         }
