@@ -429,7 +429,7 @@
     score.playerImage = self.player.image;
     score.score = playerScore;
     if (self.player.gameWon) {
-        score.score *= 10;
+        score.score *= 100;
         score.playerWon = self.player.gameWon;
     }
     score.moves = self.player.moveCount;
