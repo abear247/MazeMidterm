@@ -40,6 +40,8 @@
         NSUInteger selected = [self.themes indexOfObject:self.manager.gameTheme];
         [self.themePicker selectRow:selected inComponent:0 animated:YES];
     }
+    self.tagTextField.tintColor = [UIColor blackColor];
+    self.nameTextView.tintColor = [UIColor blackColor];
 }
 
 - (void)didReceiveMemoryWarning {
