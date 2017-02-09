@@ -118,7 +118,8 @@
             self.ghostImage = ghostData;
             NSDataAsset *musicData = [[NSDataAsset alloc] initWithName:@"Cats_music"];
             self.music = musicData;
-             self.sounds =  @[@"Cats_out_of_bounds",@"Cats_invalid_sound",@"Cats_ghost_start",@"Cats_ghost_start",@"Congratulations"];
+             self.sounds = @[@"Cats_out_of_bounds",@"Cats_invalid_sound",@"Cats_ghost_start",@"Cats_ghost_move",@"Cats_ghost_close",@"Cats_game_over_defeat",@"Cats_game_over_victory"];
+
             return;
             break;
         }
