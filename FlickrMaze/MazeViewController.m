@@ -314,7 +314,7 @@
     NSArray *tileArray = [self.manager getArray];
     MazeTile *tile = tileArray[self.manager.player.ghostY][self.manager.player.ghostX];
     NSData *tempStore = tile.image;
-    NSData *data = UIImagePNGRepresentation([UIImage imageNamed:@"Steve"]);
+    NSData *data = UIImagePNGRepresentation([UIImage imageNamed:@"Ghost"]);
     tile.image = data;
     int ghostXDif = self.manager.player.ghostX - self.manager.player.currentX;
     int ghostYDif = self.manager.player.ghostY - self.manager.player.currentY;
