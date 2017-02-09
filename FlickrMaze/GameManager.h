@@ -44,5 +44,6 @@
 - (void) resetPlayer;
 - (BOOL) checkLoad;
 - (void) createPlayer;
+- (NSData *) getGhostImage;
 
 @end
