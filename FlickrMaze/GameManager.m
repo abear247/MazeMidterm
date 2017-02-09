@@ -147,7 +147,7 @@
                                [NSMutableArray new],
                                [NSMutableArray new]];
     for (MazeTile *tile in results) {
-        if (tile.yPosition || tile.yPosition == 0) {
+        if (tile.yPosition < 10) {
             [sectionArray[tile.yPosition] addObject:tile];
         }
     }
@@ -379,8 +379,9 @@
 }
 
 - (BOOL) togglePracticeMode {
-    if (self.player.practiceMode) {
+    if (self.practiceMode) {
         self.ghostSpeed = 15;
+        self.player.practiceMode = YES;
         return YES;
     }
     self.ghostSpeed = 8;

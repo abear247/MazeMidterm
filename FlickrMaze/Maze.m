@@ -47,11 +47,10 @@
             }
             [rowArray addObject:tile];
             x+=1;
-            
         }
         [columnArray addObject:rowArray];
-        [self.manager saveContext];
     }
+    [self.manager saveContext];
     return columnArray;
 }
 

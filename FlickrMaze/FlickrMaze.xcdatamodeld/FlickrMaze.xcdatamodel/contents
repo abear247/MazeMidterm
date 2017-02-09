@@ -5,8 +5,8 @@
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="valid" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="xPosition" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="yPosition" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="xPosition" optional="YES" attributeType="Integer 16" defaultValueString="700" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="yPosition" optional="YES" attributeType="Integer 16" defaultValueString="700" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="Player" representedClassName="Player" syncable="YES" codeGenerationType="class">
         <attribute name="currentX" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
