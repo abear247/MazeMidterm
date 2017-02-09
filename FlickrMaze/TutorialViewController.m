@@ -9,14 +9,17 @@
 #import "TutorialViewController.h"
 
 @interface TutorialViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *gameExplanationLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *mapImageArrow;
 @property (weak, nonatomic) IBOutlet UILabel *mapLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *validImageArrow;
 @property (weak, nonatomic) IBOutlet UILabel *validLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *validTableArrow;
 @property (weak, nonatomic) IBOutlet UILabel *validTableLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *playerImageArrow;
 @property (weak, nonatomic) IBOutlet UILabel *playerLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *invalidImageArrow;
+@property (weak, nonatomic) IBOutlet UIImageView *invalidTableArrow;
 @property (weak, nonatomic) IBOutlet UILabel *invalidTableLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *outOfBoundsImageArrow;
 @property (weak, nonatomic) IBOutlet UIImageView *outOfBoundsTableArrow;
@@ -33,7 +36,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tapNumber = 0;
-    self.arrows = @[self.mapImageArrow,self.validImageArrow,self.playerImageArrow,self.invalidImageArrow,self.outOfBoundsImageArrow,self.titleTableArrow];
+    self.gameExplanationLabel.hidden = NO;
+    self.arrows = @[self.mapImageArrow,self.validImageArrow,self.validTableArrow,self.playerImageArrow,self.invalidImageArrow,self.invalidTableArrow,self.outOfBoundsImageArrow,self.outOfBoundsTableArrow,self.titleTableArrow];
     self.labels = @[self.mapLabel,self.validLabel,self.validTableLabel,self.playerLabel,self.invalidTableLabel,self.outOfBoundsLabel];
     for(UIImageView *view in self.arrows){
         view.hidden=YES;
@@ -49,36 +53,47 @@
 }
 - (IBAction)tapScreen:(id)sender {
     switch (self.tapNumber) {
-        case 0:{
-            self.arrows[0].hidden = NO;
-            self.labels[0].hidden = NO;
+        case 0:{ //show game description
+            self.gameExplanationLabel.hidden = YES;
+        }
+        case 1:{ //show map
+            self.mapImageArrow.hidden = NO;
+            self.mapLabel.hidden = NO;
             break;
         }
-        case 1:{
-            self.labels[0].hidden = YES;
-            self.arrows[0].hidden = YES;
-            self.arrows[1].hidden = NO;
-            
+        case 2:{ //show player
+            self.mapImageArrow.hidden = YES;
+            self.mapLabel.hidden = YES;
+            self.playerLabel.hidden = NO;
+            self.playerImageArrow.hidden = NO;
             break;
         }
-        case 2:{
-            self.arrows[1].hidden = YES;
-            self.arrows[2].hidden = NO;
+        case 3:{ //show valid choice
+            self.playerLabel.hidden = YES;
+            self.playerImageArrow.hidden = YES;
+            self.validImageArrow.hidden = NO;
+            self.validLabel.hidden = NO;
+            self.validTableArrow.hidden = NO;
+            self.validTableLabel.hidden = NO;
             break;
         }
-        case 3:{
-            self.arrows[2].hidden = YES;
-            self.arrows[3].hidden = NO;
+        case 4:{ //show out of bounds
+            self.validImageArrow.hidden = YES;
+            self.validLabel.hidden = YES;
+            self.validTableArrow.hidden = YES;
+            self.validTableLabel.hidden = YES;
+            self.outOfBoundsImageArrow.hidden = NO;
+            self.outOfBoundsLabel.hidden = NO;
+            self.outOfBoundsTableArrow.hidden = NO;
             break;
         }
-        case 4:{
-            self.arrows[3].hidden = YES;
-            self.arrows[4].hidden = NO;
-            break;
-        }
-        case 5:{
-            self.arrows[4].hidden = YES;
-            self.arrows[5].hidden = NO;
+        case 5:{ //show invalid
+            self.outOfBoundsImageArrow.hidden = YES;
+            self.outOfBoundsLabel.hidden = YES;
+            self.outOfBoundsTableArrow.hidden = YES;
+            self.invalidImageArrow.hidden = NO;
+            self.invalidTableArrow.hidden = NO;
+            self.invalidTableLabel.hidden = NO;
             break;
         }
             
