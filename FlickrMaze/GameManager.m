@@ -422,20 +422,20 @@
     NSManagedObjectContext *context = [self getContext];
     NSInteger playerScore = 20* self.maze.minMoves / (self.player.moveCount+1) + self.player.time*50;
     self.playerScore = playerScore;
-
+    
     if (!self.practiceMode) {
-    ScoreKeeper *score = [[ScoreKeeper alloc] initWithContext:context];
-    score.playerName = self.player.name;
-    score.playerImage = self.player.image;
-    score.score = playerScore;
-    if (self.player.gameWon) {
-        score.score *= 10;
-        score.playerWon = self.player.gameWon;
-    }
-    score.moves = self.player.moveCount;
-    score.map = self.player.mazeID;
-    score.playerTime = self.player.time;
-    [self saveContext];
+        ScoreKeeper *score = [[ScoreKeeper alloc] initWithContext:context];
+        score.playerName = self.player.name;
+        score.playerImage = self.player.image;
+        score.score = playerScore;
+        if (self.player.gameWon) {
+            score.score *= 300;
+            score.playerWon = self.player.gameWon;
+        }
+        score.moves = self.player.moveCount;
+        score.map = self.player.mazeID;
+        score.playerTime = self.player.time;
+        [self saveContext];
     }
 }
 
