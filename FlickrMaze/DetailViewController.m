@@ -33,6 +33,11 @@
 - (void) dismissSelf{
     [self dismissViewControllerAnimated:NO completion:nil];
 }
+- (IBAction)tapped:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 
 /*
 #pragma mark - Navigation

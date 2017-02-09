@@ -37,7 +37,7 @@
     layout.itemSize = size;
 }
 
-- (IBAction)Return:(id)sender {
+- (IBAction)return:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
