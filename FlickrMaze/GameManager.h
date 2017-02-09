@@ -41,5 +41,6 @@
 +(id)sharedManager;
 - (void) resetPlayer;
 - (BOOL) checkLoad;
+- (void) createPlayer;
 
 @end
