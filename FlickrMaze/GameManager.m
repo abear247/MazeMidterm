@@ -21,6 +21,7 @@
 @property (nonatomic) NSArray *sounds;
 @property (nonatomic) AVAudioPlayer *audioPlayer;
 @property (nonatomic) AVAudioPlayer *ghostPlayer;
+@property (nonatomic) NSInteger ghostSpeed;
 @end
 
 @implementation GameManager
@@ -107,8 +108,11 @@
     NSManagedObjectContext *context = [self getContext];
     NSError *playerError;
     NSFetchRequest *playerRequest = [Player fetchRequest];
-    NSArray *playerResult = [context executeFetchRequest:playerRequest error:&playerError];
+    NSArray <Player*> *playerResult = [context executeFetchRequest:playerRequest error:&playerError];
     if (playerResult.count < 1) {
+        return NO;
+    }
+    if (playerResult[0].time == 0) {
         return NO;
     }
     self.player = playerResult[0];
@@ -116,6 +120,7 @@
 }
 
 - (void) loadGame {
+    [self togglePracticeMode];
     self.playerImage = self.player.image;
     self.maze = [Maze new];
     [self.maze selectThemeWithID:self.player.themeID];
@@ -154,8 +159,8 @@
                                                       selector:@selector(incrementPlayerTime)
                                                       userInfo:nil
                                                        repeats:YES];
-
-    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
+    
+    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:self.ghostSpeed
                                                        target:self
                                                      selector:@selector(moveGhost)
                                                      userInfo:nil
@@ -208,7 +213,7 @@
 - (void) startGhost {
     self.player.ghostX = self.maze.startX;
     self.player.ghostY = self.maze.startY;
-    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
+    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:self.ghostSpeed
                                                        target:self
                                                      selector:@selector(moveGhost)
                                                      userInfo:nil
@@ -247,11 +252,7 @@
     else if (yDifference < 0) {
         self.player.ghostY -= 1;
     }
-    if (self.player.currentX == self.player.ghostX && self.player.currentY == self.player.ghostY) {
-        NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-        NSNotification *notification = [NSNotification notificationWithName:@"playerLoses" object:self];
-        [notificationCenter postNotification:notification];
-        [self endGame];
+    if ([self checkLoss]) {
         return;
     }
     [self saveContext];
@@ -274,7 +275,12 @@
         MazeTile *newTile = section[self.player.currentX+amount];
         if (newTile.valid) {
             self.player.currentX += amount;
-            [self checkWin];
+            if ([self checkLoss]) {
+                return YES;
+            }
+            if ([self checkWin]) {
+                return YES;
+            }
             if ([self checkGhost]) {
                 NSLog(@"He's close shhhhhh");
             }
@@ -297,7 +303,12 @@
         MazeTile *newTile = section[self.player.currentX];
         if (newTile.valid) {
             self.player.currentY += amount;
-            [self checkWin];
+            if ([self checkLoss]) {
+                return YES;
+            }
+            if ([self checkWin]) {
+                return YES;
+            }
             if ([self checkGhost]) {
                 NSLog(@"He's close shhhhhh");
             }
@@ -323,9 +334,10 @@
 #pragma mark Helper Methods
 
 - (NSURL*) generateURL: (NSString*) tagEntry {
-    [self clearData];
-//    NSMutableString *urlString = [[NSMutableString alloc] initWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=4ecacf0cd6441400e02e57ec12f0bb68&has_geo&tags="];
-    NSMutableString *urlString = [[NSMutableString alloc] initWithString:@"https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&per_page=200&format=json&nojsoncallback=1&api_key=4ecacf0cd6441400e02e57ec12f0bb68&has_geo&tags="];
+    NSMutableString *urlString = [[NSMutableString alloc] initWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=4ecacf0cd6441400e02e57ec12f0bb68&has_geo&tags="];
+    if ([self togglePracticeMode]) {
+        urlString = [[NSMutableString alloc] initWithString:@"https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&per_page=200&format=json&nojsoncallback=1&api_key=4ecacf0cd6441400e02e57ec12f0bb68&has_geo&tags="];
+    }
     NSString *tagWithoutWhiteSpace = [tagEntry stringByReplacingOccurrencesOfString:@" " withString:@""];
     [urlString appendString:tagWithoutWhiteSpace];
     return [NSURL URLWithString:urlString];
@@ -365,13 +377,34 @@
     return nil;
 }
 
-- (void) checkWin {
+- (BOOL) togglePracticeMode {
+    if (self.player.practiceMode) {
+        self.ghostSpeed = 15;
+        return YES;
+    }
+    self.ghostSpeed = 8;
+    return NO;
+}
+
+- (BOOL) checkWin {
     if (self.player.currentX == self.maze.endX && self.player.currentY == self.maze.endY) {
+        self.player.gameWon = YES;
         NSNotification *notification = [NSNotification notificationWithName:@"playerWins" object:self];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
-        self.player.gameWon = YES;
-        [self endGame];
+        return YES;
     }
+    return NO;
+}
+
+- (BOOL) checkLoss {
+    if (self.player.currentX == self.player.ghostX && self.player.currentY == self.player.ghostY) {
+        self.player.gameWon = NO;
+        NSNotification *notification = [NSNotification notificationWithName:@"playerLoses" object:self];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+        [self endGame];
+        return YES;
+    }
+    return NO;
 }
 
 - (void) endGame {
@@ -380,15 +413,18 @@
     [self.ghostTimer invalidate];
     self.ghostTimer = nil;
     [self calculateScore];
-    [self resetPlayer];
 }
 
 - (void) calculateScore {
     NSManagedObjectContext *context = [self getContext];
+    NSInteger playerScore = 100* self.maze.minMoves / (self.player.moveCount+1) + self.player.time*50;
+    self.playerScore = playerScore;
+
+    if (!self.practiceMode) {
     ScoreKeeper *score = [[ScoreKeeper alloc] initWithContext:context];
     score.playerName = self.player.name;
     score.playerImage = self.player.image;
-    score.score = 100* self.maze.minMoves / (self.player.moveCount+1) + self.player.time*50;
+    score.score = playerScore;
     if (self.player.gameWon) {
         score.score *= 10;
         score.playerWon = self.player.gameWon;
@@ -396,7 +432,8 @@
     score.moves = self.player.moveCount;
     score.map = self.player.mazeID;
     score.playerTime = self.player.time;
-    self.playerScore = score;
+    [self saveContext];
+    }
 }
 
 - (NSData *)getOutOfBoundsImage {

@@ -20,10 +20,12 @@
 @property  (nonatomic, strong) NSString *gameTheme;
 @property (nonatomic) Maze *maze;
 @property NSData *playerImage;
-@property ScoreKeeper *playerScore;
+@property NSInteger playerScore;
 @property NSString *tags;
 @property NSString *playerName;
+@property BOOL practiceMode;
 
+-(void) clearData;
 - (void)saveContext;
 - (NSURL*) generateURL: (NSString*) tagEntry;
 - (NSManagedObjectContext *) getContext;
