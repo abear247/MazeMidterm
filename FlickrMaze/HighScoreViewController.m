@@ -110,7 +110,11 @@
         MapViewController *mvc = segue.destinationViewController;
         Maze *maze = [Maze new];
         [maze selectMazeWithID:self.mapIndex];
-        [maze selectThemeWithID:[maze getTheme]];
+        int theme = [maze getTheme];
+        if (self.mapIndex == 0) {
+            theme = 0;
+        }
+        [maze selectThemeWithID:theme];
         GameManager *manager = [GameManager sharedManager];
         manager.maze = maze;
         mvc.invalidSquareDictionary = [maze getDictionary];

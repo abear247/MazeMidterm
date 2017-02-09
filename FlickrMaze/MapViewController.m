@@ -67,12 +67,12 @@
     }
     else {
         if (maze.startX == indexPath.row && maze.startY == indexPath.section) {
-            cell.mapImage.image = [UIImage imageWithData:manager.player.image];
+            cell.mapImage.image = [UIImage imageNamed:@"Player"];
         }
     }
-        if (maze.endX == indexPath.row && maze.endY == indexPath.section) {
-            cell.mapImage.image = [UIImage imageNamed:@"Trophy"];
-        }
+    if (maze.endX == indexPath.row && maze.endY == indexPath.section) {
+        cell.mapImage.image = [UIImage imageNamed:@"Trophy"];
+    }
     return cell;
 }
 
