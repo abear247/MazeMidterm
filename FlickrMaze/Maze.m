@@ -47,11 +47,14 @@
             }
             [rowArray addObject:tile];
             x+=1;
-            
         }
         [columnArray addObject:rowArray];
-        [self.manager saveContext];
     }
+    for (int j = x; j < mazeTileArray.count; j++) {
+        MazeTile *tile = mazeTileArray[j];
+        tile.yPosition = 700;
+    }
+    [self.manager saveContext];
     return columnArray;
 }
 

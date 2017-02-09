@@ -147,7 +147,7 @@
                                [NSMutableArray new],
                                [NSMutableArray new]];
     for (MazeTile *tile in results) {
-        if (tile.yPosition || tile.yPosition == 0) {
+        if (tile.yPosition < 10) {
             [sectionArray[tile.yPosition] addObject:tile];
         }
     }
