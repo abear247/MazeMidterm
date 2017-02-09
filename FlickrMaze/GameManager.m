@@ -207,7 +207,7 @@
                                                       userInfo:nil
                                                        repeats:YES];
     
-    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
+    self.ghostTimer = [NSTimer scheduledTimerWithTimeInterval:60.0
                                                        target:self
                                                      selector:@selector(startGhost)
                                                      userInfo:nil
