@@ -422,7 +422,7 @@
 
 - (void) calculateScore {
     NSManagedObjectContext *context = [self getContext];
-    NSInteger playerScore = 20* self.maze.minMoves / (self.player.moveCount+1) + self.player.time*50;
+    NSInteger playerScore = 20* self.maze.minMoves / (self.player.moveCount+1) + self.player.time*20;
     if (!self.practiceMode) {
         ScoreKeeper *score = [[ScoreKeeper alloc] initWithContext:context];
         score.playerName = self.player.name;
