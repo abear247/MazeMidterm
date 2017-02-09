@@ -9,7 +9,7 @@
 #import "GameOptionsViewController.h"
 #import "GameManager.h"
 
-@interface GameOptionsViewController ()
+@interface GameOptionsViewController () <UITextFieldDelegate>
 @property NSArray *themes;
 @property (weak, nonatomic) IBOutlet UIPickerView *themePicker;
 @property (weak, nonatomic) IBOutlet UIImageView *playerImageView;
@@ -27,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.manager = [GameManager sharedManager];
+    self.tagTextField.delegate = self;
+    self.nameTextView.delegate = self;
     self.themes = @[@"Default",@"Cats",@"Jaws",@"Donald_Trump"];
     self.themePicker.delegate = self;
     self.themePicker.dataSource = self;
@@ -65,6 +67,12 @@
         self.toggle.selectedSegmentIndex = 0;
     }
         
+}
+
+#pragma mark UITextFieldDelegate methods
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 #pragma mark - Image Picker methods
