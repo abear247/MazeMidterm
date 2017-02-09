@@ -616,20 +616,61 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oXS-f0-5LT">
-                                            <rect key="frame" x="144" y="576" width="86" height="83"/>
-                                            <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="21"/>
-                                            <state key="normal" title="Return">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tutorial" translatesAutoresizingMaskIntoConstraints="NO" id="vmV-lD-6Od">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                            <gestureRecognizers/>
                                             <connections>
-                                                <action selector="returnButton:" destination="65G-tn-mzf" eventType="touchUpInside" id="3Cr-Lq-L1J"/>
+                                                <outletCollection property="gestureRecognizers" destination="ZTN-xg-nuW" appends="YES" id="USn-dL-4Bp"/>
                                             </connections>
-                                        </button>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="wqz-Jw-tuj">
+                                            <rect key="frame" x="143" y="352" width="65" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="jM7-oU-7eh"/>
+                                                <constraint firstAttribute="width" constant="65" id="oDM-gr-CMq"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="JdQ-kV-j85">
+                                            <rect key="frame" x="71" y="454" width="65" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="65" id="LDh-2I-Nur"/>
+                                                <constraint firstAttribute="height" constant="50" id="r97-Ef-rIn"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="PVG-5d-sAi">
+                                            <rect key="frame" x="101" y="220" width="65" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="65" id="2t0-Mz-uGi"/>
+                                                <constraint firstAttribute="height" constant="50" id="62F-xS-34b"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="HL5-Te-mn3">
+                                            <rect key="frame" x="227" y="220" width="65" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="aXa-Re-JVj"/>
+                                                <constraint firstAttribute="width" constant="65" id="slP-7D-KGy"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="uu4-TT-Mzk">
+                                            <rect key="frame" x="101" y="102" width="65" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="65" id="8I1-Nn-bi1"/>
+                                                <constraint firstAttribute="height" constant="50" id="l1b-G9-0bw"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="FeN-Re-RdP">
+                                            <rect key="frame" x="268" y="40" width="65" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="9TA-z5-15N"/>
+                                                <constraint firstAttribute="width" constant="65" id="kUI-8o-Si8"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="oXS-f0-5LT" secondAttribute="bottom" constant="8" id="Upd-7n-mas"/>
-                                        <constraint firstItem="oXS-f0-5LT" firstAttribute="centerX" secondItem="Zua-ks-SiX" secondAttribute="centerX" id="z9G-tp-dwg"/>
+                                        <constraint firstAttribute="bottom" secondItem="vmV-lD-6Od" secondAttribute="bottom" id="79m-5G-KUf"/>
+                                        <constraint firstItem="vmV-lD-6Od" firstAttribute="top" secondItem="Zua-ks-SiX" secondAttribute="top" id="DE7-2Z-KjN"/>
+                                        <constraint firstAttribute="trailing" secondItem="vmV-lD-6Od" secondAttribute="trailing" id="FMG-uD-egb"/>
+                                        <constraint firstItem="vmV-lD-6Od" firstAttribute="leading" secondItem="Zua-ks-SiX" secondAttribute="leading" id="HuN-S1-Ehg"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="dark"/>
@@ -643,8 +684,21 @@
                             <constraint firstItem="PWc-sV-d3w" firstAttribute="leading" secondItem="aXv-30-Ovt" secondAttribute="leading" id="JIf-hW-epM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="invalidImageArrow" destination="HL5-Te-mn3" id="1d6-fC-LCn"/>
+                        <outlet property="mapImageArrow" destination="FeN-Re-RdP" id="klv-ff-6Vy"/>
+                        <outlet property="outOfBoundsImageArrow" destination="wqz-Jw-tuj" id="pxu-E4-fZJ"/>
+                        <outlet property="playerImageArrow" destination="PVG-5d-sAi" id="0LD-Nj-Vjy"/>
+                        <outlet property="titleTableArrow" destination="JdQ-kV-j85" id="gVu-mJ-JN6"/>
+                        <outlet property="validImageArrow" destination="uu4-TT-Mzk" id="O5X-Lt-XgC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WkO-ka-W9p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ZTN-xg-nuW">
+                    <connections>
+                        <action selector="tapScreen:" destination="65G-tn-mzf" id="61b-Ia-jio"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="883.80809595202402"/>
         </scene>
@@ -965,7 +1019,7 @@
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nLE-Kq-6re">
                                 <rect key="frame" x="40" y="186" width="295" height="295"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="nLE-Kq-6re" secondAttribute="height" multiplier="1:1" id="upD-Jc-kxf"/>
                                 </constraints>
@@ -1054,10 +1108,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Arrow" width="348" height="298"/>
         <image name="Camera" width="87" height="72"/>
         <image name="Maze" width="600" height="535"/>
         <image name="Player" width="626" height="626"/>
         <image name="Scroll" width="435" height="600"/>
+        <image name="Tutorial" width="748" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="i9J-ZR-GxD"/>

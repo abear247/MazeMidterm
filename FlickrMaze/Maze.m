@@ -140,7 +140,7 @@
             UIImage *pathImage = [UIImage imageNamed:@"Default_path"];
             NSData *pathData = UIImagePNGRepresentation(pathImage);
             self.pathImage = pathData;
-            self.sounds =  @[@"Default_out_of_bounds",@"Default_invalid_sound",@"Default_ghost_start",@"Default_ghost_move",@"Default_ghost_move_close",@"Default_game_over_defeat",@"Default_game_over_victory"];
+            self.sounds =  @[@"Default_out_of_bounds",@"Default_invalid_sound",@"Default_ghost_start",@"Default_ghost_move",@"Default_ghost_close",@"Default_game_over_defeat",@"Default_game_over_victory"];
             return;
             break;
         }
