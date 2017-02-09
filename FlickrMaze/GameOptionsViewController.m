@@ -36,8 +36,10 @@
         self.playerImageView.image = [UIImage imageWithData:self.manager.playerImage];
     if(self.manager.playerName)
         self.nameTextView.text = self.manager.playerName;
-    NSUInteger selected = [self.themes indexOfObject:self.manager.gameTheme];
-    [self.themePicker selectRow:selected inComponent:0 animated:YES];
+    if(self.manager.gameTheme){
+        NSUInteger selected = [self.themes indexOfObject:self.manager.gameTheme];
+        [self.themePicker selectRow:selected inComponent:0 animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
