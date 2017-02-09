@@ -610,7 +610,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The goal is to reach the end of the maze, by matching Flickr images with their titles to move around" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WB1-8m-EeV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The goal is to reach the end of the maze, by matching Flickr images with their titles to move around" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WB1-8m-EeV">
                                 <rect key="frame" x="12" y="327" width="347" height="118"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="347" id="IeW-Wm-HBh"/>
@@ -620,7 +620,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWc-sV-d3w">
+                            <visualEffectView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWc-sV-d3w">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Zua-ks-SiX">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -729,6 +729,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <constraints>
                                         <constraint firstItem="gzR-R0-TzQ" firstAttribute="top" secondItem="Ntx-lS-xk7" secondAttribute="bottom" constant="-2" id="5JQ-M2-XA5"/>
                                         <constraint firstItem="wqz-Jw-tuj" firstAttribute="top" secondItem="f2K-zf-Q7X" secondAttribute="bottom" constant="-3" id="5hh-cY-M1V"/>
@@ -774,7 +775,6 @@
                                 </connections>
                             </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PWc-sV-d3w" firstAttribute="top" secondItem="aXv-30-Ovt" secondAttribute="top" id="1na-PL-0jO"/>
                             <constraint firstItem="WB1-8m-EeV" firstAttribute="top" secondItem="PWc-sV-d3w" secondAttribute="bottom" constant="-340" id="5S0-JI-aeI"/>
