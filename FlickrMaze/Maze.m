@@ -98,7 +98,7 @@
             NSDataAsset *musicData = [[NSDataAsset alloc] initWithName:@"Default_music"];
             self.music = musicData;
             self.manager.player.mazeID = 0;
-            self.sounds =  @[@"Donald_Trump_out_of_bounds",@"Donald_Trump_invalid_sound",@"Donald_Trump_ghost_start",@"Donald_Trump_ghost_move",@"Donald_Trump_game_over_victory"];
+            self.sounds =  @[@"Donald_Trump_out_of_bounds",@"Donald_Trump_invalid_sound",@"Donald_Trump_ghost_start",@"Donald_Trump_ghost_move",@"Donald_Trump_ghost_close", @"Donald_Trump_game_over_defeat"];
             return;
         }
         case 1:
