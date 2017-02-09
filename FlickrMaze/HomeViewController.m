@@ -58,8 +58,12 @@
         tags = [NSString stringWithFormat:@"%@&sort=interestingness_asc",
                 self.manager.gameTheme];
     }
-    else
+    else {
         self.manager.gameTheme = @"Default";
+    }
+    [self.manager clearData];
+//    self.manager.player.practiceMode = self.practiceModeSwitch;
+    [self.manager createPlayer];
     NSURL *url = [self.manager generateURL:tags];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -78,14 +82,12 @@
         NSDictionary *photoDictionary = [results objectForKey:@"photos"];
         NSArray *photoArray = [photoDictionary objectForKey:@"photo"];
         for (NSDictionary *photo in photoArray) {
-            
             [self.manager createMazeTileWithDictionary: photo];
         }
         [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
             self.progressBar.progress = 1.0;
             [self.progressTimer invalidate];
             [self.manager saveContext];
-            [self.manager createPlayer];
             [self.manager generateMaze];
             [self.manager startGame];
             [self performSegueWithIdentifier:@"MazeViewController" sender:self];
