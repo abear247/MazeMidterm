@@ -379,8 +379,9 @@
 }
 
 - (BOOL) togglePracticeMode {
-    if (self.player.practiceMode) {
+    if (self.practiceMode) {
         self.ghostSpeed = 15;
+        self.player.practiceMode = YES;
         return YES;
     }
     self.ghostSpeed = 8;

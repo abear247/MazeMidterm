@@ -50,10 +50,6 @@
         }
         [columnArray addObject:rowArray];
     }
-    for (int j = x; j < mazeTileArray.count; j++) {
-        MazeTile *tile = mazeTileArray[j];
-        tile.yPosition = 700;
-    }
     [self.manager saveContext];
     return columnArray;
 }
