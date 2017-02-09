@@ -21,6 +21,8 @@
 @property (nonatomic) NSArray *sounds;
 @property (nonatomic) AVAudioPlayer *audioPlayer;
 @property (nonatomic) AVAudioPlayer *ghostPlayer;
+@property (nonatomic) AVAudioPlayer *ghostMovePlayer;
+@property (nonatomic) AVAudioPlayer *ghostClosePlayer;
 @property (nonatomic) NSInteger ghostSpeed;
 @end
 
@@ -166,6 +168,7 @@
                                                      userInfo:nil
                                                       repeats:YES];
     self.sounds = self.maze.sounds;
+    [self setupSounds];
     NSNotification *notification = [NSNotification notificationWithName:@"playerTimeIncrement" object:nil];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
@@ -197,6 +200,7 @@
 - (void) startGame {
     [self resetPlayer];
     self.sounds = self.maze.sounds;
+    [self setupSounds];
     self.playerTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                         target:self
                                                       selector:@selector(incrementPlayerTime)
@@ -219,9 +223,6 @@
                                                      userInfo:nil
                                                       repeats:YES];
     
-    NSDataAsset *sound = [[NSDataAsset alloc] initWithName:@"Jaws_ghost_move"];
-    NSError *error;
-    self.ghostPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
     [self.ghostPlayer play];
     
 }
@@ -259,10 +260,10 @@
     if ([self checkGhost]) {
         NSNotification *notification = [NSNotification notificationWithName:@"ghostClose" object:nil];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
-        [self.ghostPlayer play];
+        [self.ghostClosePlayer play];
         NSLog(@"HE'S COMING");
     }
-    [self.ghostPlayer play];
+    [self.ghostMovePlayer play];
     NSLog(@"\nGhost X: %hd\n Ghost Y: %hd", self.player.ghostX, self.player.ghostY);
 }
 
@@ -295,9 +296,6 @@
 }
 
 - (BOOL) movePlayerOnY: (NSInteger) amount {
-    NSDataAsset *sound = [[NSDataAsset alloc] initWithName:self.sounds.firstObject];
-    NSError *error;
-    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
     if (self.player.currentY + amount >= 0 && self.player.currentY + amount <= 9) {
         NSArray *section = self.mazeSectionArray[self.player.currentY+amount];
         MazeTile *newTile = section[self.player.currentX];
@@ -310,10 +308,13 @@
                 return YES;
             }
             if ([self checkGhost]) {
+                [self.ghostMovePlayer pause];
+                [self.ghostClosePlayer play];
                 NSLog(@"He's close shhhhhh");
             }
             return YES;
         }
+        
         NSLog(@"Lava!");
         return NO;
     }
@@ -389,6 +390,7 @@
 - (BOOL) checkWin {
     if (self.player.currentX == self.maze.endX && self.player.currentY == self.maze.endY) {
         self.player.gameWon = YES;
+        [self endGame];
         NSNotification *notification = [NSNotification notificationWithName:@"playerWins" object:self];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
         return YES;
@@ -399,9 +401,9 @@
 - (BOOL) checkLoss {
     if (self.player.currentX == self.player.ghostX && self.player.currentY == self.player.ghostY) {
         self.player.gameWon = NO;
+        [self endGame];
         NSNotification *notification = [NSNotification notificationWithName:@"playerLoses" object:self];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
-        [self endGame];
         return YES;
     }
     return NO;
@@ -448,6 +450,20 @@
     self.player.time += 1;
     NSNotification *notification = [NSNotification notificationWithName:@"playerTimeIncrement" object:nil];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
+}
+
+#pragma mark - Setup sounds
+-(void)setupSounds{
+    NSDataAsset *outOfBounds = [[NSDataAsset alloc] initWithName:self.sounds[0]];
+    NSError *error;
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:outOfBounds.data error:&error];
+    NSDataAsset *sound = [[NSDataAsset alloc] initWithName:self.sounds[2]];
+    self.ghostPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
+    NSDataAsset *moveSound = [[NSDataAsset alloc] initWithName:self.sounds[3]];
+    self.ghostMovePlayer = [[AVAudioPlayer alloc] initWithData:moveSound.data error:&error];
+    NSDataAsset *closeSound = [[NSDataAsset alloc] initWithName:self.sounds[4]];
+    self.ghostClosePlayer = [[AVAudioPlayer alloc] initWithData:closeSound.data error:&error];
+    
 }
 
 @end
