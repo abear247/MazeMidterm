@@ -51,7 +51,7 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-    [self.audioPlayer stop];
+    [self.backgroundPlayer stop];
 }
 
 

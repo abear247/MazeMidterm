@@ -15,6 +15,7 @@
 @property NSData *gameOverImage;
 @property NSData *pathImage;
 @property NSData *ghostImage;
+@property NSDataAsset *music;
 @property (nonatomic) NSData *invalidSquareImage;
 @property NSInteger startX;
 @property NSInteger startY;

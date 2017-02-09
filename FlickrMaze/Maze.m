@@ -95,8 +95,10 @@
             UIImage *ghostImage = [UIImage imageNamed:@"Trump_ghost"];
             NSData *ghostData = UIImagePNGRepresentation(ghostImage);
             self.ghostImage = ghostData;
+            NSDataAsset *musicData = [[NSDataAsset alloc] initWithName:@"Default_music"];
+            self.music = musicData;
             self.manager.player.mazeID = 0;
-            self.sounds =  @[@"Donald_Trump_out_of_bounds",@"Donald_Trump_invalid_sound",@"Donald_Trump_ghost_start",@"Donald_Trump_ghost_start",@"Donald_Trump_game_over_victory"];
+            self.sounds =  @[@"Donald_Trump_out_of_bounds",@"Donald_Trump_invalid_sound",@"Donald_Trump_ghost_start",@"Donald_Trump_ghost_move",@"Donald_Trump_game_over_victory"];
             return;
         }
         case 1:
@@ -114,6 +116,8 @@
             UIImage *ghostImage = [UIImage imageNamed:@"Cat_ghost"];
             NSData *ghostData = UIImagePNGRepresentation(ghostImage);
             self.ghostImage = ghostData;
+            NSDataAsset *musicData = [[NSDataAsset alloc] initWithName:@"Default_music"];
+            self.music = musicData;
              self.sounds =  @[@"Cats_out_of_bounds",@"Cats_invalid_sound",@"Cats_ghost_start",@"Cats_ghost_start",@"Congratulations"];
             return;
             break;
@@ -132,6 +136,8 @@
             UIImage *ghostImage = [UIImage imageNamed:@"Jaws_ghost"];
             NSData *ghostData = UIImagePNGRepresentation(ghostImage);
             self.ghostImage = ghostData;
+            NSDataAsset *musicData = [[NSDataAsset alloc] initWithName:@"Jaws_music"];
+            self.music = musicData;
             self.sounds =  @[@"Jaws_out_of_bounds",@"Jaws_out_of_bounds",@"Jaws_ghost_start",@"Jaws_ghost_move",@"Jaws_ghost_close",@"Congratulations"];
             return;
             break;
@@ -149,7 +155,8 @@
             UIImage *pathImage = [UIImage imageNamed:@"Default_path"];
             NSData *pathData = UIImagePNGRepresentation(pathImage);
             self.pathImage = pathData;
-
+            NSDataAsset *musicData = [[NSDataAsset alloc] initWithName:@"Default_music"];
+            self.music = musicData;
             self.sounds =  @[@"Default_out_of_bounds",@"Default_invalid_sound",@"Default_ghost_start",@"Default_ghost_move",@"Default_ghost_close",@"Default_game_over_defeat",@"Default_game_over_victory"];
 
             UIImage *ghostImage = [UIImage imageNamed:@"Default_ghost"];

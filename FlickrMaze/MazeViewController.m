@@ -60,9 +60,9 @@
     self.tableInt = 0;
     self.movesLabel.text = [NSString stringWithFormat:@"Moves: %hd", self.manager.player.moveCount];
     self.targetMovesLabel.text = @"10";
-        NSDataAsset *sound = [[NSDataAsset alloc] initWithName:@"Background_music"];
+    NSDataAsset *music = [self.manager getMusic];
     NSError *error;
-    self.backgroundPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
+    self.backgroundPlayer = [[AVAudioPlayer alloc] initWithData:music.data error:&error];
     if(error)
         NSLog(@"error");
     self.backgroundPlayer.numberOfLoops = 0;

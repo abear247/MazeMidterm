@@ -258,13 +258,14 @@
         return;
     }
     [self saveContext];
+    [self.ghostMovePlayer play];
     if ([self checkGhost]) {
         NSNotification *notification = [NSNotification notificationWithName:@"ghostClose" object:nil];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
+        [self.ghostMovePlayer stop];
         [self.ghostClosePlayer play];
         NSLog(@"HE'S COMING");
     }
-    [self.ghostMovePlayer play];
     NSLog(@"\nGhost X: %hd\n Ghost Y: %hd", self.player.ghostX, self.player.ghostY);
 }
 
@@ -456,6 +457,10 @@
     self.player.time += 1;
     NSNotification *notification = [NSNotification notificationWithName:@"playerTimeIncrement" object:nil];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
+}
+
+- (NSDataAsset *)getMusic {
+    return self.maze.music;
 }
 
 #pragma mark - Setup sounds

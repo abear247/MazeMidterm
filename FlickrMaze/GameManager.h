@@ -45,5 +45,6 @@
 - (BOOL) checkLoad;
 - (void) createPlayer;
 - (NSData *) getGhostImage;
+- (NSDataAsset *) getMusic;
 
 @end
