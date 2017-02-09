@@ -48,6 +48,10 @@
     
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [self.audioPlayer stop];
+}
+
 - (IBAction)startButton:(id)sender {
     if(!self.manager.tags)
         self.manager.tags = @"";

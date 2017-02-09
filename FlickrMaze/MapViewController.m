@@ -31,9 +31,12 @@
     [super viewWillAppear:animated];
     [self.mapCollectionView reloadData];
     
+    
+    self.scrollImageView.image = [UIImage imageNamed:@"Scroll"];
+}
+-(void)viewDidAppear:(BOOL)animated{
     [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(countDown:) userInfo:nil repeats:YES];
     [self setTimer];
-    self.scrollImageView.image = [UIImage imageNamed:@"Scroll"];
 }
 -(void)viewDidLayoutSubviews{
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.mapCollectionView.collectionViewLayout;
