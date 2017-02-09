@@ -28,6 +28,7 @@
     self.themes = @[@"Default",@"Cats",@"Jaws",@"Donald_Trump"];
     self.themePicker.delegate = self;
     self.themePicker.dataSource = self;
+    self.view.tintColor = [UIColor whiteColor];
     
     if(self.manager.playerImage)
         self.playerImageView.image = [UIImage imageWithData:self.manager.playerImage];
@@ -91,6 +92,13 @@
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     self.manager.gameTheme = self.themes[row];
+}
+
+-(NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    NSString *title = self.themes[row];
+    NSDictionary *attribute = @{ NSForegroundColorAttributeName : [UIColor whiteColor] };
+    NSAttributedString *string = [[NSAttributedString alloc] initWithString:title attributes:attribute];
+    return string;
 }
 
 /*

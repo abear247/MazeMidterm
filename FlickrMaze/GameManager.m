@@ -214,9 +214,9 @@
                                                      userInfo:nil
                                                       repeats:YES];
     
-        NSDataAsset *sound = [[NSDataAsset alloc] initWithName:@"Donald_Trump_ghost_start"];
-        NSError *error;
-        self.ghostPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
+    NSDataAsset *sound = [[NSDataAsset alloc] initWithName:@"Jaws_ghost_move"];
+    NSError *error;
+    self.ghostPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
     [self.ghostPlayer play];
     
 }
@@ -258,8 +258,10 @@
     if ([self checkGhost]) {
         NSNotification *notification = [NSNotification notificationWithName:@"ghostClose" object:nil];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
+        [self.ghostPlayer play];
         NSLog(@"HE'S COMING");
     }
+    [self.ghostPlayer play];
     NSLog(@"\nGhost X: %hd\n Ghost Y: %hd", self.player.ghostX, self.player.ghostY);
 }
 
