@@ -115,7 +115,10 @@
 }
 
 - (void) changeBackgroundImage:(UIImage*)image {
-    self.backgroundImage.image = image;
+    if(image){
+         self.backgroundImage.image = image;
+    }
+   
 }
 
 - (void) advanceProgressBar {
