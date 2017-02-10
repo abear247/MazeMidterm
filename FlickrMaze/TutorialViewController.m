@@ -10,6 +10,7 @@
 
 @interface TutorialViewController ()
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *blurView;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *blurWithVibrancyView;
 @property (weak, nonatomic) IBOutlet UILabel *gameExplanationLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *mapImageArrow;
 @property (weak, nonatomic) IBOutlet UILabel *mapLabel;
@@ -57,7 +58,11 @@
     switch (self.tapNumber) {
         case 0:{ //show game description
             self.gameExplanationLabel.hidden = YES;
-            self.blurView.hidden = YES;
+            [UIView animateWithDuration:0.2 animations: ^ {
+                [self.blurWithVibrancyView setEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
+            } completion:nil];
+            break;
+            
         }
         case 1:{ //show map
             self.mapImageArrow.hidden = NO;
