@@ -90,7 +90,7 @@
 }
 - (IBAction)saveButton:(id)sender {
     self.manager.playerName = self.nameTextView.text;
-    [self.delegate setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", self.manager.gameTheme]]];
+    [self.delegate changeBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", self.manager.gameTheme]]];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -125,7 +125,7 @@
     }
 }
 
-- (void) setBackgroundImage:(UIImage*)image {
+- (void) changeBackgroundImage:(UIImage*)image {
     self.backgroundImage.image = image;
 }
 

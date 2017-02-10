@@ -8,6 +8,6 @@
 
 @protocol GameOptionsViewControllerDelegate <NSObject>
 
-- (void) setBackgroundImage:(UIImage*)image;
+- (void) changeBackgroundImage:(UIImage*)image;
 
 @end
