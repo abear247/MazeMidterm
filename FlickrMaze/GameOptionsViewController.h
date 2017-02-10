@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GameOptionsViewControllerDelegate.h"
 
 @interface GameOptionsViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate,UINavigationControllerDelegate>
-
+@property id<GameOptionsViewControllerDelegate> delegate;
 @end

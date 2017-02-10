@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GameOptionsViewControllerDelegate.h"
 
-@interface HomeViewController : UIViewController <UINavigationControllerDelegate>
+@interface HomeViewController : UIViewController <UINavigationControllerDelegate, GameOptionsViewControllerDelegate>
 @end

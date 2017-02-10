@@ -66,6 +66,7 @@
 		8991D7141E4CBAE700D7C69E /* Player+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Player+CoreDataClass.m"; sourceTree = "<group>"; };
 		8991D7151E4CBAE700D7C69E /* Player+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Player+CoreDataProperties.h"; sourceTree = "<group>"; };
 		8991D7161E4CBAE700D7C69E /* Player+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Player+CoreDataProperties.m"; sourceTree = "<group>"; };
+		8991D71A1E4D4F1400D7C69E /* GameOptionsViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameOptionsViewControllerDelegate.h; sourceTree = "<group>"; };
 		C84DD6D61E47A4EB00591C75 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		C84DD6D71E47A4EB00591C75 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		C84DD6D91E47A61300591C75 /* TitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleCell.h; sourceTree = "<group>"; };
@@ -131,6 +132,7 @@
 				898A5DAC1E455FC1006C2A81 /* AppDelegate.m */,
 				898A5DD21E4563AC006C2A81 /* HomeViewController.h */,
 				898A5DD31E4563AC006C2A81 /* HomeViewController.m */,
+				8991D71A1E4D4F1400D7C69E /* GameOptionsViewControllerDelegate.h */,
 				C84DD7151E4B83F100591C75 /* GameOptionsViewController.h */,
 				C84DD7161E4B83F100591C75 /* GameOptionsViewController.m */,
 				898A5DD81E457107006C2A81 /* MazeViewController.h */,
