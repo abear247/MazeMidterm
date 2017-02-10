@@ -47,7 +47,6 @@
     self.progressBar.progress = 0.0;
     self.loadingImageView.hidden = YES;
     self.highScoreButton.hidden = NO;
-    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

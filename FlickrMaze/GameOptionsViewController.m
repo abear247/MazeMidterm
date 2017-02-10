@@ -8,6 +8,7 @@
 
 #import "GameOptionsViewController.h"
 #import "GameManager.h"
+#import "HomeViewController.h"
 
 @interface GameOptionsViewController () <UITextFieldDelegate>
 @property NSArray *themes;

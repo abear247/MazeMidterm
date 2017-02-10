@@ -95,7 +95,7 @@
             UIImage *ghostImage = [UIImage imageNamed:@"Donald_Trump_ghost"];
             NSData *ghostData = UIImagePNGRepresentation(ghostImage);
             self.ghostImage = ghostData;
-            NSDataAsset *musicData = [[NSDataAsset alloc] initWithName:@"Default_music"];
+            NSDataAsset *musicData = [[NSDataAsset alloc] initWithName:@"Donald_Trump_music"];
             self.music = musicData;
             self.manager.player.mazeID = 0;
             self.sounds =  @[@"Donald_Trump_out_of_bounds",@"Donald_Trump_invalid_sound",@"Donald_Trump_ghost_start",@"Donald_Trump_ghost_move",@"Donald_Trump_ghost_close", @"Donald_Trump_game_over_defeat"];
