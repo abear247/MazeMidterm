@@ -98,7 +98,7 @@
             NSDataAsset *musicData = [[NSDataAsset alloc] initWithName:@"Default_music"];
             self.music = musicData;
             self.manager.player.mazeID = 0;
-            self.sounds =  @[@"Donald_Trump_out_of_bounds",@"Donald_Trump_invalid_sound",@"Donald_Trump_ghost_start",@"Donald_Trump_ghost_move",@"Donald_Trump_game_over_victory"];
+            self.sounds =  @[@"Donald_Trump_out_of_bounds",@"Donald_Trump_invalid_sound",@"Donald_Trump_ghost_start",@"Donald_Trump_ghost_move",@"Donald_Trump_ghost_close", @"Donald_Trump_game_over_defeat"];
             return;
         }
         case 1:
@@ -118,7 +118,8 @@
             self.ghostImage = ghostData;
             NSDataAsset *musicData = [[NSDataAsset alloc] initWithName:@"Cats_music"];
             self.music = musicData;
-             self.sounds =  @[@"Cats_out_of_bounds",@"Cats_invalid_sound",@"Cats_ghost_start",@"Cats_ghost_start",@"Congratulations"];
+             self.sounds = @[@"Cats_out_of_bounds",@"Cats_invalid_sound",@"Cats_ghost_start",@"Cats_ghost_move",@"Cats_ghost_close",@"Cats_game_over_defeat",@"Cats_game_over_victory"];
+
             return;
             break;
         }
