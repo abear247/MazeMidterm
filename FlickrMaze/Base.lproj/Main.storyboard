@@ -176,7 +176,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Maze" translatesAutoresizingMaskIntoConstraints="NO" id="EkU-k6-nhd">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default_background" translatesAutoresizingMaskIntoConstraints="NO" id="EkU-k6-nhd">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VqD-0j-QcE">
@@ -1247,7 +1247,7 @@
     <resources>
         <image name="Arrow" width="348" height="298"/>
         <image name="Camera" width="87" height="72"/>
-        <image name="Maze" width="600" height="535"/>
+        <image name="Default_background" width="600" height="535"/>
         <image name="Player" width="626" height="626"/>
         <image name="Scroll" width="435" height="600"/>
         <image name="Tutorial" width="748" height="1334"/>
