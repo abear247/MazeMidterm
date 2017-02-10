@@ -588,6 +588,44 @@
             </objects>
             <point key="canvasLocation" x="1888.8" y="135.38230884557723"/>
         </scene>
+        <!--Tutorial Map View Controller-->
+        <scene sceneID="evi-gl-Ahs">
+            <objects>
+                <viewController id="jAD-HK-0Lz" customClass="TutorialMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xqs-ii-azK"/>
+                        <viewControllerLayoutGuide type="bottom" id="wf5-zb-RIJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JxR-KB-vXk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tutorial map" translatesAutoresizingMaskIntoConstraints="NO" id="OTU-sd-0j7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="GvI-yL-6gJ" appends="YES" id="700-bi-qK9"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OTU-sd-0j7" firstAttribute="leading" secondItem="JxR-KB-vXk" secondAttribute="leading" id="JxU-GO-oyQ"/>
+                            <constraint firstItem="OTU-sd-0j7" firstAttribute="top" secondItem="JxR-KB-vXk" secondAttribute="top" id="UCX-nd-g49"/>
+                            <constraint firstItem="wf5-zb-RIJ" firstAttribute="top" secondItem="OTU-sd-0j7" secondAttribute="bottom" id="WnR-Fn-Ouw"/>
+                            <constraint firstAttribute="trailing" secondItem="OTU-sd-0j7" secondAttribute="trailing" id="edU-0H-cL5"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vIm-Id-MWK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="GvI-yL-6gJ">
+                    <connections>
+                        <action selector="tapped:" destination="jAD-HK-0Lz" id="nty-Ip-ZwC"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-802.39999999999998" y="883.80809595202402"/>
+        </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="2Hu-gx-Ik6">
             <objects>
@@ -813,6 +851,7 @@
                         <outlet property="validLabel" destination="BcI-kt-D5b" id="GGD-Rg-FjA"/>
                         <outlet property="validTableArrow" destination="q2Z-Zk-Oge" id="xgV-Cg-ql7"/>
                         <outlet property="validTableLabel" destination="3Mv-mI-iax" id="7sC-RX-XXr"/>
+                        <segue destination="jAD-HK-0Lz" kind="presentation" identifier="TutorialMap" modalPresentationStyle="overFullScreen" id="pTO-mH-Li3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WkO-ka-W9p" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1241,6 +1280,7 @@
         <image name="Player" width="626" height="626"/>
         <image name="Scroll" width="435" height="600"/>
         <image name="Tutorial" width="748" height="1334"/>
+        <image name="Tutorial map" width="748" height="1328"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="i9J-ZR-GxD"/>

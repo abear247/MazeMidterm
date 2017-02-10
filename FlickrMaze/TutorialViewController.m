@@ -69,14 +69,18 @@
             self.mapLabel.hidden = NO;
             break;
         }
-        case 2:{ //show player
+        case 2:{ //show mapView
+            [self performSegueWithIdentifier:@"TutorialMap" sender:self];
+            break;
+        }
+        case 3:{ //show player
             self.mapImageArrow.hidden = YES;
             self.mapLabel.hidden = YES;
             self.playerLabel.hidden = NO;
             self.playerImageArrow.hidden = NO;
             break;
         }
-        case 3:{ //show valid choice
+        case 4:{ //show valid choice
             self.playerLabel.hidden = YES;
             self.playerImageArrow.hidden = YES;
             self.validImageArrow.hidden = NO;
@@ -85,7 +89,7 @@
             self.validTableLabel.hidden = NO;
             break;
         }
-        case 4:{ //show out of bounds
+        case 5:{ //show out of bounds
             self.validImageArrow.hidden = YES;
             self.validLabel.hidden = YES;
             self.validTableArrow.hidden = YES;
@@ -95,7 +99,7 @@
             self.outOfBoundsTableArrow.hidden = NO;
             break;
         }
-        case 5:{ //show invalid
+        case 6:{ //show invalid
             self.outOfBoundsImageArrow.hidden = YES;
             self.outOfBoundsLabel.hidden = YES;
             self.outOfBoundsTableArrow.hidden = YES;
