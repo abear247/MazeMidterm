@@ -11,6 +11,7 @@
 #import "MazeTile+CoreDataClass.h"
 #import "MazeViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "GameOptionsViewController.h"
 
 @interface HomeViewController ()
 @property GameManager *manager;
@@ -124,10 +125,19 @@
     }
 }
 
+- (void) setBackgroundImage:(UIImage*)image {
+    self.backgroundImage.image = image;
+}
+
 - (void) advanceProgressBar {
     self.progressBar.progress += 0.2 * (1-self.progressBar.progress);
 }
 
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString: @"GameOptionsViewController"]) {
+        GameOptionsViewController *govc = segue.destinationViewController;
+        govc.delegate = self;
+    }
+}
 
 @end
