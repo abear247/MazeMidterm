@@ -41,6 +41,10 @@
         self.nameTextView.text = self.manager.playerName;
     if(self.manager.gameTheme){
         NSUInteger selected = [self.themes indexOfObject:self.manager.gameTheme];
+        if([self.manager.gameTheme isEqualToString:@"Donald_Trump"]){
+            selected = 3;
+        }
+
         [self.themePicker selectRow:selected inComponent:0 animated:YES];
     }
     self.tagTextField.tintColor = [UIColor blackColor];
@@ -90,7 +94,7 @@
 }
 - (IBAction)saveButton:(id)sender {
     self.manager.playerName = self.nameTextView.text;
-    [self.delegate changeBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", self.manager.gameTheme]]];
+    [self.delegate changeBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_background", self.manager.gameTheme]]];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

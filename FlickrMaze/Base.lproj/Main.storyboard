@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RTS-2t-dES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RTS-2t-dES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -197,13 +197,6 @@
                                     <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aNY-ju-zQD"/>
                                 </connections>
                             </button>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fmg-E5-UKW">
-                                <rect key="frame" x="71" y="447" width="233" height="136"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="233" id="F2Y-FH-qPO"/>
-                                    <constraint firstAttribute="height" constant="136" id="Wd6-Av-9Ki"/>
-                                </constraints>
-                            </imageView>
                             <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qoV-zt-1po">
                                 <rect key="frame" x="16" y="630" width="343" height="2"/>
                                 <color key="trackTintColor" red="1" green="0.29674151119999997" blue="0.3258928056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -307,18 +300,15 @@
                             <constraint firstItem="EkU-k6-nhd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="eHQ-nV-Gfc"/>
                             <constraint firstItem="LC3-Tc-Ewe" firstAttribute="top" secondItem="CGV-B4-awg" secondAttribute="bottom" constant="114.5" id="kmb-Ao-9py"/>
                             <constraint firstAttribute="leadingMargin" secondItem="qoV-zt-1po" secondAttribute="leading" id="nQY-TJ-gkt"/>
-                            <constraint firstItem="qoV-zt-1po" firstAttribute="top" secondItem="Fmg-E5-UKW" secondAttribute="bottom" constant="47" id="rGh-Tl-Xhu"/>
                             <constraint firstItem="VqD-0j-QcE" firstAttribute="top" secondItem="CGV-B4-awg" secondAttribute="bottom" constant="-34.5" id="rLK-2X-jiV"/>
                             <constraint firstItem="qoV-zt-1po" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sUC-2Y-LHx"/>
                             <constraint firstItem="umL-sK-YI2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-0.5" id="uT4-NO-6G6"/>
                             <constraint firstItem="yxf-la-Ufs" firstAttribute="top" secondItem="CGV-B4-awg" secondAttribute="bottom" constant="27.5" id="v6K-lN-xRr"/>
-                            <constraint firstItem="Fmg-E5-UKW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wC0-TP-jdC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3ZH-ea-LTN"/>
                     <connections>
                         <outlet property="backgroundImage" destination="EkU-k6-nhd" id="FF4-Mb-06n"/>
-                        <outlet property="loadingImageView" destination="Fmg-E5-UKW" id="3JI-os-3Rm"/>
                         <outlet property="progressBar" destination="qoV-zt-1po" id="5CU-mc-mhn"/>
                         <outlet property="startButton" destination="VqD-0j-QcE" id="xhC-rD-bvn"/>
                         <segue destination="gpO-sg-c12" kind="showDetail" identifier="MazeViewController" action="showViewController:sender:" id="i9J-ZR-GxD"/>

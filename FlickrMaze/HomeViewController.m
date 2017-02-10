@@ -16,7 +16,6 @@
 @interface HomeViewController ()
 @property GameManager *manager;
 @property (weak, nonatomic) IBOutlet UIButton *highScoreButton;
-@property (weak, nonatomic) IBOutlet UIImageView *loadingImageView;
 @property (strong,nonatomic) AVAudioPlayer *backgroundPlayer;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
@@ -32,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.manager = [GameManager sharedManager];
-    self.backgroundImage.image = [UIImage imageNamed:@"Maze"];
+    self.backgroundImage.image = [UIImage imageNamed:@"Default_background"];
     NSDataAsset *sound = [[NSDataAsset alloc] initWithName:@"Home_sound"];
     NSError *error;
     self.backgroundPlayer = [[AVAudioPlayer alloc] initWithData:sound.data error:&error];
@@ -46,7 +45,6 @@
 -(void)viewDidAppear:(BOOL)animated {
     self.startButton.userInteractionEnabled = YES;
     self.progressBar.progress = 0.0;
-    self.loadingImageView.hidden = YES;
     self.highScoreButton.hidden = NO;
 }
 
@@ -102,15 +100,6 @@
     }];
     [dataTask resume];
     self.startButton.userInteractionEnabled = NO;
-    self.loadingImageView.hidden = NO;
-    if(!self.manager.gameTheme)
-        self.loadingImageView.image = [UIImage imageNamed:@"Default"];
-    else
-        self.loadingImageView.image = [UIImage imageNamed:self.manager.gameTheme];
-    [UIImageView animateWithDuration:10.0 animations:^(void) {
-        self.loadingImageView.alpha = 0;
-        self.loadingImageView.alpha = 1;
-    }];
     self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(advanceProgressBar) userInfo:nil repeats:YES];
     NSDataAsset *sound = [[NSDataAsset alloc] initWithName:[NSString stringWithFormat:@"%@_sound",self.manager.gameTheme]];
     NSError *error;
