@@ -479,7 +479,7 @@
                                     <outlet property="delegate" destination="gpO-sg-c12" id="awz-Se-GFO"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXu-c8-CPy">
+                            <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXu-c8-CPy">
                                 <rect key="frame" x="32" y="57" width="30" height="30"/>
                                 <state key="normal" title="Left">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -488,7 +488,7 @@
                                     <action selector="moveLeft:" destination="gpO-sg-c12" eventType="touchUpInside" id="BaY-lG-6CB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNm-Z6-EWN">
+                            <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNm-Z6-EWN">
                                 <rect key="frame" x="70" y="57" width="30" height="30"/>
                                 <state key="normal" title="Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -497,7 +497,7 @@
                                     <action selector="moveUp:" destination="gpO-sg-c12" eventType="touchUpInside" id="EUu-yU-MEx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cce-Jp-WFg">
+                            <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cce-Jp-WFg">
                                 <rect key="frame" x="108" y="57" width="36" height="30"/>
                                 <state key="normal" title="Right">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -506,7 +506,7 @@
                                     <action selector="moveRight:" destination="gpO-sg-c12" eventType="touchUpInside" id="naP-73-L6Y"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBu-g4-pIk">
+                            <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBu-g4-pIk">
                                 <rect key="frame" x="152" y="57" width="39" height="30"/>
                                 <state key="normal" title="Down">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
